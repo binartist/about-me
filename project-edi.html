@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>project-edi.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<p><a href="index.html">&lt;&lt; Back to Index</a></p>
+<h1 id="edi-onboarding-system">EDI Onboarding System</h1>
+<h2 id="introduction">Introduction</h2>
+<p>The EDI Onboarding Platform streamlines how trading partners connect, exchange, and validate electronic business documents. It combines industry-standard EDI protocols (EDIFACT, ANSI X12) and modern formats (XML, JSON, APIs) with AI-assisted automation to accelerate onboarding, reduce manual effort, and ensure compliance across global supply chains.</p>
+<p>Core capabilities:</p>
+<ul>
+<li>Standardization: Canonical business schemas enable consistent integration across diverse customers and regions.</li>
+<li>Automation: AI-assisted schema lookups, mapping recommendations, and MIG ingestion speed up partner onboarding and reduce errors.</li>
+<li>Flexibility: Supports multiple message types and formats, from EDIFACT shipping instructions to ANSI X12 invoices.</li>
+<li>Transparency: Built-in monitoring, validation, and reporting provide real-time visibility into partner activity and message compliance.</li>
+<li>Continuous improvement: Feedback loops capture human corrections to enhance AI recommendations and mappings over time.</li>
+</ul>
+<p>By bridging partner message formats and internal business processes, the platform enables accurate, secure, and scalable data exchange—driving faster partner integration, improved customer experience, and reliable supply chain operations.</p>
+<h2 id="architecture">Architecture</h2>
+<ul>
+<li>Ingestion and parsing services (PDF/MIG/CSV/API) with provenance tracking</li>
+<li>Knowledge base and vector search for prior mappings and semantic similarity lookup</li>
+<li>Canonical data model and rules engine for transformations and validations</li>
+<li>Mapping workbench (SME UI) with AI-assisted recommendations and diffing</li>
+<li>Collaboration portal for partner Q&amp;A and decision audit trails</li>
+<li>Integration runtime with monitoring, alerts, and replay for exceptions</li>
+</ul>
+<h2 id="use-case">Use Case</h2>
+<h3 id="as%E2%80%91is-current-process">As‑Is (current process)</h3>
+<p>When a new customer requests onboarding, the provider must integrate the customer’s EDI files with its own internal EDI standards. The process involves several key stages:</p>
+<p>Customer Request Submission
+The customer provides an EDI file and requests onboarding.</p>
+<p>Leveraging Existing Knowledge
+The provider retrieves existing EDI description files and applies tribal knowledge from prior integrations to accelerate mapping.</p>
+<p>Mapping Customer EDI to Internal Standards
+EDI Subject Matter Experts (SMEs) interpret the customer’s file descriptions, applying industry standards and expertise to align fields with internal EDI formats.</p>
+<p>Issue Resolution Collaboration
+If questions or ambiguities arise, SMEs collaborate with the customer, applying rules and historical decisions to resolve mapping issues.</p>
+<p>Specification Generation
+The finalized mapping is documented into a customer-specific EDI mapping specification, ensuring clarity for future maintenance and system implementation.</p>
+<h3 id="to%E2%80%91be-with-the-platform">To‑Be (with the platform)</h3>
+<p>Customer Request Submission
+Customer uploads sample EDI messages and specs via a portal; files are parsed and normalized automatically.</p>
+<p>Leveraging Existing Knowledge
+Platform indexes prior mappings, MIGs, and decisions; similar past integrations are surfaced to bootstrap mapping.</p>
+<p>Mapping Customer EDI to Internal Standards
+AI suggests mappings and transformation rules to canonical schemas; SMEs review, adjust, and approve with side‑by‑side diffs and source citations.</p>
+<p>Issue Resolution Collaboration
+Guided Q&amp;A reduces back‑and‑forth; decisions are captured as reusable rules with audit trails and effective‑date/version metadata.</p>
+<p>Specification Generation
+Customer‑specific mapping specification, transformation artifacts, and test cases are generated automatically.</p>
+<p>Validation and Rollout
+Messages are validated against schemas and business rules; integration is promoted to production with monitoring and alerts.</p>
+<h2 id="pain-point-and-challenges">Pain Point and Challenges</h2>
+<ul>
+<li>Long turnaround time: Onboarding cycles can take weeks due to manual mapping and iterative clarification.</li>
+<li>High human effort: SMEs spend significant time on repetitive mappings and document parsing.</li>
+<li>Dependency on tribal knowledge: Critical know-how is scattered across teams and past projects, risking inconsistency and rework.</li>
+<li>Elevated error risk: Manual transformations and ambiguous specs lead to mapping errors, chargebacks, and SLA breaches.</li>
+</ul>
+<h2 id="solution">Solution</h2>
+<ol>
+<li>Provider knowledge base setup</li>
+</ol>
+<ul>
+<li>Ingest existing EDI description files (MIGs, PDFs, spreadsheets) and past mappings.</li>
+<li>Normalize into a searchable knowledge base with metadata (message type, version, partner, effective dates) and provenance.</li>
+</ul>
+<ol start="2">
+<li>Customer intake and normalization</li>
+</ol>
+<ul>
+<li>Customer submits sample messages and specs; the platform parses and normalizes structures (EDIFACT/X12/XML/JSON).</li>
+<li>Auto-detect message types, segments, qualifiers, and constraints to seed mapping candidates.</li>
+</ul>
+<ol start="3">
+<li>AI-assisted mapping and transformation</li>
+</ol>
+<ul>
+<li>Generate mapping suggestions to canonical schemas using standards, prior integrations, and semantic field similarity.</li>
+<li>Propose transformation rules (reformatting, unit conversion, code-list mapping) and highlight gaps for SME review.</li>
+</ul>
+<ol start="4">
+<li>Guided collaboration and decision capture</li>
+</ol>
+<ul>
+<li>Provide a collaboration workspace with suggested questions for ambiguities.</li>
+<li>Capture decisions as reusable rules; link them to messages and versions for future reuse.</li>
+</ul>
+<ol start="5">
+<li>Spec generation, validation, and testing</li>
+</ol>
+<ul>
+<li>Produce customer-specific mapping specs and transformation artifacts.</li>
+<li>Auto-generate test cases and validate messages against schemas and business rules before go-live.</li>
+</ul>
+<ol start="6">
+<li>Deployment, monitoring, and continuous learning</li>
+</ol>
+<ul>
+<li>Promote mappings to production with observability (throughput, error rates, partner SLAs).</li>
+<li>Feed corrections and exceptions back into the knowledge base to improve future recommendations.</li>
+</ul>
+<h2 id="business-value">Business Value</h2>
+<p>Tangible benefits across speed, quality, cost, and risk:</p>
+<ul>
+<li>Reduced time-to-onboard: Cut onboarding cycle time from weeks to days by automating parsing, mapping suggestions, and validation.</li>
+<li>Lower manual effort: 30–50% reduction in SME hours per partner through AI-assisted mapping and reusable rules.</li>
+<li>Fewer errors and chargebacks: Improve first-pass acceptance rate and reduce mapping defects with pre-go-live validation and source-cited specs.</li>
+<li>Higher throughput and predictability: Onboard more partners in parallel with standardized processes and measurable SLAs.</li>
+<li>Knowledge retention: Institutionalize tribal knowledge as reusable rules and decisions, reducing dependency on specific individuals.</li>
+<li>Compliance and auditability: Immutable audit trails, role-based access, and schema/version control support regulatory and contractual obligations.</li>
+</ul>
+<p>Suggested KPIs to track</p>
+<ul>
+<li>Onboarding cycle time (request → production)</li>
+<li>SME hours per partner and per message</li>
+<li>First-pass acceptance rate and defect density</li>
+<li>Rework rate and time-to-fix</li>
+<li>Message validation pass rate pre-production</li>
+<li>Production incident rate and mean time to recovery (MTTR)</li>
+</ul>
+<p>ROI framing (illustrative)</p>
+<ul>
+<li>If current onboarding averages 4 weeks and 60 SME hours/partner, a 40% reduction yields ~1.6 weeks saved and 24 hours saved per partner; multiplied by annual partner volume to quantify savings.</li>
+</ul>
+<p><a href="index.html">&lt;&lt; Back to Index</a></p>
+
+</body>
+</html>
