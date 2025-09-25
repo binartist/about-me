@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>project-aihub.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<p><a href="index.html">&lt;&lt; Back to Index</a></p>
+<h1 id="agentic-ai-saas-platform">Agentic AI SaaS Platform</h1>
+<h2 id="introduction">Introduction</h2>
+<p>A multi-tenant SaaS platform powered by RAG (Retrieval-Augmented Generation) and agentic AI flows, designed for enterprise use. The platform enables administrators to centrally manage users, roles, and organizational knowledge bases through an intuitive web console.</p>
+<p>End users — such as employees, partners, or customers — can seamlessly access a web portal equipped with a conversational AI chat interface. This empowers them to query company-specific knowledge, receive context-aware responses, and execute automated tasks through agentic workflows.</p>
+<p>By combining knowledge management, secure access control, and intelligent chat-based interaction, the platform enhances enterprise decision-making, customer support, and operational efficiency.</p>
+<h2 id="architecture">Architecture</h2>
+<h2 id="use-case">Use Case</h2>
+<p>An international education company receives thousands of customer queries every day about university entrance requirements, qualification equivalencies, program recommendations, application deadlines, and required documentation. Questions come from prospective students across multiple countries and languages, and often require consulting institution-specific policies, national qualification frameworks, and historical admissions decisions to provide accurate guidance.</p>
+<p>Using the platform, student-facing teams and customers can get fast, context-aware answers backed by authoritative sources. RAG (Retrieval-Augmented Generation) surfaces precise passages from institutional handbooks, country regulations, and prior case notes. Agentic flows then orchestrate downstream actions such as computing eligibility, assembling a personalized application checklist, generating pre-filled forms, scheduling an advising session, or initiating escalation to a human counselor when the request is ambiguous or sensitive.</p>
+<p>Key capabilities for this use case:</p>
+<ul>
+<li>Multilingual understanding and translation so queries in different languages are handled reliably.</li>
+<li>Context-aware retrieval with metadata filters (country, degree level, institution) to ensure the answers reference the correct rules.</li>
+<li>Agentic orchestration to automate routine tasks (eligibility checks, document collection, calendar booking) and to provide explainable, source-cited responses.</li>
+<li>Fine-grained access control and audit trails to protect applicant data and support compliance with privacy regulations.</li>
+<li>Integrations with CRM, student information systems (SIS), document storage, and calendar services to complete end-to-end workflows.</li>
+</ul>
+<p>Measurable outcomes include faster first-response times, higher self-serve resolution rates, fewer escalations to human staff, and improved application conversion. Example KPIs to track: average first-response time, self-serve resolution rate, retrieval recall@k, hallucination/factuality rate, and escalation rate to counselors.</p>
+<p>Example scenario: a prospective student asks in Spanish whether their foreign diploma meets admission requirements for a master's program. The system retrieves the relevant country equivalency guidelines and the target university's admissions policy, runs an eligibility check via an agentic flow, returns a bilingual summary with citations, offers a personalized checklist of missing documents, and proposes time slots to book an advising session — only escalating to a human counselor if the case remains unclear.</p>
+<h2 id="pain-point-and-challenges">Pain Point and Challenges</h2>
+<ul>
+<li>Fragmented content: university policies, course catalogs, and national qualification documents exist in many formats (PDF, HTML, XML, spreadsheets, email threads), making unified search and retrieval difficult.</li>
+<li>Scale and discoverability: a high volume of documents and frequent policy updates make manual lookup slow and error-prone for advisors and applicants.</li>
+<li>Stale or incomplete data: institution and course profiles are frequently updated, and the organization lacks an automated, auditable pipeline to keep knowledge current.</li>
+<li>Operational friction: routine eligibility checks, document validation, and scheduling consume significant staff time and create bottlenecks during peak application seasons.</li>
+</ul>
+<h2 id="solution">Solution</h2>
+<ul>
+<li>Automated ingestion pipeline: programmatic parsers and AI-assisted document extraction normalize PDFs, HTML pages, and structured feeds into a canonical content store with provenance metadata.</li>
+<li>Smart indexing and retrieval: chunking, metadata tagging (country, level, institution, effective date), embeddings, and vector search ensure high-precision, contextual retrieval.</li>
+<li>Continuous enrichment: an AI-powered crawler and scheduled syncs refresh institution and course profiles, while change detection flags updates for human review.</li>
+<li>Agentic orchestration: modular agent flows perform eligibility checks, assemble personalized checklists, pre-fill forms, and automate calendar booking — escalating to human advisors only for complex or sensitive cases.</li>
+<li>Compliance and auditability: role-based access, encryption-at-rest/in-transit, and immutable audit trails support data protection requirements and admissions governance.</li>
+</ul>
+<h2 id="business-value">Business Value</h2>
+<p>This platform delivers measurable business value across cost, quality, speed, and compliance:</p>
+<ul>
+<li>Faster response and higher self-serve: Reduce average first-response times and increase the percentage of inquiries resolved without human intervention (target improvement: 40–70% self-serve rate uplift depending on maturity).</li>
+<li>Operational cost savings: Automating routine checks and document processing reduces advisor workload and allows teams to scale without linear headcount increases (example ROI: 20–40% reduction in support FTEs for inquiry handling).</li>
+<li>Higher conversion and applicant satisfaction: Quicker, accurate answers and personalized guidance improve application completion rates and NPS among prospective students.</li>
+<li>Reduced error and risk: Source-cited answers and change-detection reduce the risk of incorrect guidance and support regulatory compliance, lowering downstream remediation costs.</li>
+<li>Measurable KPIs: average first-response time, self-serve resolution rate, retrieval recall@k, hallucination/factuality rate, escalation rate, advisor time per case, and conversion rate from inquiry to application.</li>
+</ul>
+<p>Implementation notes: begin with a representative pilot (one region/institution) to validate retrieval quality and agent flows, measure KPIs, then expand coverage and integrate with CRM/SIS for end-to-end tracking.</p>
+<p><a href="index.html">&lt;&lt; Back to Index</a></p>
+
+</body>
+</html>
