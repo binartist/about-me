@@ -386,6 +386,90 @@ code {
 <li>Backend services: modular APIs for user identity &amp; auth, shop &amp; activity orchestration, payment processing (online + settlement export), content delivery, notification dispatch, analytics aggregation, and gift / inventory tracking</li>
 </ul>
 <h2 id="architecture">Architecture</h2>
+<pre><code class="language-mermaid"><div class="mermaid">flowchart LR
+   subgraph Experience
+      MobileApp[Mobile App]
+      MobileWeb[Mobile Web]
+   end
+
+   subgraph Engagement
+      CMS[Content Management]
+      Push[Push & Notification Service]
+   end
+
+   subgraph Core Services
+      Auth[Identity & Auth]
+      Catalog[Shop & Activity Service]
+      Payments[Payment Service]
+      Gifts[Gift & Inventory]
+      Analytics[Analytics Aggregation]
+      Messaging[Messaging Orchestrator]
+   end
+
+   subgraph Data Stores
+      UserDB[User / Profile DB]
+      ActivityDB[Activity & Booking DB]
+      ContentStore[Content Store]
+      EventBus[Event Bus]
+   end
+
+   subgraph Ops
+      AdminConsole[Admin Console]
+      Exporter[Reconciliation & Export]
+   end
+
+   MobileApp --> Auth
+   MobileApp --> Catalog
+   MobileApp --> Payments
+   MobileApp --> CMS
+   MobileApp --> Push
+
+   MobileWeb --> Auth
+   MobileWeb --> Catalog
+   MobileWeb --> CMS
+
+   AdminConsole --> Catalog
+   AdminConsole --> Gifts
+   AdminConsole --> Messaging
+   AdminConsole --> Exporter
+
+   CMS --> ContentStore
+   Push --> Messaging
+   Catalog --> ActivityDB
+   Payments --> ActivityDB
+   Auth --> UserDB
+   Gifts --> ActivityDB
+   Analytics --> EventBus
+   Messaging --> EventBus
+   EventBus --> Analytics
+   EventBus --> Exporter
+
+   classDef front fill:#f0f8ff,stroke:#1b4b82,stroke-width:1px;
+   classDef services fill:#f6fff0,stroke:#2e6b1f,stroke-width:1px;
+   classDef data fill:#fff4e6,stroke:#a65d00,stroke-width:1px;
+   classDef ops fill:#fef0f5,stroke:#a61b52,stroke-width:1px;
+   class MobileApp,MobileWeb front;
+   class Auth,Catalog,Payments,Gifts,Analytics,Messaging services;
+   class UserDB,ActivityDB,ContentStore,EventBus data;
+   class AdminConsole,Exporter ops;
+</div></code></pre>
+<h3 id="component-responsibilities">Component responsibilities</h3>
+<ul>
+<li>Mobile App / Web: User-facing channels for browsing content, discovering shops and activities, managing enrollment, and completing online payments.</li>
+<li>Content Management: Editorial tooling and workflows to publish pet health articles, event promos, and in-app banners.</li>
+<li>Push &amp; Notification Service: Manages targeted campaigns, transactional confirmations, and lifecycle nudges across mobile/web.</li>
+<li>Identity &amp; Auth: Central user account service handling registration, SSO, and token issuance with support for pet-owner profiles.</li>
+<li>Shop &amp; Activity Service: Orchestrates shop listings, activity schedules, enrollment flow, and inventory of available slots.</li>
+<li>Payment Service: Handles online payment capture, settlement export, refunds, and integration with offline POS reconciliation.</li>
+<li>Gift &amp; Inventory: Tracks gift codes, redemption states, and real-time inventory during events.</li>
+<li>Analytics Aggregation: Collects behavioral and transactional signals into dashboards for retention and segmentation.</li>
+<li>Messaging Orchestrator: Routes in-app messages, SMS/IM notifications, and confirmation emails with templating support.</li>
+<li>Event Bus: Emits domain events (enrollment created, payment settled) for downstream analytics and automation.</li>
+<li>User/Profile DB &amp; Activity/Booking DB: Persist owners, pets, enrollments, and event outcomes; maintain audit history.</li>
+<li>Content Store: Houses published articles, media assets, and localized copy.</li>
+<li>Admin Console: Operational console for staff to manage users, shops, activities, UGC moderation, and configurations.</li>
+<li>Reconciliation &amp; Export: Generates settlement reports, participation summaries, and feeds to finance/back-office systems.</li>
+</ul>
 <h2 id="use-case">Use Case</h2>
 <p>The company runs hundreds of offline activities each year. A typical lifecycle:</p>
 <ol>
