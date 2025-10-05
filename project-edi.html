@@ -379,13 +379,36 @@ code {
 </ul>
 <p>By bridging partner message formats and internal business processes, the platform enables accurate, secure, and scalable data exchange—driving faster partner integration, improved customer experience, and reliable supply chain operations.</p>
 <h2 id="architecture">Architecture</h2>
+<pre><code class="language-mermaid"><div class="mermaid">flowchart LR
+	A[Customer Portal] --> B[Ingestion & Normalization]
+	B --> C[Canonical Schema Catalog]
+	C --> D[AI Mapping Engine]
+	B --> D
+	D --> E[SME Collaboration Workspace]
+	D --> F[Transformation & Spec Generator]
+	F --> G[Validation & Test Harness]
+	G --> H[Deployment & Monitoring]
+	H --> I[Operational Dashboards & Alerts]
+	C <--> J[(Knowledge Base)]
+	E --> J
+	H --> J
+	J --> D
+	H --> K[Feedback Loop]
+	K --> B
+</div></code></pre>
+<h3 id="component-responsibilities">Component responsibilities</h3>
 <ul>
-<li>Ingestion and parsing services (PDF/MIG/CSV/API) with provenance tracking</li>
-<li>Knowledge base and vector search for prior mappings and semantic similarity lookup</li>
-<li>Canonical data model and rules engine for transformations and validations</li>
-<li>Mapping workbench (SME UI) with AI-assisted recommendations and diffing</li>
-<li>Collaboration portal for partner Q&amp;A and decision audit trails</li>
-<li>Integration runtime with monitoring, alerts, and replay for exceptions</li>
+<li><strong>Customer Portal:</strong> Collects partner onboarding requests, sample messages, and specifications.</li>
+<li><strong>Ingestion &amp; Normalization:</strong> Parses uploaded files, auto-detects formats, and normalizes structures for downstream processing.</li>
+<li><strong>Canonical Schema Catalog:</strong> Stores standard schemas and mappings that anchor every integration.</li>
+<li><strong>AI Mapping Engine:</strong> Generates field mappings and transformation suggestions using prior integrations and semantic matching.</li>
+<li><strong>SME Collaboration Workspace:</strong> Lets experts review AI suggestions, resolve ambiguities, and capture decisions with full traceability.</li>
+<li><strong>Transformation &amp; Spec Generator:</strong> Produces partner-specific specifications, transformation rules, and implementation artifacts.</li>
+<li><strong>Validation &amp; Test Harness:</strong> Runs schema and business-rule validation, generating regression test cases prior to go-live.</li>
+<li><strong>Deployment &amp; Monitoring:</strong> Promotes mappings to production, applies runtime observability, and tracks partner SLAs.</li>
+<li><strong>Operational Dashboards &amp; Alerts:</strong> Surfaces performance metrics and exceptions for proactive operations.</li>
+<li><strong>Knowledge Base:</strong> Centralizes historical mappings, MIGs, rules, and feedback to continuously improve automation.</li>
+<li><strong>Feedback Loop:</strong> Captures production learnings and feeds them into ingestion and AI models for ongoing optimization.</li>
 </ul>
 <h2 id="use-case">Use Case</h2>
 <h3 id="as%E2%80%91is-current-process">As‑Is (current process)</h3>

@@ -370,6 +370,82 @@ code {
 <h2 id="introduction">Introduction</h2>
 <p>A lightweight web-based conversational tool that assists with core DevOps workflows: building, deploying, testing, and runtime troubleshooting of containerized applications.</p>
 <h2 id="architecture">Architecture</h2>
+<pre><code class="language-mermaid"><div class="mermaid">flowchart LR
+	subgraph Interface
+		WebUI[Web UI / Chat]
+		CLI[CLI Connector]
+	end
+
+	subgraph Control
+		Intent[Intent Parser]
+		Policy[Policy & Risk Engine]
+		Orchestrator[Agent Orchestrator]
+		Audit[Audit Log]
+	end
+
+	subgraph Execution
+		BuildAPI[Build API]
+		DeployAPI[Deploy / Orchestration API]
+		ConfigAPI[Config & Secrets API]
+		ObserveAPI[Observability API]
+		Diagnostics[Diagnostics Tasks]
+	end
+
+	subgraph Integrations
+		Registry[Container Registry]
+		CI[CI/CD System]
+		Cluster[Kubernetes / Runtime]
+		Metrics[Metrics & Logging]
+		Secrets[Secrets Manager]
+	end
+
+	WebUI --> Intent
+	CLI --> Intent
+	Intent --> Policy
+	Policy --> Orchestrator
+	Orchestrator --> Audit
+	Orchestrator --> BuildAPI
+	Orchestrator --> DeployAPI
+	Orchestrator --> ConfigAPI
+	Orchestrator --> ObserveAPI
+	Orchestrator --> Diagnostics
+
+	BuildAPI --> CI
+	BuildAPI --> Registry
+	DeployAPI --> Cluster
+	DeployAPI --> Registry
+	ConfigAPI --> Secrets
+	ConfigAPI --> Cluster
+	ObserveAPI --> Metrics
+	Diagnostics --> Cluster
+	Diagnostics --> Metrics
+
+	classDef interface fill:#f0f8ff,stroke:#1f4a82,stroke-width:1px;
+	classDef control fill:#fff4e6,stroke:#b36b00,stroke-width:1px;
+	classDef exec fill:#f2fff0,stroke:#2c6b1d,stroke-width:1px;
+	classDef integrations fill:#fef0f6,stroke:#a61f5a,stroke-width:1px;
+	class WebUI,CLI interface;
+	class Intent,Policy,Orchestrator,Audit control;
+	class BuildAPI,DeployAPI,ConfigAPI,ObserveAPI,Diagnostics exec;
+	class Registry,CI,Cluster,Metrics,Secrets integrations;
+</div></code></pre>
+<h3 id="component-responsibilities">Component responsibilities</h3>
+<ul>
+<li>Web UI / Chat &amp; CLI Connector: Conversational and terminal entry points that capture intents, display explanations, and request confirmation tokens.</li>
+<li>Intent Parser: Natural-language understanding layer that converts user commands into structured actions with parameters.</li>
+<li>Policy &amp; Risk Engine: Evaluates requested actions against guardrails (environment scope, destructive operations) and escalates for approval when needed.</li>
+<li>Agent Orchestrator: Plans multi-step workflows, sequences tool calls, handles retries, and maintains conversational context with the user.</li>
+<li>Audit Log: Records every action, input, output, and confirmation for compliance and postmortem review.</li>
+<li>Build API: Triggers image builds, artifact promotions, and integrates with CI pipelines and registries.</li>
+<li>Deploy / Orchestration API: Applies or patches deployment specs (Kubernetes manifests, Helm values) and orchestrates rollouts or rollbacks.</li>
+<li>Config &amp; Secrets API: Safely updates environment variables, config maps, and secret references; enforces scoping and masking policies.</li>
+<li>Observability API: Fetches logs, metrics, traces, and events; runs saved queries and summarizes anomalies.</li>
+<li>Diagnostics Tasks: Executes lightweight probes (smoke tests, health checks, schema diffs) to validate state changes.</li>
+<li>Container Registry &amp; CI/CD System: External systems storing images and build metadata for promotion and rollback.</li>
+<li>Kubernetes / Runtime: Target runtime for deploying and managing container workloads across environments.</li>
+<li>Metrics &amp; Logging Platform: Source of operational telemetry used for troubleshooting and proactive alerts.</li>
+<li>Secrets Manager: Central vault for credentials and tokens referenced by deployments and operational tasks.</li>
+</ul>
 <h2 id="use-case">Use Case</h2>
 <p>Small product teams and early-stage startups often lack dedicated, highly skilled DevOps engineers. Mastering modern delivery practices takes time—especially when forced to stitch together an oversized stack of tools.</p>
 <p>Today most teams package and ship services in containers (e.g. Docker). A typical lifecycle includes:</p>

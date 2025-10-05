@@ -383,6 +383,102 @@ code {
 <li>Front‑office AI assistant: guides customers conversationally (navigation, dish discovery, dietary filtering, pairing suggestions) and can place structured orders via chat</li>
 </ul>
 <h2 id="architecture">Architecture</h2>
+<pre><code class="language-mermaid"><div class="mermaid">flowchart LR
+   subgraph Guest Experience
+      WebOrder[Customer Web Ordering]
+      FrontAI[Front-office AI Assistant]
+   end
+
+   subgraph Staff Tools
+      POS[POS / Staff Tablet]
+      AdminConsole[Admin Console]
+      BackAI[Back-office AI Assistant]
+   end
+
+   subgraph Platform Services
+      BFF[BFF / API Gateway]
+      MenuSvc[Menu & Inventory Service]
+      OrderSvc[Order Service]
+      PaymentSvc[Payment Service]
+      MediaSvc[Media & Asset Service]
+      Analytics[Analytics & Reporting]
+      Notifier[Notification & Messaging]
+   end
+
+   subgraph Intelligence
+      VectorDB[Vector DB]
+      ModelHub[AI Model Orchestrator]
+   end
+
+   subgraph Infrastructure
+      Auth[IAM / Auth]
+      ObjectStore[Object Store]
+      TaskQueue[Task Queue / Workers]
+      CDN[CDN / Edge Cache]
+      DB[Operational DB]
+   end
+
+   WebOrder --> BFF
+   FrontAI --> BFF
+   POS --> BFF
+   AdminConsole --> BFF
+   BackAI --> BFF
+
+   BFF --> MenuSvc
+   BFF --> OrderSvc
+   BFF --> PaymentSvc
+   BFF --> Analytics
+   BFF --> Notifier
+
+   MenuSvc --> DB
+   MenuSvc --> ObjectStore
+   MenuSvc --> CDN
+   OrderSvc --> DB
+   PaymentSvc --> Auth
+   PaymentSvc --> OrderSvc
+   MediaSvc --> ObjectStore
+   MediaSvc --> CDN
+   Analytics --> DB
+   Analytics --> TaskQueue
+   Notifier --> TaskQueue
+   TaskQueue --> BackAI
+   TaskQueue --> FrontAI
+   VectorDB --> FrontAI
+   VectorDB --> BackAI
+   ModelHub --> FrontAI
+   ModelHub --> BackAI
+   ObjectStore --> BackAI
+   ObjectStore --> FrontAI
+   Auth --> BFF
+
+   classDef guest fill:#f0f8ff,stroke:#1f4a82,stroke-width:1px;
+   classDef staff fill:#fff4e6,stroke:#a45c00,stroke-width:1px;
+   classDef platform fill:#f3fff0,stroke:#2a6b1f,stroke-width:1px;
+   classDef intelligence fill:#fef0f6,stroke:#a61f5a,stroke-width:1px;
+   classDef infra fill:#f8f8f8,stroke:#555,stroke-width:1px;
+   class WebOrder,FrontAI guest;
+   class POS,AdminConsole,BackAI staff;
+   class BFF,MenuSvc,OrderSvc,PaymentSvc,MediaSvc,Analytics,Notifier platform;
+   class VectorDB,ModelHub intelligence;
+   class Auth,ObjectStore,TaskQueue,CDN,DB infra;
+</div></code></pre>
+<h3 id="component-responsibilities">Component responsibilities</h3>
+<ul>
+<li>Customer Web Ordering &amp; Front-office AI Assistant: Provide QR-based browsing, conversational ordering, personalization, and digital payment capture.</li>
+<li>POS / Staff Tablet &amp; Admin Console: Consolidate order lifecycle management, inventory adjustments, menu configuration, and financial reconciliation tasks.</li>
+<li>Back-office AI Assistant: Automates media enhancement, multilingual copywriting, and operational summaries; feeds approved assets into menu and marketing workflows.</li>
+<li>BFF / API Gateway: Centralizes authentication, locale-aware response shaping, and orchestration of downstream services for all clients.</li>
+<li>Menu &amp; Inventory Service: Maintains menu data, availability, and pricing with real-time sync to POS and customer channels; caches high-frequency reads.</li>
+<li>Order Service: Handles structured order intake, modifiers, routing to kitchen printers/POS, and state transitions.</li>
+<li>Payment Service: Integrates with payment gateways, supports advance payment flows, receipts, and settlement exports.</li>
+<li>Media &amp; Asset Service: Stores dish imagery and promotional media, leveraging object storage and CDN distribution.</li>
+<li>Analytics &amp; Reporting: Aggregates orders, inventory signals, and guest behavior to surface KPIs and anomaly alerts.</li>
+<li>Notification &amp; Messaging: Sends confirmations, promotional pushes, and staff alerts via email/SMS/in-app messaging.</li>
+<li>Vector DB &amp; Model Orchestrator: Deliver semantic search, personalization, and conversational intelligence for front- and back-office assistants.</li>
+<li>IAM / Auth: Provides secure multi-tenant access for staff and guests, handling roles and scoped tokens.</li>
+<li>Object Store, Operational DB, CDN: Persist structured/unstructured data and serve content with low latency.</li>
+<li>Task Queue / Workers: Execute asynchronous tasks (image generation, report compilation, bulk notifications) and throttle AI workloads.</li>
+</ul>
 <h2 id="use-case">Use Case</h2>
 <ol>
 <li>Customer dine‑in ordering
