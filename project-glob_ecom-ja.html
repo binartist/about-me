@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>index.md</title>
+<title>project-glob_ecom-ja.md</title>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 
 <style>
@@ -365,82 +365,111 @@ code {
           : 'default'
     });
   </script>
-<h1 id="joe">Joe</h1>
-<h2 id="%F0%9F%93%8D-%F0%9F%94%97-linkedin--%F0%9F%94%97-english-cv-%F0%9F%94%97%E6%97%A5%E6%9C%AC%E8%AA%9E%E7%89%88%E5%B1%A5%E6%AD%B4%E6%9B%B8">📍 🔗 <a href="https://www.linkedin.com/in/mi-zhou-46553092/">LinkedIn</a> | 🔗 <a href="https://binartist.github.io/about-me/index.html">English CV</a> 🔗
-<a href="https://binartist.github.io/about-me/index-ja.html">日本語版履歴書</a></h2>
-<h2 id="professional-summary">Professional Summary</h2>
-<p>Innovative IT leader with 18+ years designing cloud-native systems, enterprise integrations, and agentic AI solutions that combine LLMs, vector search, and real‑time apps. Proven track record delivering scalable e‑commerce, finance, and logistics platforms across international teams; fluent in English and Chinese, intermediate in Japanese.</p>
-<hr>
-<h2 id="core-skills">Core Skills</h2>
-<p><strong>AI &amp; Data</strong></p>
+<p><a href="index-ja.html">&lt;&lt; Back to Index</a></p>
+<h1 id="%E3%82%B0%E3%83%AD%E3%83%BC%E3%83%90%E3%83%AB-ec-%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%81%AE%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%A9%E3%82%A4%E3%82%BC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E7%B5%B1%E5%90%88">グローバル EC プラットフォームのローカライゼーションと統合</h1>
+<h2 id="%E6%A6%82%E8%A6%81">概要</h2>
+<p>中国で事業を展開するグローバル直販化粧品企業が、既存のグローバル IT を活用しつつ、地域ユーザーの体験を向上させる取り組み。目的は、グローバル資産（ID、商品マスター、受注管理）を再利用しながら、現地の性能・文化適合 UI／UX、順守されたデータ取扱を実現すること。</p>
+<h2 id="%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3">アーキテクチャ</h2>
+<pre><code class="language-mermaid"><div class="mermaid">flowchart LR
+	subgraph Global Core
+		GlobalIdP[Global Identity Provider]
+		MasterData[Product & Inventory Master]
+		OrderSys[Global Order Management]
+		GlobalCMS[Global CMS]
+	end
+
+	subgraph Integration Layer
+		APIHub[Global API Gateway]
+		Queue[Cross-border Queue]
+		SyncJobs[Content & Data Sync Jobs]
+	end
+
+	subgraph China Region
+		BFF[BFF / API Composer]
+		Mobile[Localized Mobile/Web Apps]
+		EdgeCache[Regional CDN / Edge Cache]
+		CatalogCN[In-country Catalog & Pricing Cache]
+		IdentityCN[Regional Profile Store]
+		DataLakeCN[Operational Data Mart]
+	end
+
+	subgraph Compliance & Ops
+		Audit[Audit / Monitoring]
+		Consent[Consent & Privacy Service]
+	end
+
+	Mobile --> BFF
+	BFF --> EdgeCache
+	EdgeCache --> CatalogCN
+	BFF --> CatalogCN
+	BFF --> IdentityCN
+	BFF --> OrderSys
+	BFF --> MasterData
+
+	GlobalCMS --> SyncJobs --> EdgeCache
+	MasterData --> APIHub --> CatalogCN
+	OrderSys --> Queue --> BFF
+	GlobalIdP --> BFF
+	IdentityCN --> Consent
+	Audit --> GlobalIdP
+	Audit --> BFF
+	DataLakeCN --> Audit
+
+	classDef global fill:#f0f4ff,stroke:#1f3c88,stroke-width:1px;
+	classDef china fill:#f5fff0,stroke:#2f6b1d,stroke-width:1px;
+	classDef integration fill:#fff7e6,stroke:#a05a00,stroke-width:1px;
+	classDef compliance fill:#fef0f0,stroke:#a63232,stroke-width:1px;
+	class GlobalIdP,MasterData,OrderSys,GlobalCMS global;
+	class APIHub,Queue,SyncJobs integration;
+	class BFF,Mobile,EdgeCache,CatalogCN,IdentityCN,DataLakeCN china;
+	class Audit,Consent compliance;
+</div></code></pre>
+<h3 id="%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88%E3%81%AE%E5%BD%B9%E5%89%B2">コンポーネントの役割</h3>
 <ul>
-<li>LLM orchestration (LangChain, LangGraph, Salesforce Agentforce)</li>
-<li>Retrieval-Augmented Generation (RAG) with pgvector</li>
-<li>Embeddings, semantic similarity search, AI evaluation frameworks</li>
-<li>Applied AI in finance, e-commerce, and logistics</li>
+<li>Global Identity Provider: 認証の中枢。コンサルタント／顧客のフェデレーションを提供しトークンを発行</li>
+<li>Product &amp; Inventory Master／Order Management: 在庫と受注の SoR を維持し、地域横断で API を提供</li>
+<li>Global CMS: 商品・マーケコンテンツの SoT。地域キャッシュへの同期を駆動</li>
+<li>Global API Gateway／クロスボーダー Queue: 安全な外向き連携経路と冪等な書き込みキューで、変更をグローバルへ反映</li>
+<li>Content &amp; Data Sync Jobs: 定期／イベント駆動のジョブでカタログやアセットを地域に充填し、陳腐化を抑止</li>
+<li>BFF／API Composer: 中国ホストでローカルキャッシュとグローバル API を合成。トークン更新、ローカライズ、スロットリングを管理</li>
+<li>ローカライズされたモバイル／Web: 中国の期待に沿う UI、決済連携、エッジキャッシュを利用</li>
+<li>Regional CDN／Edge Cache: 静的と高頻度ペイロードを地域で提供し、越境遅延を最小化</li>
+<li>国内カタログ／価格キャッシュ: 低遅延で商品・価格・在庫ビューを提供。書き込みは Queue 経由で SoR へ</li>
+<li>地域プロファイルストア: 居住要件に適合するため、グローバル ID を参照しつつ中国特有のプロファイル・同意・パーソナライズを保持</li>
+<li>オペレーショナル データマート: 利用状況、受注インサイト、コンサル分析を地域内に集約し、ローカルレポートに活用</li>
+<li>同意・プライバシーサービス: 同意、データ最小化、規制レポートを地域要件に沿って管理</li>
+<li>監査・監視: グローバルと地域の可観測性を統合し、SLA と順守の監査証跡を取得</li>
 </ul>
-<p><strong>Fullstack &amp; DevOps</strong></p>
+<h2 id="%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9">ユースケース</h2>
+<p>中国の大規模ユーザーベースで以下の問題が継続:</p>
 <ul>
-<li>Python, Go, TypeScript (Node.js), Java</li>
-<li>Databases: PostgreSQL, MySQL, MongoDB, Redis</li>
-<li>Frontend: React, SvelteKit; Mobile: Flutter</li>
-<li>Cloud &amp; DevOps: Docker, Kubernetes, AWS (EC2, ALB, S3, Aurora, CloudWatch, IAM), GCP, Azure</li>
-<li>CI/CD with GitHub Actions; AWS CDK; built custom agentic AI assistants for automation</li>
+<li>ページ／ナビゲーションが遅い</li>
+<li>ローカル期待と異なる UI/UX パターン</li>
+<li>美容・販売コンサル向け業務ツールが不足（レポート、データ洞察）</li>
 </ul>
-<p><strong>Enterprise Integration &amp; Leadership</strong></p>
+<h2 id="%E3%83%9A%E3%82%A4%E3%83%B3%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%A8%E8%AA%B2%E9%A1%8C">ペインポイントと課題</h2>
 <ul>
-<li>Delivered global, cross-functional systems end-to-end</li>
-<li>Defined and governed large-scale APIs and canonical models</li>
-<li>Led migrations and modernization programs to cloud-native platforms</li>
-<li>Bridged cross-cultural stakeholders to align business and technical roadmaps</li>
+<li>中央ガバナンス: グローバルの SoR（在庫・受注）を維持する必要</li>
+<li>規制順守: 個人情報は国内保存（データレジデンシー・プライバシー）</li>
+<li>コンテンツ遅延: グローバル CMS からの取得が越境で不安定／低速</li>
 </ul>
-<hr>
-<h2 id="selected-projects">Selected Projects</h2>
+<h2 id="%E3%82%BD%E3%83%AA%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">ソリューション</h2>
 <ul>
-<li><a href="project-aihub.html">Agentic AI SaaS Platform</a> – multi-tenant RAG + agent workflow platform</li>
-<li><a href="project-eatease.html">Restaurant AI System</a> – QR ordering, dual AI assistants, multilingual ops</li>
-<li><a href="project-deploybot.html">DevOps Agent Tool</a> – conversational deployment &amp; diagnostics assistant</li>
-<li><a href="project-glob_ecom.html">Global E-commerce Localization</a> – in-country mirrors, BFF, edge caching</li>
-<li><a href="project-pet_ecom.html">Pet Industry Commerce Platform</a> – activity lifecycle digitization and engagement</li>
-<li><a href="project-edi.html">EDI Onboarding System</a> – AI-assisted schema mapping and partner acceleration</li>
+<li>国内読み取りミラー: 在庫・カタログ・価格を低遅延で提供し、書き込みは冪等キューでグローバルへ</li>
+<li>ローカライズアプリ: 中国特有の UI パターン、ローカライズ済みコンポーネント、エッジキャッシュで高頻度データを配信</li>
+<li>フェデレーテッド ID（OIDC）: 認証はグローバル IdP、プロファイルと同意は国内保持、トークン最小化を適用</li>
+<li>BFF 層: トークン更新と応答合成、ロケール適用（言語・通貨・フォーマット）</li>
+<li>コンテンツ加速: 商品・マーケ情報をスケジュール＋イベント駆動で地域 CDN/キャッシュへ同期し、遅延時はフォールバック</li>
 </ul>
-<hr>
-<h2 id="professional-experience">Professional Experience</h2>
-<p><strong>Application Architect &amp; Fullstack Developer</strong> – IBM China – <em>Present</em></p>
+<h2 id="%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9%E4%BE%A1%E5%80%A4">ビジネス価値</h2>
 <ul>
-<li>Led <strong>China localization for global e-commerce platforms</strong>, optimizing performance, data residency compliance, and regional UX adaptations (<a href="project-glob_ecom.html">project link</a>).</li>
-<li>Designed an <strong>agent-assisted EDI onboarding platform</strong>, automating canonical mapping for EDIFACT/X12 via AI-driven schema normalization (<a href="project-edi.html">project link</a>).</li>
-<li>Developed <strong>Agentforce workflows</strong> enabling insurance representatives to automate data capture, form validation, and regulatory updates.</li>
-<li>Directed <strong>multi-cloud migrations</strong> and implemented <strong>DevSecOps practices</strong>, improving security, observability, and CI/CD pipeline reliability.</li>
+<li>越境ラウンドトリップ削減による高速なページ／API 応答</li>
+<li>ローカライズ UX によるコンバージョンと維持の改善</li>
+<li>グローバル SoR を複製せずに順守（データレジデンシー、プライバシー）を実現</li>
+<li>コンサルの運用摩擦を軽減し、最新データで活動を支援</li>
+<li>地域キャッシュとフォールバックでコンテンツ障害リスクを低減</li>
 </ul>
-<p><strong>Co-Founder / Technical Lead</strong> – SaasifyEase (Japan) – <em>2023–Present (Part-time, concurrent with IBM)</em></p>
-<ul>
-<li>Architected and launched a <strong>multi-tenant Agentic AI + RAG SaaS platform</strong> with access control, workspace isolation, knowledge ingestion, and retrieval orchestration (<a href="project-aihub.html">project link</a>).</li>
-<li>Built an end-to-end <strong>financial filings analytics pipeline</strong> (SEC 13F): ingestion → normalization → embeddings → portfolio insights.</li>
-<li>Delivered an <strong>AI-driven restaurant ordering &amp; operations system</strong>, integrating QR ordering, POS tablet flows, and dual AI assistants for users and staff (<a href="project-eatease.html">project link</a>).</li>
-<li>Created an experimental <strong>DevOps AI agent (DeployBot)</strong> enabling natural-language deployment operations — build, patch, redeploy, and log summaries (<a href="project-deploybot.html">project link</a>).</li>
-<li>Launched a <strong>pet-industry omni-channel platform</strong>, unifying content, activities, and commerce with AI-powered engagement tools (<a href="project-pet_ecom.html">project link</a>).</li>
-</ul>
-<p><strong>Software Engineer</strong> – Mahong Network Tech – <em>2007–2014</em></p>
-<ul>
-<li>Built cross-platform mobile applications during the transition from feature phones to iOS/Android.</li>
-<li>Contributed reusable mobile framework modules to accelerate application delivery.</li>
-<li>Specialized in <strong>UI optimization</strong>, <strong>performance tuning</strong>, and iterative release process improvements.</li>
-</ul>
-<hr>
-<h2 id="education">Education</h2>
-<ul>
-<li>Bachelor Degree in Electronics of Science and Technology – Huazhong University of Science and Technologys, 2003~2007</li>
-</ul>
-<hr>
-<h2 id="certifications">Certifications</h2>
-<ul>
-<li>Microsoft Certified: Azure AI Engineer Associate</li>
-<li>Certified Kubernetes Administrator (CKA)</li>
-<li>Certified SAFe® 6 Scrum Master</li>
-<li>JLPT N3 (2025), preparing for JLPT N2</li>
-</ul>
-<hr>
+<p><a href="index.html">&lt;&lt; Back to Index</a></p>
 
 </body>
 </html>

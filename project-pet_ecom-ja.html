@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>project-pet_ecom-ja.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<p><a href="index-ja.html">&lt;&lt; Back to Index</a></p>
+<h1 id="%E3%83%9A%E3%83%83%E3%83%88%E7%94%A3%E6%A5%AD%E5%90%91%E3%81%91%E5%A4%9A%E6%A9%9F%E8%83%BD%E3%82%B3%E3%83%9E%E3%83%BC%E3%82%B9%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0">ペット産業向け多機能コマースプラットフォーム</h1>
+<h2 id="%E6%A6%82%E8%A6%81">概要</h2>
+<p>ペット産業に特化したマルチチャネルのコマース指向プラットフォーム。主な構成:</p>
+<ul>
+<li>モバイルアプリ: 編集コンテンツの閲覧、カテゴリ別ショップ発見、レビュー、オフライン活動への参加、ギフト引換、オンライン決済</li>
+<li>モバイル Web: SEO とシェアに適した軽量版。限定機能でショップやコンテンツを発見</li>
+<li>管理コンソール: 管理者・スタッフ向け
+<ul>
+<li>ユーザー／ショップ／アクティビティ管理</li>
+<li>アプリ設定（バナー、ナビゲーション遷移）</li>
+<li>UGC モデレーション</li>
+<li>活動統計とデータエクスポート</li>
+<li>プッシュ配信の作成と送信</li>
+<li>ギフト引換の監督</li>
+</ul>
+</li>
+<li>コンテンツ管理: ユーザー中心の記事（ペット健康、グルーミング、イベント告知、プロモ）を作成・管理・公開</li>
+<li>バックエンド: アイデンティティ／認証、ショップ／アクティビティ連携、決済（オンライン＋精算エクスポート）、コンテンツ配信、通知、分析、ギフト／在庫追跡のモジュラー API 群</li>
+</ul>
+<h2 id="%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3">アーキテクチャ</h2>
+<pre><code class="language-mermaid"><div class="mermaid">flowchart LR
+   subgraph Experience
+      MobileApp[Mobile App]
+      MobileWeb[Mobile Web]
+   end
+
+   subgraph Engagement
+      CMS[Content Management]
+      Push[Push & Notification Service]
+   end
+
+   subgraph Core Services
+      Auth[Identity & Auth]
+      Catalog[Shop & Activity Service]
+      Payments[Payment Service]
+      Gifts[Gift & Inventory]
+      Analytics[Analytics Aggregation]
+      Messaging[Messaging Orchestrator]
+   end
+
+   subgraph Data Stores
+      UserDB[User / Profile DB]
+      ActivityDB[Activity & Booking DB]
+      ContentStore[Content Store]
+      EventBus[Event Bus]
+   end
+
+   subgraph Ops
+      AdminConsole[Admin Console]
+      Exporter[Reconciliation & Export]
+   end
+
+   MobileApp --> Auth
+   MobileApp --> Catalog
+   MobileApp --> Payments
+   MobileApp --> CMS
+   MobileApp --> Push
+
+   MobileWeb --> Auth
+   MobileWeb --> Catalog
+   MobileWeb --> CMS
+
+   AdminConsole --> Catalog
+   AdminConsole --> Gifts
+   AdminConsole --> Messaging
+   AdminConsole --> Exporter
+
+   CMS --> ContentStore
+   Push --> Messaging
+   Catalog --> ActivityDB
+   Payments --> ActivityDB
+   Auth --> UserDB
+   Gifts --> ActivityDB
+   Analytics --> EventBus
+   Messaging --> EventBus
+   EventBus --> Analytics
+   EventBus --> Exporter
+
+   classDef front fill:#f0f8ff,stroke:#1b4b82,stroke-width:1px;
+   classDef services fill:#f6fff0,stroke:#2e6b1f,stroke-width:1px;
+   classDef data fill:#fff4e6,stroke:#a65d00,stroke-width:1px;
+   classDef ops fill:#fef0f5,stroke:#a61b52,stroke-width:1px;
+   class MobileApp,MobileWeb front;
+   class Auth,Catalog,Payments,Gifts,Analytics,Messaging services;
+   class UserDB,ActivityDB,ContentStore,EventBus data;
+   class AdminConsole,Exporter ops;
+</div></code></pre>
+<h3 id="%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88%E3%81%AE%E5%BD%B9%E5%89%B2">コンポーネントの役割</h3>
+<ul>
+<li>Mobile App／Web: コンテンツ閲覧、ショップ・アクティビティ発見、申込管理、オンライン決済のチャネル</li>
+<li>Content Management: 編集用ツールとワークフロー。健康記事やイベント告知、バナーを発信</li>
+<li>Push &amp; Notification: ターゲット配信、トランザクション通知、ライフサイクル促進</li>
+<li>Identity &amp; Auth: 登録、SSO、トークン発行を扱う中央アカウント。飼い主プロフィールもサポート</li>
+<li>Shop &amp; Activity Service: ショップ掲載、スケジュール、申込、在庫枠のオーケストレーション</li>
+<li>Payment Service: オンライン決済、精算エクスポート、返金、オフライン POS との対帳連携</li>
+<li>Gift &amp; Inventory: ギフトコード、引換状態、イベント時のリアルタイム在庫を追跡</li>
+<li>Analytics Aggregation: 行動・取引シグナルを収集し、ダッシュボードで維持・セグメンテーションに活用</li>
+<li>Messaging Orchestrator: アプリ内メッセージ、SMS/IM、メールをテンプレで配信</li>
+<li>Event Bus: 申込作成や決済完了などのドメインイベントを下流分析と自動化へ連携</li>
+<li>User/Profile DB／Activity/Booking DB: 飼い主、ペット、申込、結果を保持。監査履歴を維持</li>
+<li>Content Store: 記事、メディア、ローカライズ文言を保管</li>
+<li>Admin Console: ユーザー／ショップ／アクティビティ、UGC、設定の運用コンソール</li>
+<li>Reconciliation &amp; Export: 精算レポート、参加サマリ、財務・バックオフィス連携を生成</li>
+</ul>
+<h2 id="%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9">ユースケース</h2>
+<p>同社は年間数百のオフライン活動を実施。代表的なライフサイクル:</p>
+<ol>
+<li>事前
+<ul>
+<li>SNS 等でプロモーション</li>
+<li>IM やオンラインフォームで参加申込を収集・確認</li>
+</ul>
+</li>
+<li>当日
+<ul>
+<li>参加者情報の確認（紙・簡易フォーム）</li>
+<li>現地決済（現金、POS）</li>
+<li>商品／ギフトの販売・引換</li>
+</ul>
+</li>
+<li>事後
+<ul>
+<li>結果の手作業対帳（売上、コスト、フィードバック）</li>
+</ul>
+</li>
+</ol>
+<h2 id="%E3%83%9A%E3%82%A4%E3%83%B3%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%A8%E8%AA%B2%E9%A1%8C">ペインポイントと課題</h2>
+<ul>
+<li>プロモ、申込、チェックイン、精算の手作業が反復</li>
+<li>現地スループットが紙と決済摩擦で頭打ち</li>
+<li>データが分断され分析が困難</li>
+<li>参加情報の再利用が弱く、維持やクロスセルに活かせない</li>
+<li>小規模高頻度イベントで運用コストが高い</li>
+</ul>
+<h2 id="%E3%82%BD%E3%83%AA%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">ソリューション</h2>
+<p>プラットフォームがオフライン活動の全工程をデジタル化し、コマース・コンテンツ・エンゲージメントを統合:</p>
+<ul>
+<li>事前: ランディング構成、申込取得、オンライン先払い、確認の自動送信</li>
+<li>当日: モバイルチェックイン・本人確認、決済／引換の一体化、在庫・ギフトのリアルタイム追跡</li>
+<li>事後: 構造化した結果記録、精算エクスポートの自動化、フィードバック回収</li>
+<li>エンゲージメント層: 知識コンテンツで再訪と信頼を強化、ターゲット配信で維持を加速</li>
+<li>コマース＋発見: レビュー付きのカテゴリ別ショップでクロスサービスを促進</li>
+<li>管理: モデレーション、設定、エクスポートの一元化で調整コストを削減</li>
+</ul>
+<h2 id="%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9%E4%BE%A1%E5%80%A4">ビジネス価値</h2>
+<ul>
+<li>人員を線形に増やさず収容力を拡大</li>
+<li>精算の短縮と手作業ミスの減少</li>
+<li>コンテンツ＋プッシュで維持率を向上</li>
+<li>クロスプロモーションで収益を押上げ</li>
+<li>セグメント化・将来のパーソナライズに資するデータ基盤</li>
+</ul>
+<p><a href="index.html">&lt;&lt; Back to Index</a></p>
+
+</body>
+</html>
