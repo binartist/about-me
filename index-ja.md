@@ -1,4 +1,4 @@
-# Joe 
+# シュウ 
 📍 🔗 [LinkedIn](https://www.linkedin.com/in/mi-zhou-46553092/) | 🔗[日本語版履歴書](https://binartist.github.io/about-me/index-ja.html) | 🔗 [English CV](https://binartist.github.io/about-me/index.html) 
 
 ---
