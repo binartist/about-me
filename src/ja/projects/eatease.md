@@ -153,4 +153,4 @@ flowchart LR
 - 在庫活用の改善と機会損失の減少
 - 言語・食事制限をまたいだ一貫した体験
 
-[<< Back to Index](index.html) 
+[<< Back to Index](../index.html) 

@@ -1,4 +1,4 @@
-[<< Back to Index](index.html) 
+[<< Back to Index](../index.html) 
 
 # AI-Driven Logistics & EDI Automation
 
@@ -135,4 +135,4 @@ Messages are validated against schemas and business rules; integration is promot
 - **Cost Per Partner Integration:** Lowered by ~50%.
 - **First-Pass Yield:** Improved to >90% for standard message types.
 
-[<< Back to Index](index.html) 
+[<< Back to Index](../index.html) 

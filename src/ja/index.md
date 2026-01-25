@@ -1,5 +1,5 @@
 # シュウ 
-📍 🔗 [LinkedIn](https://www.linkedin.com/in/mi-zhou-46553092/) | 🔗[日本語版履歴書](https://binartist.github.io/about-me/index-ja.html) | 🔗 [English CV](https://binartist.github.io/about-me/index.html) 
+📍 🔗 [LinkedIn](https://www.linkedin.com/in/mi-zhou-46553092/) | 🔗[日本語版履歴書](https://binartist.github.io/about-me/index.html) | 🔗 [English CV](https://binartist.github.io/about-me/index.html) 
 
 ***
 
@@ -32,28 +32,28 @@
 ***
 
 ## 主要プロジェクト
-- [エージェント型 AI SaaS プラットフォーム](project-aihub-ja.html) – マルチテナント RAG ＋ エージェント ワークフロー プラットフォーム
-- [レストラン向け AI システム](project-eatease-ja.html) – QR 注文、デュアル AI アシスタント、多言語オペレーション
-- [DevOps エージェント ツール](project-deploybot-ja.html) – 会話型のデプロイ／診断アシスタント
-- [グローバル EC のローカライゼーション](project-glob_ecom-ja.html) – 現地ミラー、BFF、エッジキャッシング
-- [ペット産業向けコマース基盤](project-pet_ecom-ja.html) – アクティビティのライフサイクルのデジタル化とエンゲージメント
-- [EDI オンボーディング システム](project-edi-ja.html) – AI 支援のスキーママッピングとパートナー加速
+- [エージェント型 AI SaaS プラットフォーム](projects/aihub.html) – マルチテナント RAG ＋ エージェント ワークフロー プラットフォーム
+- [レストラン向け AI システム](projects/eatease.html) – QR 注文、デュアル AI アシスタント、多言語オペレーション
+- [DevOps エージェント ツール](projects/deploybot.html) – 会話型のデプロイ／診断アシスタント
+- [グローバル EC のローカライゼーション](projects/glob_ecom.html) – 現地ミラー、BFF、エッジキャッシング
+- [ペット産業向けコマース基盤](projects/pet_ecom.html) – アクティビティのライフサイクルのデジタル化とエンゲージメント
+- [EDI オンボーディング システム](projects/edi.html) – AI 支援のスキーママッピングとパートナー加速
 
 ***
 ## 職務経歴
 
 **アプリケーションアーキテクト／フルスタック開発者** – IBM 中国 – *現在*  
-- グローバル EC の中国ローカライゼーションを主導。パフォーマンス最適化、データレジデンシー順守、地域 UX の適応を実現（[プロジェクト](project-glob_ecom-ja.html)）。  
-- エージェント支援の EDI オンボーディング基盤を設計。AI 駆動のスキーマ正規化により EDIFACT／X12 のカノニカルマッピングを自動化（[プロジェクト](project-edi-ja.html)）。  
+- グローバル EC の中国ローカライゼーションを主導。パフォーマンス最適化、データレジデンシー順守、地域 UX の適応を実現（[プロジェクト](projects/glob_ecom.html)）。  
+- エージェント支援の EDI オンボーディング基盤を設計。AI 駆動のスキーマ正規化により EDIFACT／X12 のカノニカルマッピングを自動化（[プロジェクト](projects/edi.html)）。  
 - 保険営業向けに Agentforce ワークフローを開発し、データ入力、帳票検証、規制更新を自動化。  
 - マルチクラウド移行と DevSecOps を推進し、セキュリティ、可観測性、CI/CD の信頼性を向上。  
 
 **共同創業者／テクニカルリード** – SaasifyEase（日本） – *2023–現在（IBM と兼務・パートタイム）*  
-- マルチテナントのエージェント型 AI ＋ RAG SaaS を設計・ローンチ。アクセス制御、ワークスペース分離、ナレッジ取り込み、検索オーケストレーションを実装（[プロジェクト](project-aihub-ja.html)）。  
+- マルチテナントのエージェント型 AI ＋ RAG SaaS を設計・ローンチ。アクセス制御、ワークスペース分離、ナレッジ取り込み、検索オーケストレーションを実装（[プロジェクト](projects/aihub.html)）。  
 - SEC 13F を対象とした金融開示解析パイプラインをエンドツーエンドで構築：取り込み → 正規化 → 埋め込み → ポートフォリオ洞察。  
-- 飲食店向けの AI 駆動の注文・オペレーションシステムを提供。QR 注文、POS タブレット導線、ユーザー／スタッフ両向けの AI アシスタント（[プロジェクト](project-eatease-ja.html)）。  
-- 会話でデプロイ操作を行う実験的 DevOps エージェント（DeployBot）を作成 — ビルド、パッチ、再デプロイ、ログ要約（[プロジェクト](project-deploybot-ja.html)）。  
-- ペット産業向けオムニチャネル基盤ローンチ。コンテンツ・アクティビティ・コマースを統合し、AI によるエンゲージメントを実装（[プロジェクト](project-pet_ecom-ja.html)）。  
+- 飲食店向けの AI 駆動の注文・オペレーションシステムを提供。QR 注文、POS タブレット導線、ユーザー／スタッフ両向けの AI アシスタント（[プロジェクト](projects/eatease.html)）。  
+- 会話でデプロイ操作を行う実験的 DevOps エージェント（DeployBot）を作成 — ビルド、パッチ、再デプロイ、ログ要約（[プロジェクト](projects/deploybot.html)）。  
+- ペット産業向けオムニチャネル基盤ローンチ。コンテンツ・アクティビティ・コマースを統合し、AI によるエンゲージメントを実装（[プロジェクト](projects/pet_ecom.html)）。  
 
 **ソフトウェアエンジニア** – Mahong Network Tech – *2007–2014*  
 - フィーチャーフォンから iOS／Android への移行期に、クロスプラットフォームのモバイルアプリを開発。  

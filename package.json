@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "for f in *.md; do pandoc \"$f\" -t html -s -o \"dist/${f%.md}.html\" --include-after-body=includes/mermaid-init.html; done",
-    "watch": "onchange \"*.md\" -- npm run build"
+    "build": "rm -rf dist && mkdir -p dist/en/projects dist/ja/projects && cp -r includes dist/ && for f in src/en/*.md; do base=${f##*/}; pandoc \"$f\" -t html -s -o \"dist/en/${base%.md}.html\" --include-after-body=includes/mermaid-init.html; done && for f in src/en/projects/*.md; do base=${f##*/}; pandoc \"$f\" -t html -s -o \"dist/en/projects/${base%.md}.html\" --include-after-body=includes/mermaid-init.html; done && for f in src/ja/*.md; do base=${f##*/}; pandoc \"$f\" -t html -s -o \"dist/ja/${base%.md}.html\" --include-after-body=includes/mermaid-init.html; done && for f in src/ja/projects/*.md; do base=${f##*/}; pandoc \"$f\" -t html -s -o \"dist/ja/projects/${base%.md}.html\" --include-after-body=includes/mermaid-init.html; done && echo '<meta http-equiv=\"refresh\" content=\"0; url=en/index.html\" />' > dist/index.html",
+    "watch": "onchange \"src/**/*.md\" -- npm run build"
   },
   "repository": {
     "type": "git",
