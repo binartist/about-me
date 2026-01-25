@@ -1,5 +1,7 @@
 <!-- - 🔗 [LinkedIn](https://www.linkedin.com/in/mi-zhou-46553092/)  -->
 
+_Last updated: {{UPDATED_AT}}_
+ 
 🔗 [CV on GitHub](https://binartist.github.io/about-me/index.html)
 
 ## Professional Summary
