@@ -39,7 +39,7 @@ Lead Application Architect for enterprise-scale e-commerce and integration solut
 **Software Engineer** – Mahong Network Tech – _2007–2014_  
 Core mobile engineer specializing in cross-platform application frameworks. Focused on UI performance, mobile delivery pipelines, and adapting emerging mobile technologies for enterprise use cases during the smartphone transition era.
 
-## Selected Projects
+## Selected Project Showcasing
 
 - 🔗 [AI-Driven Logistics & EDI Automation](projects/edi.html), featuring:
   - AI-assisted schema mapping for EDIFACT/ANSI X12 and canonical data modeling;
