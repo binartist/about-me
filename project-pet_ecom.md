@@ -33,15 +33,15 @@ flowchart TD
         Auth(Identity & Auth)
         Catalog(Shop & Activity Catalog)
         Payments(Payment Processing)
-        Gifts(Gifts & Inventory)
+        Gifts("Gifts & Inventory")
         Push(Push Notifications)
-        Messaging(Messaging Orchestrator)
-        Analytics(Analytics Engine)
+        Messaging("Messaging Orchestrator")
+        Analytics("Analytics Engine")
     end
 
     subgraph DataLayer ["💾 Data Persistence"]
         UserDB[(User Profiles)]
-        ActivityDB[(Activity & Booking)]
+        ActivityDB[("Activity & Booking")]
         ContentStore[(Content Store)]
         EventBus{Event Bus}
     end

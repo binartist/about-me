@@ -15,15 +15,15 @@ Key capabilities include:
 
 ```mermaid
 flowchart LR
-	A[Customer Portal] --> B[Ingestion & Normalization]
+	A[Customer Portal] --> B["Ingestion & Normalization"]
 	B --> C[Canonical Schema Catalog]
 	C --> D[AI Mapping Engine]
 	B --> D
 	D --> E[SME Collaboration Workspace]
-	D --> F[Transformation & Spec Generator]
-	F --> G[Validation & Test Harness]
-	G --> H[Deployment & Monitoring]
-	H --> I[Operational Dashboards & Alerts]
+	D --> F["Transformation & Spec Generator"]
+	F --> G["Validation & Test Harness"]
+	G --> H["Deployment & Monitoring"]
+	H --> I["Operational Dashboards & Alerts"]
 	C <--> J[(Knowledge Base)]
 	E --> J
 	H --> J

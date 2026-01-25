@@ -20,7 +20,7 @@ flowchart LR
 
 	subgraph Ingestion
 		Intake[Document Intake API]
-		Parsers[Parsers & Enrichment]
+		Parsers["Parsers & Enrichment"]
 		Pipeline[Ingestion Orchestrator]
 	end
 
@@ -31,13 +31,13 @@ flowchart LR
 	end
 
 	subgraph Runtime
-		Auth[Identity & RBAC]
+		Auth["Identity & RBAC"]
 		Portal[End-user Portal]
-		Gateway[BFF / Request Gateway]
+		Gateway["BFF / Request Gateway"]
 		Retrieval[Retrieval Service]
 		Orchestrator[Agent Orchestrator]
-		Tools[Tool / API Connectors]
-		Audit[Audit & Policy Engine]
+		Tools["Tool / API Connectors"]
+		Audit["Audit & Policy Engine"]
 	end
 
 	AdminPortal --> TenantConfig

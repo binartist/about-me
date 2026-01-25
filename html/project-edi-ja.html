@@ -356,7 +356,7 @@ MTTR</p>
     height: 100%;
     opacity: 0;
     cursor: zoom-in;
-    background: rgba(255,b255,255,0.01); /* Transparent but captures clicks */
+    background: rgba(255,255,255,0.01); /* Transparent but captures clicks */
     z-index: 10;
     transition: opacity 0.2s;
     display: flex;
@@ -430,12 +430,13 @@ MTTR</p>
   <div id="mermaid-modal-content"></div>
 </div>
 
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-  
+<script src="https://cdn.jsdelivr.net/npm/mermaid@9.4.3/dist/mermaid.min.js"></script>
+<script>
+  console.log('Mermaid 9 script loaded');
   mermaid.initialize({ startOnLoad: false });
 
-  async function init() {
+  function init() {
+    console.log('Mermaid init function called');
     // Helper to wrap
     const wrap = (el, code) => {
         const wrapper = document.createElement('div');
@@ -480,9 +481,7 @@ MTTR</p>
 
     // Run Mermaid
     try {
-        await mermaid.run({
-            querySelector: '.mermaid'
-        });
+        mermaid.init(undefined, document.querySelectorAll('.mermaid'));
     } catch(err) {
         console.error('Mermaid failed to load', err);
     }
