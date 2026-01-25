@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>project-pet_ecom-ja</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<p><a href="index-ja.html">&lt;&lt; Back to Index</a></p>
+<h1
+id="ペット産業向け多機能コマースプラットフォーム">ペット産業向け多機能コマースプラットフォーム</h1>
+<h2 id="概要">概要</h2>
+<p>ペット産業に特化したマルチチャネルのコマース指向プラットフォーム。主な構成:
+- モバイルアプリ:
+編集コンテンツの閲覧、カテゴリ別ショップ発見、レビュー、オフライン活動への参加、ギフト引換、オンライン決済
+- モバイル Web: SEO
+とシェアに適した軽量版。限定機能でショップやコンテンツを発見 -
+管理コンソール: 管理者・スタッフ向け -
+ユーザー／ショップ／アクティビティ管理 -
+アプリ設定（バナー、ナビゲーション遷移） - UGC モデレーション -
+活動統計とデータエクスポート - プッシュ配信の作成と送信 -
+ギフト引換の監督 - コンテンツ管理:
+ユーザー中心の記事（ペット健康、グルーミング、イベント告知、プロモ）を作成・管理・公開
+- バックエンド:
+アイデンティティ／認証、ショップ／アクティビティ連携、決済（オンライン＋精算エクスポート）、コンテンツ配信、通知、分析、ギフト／在庫追跡のモジュラー
+API 群</p>
+<h2 id="アーキテクチャ">アーキテクチャ</h2>
+<pre class="mermaid"><code>flowchart LR
+   subgraph Experience
+      MobileApp[Mobile App]
+      MobileWeb[Mobile Web]
+   end
+
+   subgraph Engagement
+      CMS[Content Management]
+      Push[Push &amp; Notification Service]
+   end
+
+   subgraph Core Services
+      Auth[Identity &amp; Auth]
+      Catalog[Shop &amp; Activity Service]
+      Payments[Payment Service]
+      Gifts[Gift &amp; Inventory]
+      Analytics[Analytics Aggregation]
+      Messaging[Messaging Orchestrator]
+   end
+
+   subgraph Data Stores
+      UserDB[User / Profile DB]
+      ActivityDB[Activity &amp; Booking DB]
+      ContentStore[Content Store]
+      EventBus[Event Bus]
+   end
+
+   subgraph Ops
+      AdminConsole[Admin Console]
+      Exporter[Reconciliation &amp; Export]
+   end
+
+   MobileApp --&gt; Auth
+   MobileApp --&gt; Catalog
+   MobileApp --&gt; Payments
+   MobileApp --&gt; CMS
+   MobileApp --&gt; Push
+
+   MobileWeb --&gt; Auth
+   MobileWeb --&gt; Catalog
+   MobileWeb --&gt; CMS
+
+   AdminConsole --&gt; Catalog
+   AdminConsole --&gt; Gifts
+   AdminConsole --&gt; Messaging
+   AdminConsole --&gt; Exporter
+
+   CMS --&gt; ContentStore
+   Push --&gt; Messaging
+   Catalog --&gt; ActivityDB
+   Payments --&gt; ActivityDB
+   Auth --&gt; UserDB
+   Gifts --&gt; ActivityDB
+   Analytics --&gt; EventBus
+   Messaging --&gt; EventBus
+   EventBus --&gt; Analytics
+   EventBus --&gt; Exporter
+
+   classDef front fill:#f0f8ff,stroke:#1b4b82,stroke-width:1px;
+   classDef services fill:#f6fff0,stroke:#2e6b1f,stroke-width:1px;
+   classDef data fill:#fff4e6,stroke:#a65d00,stroke-width:1px;
+   classDef ops fill:#fef0f5,stroke:#a61b52,stroke-width:1px;
+   class MobileApp,MobileWeb front;
+   class Auth,Catalog,Payments,Gifts,Analytics,Messaging services;
+   class UserDB,ActivityDB,ContentStore,EventBus data;
+   class AdminConsole,Exporter ops;</code></pre>
+<h3 id="コンポーネントの役割">コンポーネントの役割</h3>
+<ul>
+<li>Mobile App／Web:
+コンテンツ閲覧、ショップ・アクティビティ発見、申込管理、オンライン決済のチャネル</li>
+<li>Content Management:
+編集用ツールとワークフロー。健康記事やイベント告知、バナーを発信</li>
+<li>Push &amp; Notification:
+ターゲット配信、トランザクション通知、ライフサイクル促進</li>
+<li>Identity &amp; Auth:
+登録、SSO、トークン発行を扱う中央アカウント。飼い主プロフィールもサポート</li>
+<li>Shop &amp; Activity Service:
+ショップ掲載、スケジュール、申込、在庫枠のオーケストレーション</li>
+<li>Payment Service: オンライン決済、精算エクスポート、返金、オフライン
+POS との対帳連携</li>
+<li>Gift &amp; Inventory:
+ギフトコード、引換状態、イベント時のリアルタイム在庫を追跡</li>
+<li>Analytics Aggregation:
+行動・取引シグナルを収集し、ダッシュボードで維持・セグメンテーションに活用</li>
+<li>Messaging Orchestrator:
+アプリ内メッセージ、SMS/IM、メールをテンプレで配信</li>
+<li>Event Bus:
+申込作成や決済完了などのドメインイベントを下流分析と自動化へ連携</li>
+<li>User/Profile DB／Activity/Booking DB:
+飼い主、ペット、申込、結果を保持。監査履歴を維持</li>
+<li>Content Store: 記事、メディア、ローカライズ文言を保管</li>
+<li>Admin Console:
+ユーザー／ショップ／アクティビティ、UGC、設定の運用コンソール</li>
+<li>Reconciliation &amp; Export:
+精算レポート、参加サマリ、財務・バックオフィス連携を生成</li>
+</ul>
+<h2 id="ユースケース">ユースケース</h2>
+<p>同社は年間数百のオフライン活動を実施。代表的なライフサイクル: 1. 事前
+- SNS 等でプロモーション - IM やオンラインフォームで参加申込を収集・確認
+2. 当日 - 参加者情報の確認（紙・簡易フォーム） - 現地決済（現金、POS） -
+商品／ギフトの販売・引換 3. 事後 -
+結果の手作業対帳（売上、コスト、フィードバック）</p>
+<h2 id="ペインポイントと課題">ペインポイントと課題</h2>
+<ul>
+<li>プロモ、申込、チェックイン、精算の手作業が反復</li>
+<li>現地スループットが紙と決済摩擦で頭打ち</li>
+<li>データが分断され分析が困難</li>
+<li>参加情報の再利用が弱く、維持やクロスセルに活かせない</li>
+<li>小規模高頻度イベントで運用コストが高い</li>
+</ul>
+<h2 id="ソリューション">ソリューション</h2>
+<p>プラットフォームがオフライン活動の全工程をデジタル化し、コマース・コンテンツ・エンゲージメントを統合:
+- 事前: ランディング構成、申込取得、オンライン先払い、確認の自動送信 -
+当日:
+モバイルチェックイン・本人確認、決済／引換の一体化、在庫・ギフトのリアルタイム追跡
+- 事後: 構造化した結果記録、精算エクスポートの自動化、フィードバック回収
+- エンゲージメント層:
+知識コンテンツで再訪と信頼を強化、ターゲット配信で維持を加速 -
+コマース＋発見: レビュー付きのカテゴリ別ショップでクロスサービスを促進 -
+管理: モデレーション、設定、エクスポートの一元化で調整コストを削減</p>
+<h2 id="ビジネス価値">ビジネス価値</h2>
+<ul>
+<li>人員を線形に増やさず収容力を拡大</li>
+<li>精算の短縮と手作業ミスの減少</li>
+<li>コンテンツ＋プッシュで維持率を向上</li>
+<li>クロスプロモーションで収益を押上げ</li>
+<li>セグメント化・将来のパーソナライズに資するデータ基盤</li>
+</ul>
+<p><a href="index.html">&lt;&lt; Back to Index</a></p>
+<style>
+  .mermaid-wrapper {
+    position: relative;
+    margin: 20px 0;
+    transition: all 0.2s ease;
+    display: inline-block;
+    min-width: 100%;
+  }
+  .mermaid-wrapper:hover {
+     box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  }
+  .mermaid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: zoom-in;
+    background: rgba(255,b255,255,0.01); /* Transparent but captures clicks */
+    z-index: 10;
+    transition: opacity 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mermaid-wrapper:hover .mermaid-overlay {
+    opacity: 1;
+  }
+  .expand-btn {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-family: sans-serif;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    pointer-events: none;
+    color: #333;
+    font-weight: 500;
+  }
+
+  /* Modal */
+  #mermaid-modal {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,0.98);
+    overflow: hidden;
+  }
+  #mermaid-modal-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: auto;
+  }
+  #mermaid-modal-content svg {
+    max-width: none !important; 
+    max-height: none !important;
+    width: 90% !important; /* Start large */
+    height: auto !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  #mermaid-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    line-height: 1;
+    font-weight: bold;
+    color: #555;
+    cursor: pointer;
+    z-index: 100000;
+    padding: 10px;
+  }
+  #mermaid-modal-close:hover {
+    color: #000;
+  }
+</style>
+
+<div id="mermaid-modal">
+  <span id="mermaid-modal-close">&times;</span>
+  <div id="mermaid-modal-content"></div>
+</div>
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  
+  mermaid.initialize({ startOnLoad: false });
+
+  async function init() {
+    // Helper to wrap
+    const wrap = (el, code) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'mermaid-wrapper';
+        
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'mermaid';
+        // Unescape logic
+        const txt = document.createElement("textarea");
+        txt.innerHTML = code;
+        contentDiv.textContent = txt.value;
+
+        const overlay = document.createElement('div');
+        overlay.className = 'mermaid-overlay';
+        overlay.innerHTML = '<div class="expand-btn">Click to enlarge</div>';
+        
+        // Click handler
+        overlay.onclick = (e) => {
+            e.stopPropagation();
+            openModal(contentDiv);
+        };
+
+        wrapper.appendChild(contentDiv);
+        wrapper.appendChild(overlay);
+        
+        el.replaceWith(wrapper);
+    }
+
+    // Process <pre.mermaid>
+    document.querySelectorAll('pre.mermaid').forEach(pre => {
+        const code = pre.querySelector('code') ? pre.querySelector('code').innerHTML : pre.innerHTML;
+        wrap(pre, code);
+    });
+    
+    // Process <code.language-mermaid>
+    document.querySelectorAll('code.language-mermaid').forEach(code => {
+        const pre = code.parentElement;
+        if (pre && pre.tagName === 'PRE' && !pre.classList.contains('mermaid')) {
+             wrap(pre, code.innerHTML);
+        }
+    });
+
+    // Run Mermaid
+    try {
+        await mermaid.run({
+            querySelector: '.mermaid'
+        });
+    } catch(err) {
+        console.error('Mermaid failed to load', err);
+    }
+  }
+
+  function openModal(sourceDiv) {
+    const svg = sourceDiv.querySelector('svg');
+    if (!svg) {
+        console.log("No SVG found to expand");
+        return;
+    }
+    
+    const modal = document.getElementById('mermaid-modal');
+    const content = document.getElementById('mermaid-modal-content');
+    
+    content.innerHTML = '';
+    const clone = svg.cloneNode(true);
+    
+    // Clean styling
+    clone.removeAttribute('style');
+    clone.removeAttribute('width');
+    clone.removeAttribute('height');
+    // Force specific viewing style in modal
+    clone.style.minWidth = '50%'; 
+    
+    content.appendChild(clone);
+    modal.style.display = 'block';
+  }
+
+  // Close logic
+  const closeModal = () => {
+    document.getElementById('mermaid-modal').style.display = 'none';
+  };
+  
+  document.getElementById('mermaid-modal-close').onclick = closeModal;
+  document.getElementById('mermaid-modal').onclick = (e) => {
+    if (e.target.id === 'mermaid-modal' || e.target.id === 'mermaid-modal-content') {
+        closeModal();
+    }
+  };
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // Start
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+</script>
+</body>
+</html>

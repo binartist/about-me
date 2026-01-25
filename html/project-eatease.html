@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>project-eatease</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<p><a href="index.html">&lt;&lt; Back to Index</a></p>
+<h1 id="agentic-ai-empowered-restaurant-system">Agentic AI Empowered
+Restaurant System</h1>
+<h2 id="introduction">Introduction</h2>
+<p>An AI‑augmented platform layered on top of a traditional restaurant
+operations stack. Core components: - Customer web ordering: guests scan
+a code, browse the menu, customize items, place orders, and complete
+payment on their phones - POS (tablet): staff (or assisted self‑service)
+with advanced functions—order lifecycle control, table &amp; course
+management, inventory visibility for privileged roles - Admin console:
+inventory &amp; menu configuration, user / role management, financial
+reconciliation views, customer experience settings (promotions, banners)
+- Back‑office AI assistant: - Generates or refines dish images from base
+inputs - Produces multi‑language names &amp; descriptions; drafts
+promotional copy for social channels - Summarizes operational metrics
+and composes periodic reports - Front‑office AI assistant: guides
+customers conversationally (navigation, dish discovery, dietary
+filtering, pairing suggestions) and can place structured orders via
+chat</p>
+<h2 id="architecture">Architecture</h2>
+<pre class="mermaid"><code>flowchart LR
+   subgraph Guest Experience
+      WebOrder[Customer Web Ordering]
+      FrontAI[Front-office AI Assistant]
+   end
+
+   subgraph Staff Tools
+      POS[POS / Staff Tablet]
+      AdminConsole[Admin Console]
+      BackAI[Back-office AI Assistant]
+   end
+
+   subgraph Platform Services
+      BFF[BFF / API Gateway]
+      MenuSvc[Menu &amp; Inventory Service]
+      OrderSvc[Order Service]
+      PaymentSvc[Payment Service]
+      MediaSvc[Media &amp; Asset Service]
+      Analytics[Analytics &amp; Reporting]
+      Notifier[Notification &amp; Messaging]
+   end
+
+   subgraph Intelligence
+      VectorDB[Vector DB]
+      ModelHub[AI Model Orchestrator]
+   end
+
+   subgraph Infrastructure
+      Auth[IAM / Auth]
+      ObjectStore[Object Store]
+      TaskQueue[Task Queue / Workers]
+      CDN[CDN / Edge Cache]
+      DB[Operational DB]
+   end
+
+   WebOrder --&gt; BFF
+   FrontAI --&gt; BFF
+   POS --&gt; BFF
+   AdminConsole --&gt; BFF
+   BackAI --&gt; BFF
+
+   BFF --&gt; MenuSvc
+   BFF --&gt; OrderSvc
+   BFF --&gt; PaymentSvc
+   BFF --&gt; Analytics
+   BFF --&gt; Notifier
+
+   MenuSvc --&gt; DB
+   MenuSvc --&gt; ObjectStore
+   MenuSvc --&gt; CDN
+   OrderSvc --&gt; DB
+   PaymentSvc --&gt; Auth
+   PaymentSvc --&gt; OrderSvc
+   MediaSvc --&gt; ObjectStore
+   MediaSvc --&gt; CDN
+   Analytics --&gt; DB
+   Analytics --&gt; TaskQueue
+   Notifier --&gt; TaskQueue
+   TaskQueue --&gt; BackAI
+   TaskQueue --&gt; FrontAI
+   VectorDB --&gt; FrontAI
+   VectorDB --&gt; BackAI
+   ModelHub --&gt; FrontAI
+   ModelHub --&gt; BackAI
+   ObjectStore --&gt; BackAI
+   ObjectStore --&gt; FrontAI
+   Auth --&gt; BFF
+
+   classDef guest fill:#f0f8ff,stroke:#1f4a82,stroke-width:1px;
+   classDef staff fill:#fff4e6,stroke:#a45c00,stroke-width:1px;
+   classDef platform fill:#f3fff0,stroke:#2a6b1f,stroke-width:1px;
+   classDef intelligence fill:#fef0f6,stroke:#a61f5a,stroke-width:1px;
+   classDef infra fill:#f8f8f8,stroke:#555,stroke-width:1px;
+   class WebOrder,FrontAI guest;
+   class POS,AdminConsole,BackAI staff;
+   class BFF,MenuSvc,OrderSvc,PaymentSvc,MediaSvc,Analytics,Notifier platform;
+   class VectorDB,ModelHub intelligence;
+   class Auth,ObjectStore,TaskQueue,CDN,DB infra;</code></pre>
+<h3 id="component-responsibilities">Component responsibilities</h3>
+<ul>
+<li>Customer Web Ordering &amp; Front-office AI Assistant: Provide
+QR-based browsing, conversational ordering, personalization, and digital
+payment capture.</li>
+<li>POS / Staff Tablet &amp; Admin Console: Consolidate order lifecycle
+management, inventory adjustments, menu configuration, and financial
+reconciliation tasks.</li>
+<li>Back-office AI Assistant: Automates media enhancement, multilingual
+copywriting, and operational summaries; feeds approved assets into menu
+and marketing workflows.</li>
+<li>BFF / API Gateway: Centralizes authentication, locale-aware response
+shaping, and orchestration of downstream services for all clients.</li>
+<li>Menu &amp; Inventory Service: Maintains menu data, availability, and
+pricing with real-time sync to POS and customer channels; caches
+high-frequency reads.</li>
+<li>Order Service: Handles structured order intake, modifiers, routing
+to kitchen printers/POS, and state transitions.</li>
+<li>Payment Service: Integrates with payment gateways, supports advance
+payment flows, receipts, and settlement exports.</li>
+<li>Media &amp; Asset Service: Stores dish imagery and promotional
+media, leveraging object storage and CDN distribution.</li>
+<li>Analytics &amp; Reporting: Aggregates orders, inventory signals, and
+guest behavior to surface KPIs and anomaly alerts.</li>
+<li>Notification &amp; Messaging: Sends confirmations, promotional
+pushes, and staff alerts via email/SMS/in-app messaging.</li>
+<li>Vector DB &amp; Model Orchestrator: Deliver semantic search,
+personalization, and conversational intelligence for front- and
+back-office assistants.</li>
+<li>IAM / Auth: Provides secure multi-tenant access for staff and
+guests, handling roles and scoped tokens.</li>
+<li>Object Store, Operational DB, CDN: Persist structured/unstructured
+data and serve content with low latency.</li>
+<li>Task Queue / Workers: Execute asynchronous tasks (image generation,
+report compilation, bulk notifications) and throttle AI workloads.</li>
+</ul>
+<h2 id="use-case">Use Case</h2>
+<ol type="1">
+<li>Customer dine‑in ordering
+<ul>
+<li>Guest scans QR, browses adaptive (language-aware) menu</li>
+<li>AI suggests popular or complementary items (e.g., beverage
+pairing)</li>
+<li>Customer customizes (allergens, spice level) and pays digitally</li>
+<li>Order routed to kitchen &amp; POS with structured modifiers</li>
+</ul></li>
+<li>Staff operations
+<ul>
+<li>Staff tablet consolidates active tables, course fire timing, running
+inventory signals</li>
+<li>Manager adjusts menu availability (86 items) in real time</li>
+</ul></li>
+<li>Menu &amp; content upkeep
+<ul>
+<li>Staff uploads base dish photo &amp; core attributes</li>
+<li>Back‑office assistant generates localized descriptions + promotional
+snippet</li>
+<li>Admin reviews &amp; publishes</li>
+</ul></li>
+<li>Insights &amp; reporting
+<ul>
+<li>System aggregates order velocity, category performance, table
+turnover</li>
+<li>AI surfaces anomalies (e.g., sudden drop in appetizer sales) and
+drafts shift summary</li>
+</ul></li>
+<li>Conversational ordering fallback
+<ul>
+<li>Guest asks “What’s gluten‑free?”; assistant filters and can add item
+directly to cart</li>
+</ul></li>
+</ol>
+<h2 id="pain-point-and-challenges">Pain Point and Challenges</h2>
+<p>Small or mid‑sized restaurants commonly face: - Language friction for
+foreign guests leads to ordering mistakes and slower turns - Manual,
+inconsistent multi‑language menu maintenance - Repetitive back‑office
+content &amp; report creation work - Limited data leverage for proactive
+decisions (e.g., stock prediction, menu optimization) - Missed upsell
+opportunities without guided recommendations</p>
+<h2 id="solution">Solution</h2>
+<ul>
+<li>Unified digital ordering replaces paper menus and reduces
+translation friction</li>
+<li>AI-driven localization keeps dish names &amp; descriptions current
+across languages</li>
+<li>Conversational front assistant accelerates discovery and increases
+basket size via contextual suggestions</li>
+<li>Back‑office assistant automates media enhancement, multilingual
+copy, and summary reports</li>
+<li>Real‑time menu / inventory visibility reduces out‑of‑stock
+disappointment and improves kitchen coordination</li>
+<li>Structured analytics and anomaly hints enable proactive adjustments
+(menu rotation, staffing)</li>
+</ul>
+<h2 id="business-value">Business Value</h2>
+<ul>
+<li>Faster table turns via reduced ordering friction</li>
+<li>Higher average order value from timely AI recommendations</li>
+<li>Lower manual localization &amp; reporting effort</li>
+<li>Improved stock utilization and fewer missed sales due to early
+signals</li>
+<li>More consistent guest experience across languages and dietary
+needs</li>
+</ul>
+<p><a href="index.html">&lt;&lt; Back to Index</a></p>
+<style>
+  .mermaid-wrapper {
+    position: relative;
+    margin: 20px 0;
+    transition: all 0.2s ease;
+    display: inline-block;
+    min-width: 100%;
+  }
+  .mermaid-wrapper:hover {
+     box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  }
+  .mermaid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: zoom-in;
+    background: rgba(255,b255,255,0.01); /* Transparent but captures clicks */
+    z-index: 10;
+    transition: opacity 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mermaid-wrapper:hover .mermaid-overlay {
+    opacity: 1;
+  }
+  .expand-btn {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-family: sans-serif;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    pointer-events: none;
+    color: #333;
+    font-weight: 500;
+  }
+
+  /* Modal */
+  #mermaid-modal {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,0.98);
+    overflow: hidden;
+  }
+  #mermaid-modal-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: auto;
+  }
+  #mermaid-modal-content svg {
+    max-width: none !important; 
+    max-height: none !important;
+    width: 90% !important; /* Start large */
+    height: auto !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  #mermaid-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    line-height: 1;
+    font-weight: bold;
+    color: #555;
+    cursor: pointer;
+    z-index: 100000;
+    padding: 10px;
+  }
+  #mermaid-modal-close:hover {
+    color: #000;
+  }
+</style>
+
+<div id="mermaid-modal">
+  <span id="mermaid-modal-close">&times;</span>
+  <div id="mermaid-modal-content"></div>
+</div>
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  
+  mermaid.initialize({ startOnLoad: false });
+
+  async function init() {
+    // Helper to wrap
+    const wrap = (el, code) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'mermaid-wrapper';
+        
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'mermaid';
+        // Unescape logic
+        const txt = document.createElement("textarea");
+        txt.innerHTML = code;
+        contentDiv.textContent = txt.value;
+
+        const overlay = document.createElement('div');
+        overlay.className = 'mermaid-overlay';
+        overlay.innerHTML = '<div class="expand-btn">Click to enlarge</div>';
+        
+        // Click handler
+        overlay.onclick = (e) => {
+            e.stopPropagation();
+            openModal(contentDiv);
+        };
+
+        wrapper.appendChild(contentDiv);
+        wrapper.appendChild(overlay);
+        
+        el.replaceWith(wrapper);
+    }
+
+    // Process <pre.mermaid>
+    document.querySelectorAll('pre.mermaid').forEach(pre => {
+        const code = pre.querySelector('code') ? pre.querySelector('code').innerHTML : pre.innerHTML;
+        wrap(pre, code);
+    });
+    
+    // Process <code.language-mermaid>
+    document.querySelectorAll('code.language-mermaid').forEach(code => {
+        const pre = code.parentElement;
+        if (pre && pre.tagName === 'PRE' && !pre.classList.contains('mermaid')) {
+             wrap(pre, code.innerHTML);
+        }
+    });
+
+    // Run Mermaid
+    try {
+        await mermaid.run({
+            querySelector: '.mermaid'
+        });
+    } catch(err) {
+        console.error('Mermaid failed to load', err);
+    }
+  }
+
+  function openModal(sourceDiv) {
+    const svg = sourceDiv.querySelector('svg');
+    if (!svg) {
+        console.log("No SVG found to expand");
+        return;
+    }
+    
+    const modal = document.getElementById('mermaid-modal');
+    const content = document.getElementById('mermaid-modal-content');
+    
+    content.innerHTML = '';
+    const clone = svg.cloneNode(true);
+    
+    // Clean styling
+    clone.removeAttribute('style');
+    clone.removeAttribute('width');
+    clone.removeAttribute('height');
+    // Force specific viewing style in modal
+    clone.style.minWidth = '50%'; 
+    
+    content.appendChild(clone);
+    modal.style.display = 'block';
+  }
+
+  // Close logic
+  const closeModal = () => {
+    document.getElementById('mermaid-modal').style.display = 'none';
+  };
+  
+  document.getElementById('mermaid-modal-close').onclick = closeModal;
+  document.getElementById('mermaid-modal').onclick = (e) => {
+    if (e.target.id === 'mermaid-modal' || e.target.id === 'mermaid-modal-content') {
+        closeModal();
+    }
+  };
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // Start
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+</script>
+</body>
+</html>

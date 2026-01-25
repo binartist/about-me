@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>project-aihub</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<p><a href="index.html">&lt;&lt; Back to Index</a></p>
+<h1 id="generative-ai-marketing-saas-platform">Generative AI Marketing
+SaaS Platform</h1>
+<h2 id="introduction">Introduction</h2>
+<p>A secure, multi-tenant SaaS platform empowering enterprises to
+automate marketing workflows and generate on-brand content. Powered by
+RAG (Retrieval-Augmented Generation) and agentic AI, the platform
+enables marketing teams to produce high-quality text and image assets
+anchored in their organization’s specific brand voice and
+guidelines.</p>
+<p>Administrators have granular control over users, roles, and knowledge
+bases through a centralized web console. Meanwhile, creative teams
+access a conversational workspace to brainstorm, draft, and refine
+campaigns, leveraging agentic workflows to publish directly to social
+media channels like Facebook, Instagram, and corporate blogs
+(WordPress).</p>
+<p>By combining brand-aware knowledge management with automated
+distribution, the platform accelerates content velocity while ensuring
+consistency and compliance across all customer touchpoints.</p>
+<h2 id="architecture">Architecture</h2>
+<pre class="mermaid"><code>flowchart LR
+    subgraph Admin
+        AdminPortal[Admin Console]
+        TenantConfig[Tenant Config Service]
+    end
+
+    subgraph Ingestion
+        Intake[Document Intake API]
+        Parsers[Parsers &amp; Enrichment]
+        Pipeline[Ingestion Orchestrator]
+    end
+
+    subgraph Knowledge
+        ObjectStore[Content Repository]
+        Metadata[Metadata Catalog]
+        VectorDB[Vector Store]
+    end
+
+    subgraph Runtime
+        Auth[Identity &amp; RBAC]
+        Portal[End-user Portal]
+        Gateway[BFF / Request Gateway]
+        Retrieval[Retrieval Service]
+        Orchestrator[Agent Orchestrator]
+        Tools[Tool / API Connectors]
+        Audit[Audit &amp; Policy Engine]
+    end
+
+    AdminPortal --&gt; TenantConfig
+    TenantConfig --&gt; Pipeline
+    Intake --&gt; Parsers --&gt; Pipeline
+    Pipeline --&gt; ObjectStore
+    Pipeline --&gt; Metadata
+    Pipeline --&gt; VectorDB
+
+    Portal --&gt; Gateway
+    Gateway --&gt; Auth
+    Auth --&gt; TenantConfig
+    Gateway --&gt; Retrieval
+    Retrieval --&gt; VectorDB
+    Retrieval --&gt; ObjectStore
+    Orchestrator --&gt; Retrieval
+    Orchestrator --&gt; Tools
+    Tools --&gt; Orchestrator
+    Orchestrator --&gt; Gateway
+    Audit --&gt; Orchestrator
+    Audit --&gt; Tools
+    Gateway --&gt; Audit
+    Metadata --&gt; Retrieval
+
+    classDef admin fill:#f0f8ff,stroke:#1f4a82,stroke-width:1px;
+    classDef ingest fill:#fff4e6,stroke:#b36b00,stroke-width:1px;
+    classDef knowledge fill:#f2fff0,stroke:#2d6b1f,stroke-width:1px;
+    classDef runtime fill:#fef0f6,stroke:#a61f5a,stroke-width:1px;
+    class AdminPortal,TenantConfig admin;
+    class Intake,Parsers,Pipeline ingest;
+    class ObjectStore,Metadata,VectorDB knowledge;
+    class Auth,Portal,Gateway,Retrieval,Orchestrator,Tools,Audit runtime;</code></pre>
+<h3 id="component-responsibilities">Component responsibilities</h3>
+<ul>
+<li>Admin Console &amp; Tenant Config: Self-service setup for org admins
+to manage tenants, users, roles, knowledge bases, and guardrail
+policies.</li>
+<li>Document Intake API &amp; Parsers: Accept bulk uploads or connectors
+(SharePoint, CRM, SIS), normalize documents, extract metadata, and
+generate embeddings.</li>
+<li>Ingestion Orchestrator: Schedules crawls, deduplicates content,
+tracks provenance, and pushes normalized assets into storage and the
+vector index.</li>
+<li>Content Repository &amp; Metadata Catalog: Persist canonical
+documents with versioning, metadata, and access control flags for
+retrieval filtering.</li>
+<li>Vector Store: Stores embeddings with tenant segmentation, supporting
+similarity search with metadata filters.</li>
+<li>Identity &amp; RBAC: Multi-tenant auth, SSO integration, and
+fine-grained permissions controlling user and agent access to content
+and tools.</li>
+<li>End-user Portal &amp; BFF/Gateway: Delivers chat UX, handles
+localization, mediates requests, and enforces rate limits and session
+policies.</li>
+<li>Retrieval Service: Performs hybrid search (vector + keyword),
+applies metadata filters, and returns source-cited context for
+prompts.</li>
+<li>Agent Orchestrator: Manages agentic workflows, tool selection,
+guardrails, and response assembly; handles multi-step plans with
+fallback to humans.</li>
+<li>Tool / API Connectors: Adapters to enterprise systems (CRM, SIS,
+ticketing, calendar) with policy-aware execution and throttling.</li>
+<li>Audit &amp; Policy Engine: Monitors agent/tool actions, enforces
+compliance rules (PII redaction, approval workflow), records immutable
+audit trails.</li>
+</ul>
+<h2 id="use-case">Use Case</h2>
+<p>A global retail brand manages dozens of regional marketing teams,
+each requiring frequent social media updates, blog posts, and campaign
+visual assets. The challenge is maintaining a consistent brand voice,
+adhering to visual identity guidelines, and orchestrating approvals
+across distributed teams and time zones.</p>
+<p>Using the platform, marketing associates can query the brand
+knowledge base for approved messaging, generate draft posts with
+matching imagery, and schedule them for publication. RAG ensures that
+every piece of generated content references the latest campaign
+playbooks and tone-of-voice guidelines. Agentic flows handle the
+end-to-end process: from drafting and image generation to approval
+routing and API-based publishing.</p>
+<p>Key capabilities for this use case:</p>
+<ul>
+<li><strong>Brand-Aware Generation:</strong> LLMs finetuned or prompted
+with brand guidelines to produce text that sounds authentic.</li>
+<li><strong>Image Generation:</strong> AI models generating visual
+assets that adhere to color palettes and style guides.</li>
+<li><strong>Multi-Channel Publishing:</strong> Automated scheduling and
+posting to Facebook, Instagram, and WordPress via integrated APIs.</li>
+<li><strong>Approval Workflows:</strong> Agentic orchestration that
+routes drafts to managers for review before going live.</li>
+<li><strong>Asset Management:</strong> Centralized repository for
+approved copy and visuals, accessible via semantic search.</li>
+</ul>
+<p>Measurable outcomes include increased content throughput, reduced
+time-to-market for campaigns, and stricter adherence to brand
+guidelines. Example KPIs to track: content production velocity, approval
+cycle time, engagement rates per channel, and brand consistency
+scores.</p>
+<h2 id="pain-point-and-challenges">Pain Point and Challenges</h2>
+<ul>
+<li><strong>Inconsistent Brand Voice:</strong> with decentralized teams,
+maintaining a unified tone and visual identity across regions is
+difficult.</li>
+<li><strong>Slow Content Production:</strong> manual drafting, design
+iterations, and approval chains create bottlenecks, delaying campaign
+launches.</li>
+<li><strong>Fragmented Tools:</strong> marketers switch between copy
+docs, design tools, file servers, and scheduling platforms, leading to
+inefficiency.</li>
+<li><strong>Compliance Risks:</strong> unapproved assets or off-brand
+messaging can damage reputation; lack of audit trails makes
+accountability hard.</li>
+</ul>
+<h2 id="solution">Solution</h2>
+<ul>
+<li><strong>Centralized Knowledge Base:</strong> ingest brand
+guidelines, past successful campaigns, and approved assets into a
+RAG-enabled store.</li>
+<li><strong>Generative AI Studio:</strong> an interactive workspace
+where users generate text and images that are “born on-brand” using
+retrieval-augmented prompts.</li>
+<li><strong>Unified Workflow Engine:</strong> agentic flows that connect
+generation, review, and publishing into a single seamless process.</li>
+<li><strong>Role-Based Governance:</strong> strict permissions ensure
+only authorized personnel can approve or publish content to live
+channels.</li>
+<li><strong>Automated Distribution:</strong> direct integrations with
+social platforms and CMS remove the manual friction of posting.</li>
+</ul>
+<h2 id="business-value">Business Value</h2>
+<p>This platform drives marketing efficiency and brand equity:</p>
+<ul>
+<li><strong>Accelerated Time-to-Market:</strong> Launch campaigns in
+hours instead of weeks by automating drafting and asset creation.</li>
+<li><strong>Brand Consistency:</strong> Ensure 100% of output aligns
+with global standards through RAG-enforced guidelines.</li>
+<li><strong>Cost Efficiency:</strong> Reduce reliance on external
+agencies for routine content creation and localization.</li>
+<li><strong>Scalability:</strong> Empower small local teams to produce
+enterprise-quality output without adding headcount.</li>
+<li><strong>Data-Driven Insights:</strong> Track which generated assets
+perform best to continuously refine the content strategy.</li>
+</ul>
+<p>Implementation notes: Start with a pilot for a specific campaign or
+region to tune the brand voice models and approval workflows before
+rolling out globally.</p>
+<p><a href="index.html">&lt;&lt; Back to Index</a></p>
+<style>
+  .mermaid-wrapper {
+    position: relative;
+    margin: 20px 0;
+    transition: all 0.2s ease;
+    display: inline-block;
+    min-width: 100%;
+  }
+  .mermaid-wrapper:hover {
+     box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  }
+  .mermaid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: zoom-in;
+    background: rgba(255,b255,255,0.01); /* Transparent but captures clicks */
+    z-index: 10;
+    transition: opacity 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mermaid-wrapper:hover .mermaid-overlay {
+    opacity: 1;
+  }
+  .expand-btn {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-family: sans-serif;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    pointer-events: none;
+    color: #333;
+    font-weight: 500;
+  }
+
+  /* Modal */
+  #mermaid-modal {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,0.98);
+    overflow: hidden;
+  }
+  #mermaid-modal-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: auto;
+  }
+  #mermaid-modal-content svg {
+    max-width: none !important; 
+    max-height: none !important;
+    width: 90% !important; /* Start large */
+    height: auto !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  #mermaid-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    line-height: 1;
+    font-weight: bold;
+    color: #555;
+    cursor: pointer;
+    z-index: 100000;
+    padding: 10px;
+  }
+  #mermaid-modal-close:hover {
+    color: #000;
+  }
+</style>
+
+<div id="mermaid-modal">
+  <span id="mermaid-modal-close">&times;</span>
+  <div id="mermaid-modal-content"></div>
+</div>
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  
+  mermaid.initialize({ startOnLoad: false });
+
+  async function init() {
+    // Helper to wrap
+    const wrap = (el, code) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'mermaid-wrapper';
+        
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'mermaid';
+        // Unescape logic
+        const txt = document.createElement("textarea");
+        txt.innerHTML = code;
+        contentDiv.textContent = txt.value;
+
+        const overlay = document.createElement('div');
+        overlay.className = 'mermaid-overlay';
+        overlay.innerHTML = '<div class="expand-btn">Click to enlarge</div>';
+        
+        // Click handler
+        overlay.onclick = (e) => {
+            e.stopPropagation();
+            openModal(contentDiv);
+        };
+
+        wrapper.appendChild(contentDiv);
+        wrapper.appendChild(overlay);
+        
+        el.replaceWith(wrapper);
+    }
+
+    // Process <pre.mermaid>
+    document.querySelectorAll('pre.mermaid').forEach(pre => {
+        const code = pre.querySelector('code') ? pre.querySelector('code').innerHTML : pre.innerHTML;
+        wrap(pre, code);
+    });
+    
+    // Process <code.language-mermaid>
+    document.querySelectorAll('code.language-mermaid').forEach(code => {
+        const pre = code.parentElement;
+        if (pre && pre.tagName === 'PRE' && !pre.classList.contains('mermaid')) {
+             wrap(pre, code.innerHTML);
+        }
+    });
+
+    // Run Mermaid
+    try {
+        await mermaid.run({
+            querySelector: '.mermaid'
+        });
+    } catch(err) {
+        console.error('Mermaid failed to load', err);
+    }
+  }
+
+  function openModal(sourceDiv) {
+    const svg = sourceDiv.querySelector('svg');
+    if (!svg) {
+        console.log("No SVG found to expand");
+        return;
+    }
+    
+    const modal = document.getElementById('mermaid-modal');
+    const content = document.getElementById('mermaid-modal-content');
+    
+    content.innerHTML = '';
+    const clone = svg.cloneNode(true);
+    
+    // Clean styling
+    clone.removeAttribute('style');
+    clone.removeAttribute('width');
+    clone.removeAttribute('height');
+    // Force specific viewing style in modal
+    clone.style.minWidth = '50%'; 
+    
+    content.appendChild(clone);
+    modal.style.display = 'block';
+  }
+
+  // Close logic
+  const closeModal = () => {
+    document.getElementById('mermaid-modal').style.display = 'none';
+  };
+  
+  document.getElementById('mermaid-modal-close').onclick = closeModal;
+  document.getElementById('mermaid-modal').onclick = (e) => {
+    if (e.target.id === 'mermaid-modal' || e.target.id === 'mermaid-modal-content') {
+        closeModal();
+    }
+  };
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // Start
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+</script>
+</body>
+</html>
