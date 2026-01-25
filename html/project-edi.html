@@ -195,15 +195,15 @@ End-to-end tracking of message lifecycles with proactive error detection
 and self-healing recommendations.</p>
 <h2 id="architecture">Architecture</h2>
 <pre class="mermaid"><code>flowchart LR
-    A[Customer Portal] --&gt; B[Ingestion &amp; Normalization]
+    A[Customer Portal] --&gt; B[&quot;Ingestion &amp; Normalization&quot;]
     B --&gt; C[Canonical Schema Catalog]
     C --&gt; D[AI Mapping Engine]
     B --&gt; D
     D --&gt; E[SME Collaboration Workspace]
-    D --&gt; F[Transformation &amp; Spec Generator]
-    F --&gt; G[Validation &amp; Test Harness]
-    G --&gt; H[Deployment &amp; Monitoring]
-    H --&gt; I[Operational Dashboards &amp; Alerts]
+    D --&gt; F[&quot;Transformation &amp; Spec Generator&quot;]
+    F --&gt; G[&quot;Validation &amp; Test Harness&quot;]
+    G --&gt; H[&quot;Deployment &amp; Monitoring&quot;]
+    H --&gt; I[&quot;Operational Dashboards &amp; Alerts&quot;]
     C &lt;--&gt; J[(Knowledge Base)]
     E --&gt; J
     H --&gt; J
@@ -388,7 +388,7 @@ Yield:</strong> Improved to &gt;90% for standard message types.</p>
     height: 100%;
     opacity: 0;
     cursor: zoom-in;
-    background: rgba(255,b255,255,0.01); /* Transparent but captures clicks */
+    background: rgba(255,255,255,0.01); /* Transparent but captures clicks */
     z-index: 10;
     transition: opacity 0.2s;
     display: flex;
@@ -462,12 +462,13 @@ Yield:</strong> Improved to &gt;90% for standard message types.</p>
   <div id="mermaid-modal-content"></div>
 </div>
 
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-  
+<script src="https://cdn.jsdelivr.net/npm/mermaid@9.4.3/dist/mermaid.min.js"></script>
+<script>
+  console.log('Mermaid 9 script loaded');
   mermaid.initialize({ startOnLoad: false });
 
-  async function init() {
+  function init() {
+    console.log('Mermaid init function called');
     // Helper to wrap
     const wrap = (el, code) => {
         const wrapper = document.createElement('div');
@@ -512,9 +513,7 @@ Yield:</strong> Improved to &gt;90% for standard message types.</p>
 
     // Run Mermaid
     try {
-        await mermaid.run({
-            querySelector: '.mermaid'
-        });
+        mermaid.init(undefined, document.querySelectorAll('.mermaid'));
     } catch(err) {
         console.error('Mermaid failed to load', err);
     }

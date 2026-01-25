@@ -200,7 +200,7 @@ consistency and compliance across all customer touchpoints.</p>
 
     subgraph Ingestion
         Intake[Document Intake API]
-        Parsers[Parsers &amp; Enrichment]
+        Parsers[&quot;Parsers &amp; Enrichment&quot;]
         Pipeline[Ingestion Orchestrator]
     end
 
@@ -211,13 +211,13 @@ consistency and compliance across all customer touchpoints.</p>
     end
 
     subgraph Runtime
-        Auth[Identity &amp; RBAC]
+        Auth[&quot;Identity &amp; RBAC&quot;]
         Portal[End-user Portal]
-        Gateway[BFF / Request Gateway]
+        Gateway[&quot;BFF / Request Gateway&quot;]
         Retrieval[Retrieval Service]
         Orchestrator[Agent Orchestrator]
-        Tools[Tool / API Connectors]
-        Audit[Audit &amp; Policy Engine]
+        Tools[&quot;Tool / API Connectors&quot;]
+        Audit[&quot;Audit &amp; Policy Engine&quot;]
     end
 
     AdminPortal --&gt; TenantConfig
@@ -383,7 +383,7 @@ rolling out globally.</p>
     height: 100%;
     opacity: 0;
     cursor: zoom-in;
-    background: rgba(255,b255,255,0.01); /* Transparent but captures clicks */
+    background: rgba(255,255,255,0.01); /* Transparent but captures clicks */
     z-index: 10;
     transition: opacity 0.2s;
     display: flex;
@@ -457,12 +457,13 @@ rolling out globally.</p>
   <div id="mermaid-modal-content"></div>
 </div>
 
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-  
+<script src="https://cdn.jsdelivr.net/npm/mermaid@9.4.3/dist/mermaid.min.js"></script>
+<script>
+  console.log('Mermaid 9 script loaded');
   mermaid.initialize({ startOnLoad: false });
 
-  async function init() {
+  function init() {
+    console.log('Mermaid init function called');
     // Helper to wrap
     const wrap = (el, code) => {
         const wrapper = document.createElement('div');
@@ -507,9 +508,7 @@ rolling out globally.</p>
 
     // Run Mermaid
     try {
-        await mermaid.run({
-            querySelector: '.mermaid'
-        });
+        mermaid.init(undefined, document.querySelectorAll('.mermaid'));
     } catch(err) {
         console.error('Mermaid failed to load', err);
     }

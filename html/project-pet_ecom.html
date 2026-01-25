@@ -209,15 +209,15 @@ payment and post-service engagement.</p>
         Auth(Identity &amp; Auth)
         Catalog(Shop &amp; Activity Catalog)
         Payments(Payment Processing)
-        Gifts(Gifts &amp; Inventory)
+        Gifts(&quot;Gifts &amp; Inventory&quot;)
         Push(Push Notifications)
-        Messaging(Messaging Orchestrator)
-        Analytics(Analytics Engine)
+        Messaging(&quot;Messaging Orchestrator&quot;)
+        Analytics(&quot;Analytics Engine&quot;)
     end
 
     subgraph DataLayer [&quot;💾 Data Persistence&quot;]
         UserDB[(User Profiles)]
-        ActivityDB[(Activity &amp; Booking)]
+        ActivityDB[(&quot;Activity &amp; Booking&quot;)]
         ContentStore[(Content Store)]
         EventBus{Event Bus}
     end
@@ -350,7 +350,7 @@ personalized content and seamless service experiences.</li>
     height: 100%;
     opacity: 0;
     cursor: zoom-in;
-    background: rgba(255,b255,255,0.01); /* Transparent but captures clicks */
+    background: rgba(255,255,255,0.01); /* Transparent but captures clicks */
     z-index: 10;
     transition: opacity 0.2s;
     display: flex;
@@ -424,12 +424,13 @@ personalized content and seamless service experiences.</li>
   <div id="mermaid-modal-content"></div>
 </div>
 
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-  
+<script src="https://cdn.jsdelivr.net/npm/mermaid@9.4.3/dist/mermaid.min.js"></script>
+<script>
+  console.log('Mermaid 9 script loaded');
   mermaid.initialize({ startOnLoad: false });
 
-  async function init() {
+  function init() {
+    console.log('Mermaid init function called');
     // Helper to wrap
     const wrap = (el, code) => {
         const wrapper = document.createElement('div');
@@ -474,9 +475,7 @@ personalized content and seamless service experiences.</li>
 
     // Run Mermaid
     try {
-        await mermaid.run({
-            querySelector: '.mermaid'
-        });
+        mermaid.init(undefined, document.querySelectorAll('.mermaid'));
     } catch(err) {
         console.error('Mermaid failed to load', err);
     }
