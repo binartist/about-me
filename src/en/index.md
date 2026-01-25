@@ -1,14 +1,12 @@
-
 <!-- - 🔗 [LinkedIn](https://www.linkedin.com/in/mi-zhou-46553092/)  -->
-🔗 [English CV on GitHub](https://binartist.github.io/about-me/index.html)  
 
+🔗 [CV on GitHub](https://binartist.github.io/about-me/index.html)
 
 ## Professional Summary
 
 Application Architect and Full-stack Developer with **over 15 years of experience** in e-commerce, retail, and logistics. Specializes in architecting cloud-native systems, enterprise integrations, and AI-powered solutions leveraging **LLMs, RAG, and Agentic Workflows**.
 
 Proven track record in **cross-border delivery**, leading initiatives from requirements gathering and solution design through to hands-on implementation. Adept at bridging technical and business stakeholders to drive innovation and operational excellence.
-
 
 ## Core Skills
 
@@ -35,11 +33,11 @@ Proven track record in **cross-border delivery**, leading initiatives from requi
 
 ## Professional Experience
 
-**Application Architect & Fullstack Developer** – IBM China – *2015-Present*  
+**Application Architect & Fullstack Developer** – IBM China – _2015-Present_  
 Lead Application Architect for enterprise-scale e-commerce and integration solutions. Responsible for driving technical strategy, overseeing China localization initiatives, and modernizing legacy architectures with cloud-native and AI capabilities. Champion DevSecOps practices and bridge technical requirements between global stakeholders and regional engineering teams.
 
-**Software Engineer** – Mahong Network Tech – *2007–2014*  
-Core mobile engineer specializing in cross-platform application frameworks. Focused on UI performance, mobile delivery pipelines, and adapting emerging mobile technologies for enterprise use cases during the smartphone transition era.  
+**Software Engineer** – Mahong Network Tech – _2007–2014_  
+Core mobile engineer specializing in cross-platform application frameworks. Focused on UI performance, mobile delivery pipelines, and adapting emerging mobile technologies for enterprise use cases during the smartphone transition era.
 
 ## Selected Projects
 
@@ -57,9 +55,7 @@ Core mobile engineer specializing in cross-platform application frameworks. Focu
   - Unified cross-platform application for iOS, Android, and Web;
   - Comprehensive admin console for order lifecycle and customer support;
   - Content Management System (CMS) integrated with self-hosted WordPress;
-  
 
 ## Education
-- Bachelor Degree in Electronics of Science and Technology – Huazhong University of Science and Technologys, 2003~2007  
 
-
+- Bachelor Degree in Electronics of Science and Technology – Huazhong University of Science and Technologys, 2003~2007
