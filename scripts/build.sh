@@ -6,7 +6,7 @@ mkdir -p dist/en/projects dist/ja/projects
 cp -r includes dist/
 
 # Get current timestamp
-TIMESTAMP=$(date -u "+%Y-%m-%d %H:%M UTC")
+TIMESTAMP=$(date -u "+%Y-%m-%dT%H:%M:%SZ")
 echo "Build Timestamp: $TIMESTAMP"
 
 # Function to process files
@@ -18,9 +18,8 @@ process_files() {
     for f in "$src_dir"/*.md; do
         if [ -f "$f" ]; then
             base=${f##*/}
-            # Convert to HTML, replace placeholder in stream, write to output
-            # We use sed on the output HTML content after pandoc generation
-            pandoc "$f" -t html -s --include-after-body=includes/mermaid-init.html -o "$dest_dir/${base%.md}.html"
+            # Convert to html
+            pandoc "$f" -t html -s --include-after-body=includes/common-scripts.html -o "$dest_dir/${base%.md}.html"
         fi
     done
 }
@@ -36,6 +35,7 @@ process_files "src/ja/projects" "dist/ja/projects"
 # Replace timestamp placeholder in all generated HTML files
 # Using perl for cross-platform compatibility (macOS vs Linux sed differences)
 find dist -name "*.html" -type f -exec perl -i -pe "s/\{\{UPDATED_AT\}\}/$TIMESTAMP/g" {} +
+find dist -name "*.html" -type f -exec perl -i -pe "s/\{\{ISO_TIMESTAMP\}\}/$TIMESTAMP/g" {} +
 
 # Create root redirect
 echo '<meta http-equiv="refresh" content="0; url=en/index.html" />' > dist/index.html
