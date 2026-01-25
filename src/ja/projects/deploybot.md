@@ -1,4 +1,4 @@
-[<< Back to Index](index-ja.html) 
+[<< Back to Index](../index.html) 
 
 # エージェント型 AI を活用した実験的 DevOps ツール
 
@@ -119,4 +119,4 @@ flowchart LR
 - 安定したリリース: ミスコンフィグと異常の早期検出
 - 運用のスケール: 過度なプロセス負荷なく DevOps 容量を拡張
 
-[<< Back to Index](index-ja.html)
+[<< Back to Index](../index.html)
