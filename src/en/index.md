@@ -59,3 +59,8 @@ Core mobile engineer specializing in cross-platform application frameworks. Focu
 ## Education
 
 - Bachelor Degree in Electronics of Science and Technology – Huazhong University of Science and Technologys, 2003~2007
+
+## Language Proficiency
+- Mandarin Chinese (Native)
+- English (Professional Working Proficiency)
+- Japanese (Business Conversational Proficiency)
