@@ -91,6 +91,48 @@
   <div id="mermaid-modal-content"></div>
 </div>
 
+
+<!-- Local Time Formatter (Standalone) -->
+<script>
+  (function() {
+    function updateLocalTime() {
+      const els = document.querySelectorAll('.local-time');
+      els.forEach(el => {
+          const iso = el.getAttribute('data-iso');
+          if (iso) {
+              try {
+                  const date = new Date(iso);
+                  // Get timezone abbreviation if possible
+                  const parts = new Intl.DateTimeFormat('en-US', {
+                      timeZoneName: 'short'
+                  }).formatToParts(date);
+                  const tz = parts.find(p => p.type === 'timeZoneName')?.value || '';
+
+                  // Manual formatting to match YYYY-MM-DD HH:MM style
+                  const yyyy = date.getFullYear();
+                  const mm = String(date.getMonth() + 1).padStart(2, '0');
+                  const dd = String(date.getDate()).padStart(2, '0');
+                  const hh = String(date.getHours()).padStart(2, '0');
+                  const min = String(date.getMinutes()).padStart(2, '0');
+                  
+                  el.innerText = `${yyyy}-${mm}-${dd} ${hh}:${min} ${tz}`;
+                  el.title = `Original UTC: ${iso}`;
+              } catch (e) {
+                  console.error("Failed to parse time:", e);
+              }
+          }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updateLocalTime);
+    } else {
+      updateLocalTime();
+    }
+  })();
+</script>
+
+<!-- Mermaid Diagram Logic (Module) -->
 <script type="module">
   import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
   
@@ -190,46 +232,8 @@
 
   // Start
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        init();
-        updateLocalTime();
-    });
+    document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
-    updateLocalTime();
-  }
-  
-  // Format local timestamp
-  function updateLocalTime() {
-    const els = document.querySelectorAll('.local-time');
-    els.forEach(el => {
-        const iso = el.getAttribute('data-iso');
-        if (iso) {
-            try {
-                const date = new Date(iso);
-                // Format: 2026-01-25 20:09 CST (simplified local representation)
-                // Using built-in locale string for simplicity and localization support
-                // "en-CA" usually gives YYYY-MM-DD format which matches our style
-                
-                // Get timezone abbreviation if possible
-                const parts = new Intl.DateTimeFormat('en-US', {
-                    timeZoneName: 'short'
-                }).formatToParts(date);
-                const tz = parts.find(p => p.type === 'timeZoneName')?.value || '';
-
-                // Manual formatting to match YYYY-MM-DD HH:MM style
-                const yyyy = date.getFullYear();
-                const mm = String(date.getMonth() + 1).padStart(2, '0');
-                const dd = String(date.getDate()).padStart(2, '0');
-                const hh = String(date.getHours()).padStart(2, '0');
-                const min = String(date.getMinutes()).padStart(2, '0');
-                
-                el.innerText = `${yyyy}-${mm}-${dd} ${hh}:${min} ${tz}`;
-                el.title = `Original UTC: ${iso}`;
-            } catch (e) {
-                console.error("Failed to parse time:", e);
-            }
-        }
-    });
   }
 </script>
