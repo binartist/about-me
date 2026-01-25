@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "for f in *.md; do pandoc \"$f\" -t html -s -o \"dist/${f%.md}.html\" --include-after-body=dist/mermaid-init.html; done",
+    "build": "for f in *.md; do pandoc \"$f\" -t html -s -o \"dist/${f%.md}.html\" --include-after-body=includes/mermaid-init.html; done",
     "watch": "onchange \"*.md\" -- npm run build"
   },
   "repository": {
