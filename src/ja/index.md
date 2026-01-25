@@ -1,5 +1,7 @@
 <!-- - 🔗 [LinkedIn](https://www.linkedin.com/in/mi-zhou-46553092/)  -->
 
+_最終更新日: {{UPDATED_AT}}_
+
 🔗 [GitHub上のレジュメ](https://binartist.github.io/about-me/ja/index.html)
 
 ## 職務要約
