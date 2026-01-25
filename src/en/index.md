@@ -1,6 +1,6 @@
 <!-- - 🔗 [LinkedIn](https://www.linkedin.com/in/mi-zhou-46553092/)  -->
 
-_Last updated: {{UPDATED_AT}}_
+_Last updated: <span class="local-time" data-iso="{{ISO_TIMESTAMP}}">{{UPDATED_AT}}</span>_
  
 🔗 [CV on GitHub](https://binartist.github.io/about-me/index.html)
 

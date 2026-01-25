@@ -1,6 +1,6 @@
 <!-- - 🔗 [LinkedIn](https://www.linkedin.com/in/mi-zhou-46553092/)  -->
 
-_最終更新日: {{UPDATED_AT}}_
+_最終更新日: <span class="local-time" data-iso="{{ISO_TIMESTAMP}}">{{UPDATED_AT}}</span>_
 
 🔗 [GitHub上のレジュメ](https://binartist.github.io/about-me/ja/index.html)
 
