@@ -43,17 +43,17 @@ Core mobile engineer specializing in cross-platform application frameworks. Focu
 
 ## Selected Projects
 
-- 🔗 [AI-Driven Logistics & EDI Automation](project-edi.html), featuring:
+- 🔗 [AI-Driven Logistics & EDI Automation](projects/edi.html), featuring:
   - AI-assisted schema mapping for EDIFACT/ANSI X12 and canonical data modeling;
   - RAG-powered knowledge retrieval for EDI specifications and partner guidelines;
   - Agentic workflow engine for automating complex partner onboarding and validation.
 
-- 🔗 [Generative AI Marketing SaaS Platform](project-aihub.html), including:
+- 🔗 [Generative AI Marketing SaaS Platform](projects/aihub.html), including:
   - Secure multi-tenant architecture with granular Role-Based Access Control (RBAC);
   - On-premise knowledge base utilizing LLMs to generate on-brand text and image content for marketing;
   - Unified pipeline integrating Facebook, Instagram, and WordPress APIs for automated publishing.
 
-- 🔗 [Pet Services E-commerce Ecosystem](project-pet_ecom.html), consisting of:
+- 🔗 [Pet Services E-commerce Ecosystem](projects/pet_ecom.html), consisting of:
   - Unified cross-platform application for iOS, Android, and Web;
   - Comprehensive admin console for order lifecycle and customer support;
   - Content Management System (CMS) integrated with self-hosted WordPress;

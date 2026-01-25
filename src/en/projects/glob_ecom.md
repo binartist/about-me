@@ -1,4 +1,4 @@
-[<< Back to Index](index.html) 
+[<< Back to Index](../index.html) 
 
 # Localization and Integration for Global E-commerce Platform
 
@@ -103,4 +103,4 @@ Large and active customer base in China reports persistent issues:
 - Reduced operational friction for consultants with timely reporting & cached product data
 - Lower risk of content outages via resilient regional caching & fallback strategy
 
-[<< Back to Index](index.html) 
+[<< Back to Index](../index.html) 

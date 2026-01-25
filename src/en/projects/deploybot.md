@@ -1,4 +1,4 @@
-[<< Back to Index](index.html) 
+[<< Back to Index](../index.html) 
 
 # Agentic AI Empowered Experimental DevOps Tool
 
@@ -119,4 +119,4 @@ The assistant keeps a human-in-the-loop model: every action is explainable, audi
 - More stable releases: earlier detection of misconfigurations and runtime anomalies
 - Scalable operations: augment limited DevOps capacity without heavy process overhead
 
-[<< Back to Index](index.html)
+[<< Back to Index](../index.html)

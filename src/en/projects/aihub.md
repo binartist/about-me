@@ -1,4 +1,4 @@
-[<< Back to Index](index.html) 
+[<< Back to Index](../index.html) 
 
 # Generative AI Marketing SaaS Platform
 
@@ -127,4 +127,4 @@ This platform drives marketing efficiency and brand equity:
 
 Implementation notes: Start with a pilot for a specific campaign or region to tune the brand voice models and approval workflows before rolling out globally.
 
-[<< Back to Index](index.html)
+[<< Back to Index](../index.html)

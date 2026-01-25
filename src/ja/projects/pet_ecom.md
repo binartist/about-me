@@ -139,4 +139,4 @@ flowchart LR
 - クロスプロモーションで収益を押上げ
 - セグメント化・将来のパーソナライズに資するデータ基盤
 
-[<< Back to Index](index.html) 
+[<< Back to Index](../index.html) 
