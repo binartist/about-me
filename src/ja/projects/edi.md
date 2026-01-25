@@ -1,33 +1,29 @@
-[<< Back to Index](index-ja.html) 
+[<< Back to Index](../index.html) 
 
-# EDI オンボーディング システム
+# AI駆動型物流 & EDI自動化
 
 ## 概要
-取引先が電子ビジネス文書を接続・交換・検証するプロセスを効率化するオンボーディング基盤。業界標準の EDI（EDIFACT、ANSI X12）とモダン形式（XML、JSON、API）を AI 支援の自動化と組み合わせ、オンボーディングの加速、手作業削減、グローバルサプライチェーンにおける順守を実現します。
+物流取引パートナーのオンボーディングと管理を変革するために設計された包括的な自動化プラットフォーム。業界標準のEDIプロトコル（EDIFACT、ANSI X12）と、**大規模言語モデル（LLM）**、**RAG（検索拡張生成）**、**エージェントワークフロー**などの最先端AI技術を融合させることで、グローバルサプライチェーンエコシステムの統合にかかる時間と複雑さを大幅に削減します。
 
-中核機能:
-
-- 標準化: カノニカルなビジネススキーマにより、地域や顧客が多様でも一貫した統合を実現
-- 自動化: AI によるスキーマ検索、マッピング推薦、MIG 取り込みでオンボーディングを高速化し、エラーを低減
-- 柔軟性: EDIFACT の出荷指示から ANSI X12 の請求書まで多様なメッセージ型と形式をサポート
-- 可視性: 監視・検証・レポートを内蔵し、リアルタイムにパートナー活動と順守状況を把握
-- 継続改善: 人の修正をフィードバックとして取り込み、推薦とマッピング品質を継続的に向上
-
-パートナーのメッセージ形式と社内ビジネスプロセスの橋渡しを行い、正確・安全・スケーラブルなデータ交換を実現。パートナー統合の迅速化、顧客体験の向上、信頼できるオペレーションに寄与します。
+主な機能：
+- **インテリジェントスキーママッピング:** 異なるパートナーデータ形式（xml, json, csvなど）をカノニカルな内部データモデルへAI主導で整合。
+- **RAGを活用したコンプライアンス:** 複雑なメッセージ実装ガイドライン（MIG）やパートナー固有の検証ルールの即時取得。
+- **エージェントオーケストレーション:** データの検証、スキーマの曖昧さの解決、実行可能な変換コードの生成を行う自律型エージェント。
+- **リアルタイムの可観測性:** メッセージライフサイクルのエンドツーエンド追跡、プロアクティブなエラー検知、自己修復の推奨。
 
 ## アーキテクチャ
 
 ```mermaid
 flowchart LR
-	A[Customer Portal] --> B[Ingestion & Normalization]
+	A[Customer Portal] --> B["Ingestion & Normalization"]
 	B --> C[Canonical Schema Catalog]
 	C --> D[AI Mapping Engine]
 	B --> D
 	D --> E[SME Collaboration Workspace]
-	D --> F[Transformation & Spec Generator]
-	F --> G[Validation & Test Harness]
-	G --> H[Deployment & Monitoring]
-	H --> I[Operational Dashboards & Alerts]
+	D --> F["Transformation & Spec Generator"]
+	F --> G["Validation & Test Harness"]
+	G --> H["Deployment & Monitoring"]
+	H --> I["Operational Dashboards & Alerts"]
 	C <--> J[(Knowledge Base)]
 	E --> J
 	H --> J
@@ -36,19 +32,21 @@ flowchart LR
 	K --> B
 ```
 
+
 ### コンポーネントの役割
 
-- Customer Portal: パートナーのリクエスト、サンプルメッセージ、仕様を収集
-- Ingestion & Normalization: アップロードの形式自動判別と正規化
-- Canonical Schema Catalog: すべての統合の基盤となる標準スキーマとマッピングの保管
-- AI Mapping Engine: 過去の統合と意味的マッチングを活用してマッピングと変換を提案
-- SME Collaboration Workspace: 専門家が提案をレビューし、曖昧点を解消。決定は完全なトレーサビリティで記録
-- Transformation & Spec Generator: 取引先別の仕様、変換ルール、実装成果物を生成
-- Validation & Test Harness: スキーマ／業務ルール検証、リグレッションテストを実行
-- Deployment & Monitoring: 本番への昇格、運用監視、SLA 追跡
-- Operational Dashboards & Alerts: 指標と例外を可視化
-- Knowledge Base: 過去のマッピング、MIG、ルール、フィードバックを集約
-- Feedback Loop: 本番学習を取り込み、取り込み・AI モデルを継続最適化
+- **Customer Portal:** パートナーが仕様やサンプルファイルをアップロードし、自動オンボーディングフローを開始するためのセルフサービスインターフェース。
+- **Ingestion & Normalization:** ファイルタイプ（EDIFACT、X12、XML、JSON）を検出し、標準化された中間形式に変換するユニバーサルパーサー。
+- **Canonical Schema Catalog:** すべての統合の「信頼できる唯一の情報源（Source of Truth）」として機能する内部データモデルの中央リポジトリ。
+- **AI Mapping Engine:** LLMを使用してパートナーフィールドを意味的に分析し、カノニカルスキーマへの高信頼度なマッピングを提案します。
+- **SME Collaboration Workspace:** 専門家がAIの信頼スコアを確認し、複雑なマッピングを承認または修正する「Human-in-the-loop」インターフェース。
+- **Transformation & Spec Generator:** 承認されたマッピングを実行可能なコード（例：XSLT、Python）とドキュメントに自動コンパイルします。
+- **Validation & Test Harness:** 本番環境への展開前に、データ整合性とビジネスルールへの準拠を確認するために本番トラフィックをシミュレーションします。
+- **Deployment & Monitoring:** 新規統合のロールアウトを管理し、メッセージスループットとSLAを詳細に追跡します。
+- **Operational Dashboards & Alerts:** システムの健全性を可視化し、AIを活用した根本原因分析で異常時にアラートを発します。
+- **Knowledge Base (RAG):** 関連する標準や過去の決定事項を検索し、AIマッピングエンジンのガイドとなるコンテキストエンジン。
+- **Feedback Loop:** SMEの上書き修正や本番データに基づいてマッピング精度を向上させる強化学習メカニズム。
+
 
 ## ユースケース
 

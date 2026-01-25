@@ -1,4 +1,4 @@
-[<< Back to Index](index-ja.html) 
+[<< Back to Index](../index.html) 
 
 # エージェント型 AI を活用したレストランシステム
 
