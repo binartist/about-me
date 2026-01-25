@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>project-glob_ecom</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<p><a href="index.html">&lt;&lt; Back to Index</a></p>
+<h1
+id="localization-and-integration-for-global-e-commerce-platform">Localization
+and Integration for Global E-commerce Platform</h1>
+<h2 id="introduction">Introduction</h2>
+<p>A global direct‑selling cosmetics company operates in China and must
+leverage existing global IT services while improving experience for
+region‑specific users. The goal: reuse global assets (identity, product
+master, order management) yet deliver locally performant, culturally
+aligned interfaces and compliant data handling.</p>
+<h2 id="architecture">Architecture</h2>
+<pre class="mermaid"><code>flowchart LR
+    subgraph Global Core
+        GlobalIdP[Global Identity Provider]
+        MasterData[Product &amp; Inventory Master]
+        OrderSys[Global Order Management]
+        GlobalCMS[Global CMS]
+    end
+
+    subgraph Integration Layer
+        APIHub[Global API Gateway]
+        Queue[Cross-border Queue]
+        SyncJobs[Content &amp; Data Sync Jobs]
+    end
+
+    subgraph China Region
+        BFF[BFF / API Composer]
+        Mobile[Localized Mobile/Web Apps]
+        EdgeCache[Regional CDN / Edge Cache]
+        CatalogCN[In-country Catalog &amp; Pricing Cache]
+        IdentityCN[Regional Profile Store]
+        DataLakeCN[Operational Data Mart]
+    end
+
+    subgraph Compliance &amp; Ops
+        Audit[Audit / Monitoring]
+        Consent[Consent &amp; Privacy Service]
+    end
+
+    Mobile --&gt; BFF
+    BFF --&gt; EdgeCache
+    EdgeCache --&gt; CatalogCN
+    BFF --&gt; CatalogCN
+    BFF --&gt; IdentityCN
+    BFF --&gt; OrderSys
+    BFF --&gt; MasterData
+
+    GlobalCMS --&gt; SyncJobs --&gt; EdgeCache
+    MasterData --&gt; APIHub --&gt; CatalogCN
+    OrderSys --&gt; Queue --&gt; BFF
+    GlobalIdP --&gt; BFF
+    IdentityCN --&gt; Consent
+    Audit --&gt; GlobalIdP
+    Audit --&gt; BFF
+    DataLakeCN --&gt; Audit
+
+    classDef global fill:#f0f4ff,stroke:#1f3c88,stroke-width:1px;
+    classDef china fill:#f5fff0,stroke:#2f6b1d,stroke-width:1px;
+    classDef integration fill:#fff7e6,stroke:#a05a00,stroke-width:1px;
+    classDef compliance fill:#fef0f0,stroke:#a63232,stroke-width:1px;
+    class GlobalIdP,MasterData,OrderSys,GlobalCMS global;
+    class APIHub,Queue,SyncJobs integration;
+    class BFF,Mobile,EdgeCache,CatalogCN,IdentityCN,DataLakeCN china;
+    class Audit,Consent compliance;</code></pre>
+<h3 id="component-responsibilities">Component responsibilities</h3>
+<ul>
+<li>Global Identity Provider: Centralized authentication authority that
+issues tokens; supports federated sign-on for
+consultants/customers.</li>
+<li>Product &amp; Inventory Master / Order Management: Remain the system
+of record for inventory levels and order lifecycle; expose APIs consumed
+cross-region.</li>
+<li>Global CMS: Source-of-truth for product and marketing content that
+drives periodic syncs to the regional cache.</li>
+<li>Global API Gateway &amp; Cross-border Queue: Secure outbound
+integration path and idempotent write-through queue to route mutations
+back to global systems.</li>
+<li>Content &amp; Data Sync Jobs: Scheduled/event-driven processes that
+hydrate regional caches (catalog, assets) and purge stale data.</li>
+<li>BFF / API Composer: China-hosted service composing responses from
+local caches plus global APIs; manages token refresh, localization, and
+throttling.</li>
+<li>Localized Mobile/Web Apps: China-friendly front end (localized UX
+patterns, payment integrations) calling the BFF with short-lived
+tokens.</li>
+<li>Regional CDN / Edge Cache: Serves static assets and high-frequency
+payloads locally to minimize cross-border latency.</li>
+<li>In-country Catalog &amp; Pricing Cache: Low-latency read store for
+product, pricing, and inventory views; syncs back to the system of
+record via queue.</li>
+<li>Regional Profile Store: Holds China-specific profile, consent, and
+personalization data to satisfy residency rules while referencing global
+IDs.</li>
+<li>Operational Data Mart: Aggregates usage, order insights, and
+consultant analytics within region; powers localized reporting.</li>
+<li>Consent &amp; Privacy Service: Manages opt-ins, data minimization,
+and regulatory reporting for regional data handling.</li>
+<li>Audit / Monitoring: Unifies observability across global and regional
+services, capturing SLA metrics and compliance audit trails.</li>
+</ul>
+<h2 id="use-case">Use Case</h2>
+<p>Large and active customer base in China reports persistent issues: -
+Slow page load and navigation performance - UI/UX patterns misaligned
+with local expectations - Limited operational tooling for beauty / sales
+consultants (reporting, data insights)</p>
+<h2 id="pain-point-and-challenges">Pain Point and Challenges</h2>
+<ul>
+<li>Central governance required: global systems (inventory, ordering)
+must remain single sources of truth</li>
+<li>Regulatory compliance: personally identifiable data must be stored
+in‑country (data residency &amp; privacy)</li>
+<li>Content latency: product and marketing content from global CMS is
+unstable / slow when fetched cross‑border</li>
+</ul>
+<h2 id="solution">Solution</h2>
+<ul>
+<li>In‑country read mirrors: cache inventory, catalog, and pricing for
+low‑latency reads while routing authoritative writes to global systems
+with idempotent queues</li>
+<li>Localized mobile / hybrid app: China‑specific interaction patterns,
+localized components, and edge caching for high‑frequency data
+assets</li>
+<li>Federated identity (OIDC): authenticate against global IdP; store
+region‑specific user profile &amp; consent data domestically, applying
+token minimization</li>
+<li>BFF (Backend for Frontend) layer: secures and refreshes tokens,
+composes responses across global + local services, applies locale
+(language, currency, formatting)</li>
+<li>Content acceleration: scheduled + event‑driven sync of product &amp;
+marketing content into regional CDN/cache with fallback heuristics when
+origin latency exceeds threshold</li>
+</ul>
+<h2 id="business-value">Business Value</h2>
+<ul>
+<li>Faster page &amp; API response times for China users (reduced
+cross‑border round trips)</li>
+<li>Improved conversion &amp; retention through localized UX
+patterns</li>
+<li>Compliance alignment (data residency, privacy segmentation) without
+duplicating core global systems</li>
+<li>Reduced operational friction for consultants with timely reporting
+&amp; cached product data</li>
+<li>Lower risk of content outages via resilient regional caching &amp;
+fallback strategy</li>
+</ul>
+<p><a href="index.html">&lt;&lt; Back to Index</a></p>
+<style>
+  .mermaid-wrapper {
+    position: relative;
+    margin: 20px 0;
+    transition: all 0.2s ease;
+    display: inline-block;
+    min-width: 100%;
+  }
+  .mermaid-wrapper:hover {
+     box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  }
+  .mermaid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: zoom-in;
+    background: rgba(255,b255,255,0.01); /* Transparent but captures clicks */
+    z-index: 10;
+    transition: opacity 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mermaid-wrapper:hover .mermaid-overlay {
+    opacity: 1;
+  }
+  .expand-btn {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-family: sans-serif;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    pointer-events: none;
+    color: #333;
+    font-weight: 500;
+  }
+
+  /* Modal */
+  #mermaid-modal {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,0.98);
+    overflow: hidden;
+  }
+  #mermaid-modal-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: auto;
+  }
+  #mermaid-modal-content svg {
+    max-width: none !important; 
+    max-height: none !important;
+    width: 90% !important; /* Start large */
+    height: auto !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  #mermaid-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    line-height: 1;
+    font-weight: bold;
+    color: #555;
+    cursor: pointer;
+    z-index: 100000;
+    padding: 10px;
+  }
+  #mermaid-modal-close:hover {
+    color: #000;
+  }
+</style>
+
+<div id="mermaid-modal">
+  <span id="mermaid-modal-close">&times;</span>
+  <div id="mermaid-modal-content"></div>
+</div>
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  
+  mermaid.initialize({ startOnLoad: false });
+
+  async function init() {
+    // Helper to wrap
+    const wrap = (el, code) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'mermaid-wrapper';
+        
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'mermaid';
+        // Unescape logic
+        const txt = document.createElement("textarea");
+        txt.innerHTML = code;
+        contentDiv.textContent = txt.value;
+
+        const overlay = document.createElement('div');
+        overlay.className = 'mermaid-overlay';
+        overlay.innerHTML = '<div class="expand-btn">Click to enlarge</div>';
+        
+        // Click handler
+        overlay.onclick = (e) => {
+            e.stopPropagation();
+            openModal(contentDiv);
+        };
+
+        wrapper.appendChild(contentDiv);
+        wrapper.appendChild(overlay);
+        
+        el.replaceWith(wrapper);
+    }
+
+    // Process <pre.mermaid>
+    document.querySelectorAll('pre.mermaid').forEach(pre => {
+        const code = pre.querySelector('code') ? pre.querySelector('code').innerHTML : pre.innerHTML;
+        wrap(pre, code);
+    });
+    
+    // Process <code.language-mermaid>
+    document.querySelectorAll('code.language-mermaid').forEach(code => {
+        const pre = code.parentElement;
+        if (pre && pre.tagName === 'PRE' && !pre.classList.contains('mermaid')) {
+             wrap(pre, code.innerHTML);
+        }
+    });
+
+    // Run Mermaid
+    try {
+        await mermaid.run({
+            querySelector: '.mermaid'
+        });
+    } catch(err) {
+        console.error('Mermaid failed to load', err);
+    }
+  }
+
+  function openModal(sourceDiv) {
+    const svg = sourceDiv.querySelector('svg');
+    if (!svg) {
+        console.log("No SVG found to expand");
+        return;
+    }
+    
+    const modal = document.getElementById('mermaid-modal');
+    const content = document.getElementById('mermaid-modal-content');
+    
+    content.innerHTML = '';
+    const clone = svg.cloneNode(true);
+    
+    // Clean styling
+    clone.removeAttribute('style');
+    clone.removeAttribute('width');
+    clone.removeAttribute('height');
+    // Force specific viewing style in modal
+    clone.style.minWidth = '50%'; 
+    
+    content.appendChild(clone);
+    modal.style.display = 'block';
+  }
+
+  // Close logic
+  const closeModal = () => {
+    document.getElementById('mermaid-modal').style.display = 'none';
+  };
+  
+  document.getElementById('mermaid-modal-close').onclick = closeModal;
+  document.getElementById('mermaid-modal').onclick = (e) => {
+    if (e.target.id === 'mermaid-modal' || e.target.id === 'mermaid-modal-content') {
+        closeModal();
+    }
+  };
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // Start
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+</script>
+</body>
+</html>

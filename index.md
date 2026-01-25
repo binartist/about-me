@@ -1,76 +1,65 @@
-# Joe 
-📍 🔗 [LinkedIn](https://www.linkedin.com/in/mi-zhou-46553092/) | 🔗 [English CV](https://binartist.github.io/about-me/index.html) | 🔗
-[日本語版履歴書](https://binartist.github.io/about-me/index-ja.html)
----
+
+<!-- - 🔗 [LinkedIn](https://www.linkedin.com/in/mi-zhou-46553092/)  -->
+🔗 [English CV on GitHub](https://binartist.github.io/about-me/index.html)  
+
 
 ## Professional Summary
-Innovative IT leader with 18+ years designing cloud-native systems, enterprise integrations, and agentic AI solutions that combine LLMs, vector search, and real‑time apps. Proven track record delivering scalable e‑commerce, finance, and logistics platforms across international teams; fluent in English and Chinese, intermediate in Japanese.
 
----
+Application Architect and Full-stack Developer with **over 15 years of experience** in e-commerce, retail, and logistics. Specializes in architecting cloud-native systems, enterprise integrations, and AI-powered solutions leveraging **LLMs, RAG, and Agentic Workflows**.
+
+Proven track record in **cross-border delivery**, leading initiatives from requirements gathering and solution design through to hands-on implementation. Adept at bridging technical and business stakeholders to drive innovation and operational excellence.
+
 
 ## Core Skills
 
-**AI & Data**
-- LLM orchestration (LangChain, LangGraph, Salesforce Agentforce)  
-- Retrieval-Augmented Generation (RAG) with pgvector  
-- Embeddings, semantic similarity search, AI evaluation frameworks  
-- Applied AI in finance, e-commerce, and logistics
+**Application Architecture & AI Engineering**
 
-**Fullstack & DevOps**
-- Python, Go, TypeScript (Node.js), Java  
-- Databases: PostgreSQL, MySQL, MongoDB, Redis  
-- Frontend: React, SvelteKit; Mobile: Flutter  
-- Cloud & DevOps: Docker, Kubernetes, AWS (EC2, ALB, S3, Aurora, CloudWatch, IAM), GCP, Azure  
-- CI/CD with GitHub Actions; AWS CDK; built custom agentic AI assistants for automation  
+- **System Architecture:** Cloud-native patterns, legacy modernization strategies, security design, and trade-off analysis
+- **Integration & Governance:** REST/GraphQL API design, event-driven architecture, canonical data modeling, and integration standards
+- **AI & LLM Engineering:** RAG architecture, agentic workflows, advanced prompt engineering, and context management
 
-**Enterprise Integration & Leadership**
-- Delivered global, cross-functional systems end-to-end
-- Defined and governed large-scale APIs and canonical models
-- Led migrations and modernization programs to cloud-native platforms
-- Bridged cross-cultural stakeholders to align business and technical roadmaps
+**Fullstack Development & Cloud Infrastructure**
 
----
+- **Programming Languages:** Python, Go, Dart (Flutter), TypeScript (Node.js), Java
+- **Database Technologies:** PostgreSQL, MySQL, MongoDB, Redis
+- **Frontend & Mobile:** React, SvelteKit, Flutter
+- **Cloud Ecosystems:** AWS (EC2, ALB, S3, Aurora, CloudWatch, IAM), GCP, Azure
+- **DevOps & Automation:** Docker, Kubernetes, CI/CD pipelines (GitHub Actions), Infrastructure as Code (AWS CDK)
 
-## Selected Projects
-- [Agentic AI SaaS Platform](project-aihub.html) – multi-tenant RAG + agent workflow platform
-- [Restaurant AI System](project-eatease.html) – QR ordering, dual AI assistants, multilingual ops
-- [DevOps Agent Tool](project-deploybot.html) – conversational deployment & diagnostics assistant
-- [Global E-commerce Localization](project-glob_ecom.html) – in-country mirrors, BFF, edge caching
-- [Pet Industry Commerce Platform](project-pet_ecom.html) – activity lifecycle digitization and engagement
-- [EDI Onboarding System](project-edi.html) – AI-assisted schema mapping and partner acceleration
+**Enterprise Leadership & Global Delivery**
 
----
+- **Global Delivery Leadership:** Leading cross-functional teams from requirement analysis to rollout across regional boundaries
+- **Product Engineering:** End-to-end product ownership, bridging business vision with technical execution, MVP strategy, and user-centric design
+- **Engineering Culture:** Technical mentorship, code review governance, best practices advocacy, and agile process optimization
+- **Stakeholder Management:** Bridging cross-cultural teams to align business goals with technical roadmaps
+
 ## Professional Experience
 
-**Application Architect & Fullstack Developer** – IBM China – *Present*  
-- Led **China localization for global e-commerce platforms**, optimizing performance, data residency compliance, and regional UX adaptations ([project link](project-glob_ecom.html)).  
-- Designed an **agent-assisted EDI onboarding platform**, automating canonical mapping for EDIFACT/X12 via AI-driven schema normalization ([project link](project-edi.html)).  
-- Developed **Agentforce workflows** enabling insurance representatives to automate data capture, form validation, and regulatory updates.  
-- Directed **multi-cloud migrations** and implemented **DevSecOps practices**, improving security, observability, and CI/CD pipeline reliability.  
-
-**Co-Founder / Technical Lead** – SaasifyEase (Japan) – *2023–Present (Part-time, concurrent with IBM)*  
-- Architected and launched a **multi-tenant Agentic AI + RAG SaaS platform** with access control, workspace isolation, knowledge ingestion, and retrieval orchestration ([project link](project-aihub.html)).  
-- Built an end-to-end **financial filings analytics pipeline** (SEC 13F): ingestion → normalization → embeddings → portfolio insights.  
-- Delivered an **AI-driven restaurant ordering & operations system**, integrating QR ordering, POS tablet flows, and dual AI assistants for users and staff ([project link](project-eatease.html)).  
-- Created an experimental **DevOps AI agent (DeployBot)** enabling natural-language deployment operations — build, patch, redeploy, and log summaries ([project link](project-deploybot.html)).  
-- Launched a **pet-industry omni-channel platform**, unifying content, activities, and commerce with AI-powered engagement tools ([project link](project-pet_ecom.html)).  
+**Application Architect & Fullstack Developer** – IBM China – *2015-Present*  
+Lead Application Architect for enterprise-scale e-commerce and integration solutions. Responsible for driving technical strategy, overseeing China localization initiatives, and modernizing legacy architectures with cloud-native and AI capabilities. Champion DevSecOps practices and bridge technical requirements between global stakeholders and regional engineering teams.
 
 **Software Engineer** – Mahong Network Tech – *2007–2014*  
-- Built cross-platform mobile applications during the transition from feature phones to iOS/Android.  
-- Contributed reusable mobile framework modules to accelerate application delivery.  
-- Specialized in **UI optimization**, **performance tuning**, and iterative release process improvements.  
+Core mobile engineer specializing in cross-platform application frameworks. Focused on UI performance, mobile delivery pipelines, and adapting emerging mobile technologies for enterprise use cases during the smartphone transition era.  
 
----
+## Selected Projects
+
+- 🔗 [AI-Driven Logistics & EDI Automation](project-edi.html), featuring:
+  - AI-assisted schema mapping for EDIFACT/ANSI X12 and canonical data modeling;
+  - RAG-powered knowledge retrieval for EDI specifications and partner guidelines;
+  - Agentic workflow engine for automating complex partner onboarding and validation.
+
+- 🔗 [Generative AI Marketing SaaS Platform](project-aihub.html), including:
+  - Secure multi-tenant architecture with granular Role-Based Access Control (RBAC);
+  - On-premise knowledge base utilizing LLMs to generate on-brand text and image content for marketing;
+  - Unified pipeline integrating Facebook, Instagram, and WordPress APIs for automated publishing.
+
+- 🔗 [Pet Services E-commerce Ecosystem](project-pet_ecom.html), consisting of:
+  - Unified cross-platform application for iOS, Android, and Web;
+  - Comprehensive admin console for order lifecycle and customer support;
+  - Content Management System (CMS) integrated with self-hosted WordPress;
+  
 
 ## Education
 - Bachelor Degree in Electronics of Science and Technology – Huazhong University of Science and Technologys, 2003~2007  
 
----
 
-## Certifications
-- Microsoft Certified: Azure AI Engineer Associate  
-- Certified Kubernetes Administrator (CKA)  
-- Certified SAFe® 6 Scrum Master  
-- JLPT N3 (2025), preparing for JLPT N2  
-
----
