@@ -1,3 +1,5 @@
+_Last updated: <span class="local-time" data-iso="{{ISO_TIMESTAMP}}">{{UPDATED_AT}}</span>_
+
 [<< Back to Index](../index.html) 
 
 # 生成AIマーケティングSaaSプラットフォーム
@@ -126,3 +128,5 @@ flowchart LR
 導入メモ: 代表的なパイロット（1地域／1機関）から開始し、検索品質とエージェントフローを検証。KPI を測定し、段階的にカバレッジを拡大、CRM/SIS と統合。
 
 [<< Back to Index](../index.html)
+
+_Last updated: <span class="local-time" data-iso="{{ISO_TIMESTAMP}}">{{UPDATED_AT}}</span>_

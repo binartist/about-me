@@ -1,3 +1,5 @@
+_Last updated: <span class="local-time" data-iso="{{ISO_TIMESTAMP}}">{{UPDATED_AT}}</span>_
+
 [<< Back to Index](../index.html) 
 
 # Agentic AI Empowered Restaurant System
@@ -156,4 +158,6 @@ Small or mid‑sized restaurants commonly face:
 - Improved stock utilization and fewer missed sales due to early signals
 - More consistent guest experience across languages and dietary needs
 
-[<< Back to Index](../index.html) 
+[<< Back to Index](../index.html)
+
+_Last updated: <span class="local-time" data-iso="{{ISO_TIMESTAMP}}">{{UPDATED_AT}}</span>_ 

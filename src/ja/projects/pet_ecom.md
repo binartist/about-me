@@ -1,3 +1,5 @@
+_Last updated: <span class="local-time" data-iso="{{ISO_TIMESTAMP}}">{{UPDATED_AT}}</span>_
+
 [<< Back to Index](../index.html) 
 
 # ペットサービスEコマースエコシステム

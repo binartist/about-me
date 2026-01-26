@@ -1,5 +1,7 @@
 [<< Back to Index](../index.html) 
 
+_Last updated: <span class="local-time" data-iso="{{ISO_TIMESTAMP}}">{{UPDATED_AT}}</span>_
+
 # Generative AI Marketing SaaS Platform
 
 ## Introduction
