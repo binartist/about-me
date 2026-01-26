@@ -2,7 +2,7 @@
 
 _Last updated: <span class="local-time" data-iso="{{ISO_TIMESTAMP}}">{{UPDATED_AT}}</span>_
 
-CV on GitHub: https://binartist.github.io/about-me/index.html
+_CV on GitHub: https://binartist.github.io/about-me/index.html_
 
 ## Professional Summary
 
@@ -72,6 +72,6 @@ Core mobile engineer specializing in cross-platform application frameworks. Focu
 
 _Links_
 
-- (\*1) https://binartist.github.io/about-me/en/projects/edi.html
-- (\*2) https://binartist.github.io/about-me/en/projects/aihub.html
-- (\*3) https://binartist.github.io/about-me/en/projects/pet_ecom.html
+- (\*1) _https://binartist.github.io/about-me/en/projects/edi.html_
+- (\*2) _https://binartist.github.io/about-me/en/projects/aihub.html_
+- (\*3) _https://binartist.github.io/about-me/en/projects/pet_ecom.html_
