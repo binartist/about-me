@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Clean and prepare directories
-rm -rf dist
-mkdir -p dist/en/projects dist/en/cover-letters dist/ja/projects dist/ja/cover-letters
+# rm -rf dist
+mkdir -p dist/en/projects dist/ja/projects
 cp -r includes dist/
 
 # Load environment variables if .env exists
@@ -34,6 +34,50 @@ update_file_timestamp() {
     perl -i -pe "s/\{\{ISO_TIMESTAMP\}\}/$file_ts/g" "$dest_html"
 }
 
+# Function to generate index.html
+generate_index() {
+    target_dir=$1
+    title=$2
+    
+    if [ ! -d "$target_dir" ]; then return; fi
+    
+    outfile="$target_dir/index.html"
+    # echo "Generating index for $target_dir"
+    
+    cat <<EOF > "$outfile"
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>$title</title>
+<style>
+body { font-family: system-ui, -apple-system, sans-serif; max-width: 800px; margin: 0 auto; padding: 2rem; line-height: 1.5; }
+ul { list-style-type: none; padding: 0; }
+li { margin: 0.5rem 0; }
+a { color: #0066cc; text-decoration: none; font-size: 1.1rem; }
+a:hover { text-decoration: underline; }
+h1 { border-bottom: 1px solid #eee; padding-bottom: 0.5rem; }
+</style>
+</head>
+<body>
+<h1>$title</h1>
+<ul>
+EOF
+
+    for f in "$target_dir"/*.html; do
+        if [ -f "$f" ]; then
+            filename=$(basename "$f")
+            if [ "$filename" != "index.html" ]; then
+                name=$(echo "${filename%.html}" | sed 's/[-_]/ /g' | awk '{for(i=1;i<=NF;i++)sub(/./,toupper(substr($i,1,1)),$i)}1')
+                echo "<li><a href=\"$filename\">$name</a></li>" >> "$outfile"
+            fi
+        fi
+    done
+
+    echo "</ul></body></html>" >> "$outfile"
+}
+
 # Function to process files
 # usage: process_files source_dir dest_dir
 process_files() {
@@ -57,12 +101,20 @@ process_files() {
 # Build English pages
 process_files "src/en" "dist/en"
 process_files "src/en/projects" "dist/en/projects"
-process_files "src/en/cover-letters" "dist/en/cover-letters"
+
+# Build Job Descriptions / Cover Letters
+if [ -d "data/en/cover-letters" ]; then
+    mkdir -p dist/en/cover-letters
+    process_files "data/en/cover-letters" "dist/en/cover-letters"
+fi
+if [ -d "data/ja/cover-letters" ]; then
+    mkdir -p dist/ja/cover-letters
+    process_files "data/ja/cover-letters" "dist/ja/cover-letters"
+fi
 
 # Build Japanese pages
 process_files "src/ja" "dist/ja"
 process_files "src/ja/projects" "dist/ja/projects"
-process_files "src/ja/cover-letters" "dist/ja/cover-letters"
 
 # Replace Personal Info from env
 if [ -n "$MY_NAME" ]; then
@@ -77,5 +129,11 @@ fi
 
 # Create root redirect
 echo '<meta http-equiv="refresh" content="0; url=en/index.html" />' > dist/index.html
+
+# Generate Indexes
+generate_index "dist/en/projects" "Projects"
+generate_index "dist/ja/projects" "プロジェクト"
+generate_index "dist/en/cover-letters" "Cover Letters"
+generate_index "dist/ja/cover-letters" "カバーレター"
 
 echo "Build complete."
