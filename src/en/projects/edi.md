@@ -1,14 +1,18 @@
 [<< Back to Index](../index.html) 
 
+_Last updated: <span class="local-time" data-iso="{{ISO_TIMESTAMP}}">{{UPDATED_AT}}</span>_
+
 # AI-Driven Logistics & EDI Automation
 
 ## Introduction
 A comprehensive automation platform designed to revolutionize the onboarding and management of logistics trading partners. By synergizing industry-standard EDI protocols (EDIFACT, ANSI X12) with cutting-edge AI technologies—including **Large Language Models (LLMs)**, **Retrieval-Augmented Generation (RAG)**, and **Agentic Workflows**—the platform drastically reduces the time and complexity of integrating global supply chain ecosystem.
 
 Key capabilities include:
-- **Intelligent Schema Mapping:** AI-driven alignment of disparate partner data formats (xml, json, csv, etc) to a canonical internal data model.
+
+- **Intelligent Schema Mapping:** AI-driven alignment of disparate partner data formats (XML, JSON, CSV, etc.) to a canonical internal data model.
 - **RAG-Powered Compliance:** Instant retrieval of complex message implementation guidelines (MIGs) and partner-specific validation rules.
 - **Agentic Orchestration:** Autonomous agents that validate data, resolve schema ambiguities, and generate executable transformation code.
+- **Security Guardrails:** Robust defense against prompt injection (Direct & Indirect) and unauthorized filesystem access, ensuring enterprise-grade safety.
 - **Real-time Observability:** End-to-end tracking of message lifecycles with proactive error detection and self-healing recommendations.
 
 ## Architecture
@@ -53,39 +57,21 @@ flowchart LR
 ### As‑Is (current process)
 When a new customer requests onboarding, the provider must integrate the customer’s EDI files with its own internal EDI standards. The process involves several key stages:
 
-Customer Request Submission
-The customer provides an EDI file and requests onboarding.
-
-Leveraging Existing Knowledge
-The provider retrieves existing EDI description files and applies tribal knowledge from prior integrations to accelerate mapping.
-
-Mapping Customer EDI to Internal Standards
-EDI Subject Matter Experts (SMEs) interpret the customer’s file descriptions, applying industry standards and expertise to align fields with internal EDI formats.
-
-Issue Resolution Collaboration
-If questions or ambiguities arise, SMEs collaborate with the customer, applying rules and historical decisions to resolve mapping issues.
-
-Specification Generation
-The finalized mapping is documented into a customer-specific EDI mapping specification, ensuring clarity for future maintenance and system implementation.
+* **Customer Request Submission:** The customer provides an EDI file and requests onboarding.
+* **Leveraging Existing Knowledge:** The provider retrieves existing EDI description files and applies tribal knowledge from prior integrations to accelerate mapping.
+* **Mapping Customer EDI to Internal Standards:** EDI Subject Matter Experts (SMEs) interpret the customer’s file descriptions, applying industry standards and expertise to align fields with internal EDI formats.
+* **Issue Resolution Collaboration:** If questions or ambiguities arise, SMEs collaborate with the customer, applying rules and historical decisions to resolve mapping issues.
+* **Specification Generation:** The finalized mapping is documented into a customer-specific EDI mapping specification, ensuring clarity for future maintenance and system implementation.
 
 ### To‑Be (with the platform)
-Customer Request Submission
-Customer uploads sample EDI messages and specs via a portal; files are parsed and normalized automatically.
 
-Leveraging Existing Knowledge
-Platform indexes prior mappings, MIGs, and decisions; similar past integrations are surfaced to bootstrap mapping.
-
-Mapping Customer EDI to Internal Standards
-AI suggests mappings and transformation rules to canonical schemas; SMEs review, adjust, and approve with side‑by‑side diffs and source citations.
-
-Issue Resolution Collaboration
-Guided Q&A reduces back‑and‑forth; decisions are captured as reusable rules with audit trails and effective‑date/version metadata.
-
-Specification Generation
-Customer‑specific mapping specification, transformation artifacts, and test cases are generated automatically.
-
-Validation and Rollout
-Messages are validated against schemas and business rules; integration is promoted to production with monitoring and alerts.
+* **Customer Request Submission:** Customer uploads sample EDI messages and specs via a portal; files are parsed and normalized automatically.
+* **Leveraging Existing Knowledge:** Platform indexes prior mappings, MIGs, and decisions; similar past integrations are surfaced to bootstrap mapping.
+* **Mapping Customer EDI to Internal Standards:** AI suggests mappings and transformation rules to canonical schemas; SMEs review, adjust, and approve with side‑by‑side diffs and source citations.
+* **Security & Governance:** All AI interactions are scrutinized by a security layer that employs "Spotlighting" to separate user data from system instructions, preventing prompt injection.
+* **Issue Resolution Collaboration:** Guided Q&A reduces back‑and‑forth; decisions are captured as reusable rules with audit trails and effective‑date/version metadata.
+* **Specification Generation:** Customer‑specific mapping specification, transformation artifacts, and test cases are generated automatically.
+* **Validation and Rollout:** Messages are validated against schemas and business rules; integration is promoted to production with monitoring and alerts.
 
 ## Pain Point and Challenges
 
@@ -121,6 +107,10 @@ Messages are validated against schemas and business rules; integration is promot
 - Deployment of validated integrations with built-in telemetry.
 - Automated feedback loop that updates the Knowledge Base with new patterns and edge cases.
 
+7) **Enterprise-Grade Security Layer**
+- **Injection Defense:** Implements "Instruction Hierarchy" and "Spotlighting" (e.g., `<<<USER_INPUT>>>`) to prevent both Direct and Indirect Prompt Injection attacks.
+- **Access Control:** Enforces strict path validation and workspace isolation to prevent filesystem traversal and unauthorized data access.
+- **Data Hygiene:** Automatically sanitizes sensitive data (PII, secrets) from LLM outputs and truncates excessive payloads to prevent Denial of Service.
 
 ## Business Value
 
@@ -135,4 +125,4 @@ Messages are validated against schemas and business rules; integration is promot
 - **Cost Per Partner Integration:** Lowered by ~50%.
 - **First-Pass Yield:** Improved to >90% for standard message types.
 
-[<< Back to Index](../index.html) 
+[<< Back to Index](../index.html)

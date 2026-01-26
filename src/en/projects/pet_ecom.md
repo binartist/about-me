@@ -1,5 +1,7 @@
 [<< Back to Index](../index.html) 
 
+_Last updated: <span class="local-time" data-iso="{{ISO_TIMESTAMP}}">{{UPDATED_AT}}</span>_
+
 # Pet Services E-commerce Ecosystem
 
 ## Introduction
@@ -123,4 +125,4 @@ The platform digitizes the entire activity lifecycle:
 - **Data utilization:** Actionable insights for segmentation and personalized marketing driven by centralized data.
 - **User Retention:** Higher engagement through personalized content and seamless service experiences.
 
-[<< Back to Index](../index.html) 
+[<< Back to Index](../index.html)

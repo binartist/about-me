@@ -1,4 +1,6 @@
-[<< Back to Index](../index.html) 
+[<< Back to Index](../index.html)
+
+_Last updated: <span class="local-time" data-iso="{{ISO_TIMESTAMP}}">{{UPDATED_AT}}</span>_ 
 
 # Agentic AI Empowered Experimental DevOps Tool
 
