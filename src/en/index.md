@@ -68,10 +68,9 @@ Core mobile engineer specializing in cross-platform application frameworks. Focu
 - English (Professional Working Proficiency)
 - Japanese (Business Conversational Proficiency)
 
-
 ***
 
-Links
+_Links_
 
 - (\*1) https://binartist.github.io/about-me/en/projects/edi.html
 - (\*2) https://binartist.github.io/about-me/en/projects/aihub.html
