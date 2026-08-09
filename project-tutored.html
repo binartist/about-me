@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tutored (TTD) — Language Learning Product Platform — Joe</title>
+  <link rel="stylesheet" href="site.css" />
+</head>
+<body>
+  <nav class="page-nav"><a href="index.html">← Products</a></nav>
+  <article class="page-card">
+<h1 id="tutored-ttd-language-learning-product-platform">Tutored (TTD) —
+Language Learning Product Platform</h1>
+<p><strong>Period:</strong> July 2026–Present<br />
+<strong>Ownership:</strong> Founder-led personal product<br />
+<strong>Role:</strong> Founder / full-stack and platform owner</p>
+<h2 id="introduction">Introduction</h2>
+<p>Tutored is a multi-surface language-learning product (web BFF/UI,
+Fastify backend API, Flutter mobile) with a production-minded
+single-instance cloud deploy path. The platform emphasizes secure HTTPS
+for microphone-based features, durable on-instance state, and a
+Tokyo-region AWS EC2 footprint for Asian tester latency while calling
+US-hosted AI speech/LLM services.</p>
+<p><strong>Status:</strong> Under active development (invite-style
+testing path); deploy topology documented in the product deploy
+repo.</p>
+<h2 id="architecture-deploy-path">Architecture (deploy path)</h2>
+<pre class="mermaid"><code>flowchart LR
+  Browser --&gt;|HTTPS| Caddy
+  Caddy --&gt;|HTTP| App[SvelteKit adapter-node]
+  App --&gt; API[Fastify API]
+  API --&gt; SQLite[(SQLite on EBS)]
+  API --&gt; Audio[(Audio files on EBS)]
+  API --&gt;|outbound| OpenAI[US AI APIs]</code></pre>
+<h3 id="component-responsibilities">Component responsibilities</h3>
+<ul>
+<li><strong>Caddy gateway:</strong> TLS termination (Let’s Encrypt in
+prod), reverse proxy, ports 80/443<br />
+</li>
+<li><strong>SvelteKit webapp:</strong> BFF/UI (Vite, Tailwind)<br />
+</li>
+<li><strong>Fastify backend:</strong> API, SQLite WAL state, audio/TTS
+cache, practice and chat features<br />
+</li>
+<li><strong>Docker Compose:</strong> <code>api</code> + <code>app</code>
++ <code>gateway</code> with health-ordered startup<br />
+</li>
+<li><strong>AWS EC2:</strong> Single instance in
+<code>ap-northeast-1</code> (Tokyo); EBS-backed paths for DB and audio
+(WAL-safe; not NFS/EFS)</li>
+</ul>
+<h2 id="my-contribution">My contribution</h2>
+<ul>
+<li>Designed production Compose topology (Fastify, SvelteKit, Caddy) for
+AWS EC2<br />
+</li>
+<li>Configured reverse-proxy TLS and host networking assumptions<br />
+</li>
+<li>Specified EBS-backed persistence for SQLite WAL and audio
+assets<br />
+</li>
+<li>Built multi-stage Dockerfiles; owned web stack choices (SvelteKit +
+Vite + Tailwind)<br />
+</li>
+<li>Authored deploy/networking runbooks (Tokyo placement, latency
+trade-offs, restore paths)<br />
+</li>
+<li><strong>Observability direction:</strong> introducing Prometheus and
+Grafana alongside structured logs (not claimed as multi-year production
+fleets)</li>
+</ul>
+<p><strong>Key technologies:</strong> AWS EC2, EBS, VPC/security groups,
+Docker, Compose, Caddy, Let’s Encrypt, Fastify, SvelteKit, Vite,
+Tailwind, TypeScript, SQLite (WAL), Linux, GitHub Actions; adopting
+Prometheus &amp; Grafana</p>
+  </article>
+  <footer class="page-foot"><a href="index.html">All products</a></footer>
+</body>
+</html>

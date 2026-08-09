@@ -1,446 +1,227 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
-<title>index-ja.md</title>
-<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-
-<style>
-/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-
-body {
-	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
-	font-size: var(--vscode-markdown-font-size, 14px);
-	padding: 0 26px;
-	line-height: var(--vscode-markdown-line-height, 22px);
-	word-wrap: break-word;
-}
-
-#code-csp-warning {
-	position: fixed;
-	top: 0;
-	right: 0;
-	color: white;
-	margin: 16px;
-	text-align: center;
-	font-size: 12px;
-	font-family: sans-serif;
-	background-color:#444444;
-	cursor: pointer;
-	padding: 6px;
-	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
-}
-
-#code-csp-warning:hover {
-	text-decoration: none;
-	background-color:#007acc;
-	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
-}
-
-body.scrollBeyondLastLine {
-	margin-bottom: calc(100vh - 22px);
-}
-
-body.showEditorSelection .code-line {
-	position: relative;
-}
-
-body.showEditorSelection .code-active-line:before,
-body.showEditorSelection .code-line:hover:before {
-	content: "";
-	display: block;
-	position: absolute;
-	top: 0;
-	left: -12px;
-	height: 100%;
-}
-
-body.showEditorSelection li.code-active-line:before,
-body.showEditorSelection li.code-line:hover:before {
-	left: -30px;
-}
-
-.vscode-light.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(0, 0, 0, 0.15);
-}
-
-.vscode-light.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(0, 0, 0, 0.40);
-}
-
-.vscode-light.showEditorSelection .code-line .code-line:hover:before {
-	border-left: none;
-}
-
-.vscode-dark.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(255, 255, 255, 0.4);
-}
-
-.vscode-dark.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(255, 255, 255, 0.60);
-}
-
-.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
-	border-left: none;
-}
-
-.vscode-high-contrast.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(255, 160, 0, 0.7);
-}
-
-.vscode-high-contrast.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(255, 160, 0, 1);
-}
-
-.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
-	border-left: none;
-}
-
-img {
-	max-width: 100%;
-	max-height: 100%;
-}
-
-a {
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
-a:focus,
-input:focus,
-select:focus,
-textarea:focus {
-	outline: 1px solid -webkit-focus-ring-color;
-	outline-offset: -1px;
-}
-
-hr {
-	border: 0;
-	height: 2px;
-	border-bottom: 2px solid;
-}
-
-h1 {
-	padding-bottom: 0.3em;
-	line-height: 1.2;
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-}
-
-h1, h2, h3 {
-	font-weight: normal;
-}
-
-table {
-	border-collapse: collapse;
-}
-
-table > thead > tr > th {
-	text-align: left;
-	border-bottom: 1px solid;
-}
-
-table > thead > tr > th,
-table > thead > tr > td,
-table > tbody > tr > th,
-table > tbody > tr > td {
-	padding: 5px 10px;
-}
-
-table > tbody > tr + tr > td {
-	border-top: 1px solid;
-}
-
-blockquote {
-	margin: 0 7px 0 5px;
-	padding: 0 16px 0 10px;
-	border-left-width: 5px;
-	border-left-style: solid;
-}
-
-code {
-	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
-	font-size: 1em;
-	line-height: 1.357em;
-}
-
-body.wordWrap pre {
-	white-space: pre-wrap;
-}
-
-pre:not(.hljs),
-pre.hljs code > div {
-	padding: 16px;
-	border-radius: 3px;
-	overflow: auto;
-}
-
-pre code {
-	color: var(--vscode-editor-foreground);
-	tab-size: 4;
-}
-
-/** Theming */
-
-.vscode-light pre {
-	background-color: rgba(220, 220, 220, 0.4);
-}
-
-.vscode-dark pre {
-	background-color: rgba(10, 10, 10, 0.4);
-}
-
-.vscode-high-contrast pre {
-	background-color: rgb(0, 0, 0);
-}
-
-.vscode-high-contrast h1 {
-	border-color: rgb(0, 0, 0);
-}
-
-.vscode-light table > thead > tr > th {
-	border-color: rgba(0, 0, 0, 0.69);
-}
-
-.vscode-dark table > thead > tr > th {
-	border-color: rgba(255, 255, 255, 0.69);
-}
-
-.vscode-light h1,
-.vscode-light hr,
-.vscode-light table > tbody > tr + tr > td {
-	border-color: rgba(0, 0, 0, 0.18);
-}
-
-.vscode-dark h1,
-.vscode-dark hr,
-.vscode-dark table > tbody > tr + tr > td {
-	border-color: rgba(255, 255, 255, 0.18);
-}
-
-</style>
-
-<style>
-/* Tomorrow Theme */
-/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
-/* Original theme - https://github.com/chriskempson/tomorrow-theme */
-
-/* Tomorrow Comment */
-.hljs-comment,
-.hljs-quote {
-	color: #8e908c;
-}
-
-/* Tomorrow Red */
-.hljs-variable,
-.hljs-template-variable,
-.hljs-tag,
-.hljs-name,
-.hljs-selector-id,
-.hljs-selector-class,
-.hljs-regexp,
-.hljs-deletion {
-	color: #c82829;
-}
-
-/* Tomorrow Orange */
-.hljs-number,
-.hljs-built_in,
-.hljs-builtin-name,
-.hljs-literal,
-.hljs-type,
-.hljs-params,
-.hljs-meta,
-.hljs-link {
-	color: #f5871f;
-}
-
-/* Tomorrow Yellow */
-.hljs-attribute {
-	color: #eab700;
-}
-
-/* Tomorrow Green */
-.hljs-string,
-.hljs-symbol,
-.hljs-bullet,
-.hljs-addition {
-	color: #718c00;
-}
-
-/* Tomorrow Blue */
-.hljs-title,
-.hljs-section {
-	color: #4271ae;
-}
-
-/* Tomorrow Purple */
-.hljs-keyword,
-.hljs-selector-tag {
-	color: #8959a8;
-}
-
-.hljs {
-	display: block;
-	overflow-x: auto;
-	color: #4d4d4c;
-	padding: 0.5em;
-}
-
-.hljs-emphasis {
-	font-style: italic;
-}
-
-.hljs-strong {
-	font-weight: bold;
-}
-</style>
-
-<style>
-/*
- * Markdown PDF CSS
- */
-
- body {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
-	padding: 0 12px;
-}
-
-pre {
-	background-color: #f8f8f8;
-	border: 1px solid #cccccc;
-	border-radius: 3px;
-	overflow-x: auto;
-	white-space: pre-wrap;
-	overflow-wrap: break-word;
-}
-
-pre:not(.hljs) {
-	padding: 23px;
-	line-height: 19px;
-}
-
-blockquote {
-	background: rgba(127, 127, 127, 0.1);
-	border-color: rgba(0, 122, 204, 0.5);
-}
-
-.emoji {
-	height: 1.4em;
-}
-
-code {
-	font-size: 14px;
-	line-height: 19px;
-}
-
-/* for inline code */
-:not(pre):not(.hljs) > code {
-	color: #C9AE75; /* Change the old color so it seems less like an error */
-	font-size: inherit;
-}
-
-/* Page Break : use <div class="page"/> to insert page break
--------------------------------------------------------- */
-.page {
-	page-break-after: always;
-}
-
-</style>
-
-<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>index-ja</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <style>body{font-family:-apple-system,sans-serif;max-width:52rem;margin:2rem auto;padding:0 1.25rem;line-height:1.55}table{border-collapse:collapse;width:100%}th,td{border:1px solid #ddd;padding:0.4rem 0.55rem;text-align:left}th{background:#f6f8fa}</style>
 </head>
 <body>
-  <script>
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
-          ? 'dark'
-          : 'default'
-    });
-  </script>
-<h1 id="%E3%82%B7%E3%83%A5%E3%82%A6">シュウ</h1>
-<p>📍 🔗 <a href="https://www.linkedin.com/in/mi-zhou-46553092/">LinkedIn</a> | 🔗<a href="https://binartist.github.io/about-me/index-ja.html">日本語版履歴書</a> | 🔗 <a href="https://binartist.github.io/about-me/index.html">English CV</a></p>
-<hr>
-<h2 id="%E8%81%B7%E5%8B%99%E8%A6%81%E7%B4%84">職務要約</h2>
-<p>クラウドネイティブなシステム、エンタープライズ統合、そして LLM・ベクトル検索・リアルタイムアプリを組み合わせたエージェント型AIソリューションの設計に、18年以上の経験を持つイノベーティブなITリーダー。国際的なチームにおいて、スケーラブルな eコマース・金融・物流プラットフォームを継続して提供してきた実績。英語・中国語は流暢、日本語は中級。</p>
-<hr>
-<h2 id="%E4%B8%BB%E8%A6%81%E3%82%B9%E3%82%AD%E3%83%AB">主要スキル</h2>
-<p><strong>AI とデータ</strong></p>
-<ul>
-<li>LLM オーケストレーション（LangChain、LangGraph、Salesforce Agentforce）</li>
-<li>pgvector を用いた RAG（検索拡張生成）</li>
-<li>埋め込み、意味類似検索、AI 評価フレームワーク</li>
-<li>金融・EC・物流領域での AI 実装</li>
-</ul>
-<p><strong>フルスタック &amp; DevOps</strong></p>
-<ul>
-<li>Python、Go、TypeScript（Node.js）、Java</li>
-<li>データベース: PostgreSQL、MySQL、MongoDB、Redis</li>
-<li>フロントエンド: React、SvelteKit／モバイル: Flutter</li>
-<li>クラウド &amp; DevOps: Docker、Kubernetes、AWS（EC2、ALB、S3、Aurora、CloudWatch、IAM）、GCP、Azure</li>
-<li>GitHub Actions による CI/CD、AWS CDK、オートメーション向けカスタム エージェント型AIアシスタントの構築</li>
-</ul>
-<p><strong>エンタープライズ統合 &amp; リーダーシップ</strong></p>
-<ul>
-<li>グローバルかつクロスファンクショナルなシステムをエンドツーエンドで提供</li>
-<li>大規模 API とカノニカルモデルの定義・ガバナンス</li>
-<li>クラウドネイティブ化に向けた移行・モダナイゼーションを主導</li>
-<li>異文化のステークホルダー間の橋渡しを行い、ビジネス／技術ロードマップを整合</li>
-</ul>
-<hr>
-<h2 id="%E4%B8%BB%E8%A6%81%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88">主要プロジェクト</h2>
-<ul>
-<li><a href="project-aihub-ja.html">エージェント型 AI SaaS プラットフォーム</a> – マルチテナント RAG ＋ エージェント ワークフロー プラットフォーム</li>
-<li><a href="project-eatease-ja.html">レストラン向け AI システム</a> – QR 注文、デュアル AI アシスタント、多言語オペレーション</li>
-<li><a href="project-deploybot-ja.html">DevOps エージェント ツール</a> – 会話型のデプロイ／診断アシスタント</li>
-<li><a href="project-glob_ecom-ja.html">グローバル EC のローカライゼーション</a> – 現地ミラー、BFF、エッジキャッシング</li>
-<li><a href="project-pet_ecom-ja.html">ペット産業向けコマース基盤</a> – アクティビティのライフサイクルのデジタル化とエンゲージメント</li>
-<li><a href="project-edi-ja.html">EDI オンボーディング システム</a> – AI 支援のスキーママッピングとパートナー加速</li>
-</ul>
-<hr>
-<h2 id="%E8%81%B7%E5%8B%99%E7%B5%8C%E6%AD%B4">職務経歴</h2>
-<p><strong>アプリケーションアーキテクト／フルスタック開発者</strong> – IBM 中国 – <em>現在</em></p>
-<ul>
-<li>グローバル EC の中国ローカライゼーションを主導。パフォーマンス最適化、データレジデンシー順守、地域 UX の適応を実現（<a href="project-glob_ecom-ja.html">プロジェクト</a>）。</li>
-<li>エージェント支援の EDI オンボーディング基盤を設計。AI 駆動のスキーマ正規化により EDIFACT／X12 のカノニカルマッピングを自動化（<a href="project-edi-ja.html">プロジェクト</a>）。</li>
-<li>保険営業向けに Agentforce ワークフローを開発し、データ入力、帳票検証、規制更新を自動化。</li>
-<li>マルチクラウド移行と DevSecOps を推進し、セキュリティ、可観測性、CI/CD の信頼性を向上。</li>
-</ul>
-<p><strong>共同創業者／テクニカルリード</strong> – SaasifyEase（日本） – <em>2023–現在（IBM と兼務・パートタイム）</em></p>
-<ul>
-<li>マルチテナントのエージェント型 AI ＋ RAG SaaS を設計・ローンチ。アクセス制御、ワークスペース分離、ナレッジ取り込み、検索オーケストレーションを実装（<a href="project-aihub-ja.html">プロジェクト</a>）。</li>
-<li>SEC 13F を対象とした金融開示解析パイプラインをエンドツーエンドで構築：取り込み → 正規化 → 埋め込み → ポートフォリオ洞察。</li>
-<li>飲食店向けの AI 駆動の注文・オペレーションシステムを提供。QR 注文、POS タブレット導線、ユーザー／スタッフ両向けの AI アシスタント（<a href="project-eatease-ja.html">プロジェクト</a>）。</li>
-<li>会話でデプロイ操作を行う実験的 DevOps エージェント（DeployBot）を作成 — ビルド、パッチ、再デプロイ、ログ要約（<a href="project-deploybot-ja.html">プロジェクト</a>）。</li>
-<li>ペット産業向けオムニチャネル基盤ローンチ。コンテンツ・アクティビティ・コマースを統合し、AI によるエンゲージメントを実装（<a href="project-pet_ecom-ja.html">プロジェクト</a>）。</li>
-</ul>
-<p><strong>ソフトウェアエンジニア</strong> – Mahong Network Tech – <em>2007–2014</em></p>
-<ul>
-<li>フィーチャーフォンから iOS／Android への移行期に、クロスプラットフォームのモバイルアプリを開発。</li>
-<li>再利用可能なモバイルフレームワークモジュールを提供し、アプリ配信を加速。</li>
-<li>UI 最適化、性能チューニング、反復的なリリースプロセスの改善を担当。</li>
-</ul>
-<hr>
-<h2 id="%E5%AD%A6%E6%AD%B4">学歴</h2>
-<ul>
-<li>電子科学技術（学士） – Huazhong University of Science and Technology、2003〜2007</li>
-</ul>
-<hr>
-<h2 id="%E8%B3%87%E6%A0%BC%E3%83%BB%E8%AA%8D%E5%AE%9A">資格・認定</h2>
-<ul>
-<li>Microsoft 認定: Azure AI Engineer Associate</li>
-<li>Certified Kubernetes Administrator（CKA）</li>
-<li>SAFe® 6 Scrum Master 認定</li>
-<li>JLPT N3（2025）、JLPT N2 受験準備中</li>
-</ul>
-<hr>
-
+<header id="title-block-header">
+<h1 class="title">index-ja</h1>
+</header>
+<h1 id="joe">Joe</h1>
+<p>Application Architect · Full-Stack &amp; AI Engineer · Platform
+Builder</p>
+<hr />
+<h2 id="注意">注意</h2>
+<p><strong>英語版が featured 7 をロック済みです。</strong>
+事実関係は英語版と根拠資料を優先。</p>
+<h2 id="featured-7">Featured (7)</h2>
+<table>
+<thead>
+<tr>
+<th>Project</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="project-tutored.html">Tutored</a></td>
+<td>Founder product</td>
+</tr>
+<tr>
+<td><a href="project-olilo.html">Olilo</a></td>
+<td>Founder product</td>
+</tr>
+<tr>
+<td><a href="project-pet_ecom.html">Mohiguide</a></td>
+<td>Founder product</td>
+</tr>
+<tr>
+<td><a href="project-deploybot.html">DeployBot</a></td>
+<td>Founder tooling</td>
+</tr>
+<tr>
+<td><a href="project-defect-drainer.html">DefectDrainer</a></td>
+<td>Founder tooling</td>
+</tr>
+<tr>
+<td><a href="project-skill-forge.html">Skill Forge</a></td>
+<td>Founder platform</td>
+</tr>
+<tr>
+<td><a href="project-edi.html">MapGenie</a></td>
+<td>Enterprise (IBM client)</td>
+</tr>
+</tbody>
+</table>
+<p><a href="index.html">English index</a></p>
 </body>
 </html>
