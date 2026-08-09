@@ -1,446 +1,586 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>index.md</title>
-<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-
-<style>
-/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-
-body {
-	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
-	font-size: var(--vscode-markdown-font-size, 14px);
-	padding: 0 26px;
-	line-height: var(--vscode-markdown-line-height, 22px);
-	word-wrap: break-word;
-}
-
-#code-csp-warning {
-	position: fixed;
-	top: 0;
-	right: 0;
-	color: white;
-	margin: 16px;
-	text-align: center;
-	font-size: 12px;
-	font-family: sans-serif;
-	background-color:#444444;
-	cursor: pointer;
-	padding: 6px;
-	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
-}
-
-#code-csp-warning:hover {
-	text-decoration: none;
-	background-color:#007acc;
-	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
-}
-
-body.scrollBeyondLastLine {
-	margin-bottom: calc(100vh - 22px);
-}
-
-body.showEditorSelection .code-line {
-	position: relative;
-}
-
-body.showEditorSelection .code-active-line:before,
-body.showEditorSelection .code-line:hover:before {
-	content: "";
-	display: block;
-	position: absolute;
-	top: 0;
-	left: -12px;
-	height: 100%;
-}
-
-body.showEditorSelection li.code-active-line:before,
-body.showEditorSelection li.code-line:hover:before {
-	left: -30px;
-}
-
-.vscode-light.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(0, 0, 0, 0.15);
-}
-
-.vscode-light.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(0, 0, 0, 0.40);
-}
-
-.vscode-light.showEditorSelection .code-line .code-line:hover:before {
-	border-left: none;
-}
-
-.vscode-dark.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(255, 255, 255, 0.4);
-}
-
-.vscode-dark.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(255, 255, 255, 0.60);
-}
-
-.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
-	border-left: none;
-}
-
-.vscode-high-contrast.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(255, 160, 0, 0.7);
-}
-
-.vscode-high-contrast.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(255, 160, 0, 1);
-}
-
-.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
-	border-left: none;
-}
-
-img {
-	max-width: 100%;
-	max-height: 100%;
-}
-
-a {
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
-a:focus,
-input:focus,
-select:focus,
-textarea:focus {
-	outline: 1px solid -webkit-focus-ring-color;
-	outline-offset: -1px;
-}
-
-hr {
-	border: 0;
-	height: 2px;
-	border-bottom: 2px solid;
-}
-
-h1 {
-	padding-bottom: 0.3em;
-	line-height: 1.2;
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-}
-
-h1, h2, h3 {
-	font-weight: normal;
-}
-
-table {
-	border-collapse: collapse;
-}
-
-table > thead > tr > th {
-	text-align: left;
-	border-bottom: 1px solid;
-}
-
-table > thead > tr > th,
-table > thead > tr > td,
-table > tbody > tr > th,
-table > tbody > tr > td {
-	padding: 5px 10px;
-}
-
-table > tbody > tr + tr > td {
-	border-top: 1px solid;
-}
-
-blockquote {
-	margin: 0 7px 0 5px;
-	padding: 0 16px 0 10px;
-	border-left-width: 5px;
-	border-left-style: solid;
-}
-
-code {
-	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
-	font-size: 1em;
-	line-height: 1.357em;
-}
-
-body.wordWrap pre {
-	white-space: pre-wrap;
-}
-
-pre:not(.hljs),
-pre.hljs code > div {
-	padding: 16px;
-	border-radius: 3px;
-	overflow: auto;
-}
-
-pre code {
-	color: var(--vscode-editor-foreground);
-	tab-size: 4;
-}
-
-/** Theming */
-
-.vscode-light pre {
-	background-color: rgba(220, 220, 220, 0.4);
-}
-
-.vscode-dark pre {
-	background-color: rgba(10, 10, 10, 0.4);
-}
-
-.vscode-high-contrast pre {
-	background-color: rgb(0, 0, 0);
-}
-
-.vscode-high-contrast h1 {
-	border-color: rgb(0, 0, 0);
-}
-
-.vscode-light table > thead > tr > th {
-	border-color: rgba(0, 0, 0, 0.69);
-}
-
-.vscode-dark table > thead > tr > th {
-	border-color: rgba(255, 255, 255, 0.69);
-}
-
-.vscode-light h1,
-.vscode-light hr,
-.vscode-light table > tbody > tr + tr > td {
-	border-color: rgba(0, 0, 0, 0.18);
-}
-
-.vscode-dark h1,
-.vscode-dark hr,
-.vscode-dark table > tbody > tr + tr > td {
-	border-color: rgba(255, 255, 255, 0.18);
-}
-
-</style>
-
-<style>
-/* Tomorrow Theme */
-/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
-/* Original theme - https://github.com/chriskempson/tomorrow-theme */
-
-/* Tomorrow Comment */
-.hljs-comment,
-.hljs-quote {
-	color: #8e908c;
-}
-
-/* Tomorrow Red */
-.hljs-variable,
-.hljs-template-variable,
-.hljs-tag,
-.hljs-name,
-.hljs-selector-id,
-.hljs-selector-class,
-.hljs-regexp,
-.hljs-deletion {
-	color: #c82829;
-}
-
-/* Tomorrow Orange */
-.hljs-number,
-.hljs-built_in,
-.hljs-builtin-name,
-.hljs-literal,
-.hljs-type,
-.hljs-params,
-.hljs-meta,
-.hljs-link {
-	color: #f5871f;
-}
-
-/* Tomorrow Yellow */
-.hljs-attribute {
-	color: #eab700;
-}
-
-/* Tomorrow Green */
-.hljs-string,
-.hljs-symbol,
-.hljs-bullet,
-.hljs-addition {
-	color: #718c00;
-}
-
-/* Tomorrow Blue */
-.hljs-title,
-.hljs-section {
-	color: #4271ae;
-}
-
-/* Tomorrow Purple */
-.hljs-keyword,
-.hljs-selector-tag {
-	color: #8959a8;
-}
-
-.hljs {
-	display: block;
-	overflow-x: auto;
-	color: #4d4d4c;
-	padding: 0.5em;
-}
-
-.hljs-emphasis {
-	font-style: italic;
-}
-
-.hljs-strong {
-	font-weight: bold;
-}
-</style>
-
-<style>
-/*
- * Markdown PDF CSS
- */
-
- body {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
-	padding: 0 12px;
-}
-
-pre {
-	background-color: #f8f8f8;
-	border: 1px solid #cccccc;
-	border-radius: 3px;
-	overflow-x: auto;
-	white-space: pre-wrap;
-	overflow-wrap: break-word;
-}
-
-pre:not(.hljs) {
-	padding: 23px;
-	line-height: 19px;
-}
-
-blockquote {
-	background: rgba(127, 127, 127, 0.1);
-	border-color: rgba(0, 122, 204, 0.5);
-}
-
-.emoji {
-	height: 1.4em;
-}
-
-code {
-	font-size: 14px;
-	line-height: 19px;
-}
-
-/* for inline code */
-:not(pre):not(.hljs) > code {
-	color: #C9AE75; /* Change the old color so it seems less like an error */
-	font-size: inherit;
-}
-
-/* Page Break : use <div class="page"/> to insert page break
--------------------------------------------------------- */
-.page {
-	page-break-after: always;
-}
-
-</style>
-
-<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Joe — Products</title>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --surface: #fff;
+      --text: #141414;
+      --muted: #5c5c5c;
+      --border: #e8e8e8;
+      --accent: #0b57d0;
+      --tag-bg: #f0f2f5;
+      --radius: 12px;
+      --shadow: 0 1px 2px rgba(0,0,0,.04), 0 4px 16px rgba(0,0,0,.04);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+    }
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: .75rem 1.5rem;
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.35rem;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+    }
+    header .role {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+    header nav a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: .9rem;
+      margin-left: 1rem;
+    }
+    header nav a:hover { text-decoration: underline; }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-bottom: 1rem;
+    }
+    .tab {
+      appearance: none;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      border-radius: 999px;
+      padding: .45rem .95rem;
+      font-size: .875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background .15s, border-color .15s, color .15s;
+    }
+    .tab:hover { border-color: #ccc; }
+    .tab[aria-selected="true"] {
+      background: var(--text);
+      border-color: var(--text);
+      color: #fff;
+    }
+    .tab .count {
+      opacity: .65;
+      font-weight: 400;
+      margin-left: .25rem;
+    }
+
+    .filters {
+      display: flex;
+      flex-direction: column;
+      gap: .55rem;
+      margin-bottom: 1.25rem;
+    }
+    .filter-group {
+      display: grid;
+      grid-template-columns: 5.75rem minmax(0, 1fr) auto;
+      align-items: start;
+      column-gap: .5rem;
+      row-gap: .35rem;
+    }
+    .filter-group-label {
+      grid-column: 1;
+      padding-top: .28rem;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+    .filter-group-label.domain { color: #5b2b9e; }
+    .filter-group-label.stack { color: #174ea6; }
+    .filter-group-label.lang { color: #1b5e20; }
+    .filter-group-chips {
+      grid-column: 2;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .28rem;
+      min-width: 0;
+      /* one line when collapsed */
+      max-height: 1.55rem;
+      overflow: hidden;
+    }
+    .filter-group.open .filter-group-chips {
+      max-height: none;
+      overflow: visible;
+    }
+    .filter-group-more {
+      grid-column: 3;
+      appearance: none;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-size: .7rem;
+      font-weight: 550;
+      cursor: pointer;
+      padding: .2rem .15rem;
+      white-space: nowrap;
+      align-self: start;
+    }
+    .filter-group-more:hover { color: var(--text); }
+    .filter-group-more.hidden { visibility: hidden; pointer-events: none; }
+    .chip {
+      appearance: none;
+      border-radius: 999px;
+      padding: .18rem .5rem;
+      font-size: .7rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--muted);
+      line-height: 1.25;
+    }
+    .chip:hover {
+      color: var(--text);
+      border-color: #ccc;
+      background: #f7f7f7;
+    }
+    /* selected: type colors */
+    .chip.domain[aria-pressed="true"] {
+      background: #7b1fa2;
+      border-color: #6a1b9a;
+      color: #fff;
+      font-weight: 600;
+    }
+    .chip.stack[aria-pressed="true"] {
+      background: #1967d2;
+      border-color: #174ea6;
+      color: #fff;
+      font-weight: 600;
+    }
+    .chip.lang[aria-pressed="true"] {
+      background: #2e7d32;
+      border-color: #1b5e20;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    .card {
+      display: flex;
+      flex-direction: column;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.15rem 1.2rem 1.2rem;
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: inherit;
+      transition: border-color .15s, transform .15s, box-shadow .15s;
+      min-height: 11.5rem;
+    }
+    .card:hover {
+      border-color: #c8d4ea;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(11,87,208,.08);
+    }
+    .card.hidden { display: none; }
+    .card h2 {
+      margin: 0 0 .35rem;
+      font-size: 1.05rem;
+      font-weight: 650;
+      letter-spacing: -0.01em;
+    }
+    .card .blurb {
+      margin: 0 0 .85rem;
+      color: var(--muted);
+      font-size: .88rem;
+      flex: 1;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .3rem;
+    }
+    .tag {
+      font-size: .68rem;
+      font-weight: 500;
+      padding: .15rem .4rem;
+      border-radius: 5px;
+      white-space: nowrap;
+    }
+    .tag.domain {
+      background: #f3eefc;
+      color: #5b2b9e;
+    }
+    .tag.stack {
+      background: #e8f0fe;
+      color: #174ea6;
+    }
+    .tag.lang {
+      background: #e8f5e9;
+      color: #1b5e20;
+    }
+    .meta {
+      margin-top: .75rem;
+      font-size: .72rem;
+      color: #888;
+    }
+    .empty {
+      display: none;
+      color: var(--muted);
+      font-size: .95rem;
+      padding: 2rem 0;
+    }
+    .empty.show { display: block; }
+    footer {
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: .8rem;
+      color: #999;
+    }
+  </style>
 </head>
 <body>
-  <script>
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
-          ? 'dark'
-          : 'default'
-    });
-  </script>
-<h1 id="joe">Joe</h1>
-<h2 id="%F0%9F%93%8D-%F0%9F%94%97-linkedin--%F0%9F%94%97-english-cv--%F0%9F%94%97%E6%97%A5%E6%9C%AC%E8%AA%9E%E7%89%88%E5%B1%A5%E6%AD%B4%E6%9B%B8">📍 🔗 <a href="https://www.linkedin.com/in/mi-zhou-46553092/">LinkedIn</a> | 🔗 <a href="https://binartist.github.io/about-me/index.html">English CV</a> | 🔗
-<a href="https://binartist.github.io/about-me/index-ja.html">日本語版履歴書</a></h2>
-<h2 id="professional-summary">Professional Summary</h2>
-<p>Innovative IT leader with 18+ years designing cloud-native systems, enterprise integrations, and agentic AI solutions that combine LLMs, vector search, and real‑time apps. Proven track record delivering scalable e‑commerce, finance, and logistics platforms across international teams; fluent in English and Chinese, intermediate in Japanese.</p>
-<hr>
-<h2 id="core-skills">Core Skills</h2>
-<p><strong>AI &amp; Data</strong></p>
-<ul>
-<li>LLM orchestration (LangChain, LangGraph, Salesforce Agentforce)</li>
-<li>Retrieval-Augmented Generation (RAG) with pgvector</li>
-<li>Embeddings, semantic similarity search, AI evaluation frameworks</li>
-<li>Applied AI in finance, e-commerce, and logistics</li>
-</ul>
-<p><strong>Fullstack &amp; DevOps</strong></p>
-<ul>
-<li>Python, Go, TypeScript (Node.js), Java</li>
-<li>Databases: PostgreSQL, MySQL, MongoDB, Redis</li>
-<li>Frontend: React, SvelteKit; Mobile: Flutter</li>
-<li>Cloud &amp; DevOps: Docker, Kubernetes, AWS (EC2, ALB, S3, Aurora, CloudWatch, IAM), GCP, Azure</li>
-<li>CI/CD with GitHub Actions; AWS CDK; built custom agentic AI assistants for automation</li>
-</ul>
-<p><strong>Enterprise Integration &amp; Leadership</strong></p>
-<ul>
-<li>Delivered global, cross-functional systems end-to-end</li>
-<li>Defined and governed large-scale APIs and canonical models</li>
-<li>Led migrations and modernization programs to cloud-native platforms</li>
-<li>Bridged cross-cultural stakeholders to align business and technical roadmaps</li>
-</ul>
-<hr>
-<h2 id="selected-projects">Selected Projects</h2>
-<ul>
-<li><a href="project-aihub.html">Agentic AI SaaS Platform</a> – multi-tenant RAG + agent workflow platform</li>
-<li><a href="project-eatease.html">Restaurant AI System</a> – QR ordering, dual AI assistants, multilingual ops</li>
-<li><a href="project-deploybot.html">DevOps Agent Tool</a> – conversational deployment &amp; diagnostics assistant</li>
-<li><a href="project-glob_ecom.html">Global E-commerce Localization</a> – in-country mirrors, BFF, edge caching</li>
-<li><a href="project-pet_ecom.html">Pet Industry Commerce Platform</a> – activity lifecycle digitization and engagement</li>
-<li><a href="project-edi.html">EDI Onboarding System</a> – AI-assisted schema mapping and partner acceleration</li>
-</ul>
-<hr>
-<h2 id="professional-experience">Professional Experience</h2>
-<p><strong>Application Architect &amp; Fullstack Developer</strong> – IBM China – <em>Present</em></p>
-<ul>
-<li>Led <strong>China localization for global e-commerce platforms</strong>, optimizing performance, data residency compliance, and regional UX adaptations (<a href="project-glob_ecom.html">project link</a>).</li>
-<li>Designed an <strong>agent-assisted EDI onboarding platform</strong>, automating canonical mapping for EDIFACT/X12 via AI-driven schema normalization (<a href="project-edi.html">project link</a>).</li>
-<li>Developed <strong>Agentforce workflows</strong> enabling insurance representatives to automate data capture, form validation, and regulatory updates.</li>
-<li>Directed <strong>multi-cloud migrations</strong> and implemented <strong>DevSecOps practices</strong>, improving security, observability, and CI/CD pipeline reliability.</li>
-</ul>
-<p><strong>Co-Founder / Technical Lead</strong> – SaasifyEase (Japan) – <em>2023–Present (Part-time, concurrent with IBM)</em></p>
-<ul>
-<li>Architected and launched a <strong>multi-tenant Agentic AI + RAG SaaS platform</strong> with access control, workspace isolation, knowledge ingestion, and retrieval orchestration (<a href="project-aihub.html">project link</a>).</li>
-<li>Built an end-to-end <strong>financial filings analytics pipeline</strong> (SEC 13F): ingestion → normalization → embeddings → portfolio insights.</li>
-<li>Delivered an <strong>AI-driven restaurant ordering &amp; operations system</strong>, integrating QR ordering, POS tablet flows, and dual AI assistants for users and staff (<a href="project-eatease.html">project link</a>).</li>
-<li>Created an experimental <strong>DevOps AI agent (DeployBot)</strong> enabling natural-language deployment operations — build, patch, redeploy, and log summaries (<a href="project-deploybot.html">project link</a>).</li>
-<li>Launched a <strong>pet-industry omni-channel platform</strong>, unifying content, activities, and commerce with AI-powered engagement tools (<a href="project-pet_ecom.html">project link</a>).</li>
-</ul>
-<p><strong>Software Engineer</strong> – Mahong Network Tech – <em>2007–2014</em></p>
-<ul>
-<li>Built cross-platform mobile applications during the transition from feature phones to iOS/Android.</li>
-<li>Contributed reusable mobile framework modules to accelerate application delivery.</li>
-<li>Specialized in <strong>UI optimization</strong>, <strong>performance tuning</strong>, and iterative release process improvements.</li>
-</ul>
-<hr>
-<h2 id="education">Education</h2>
-<ul>
-<li>Bachelor Degree in Electronics of Science and Technology – Huazhong University of Science and Technologys, 2003~2007</li>
-</ul>
-<hr>
-<h2 id="certifications">Certifications</h2>
-<ul>
-<li>Microsoft Certified: Azure AI Engineer Associate</li>
-<li>Certified Kubernetes Administrator (CKA)</li>
-<li>Certified SAFe® 6 Scrum Master</li>
-<li>JLPT N3 (2025), preparing for JLPT N2</li>
-</ul>
-<hr>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Joe</h1>
+        <div class="role">Products · tooling · enterprise delivery</div>
+      </div>
+      <nav>
+        <a href="https://www.linkedin.com/in/mi-zhou-46553092/" rel="noopener">LinkedIn</a>
+      </nav>
+    </header>
 
+    <div class="tabs" role="tablist" aria-label="Product categories">
+      <button type="button" class="tab" role="tab" data-tab="all" aria-selected="true">All <span class="count" data-count-for="all"></span></button>
+      <button type="button" class="tab" role="tab" data-tab="products" aria-selected="false">Products <span class="count" data-count-for="products"></span></button>
+      <button type="button" class="tab" role="tab" data-tab="tooling" aria-selected="false">Tooling <span class="count" data-count-for="tooling"></span></button>
+      <button type="button" class="tab" role="tab" data-tab="enterprise" aria-selected="false">Enterprise <span class="count" data-count-for="enterprise"></span></button>
+    </div>
+
+    <div class="filters" id="attr-filters" aria-label="Filter by domain, stack, or language"></div>
+
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty">No products match this filter.</p>
+
+    <footer>Product-focused catalog · detail pages linked from each card</footer>
+  </div>
+
+  <script>
+    /**
+     * Tag model (exactly 3 types):
+     * - languages: programming languages (Go, TypeScript, Python, …)
+     * - stack: frameworks / platforms / infra (FastAPI, Flutter, AWS, …)
+     * - domain: business domain (education, e-commerce, DevOps, finance, …)
+     * Filter chips are grouped: Language · Tech stack · Domain.
+     */
+    const PRODUCTS = [
+      {
+        id: "tutored",
+        name: "Tutored",
+        href: "project-tutored.html",
+        blurb: "Language-learning product suite — web, mobile, and production-minded AWS deploy.",
+        tab: "products",
+        languages: ["TypeScript", "Dart"],
+        stack: ["SvelteKit", "Fastify", "Flutter", "AWS", "Docker", "Caddy"],
+        domain: ["Education", "AI"],
+        meta: "Founder · 2026–"
+      },
+      {
+        id: "olilo",
+        name: "Olilo",
+        href: "project-olilo.html",
+        blurb: "SEC 13F (AI13F) filings to portfolio analytics — ETL, API, charts, LLM insight reports.",
+        tab: "products",
+        languages: ["Python", "TypeScript"],
+        stack: ["FastAPI", "SvelteKit", "PostgreSQL", "Docker"],
+        domain: ["Finance", "Data", "AI"],
+        meta: "Founder · 2026–"
+      },
+      {
+        id: "mohiguide",
+        name: "Mohiguide",
+        href: "project-pet_ecom.html",
+        blurb: "Pet-services O2O platform. Multi-surface commerce; planned GenAI enrichment (AIHub lineage).",
+        tab: "products",
+        languages: ["Go", "Dart", "TypeScript"],
+        stack: ["Flutter", "SvelteKit", "GraphQL", "React", "AWS"],
+        domain: ["E-commerce", "AI"],
+        meta: "Founder · 2022–"
+      },
+      {
+        id: "deploybot",
+        name: "DeployBot",
+        href: "project-deploybot.html",
+        blurb: "Agentic DevOps workflows for container build, deploy, and diagnostics.",
+        tab: "tooling",
+        languages: ["TypeScript"],
+        stack: ["Docker", "Kubernetes", "CI/CD"],
+        domain: ["DevOps", "AI"],
+        meta: "Founder · open-source · 2024–"
+      },
+      {
+        id: "defect-drainer",
+        name: "DefectDrainer",
+        href: "project-defect-drainer.html",
+        blurb: "Defect inventory channel — capture evidence first, batch-fix later.",
+        tab: "tooling",
+        languages: ["TypeScript"],
+        stack: ["Fastify", "React"],
+        domain: ["Quality", "DevOps"],
+        meta: "Founder · open-source · active/planned"
+      },
+      {
+        id: "skill-forge",
+        name: "Skill Forge",
+        href: "project-skill-forge.html",
+        blurb: "Registry and sync for agent skills, instructions, and subagents.",
+        tab: "tooling",
+        languages: ["JavaScript", "TypeScript"],
+        stack: ["Node.js", "CLI"],
+        domain: ["Agent tooling", "Developer platform"],
+        meta: "Founder · open-source · developer platform"
+      },
+      {
+        id: "mapgenie",
+        name: "MapGenie",
+        href: "project-edi.html",
+        blurb: "AI-assisted EDI mapping & logistics automation for Maersk — production go-live and awards.",
+        tab: "enterprise",
+        languages: ["Python", "TypeScript"],
+        stack: ["FastAPI", "React", "Azure", "AKS", "RAG"],
+        domain: ["Logistics", "EDI", "AI"],
+        meta: "IBM client delivery · 2025–2026"
+      },
+      {
+        id: "kone",
+        name: "KONE Connected Services",
+        href: "project-kone.html",
+        blurb: "Watson IoT → AWS IoT re-platform — fleet connectivity, telemetry ops, DevOps/CI/CD for predictive maintenance at scale.",
+        tab: "enterprise",
+        languages: ["Java", "Python"],
+        stack: ["AWS IoT Core", "S3", "CI/CD"],
+        domain: ["IoT", "Cloud operations", "DevOps"],
+        meta: "IBM client delivery · 2020–2021"
+      },
+      {
+        id: "glob-ecom",
+        name: "Global e-commerce",
+        href: "project-glob_ecom.html",
+        blurb: "China-market mobile/web localization for Oriflame — regional UX with global systems of record.",
+        tab: "enterprise",
+        languages: ["Swift", "Kotlin", "Java"],
+        stack: ["BFF", "CDN", "Mobile"],
+        domain: ["E-commerce", "Localization"],
+        meta: "IBM client delivery · 2017–2019"
+      }
+    ];
+
+    let activeTab = "all";
+    /** Selected filter labels (AND). Any match against languages | stack | domain. */
+    let activeFilters = new Set();
+
+    const grid = document.getElementById("grid");
+    const empty = document.getElementById("empty");
+    const filtersEl = document.getElementById("attr-filters");
+
+    const FILTER_GROUPS = [
+      { key: "domain", label: "Domain", chipClass: "domain" },
+      { key: "stack", label: "Tech stack", chipClass: "stack" },
+      { key: "languages", label: "Language", chipClass: "lang" }
+    ];
+
+    function collectUsed(key) {
+      const used = new Set();
+      PRODUCTS.forEach(p => (p[key] || []).forEach(t => used.add(t)));
+      return [...used].sort((a, b) => a.localeCompare(b));
+    }
+
+    function productHasLabel(p, label) {
+      return p.languages.includes(label) || p.stack.includes(label) || p.domain.includes(label);
+    }
+
+    /** Expanded when tags need more than one line. */
+    const groupOpen = { domain: false, stack: false, languages: false };
+
+    function renderFilters() {
+      filtersEl.innerHTML = "";
+      FILTER_GROUPS.forEach(group => {
+        const labels = collectUsed(group.key);
+        if (!labels.length) return;
+
+        const open = !!groupOpen[group.key];
+        const row = document.createElement("div");
+        row.className = "filter-group" + (open ? " open" : "");
+        row.dataset.key = group.key;
+        row.setAttribute("role", "group");
+        row.setAttribute("aria-label", group.label);
+
+        const title = document.createElement("span");
+        title.className = `filter-group-label ${group.chipClass}`;
+        title.textContent = group.label;
+
+        const chips = document.createElement("div");
+        chips.className = "filter-group-chips";
+
+        labels.forEach(label => {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = `chip ${group.chipClass}`;
+          b.textContent = label;
+          b.setAttribute("aria-pressed", activeFilters.has(label) ? "true" : "false");
+          b.addEventListener("click", () => {
+            if (activeFilters.has(label)) activeFilters.delete(label);
+            else activeFilters.add(label);
+            b.setAttribute("aria-pressed", activeFilters.has(label) ? "true" : "false");
+            applyFilters();
+          });
+          chips.appendChild(b);
+        });
+
+        const more = document.createElement("button");
+        more.type = "button";
+        more.className = "filter-group-more hidden";
+        more.setAttribute("aria-expanded", open ? "true" : "false");
+        more.textContent = open ? "Less" : "More";
+        more.addEventListener("click", () => {
+          groupOpen[group.key] = !groupOpen[group.key];
+          renderFilters();
+        });
+
+        row.appendChild(title);
+        row.appendChild(chips);
+        row.appendChild(more);
+        filtersEl.appendChild(row);
+      });
+
+      // After layout: show More only when chips wrap past one line
+      requestAnimationFrame(() => {
+        filtersEl.querySelectorAll(".filter-group").forEach(row => {
+          const chips = row.querySelector(".filter-group-chips");
+          const more = row.querySelector(".filter-group-more");
+          if (!chips || !more) return;
+          const wasOpen = row.classList.contains("open");
+          // measure collapsed height
+          row.classList.remove("open");
+          const overflows = chips.scrollHeight > chips.clientHeight + 1;
+          if (wasOpen) row.classList.add("open");
+          if (overflows || wasOpen) {
+            more.classList.remove("hidden");
+            more.textContent = wasOpen ? "Less" : "More";
+            more.setAttribute("aria-expanded", wasOpen ? "true" : "false");
+          } else {
+            more.classList.add("hidden");
+          }
+        });
+      });
+    }
+
+    window.addEventListener("resize", () => {
+      // re-check overflow without resetting open state
+      requestAnimationFrame(() => {
+        filtersEl.querySelectorAll(".filter-group").forEach(row => {
+          const chips = row.querySelector(".filter-group-chips");
+          const more = row.querySelector(".filter-group-more");
+          if (!chips || !more) return;
+          const wasOpen = row.classList.contains("open");
+          row.classList.remove("open");
+          const overflows = chips.scrollHeight > chips.clientHeight + 1;
+          if (wasOpen) row.classList.add("open");
+          if (overflows || wasOpen) {
+            more.classList.remove("hidden");
+            more.textContent = wasOpen ? "Less" : "More";
+          } else {
+            more.classList.add("hidden");
+            const key = row.dataset.key;
+            if (key) groupOpen[key] = false;
+          }
+        });
+      });
+    });
+
+    function matches(p) {
+      if (activeTab !== "all" && p.tab !== activeTab) return false;
+      if (activeFilters.size === 0) return true;
+      for (const label of activeFilters) {
+        if (!productHasLabel(p, label)) return false;
+      }
+      return true;
+    }
+
+    function renderCards() {
+      grid.innerHTML = "";
+      let visible = 0;
+      PRODUCTS.forEach(p => {
+        const show = matches(p);
+        const a = document.createElement("a");
+        a.className = "card" + (show ? "" : " hidden");
+        a.href = p.href;
+        a.dataset.tab = p.tab;
+        if (show) visible++;
+
+        const tagsHtml = [
+          ...p.domain.map(t => `<span class="tag domain">${t}</span>`),
+          ...p.stack.map(t => `<span class="tag stack">${t}</span>`),
+          ...p.languages.map(t => `<span class="tag lang">${t}</span>`)
+        ].join("");
+
+        a.innerHTML = `
+          <h2>${p.name}</h2>
+          <p class="blurb">${p.blurb}</p>
+          <div class="tags">${tagsHtml}</div>
+          <div class="meta">${p.meta}</div>
+        `;
+        grid.appendChild(a);
+      });
+      empty.classList.toggle("show", visible === 0);
+
+      ["all", "products", "tooling", "enterprise"].forEach(tab => {
+        const n = PRODUCTS.filter(p => {
+          if (tab !== "all" && p.tab !== tab) return false;
+          if (activeFilters.size === 0) return true;
+          for (const label of activeFilters) if (!productHasLabel(p, label)) return false;
+          return true;
+        }).length;
+        const el = document.querySelector(`[data-count-for="${tab}"]`);
+        if (el) el.textContent = `(${n})`;
+      });
+    }
+
+    function applyFilters() {
+      renderCards();
+    }
+
+    document.querySelectorAll(".tab").forEach(tab => {
+      tab.addEventListener("click", () => {
+        activeTab = tab.dataset.tab;
+        document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", t === tab ? "true" : "false"));
+        applyFilters();
+      });
+    });
+
+    renderFilters();
+    renderCards();
+  </script>
 </body>
 </html>

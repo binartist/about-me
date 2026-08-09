@@ -1,546 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>project-eatease.md</title>
-<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-
-<style>
-/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-
-body {
-	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
-	font-size: var(--vscode-markdown-font-size, 14px);
-	padding: 0 26px;
-	line-height: var(--vscode-markdown-line-height, 22px);
-	word-wrap: break-word;
-}
-
-#code-csp-warning {
-	position: fixed;
-	top: 0;
-	right: 0;
-	color: white;
-	margin: 16px;
-	text-align: center;
-	font-size: 12px;
-	font-family: sans-serif;
-	background-color:#444444;
-	cursor: pointer;
-	padding: 6px;
-	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
-}
-
-#code-csp-warning:hover {
-	text-decoration: none;
-	background-color:#007acc;
-	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
-}
-
-body.scrollBeyondLastLine {
-	margin-bottom: calc(100vh - 22px);
-}
-
-body.showEditorSelection .code-line {
-	position: relative;
-}
-
-body.showEditorSelection .code-active-line:before,
-body.showEditorSelection .code-line:hover:before {
-	content: "";
-	display: block;
-	position: absolute;
-	top: 0;
-	left: -12px;
-	height: 100%;
-}
-
-body.showEditorSelection li.code-active-line:before,
-body.showEditorSelection li.code-line:hover:before {
-	left: -30px;
-}
-
-.vscode-light.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(0, 0, 0, 0.15);
-}
-
-.vscode-light.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(0, 0, 0, 0.40);
-}
-
-.vscode-light.showEditorSelection .code-line .code-line:hover:before {
-	border-left: none;
-}
-
-.vscode-dark.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(255, 255, 255, 0.4);
-}
-
-.vscode-dark.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(255, 255, 255, 0.60);
-}
-
-.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
-	border-left: none;
-}
-
-.vscode-high-contrast.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(255, 160, 0, 0.7);
-}
-
-.vscode-high-contrast.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(255, 160, 0, 1);
-}
-
-.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
-	border-left: none;
-}
-
-img {
-	max-width: 100%;
-	max-height: 100%;
-}
-
-a {
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
-a:focus,
-input:focus,
-select:focus,
-textarea:focus {
-	outline: 1px solid -webkit-focus-ring-color;
-	outline-offset: -1px;
-}
-
-hr {
-	border: 0;
-	height: 2px;
-	border-bottom: 2px solid;
-}
-
-h1 {
-	padding-bottom: 0.3em;
-	line-height: 1.2;
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-}
-
-h1, h2, h3 {
-	font-weight: normal;
-}
-
-table {
-	border-collapse: collapse;
-}
-
-table > thead > tr > th {
-	text-align: left;
-	border-bottom: 1px solid;
-}
-
-table > thead > tr > th,
-table > thead > tr > td,
-table > tbody > tr > th,
-table > tbody > tr > td {
-	padding: 5px 10px;
-}
-
-table > tbody > tr + tr > td {
-	border-top: 1px solid;
-}
-
-blockquote {
-	margin: 0 7px 0 5px;
-	padding: 0 16px 0 10px;
-	border-left-width: 5px;
-	border-left-style: solid;
-}
-
-code {
-	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
-	font-size: 1em;
-	line-height: 1.357em;
-}
-
-body.wordWrap pre {
-	white-space: pre-wrap;
-}
-
-pre:not(.hljs),
-pre.hljs code > div {
-	padding: 16px;
-	border-radius: 3px;
-	overflow: auto;
-}
-
-pre code {
-	color: var(--vscode-editor-foreground);
-	tab-size: 4;
-}
-
-/** Theming */
-
-.vscode-light pre {
-	background-color: rgba(220, 220, 220, 0.4);
-}
-
-.vscode-dark pre {
-	background-color: rgba(10, 10, 10, 0.4);
-}
-
-.vscode-high-contrast pre {
-	background-color: rgb(0, 0, 0);
-}
-
-.vscode-high-contrast h1 {
-	border-color: rgb(0, 0, 0);
-}
-
-.vscode-light table > thead > tr > th {
-	border-color: rgba(0, 0, 0, 0.69);
-}
-
-.vscode-dark table > thead > tr > th {
-	border-color: rgba(255, 255, 255, 0.69);
-}
-
-.vscode-light h1,
-.vscode-light hr,
-.vscode-light table > tbody > tr + tr > td {
-	border-color: rgba(0, 0, 0, 0.18);
-}
-
-.vscode-dark h1,
-.vscode-dark hr,
-.vscode-dark table > tbody > tr + tr > td {
-	border-color: rgba(255, 255, 255, 0.18);
-}
-
-</style>
-
-<style>
-/* Tomorrow Theme */
-/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
-/* Original theme - https://github.com/chriskempson/tomorrow-theme */
-
-/* Tomorrow Comment */
-.hljs-comment,
-.hljs-quote {
-	color: #8e908c;
-}
-
-/* Tomorrow Red */
-.hljs-variable,
-.hljs-template-variable,
-.hljs-tag,
-.hljs-name,
-.hljs-selector-id,
-.hljs-selector-class,
-.hljs-regexp,
-.hljs-deletion {
-	color: #c82829;
-}
-
-/* Tomorrow Orange */
-.hljs-number,
-.hljs-built_in,
-.hljs-builtin-name,
-.hljs-literal,
-.hljs-type,
-.hljs-params,
-.hljs-meta,
-.hljs-link {
-	color: #f5871f;
-}
-
-/* Tomorrow Yellow */
-.hljs-attribute {
-	color: #eab700;
-}
-
-/* Tomorrow Green */
-.hljs-string,
-.hljs-symbol,
-.hljs-bullet,
-.hljs-addition {
-	color: #718c00;
-}
-
-/* Tomorrow Blue */
-.hljs-title,
-.hljs-section {
-	color: #4271ae;
-}
-
-/* Tomorrow Purple */
-.hljs-keyword,
-.hljs-selector-tag {
-	color: #8959a8;
-}
-
-.hljs {
-	display: block;
-	overflow-x: auto;
-	color: #4d4d4c;
-	padding: 0.5em;
-}
-
-.hljs-emphasis {
-	font-style: italic;
-}
-
-.hljs-strong {
-	font-weight: bold;
-}
-</style>
-
-<style>
-/*
- * Markdown PDF CSS
- */
-
- body {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
-	padding: 0 12px;
-}
-
-pre {
-	background-color: #f8f8f8;
-	border: 1px solid #cccccc;
-	border-radius: 3px;
-	overflow-x: auto;
-	white-space: pre-wrap;
-	overflow-wrap: break-word;
-}
-
-pre:not(.hljs) {
-	padding: 23px;
-	line-height: 19px;
-}
-
-blockquote {
-	background: rgba(127, 127, 127, 0.1);
-	border-color: rgba(0, 122, 204, 0.5);
-}
-
-.emoji {
-	height: 1.4em;
-}
-
-code {
-	font-size: 14px;
-	line-height: 19px;
-}
-
-/* for inline code */
-:not(pre):not(.hljs) > code {
-	color: #C9AE75; /* Change the old color so it seems less like an error */
-	font-size: inherit;
-}
-
-/* Page Break : use <div class="page"/> to insert page break
--------------------------------------------------------- */
-.page {
-	page-break-after: always;
-}
-
-</style>
-
-<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EatEase — Agentic AI for Restaurant Operations — Joe</title>
+  <link rel="stylesheet" href="site.css" />
 </head>
 <body>
-  <script>
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
-          ? 'dark'
-          : 'default'
-    });
-  </script>
-<p><a href="index.html">&lt;&lt; Back to Index</a></p>
-<h1 id="agentic-ai-empowered-restaurant-system">Agentic AI Empowered Restaurant System</h1>
+  <nav class="page-nav"><a href="index.html">← Products</a></nav>
+  <article class="page-card">
+<h1 id="eatease-agentic-ai-for-restaurant-operations">EatEase — Agentic
+AI for Restaurant Operations</h1>
+<p><strong>Period:</strong> 2024–2025<br />
+<strong>Ownership:</strong> IBM client delivery<br />
+<strong>Role:</strong> Senior Application Architect / AI Engineer</p>
 <h2 id="introduction">Introduction</h2>
-<p>An AI‑augmented platform layered on top of a traditional restaurant operations stack. Core components:</p>
+<p>An AI-augmented layer on a traditional restaurant operations
+stack:</p>
 <ul>
-<li>Customer web ordering: guests scan a code, browse the menu, customize items, place orders, and complete payment on their phones</li>
-<li>POS (tablet): staff (or assisted self‑service) with advanced functions—order lifecycle control, table &amp; course management, inventory visibility for privileged roles</li>
-<li>Admin console: inventory &amp; menu configuration, user / role management, financial reconciliation views, customer experience settings (promotions, banners)</li>
-<li>Back‑office AI assistant:
-<ul>
-<li>Generates or refines dish images from base inputs</li>
-<li>Produces multi‑language names &amp; descriptions; drafts promotional copy for social channels</li>
-<li>Summarizes operational metrics and composes periodic reports</li>
-</ul>
+<li><strong>Customer web ordering:</strong> QR browse, customize, pay on
+phone<br />
 </li>
-<li>Front‑office AI assistant: guides customers conversationally (navigation, dish discovery, dietary filtering, pairing suggestions) and can place structured orders via chat</li>
-</ul>
-<h2 id="architecture">Architecture</h2>
-<pre><code class="language-mermaid"><div class="mermaid">flowchart LR
-   subgraph Guest Experience
-      WebOrder[Customer Web Ordering]
-      FrontAI[Front-office AI Assistant]
-   end
-
-   subgraph Staff Tools
-      POS[POS / Staff Tablet]
-      AdminConsole[Admin Console]
-      BackAI[Back-office AI Assistant]
-   end
-
-   subgraph Platform Services
-      BFF[BFF / API Gateway]
-      MenuSvc[Menu & Inventory Service]
-      OrderSvc[Order Service]
-      PaymentSvc[Payment Service]
-      MediaSvc[Media & Asset Service]
-      Analytics[Analytics & Reporting]
-      Notifier[Notification & Messaging]
-   end
-
-   subgraph Intelligence
-      VectorDB[Vector DB]
-      ModelHub[AI Model Orchestrator]
-   end
-
-   subgraph Infrastructure
-      Auth[IAM / Auth]
-      ObjectStore[Object Store]
-      TaskQueue[Task Queue / Workers]
-      CDN[CDN / Edge Cache]
-      DB[Operational DB]
-   end
-
-   WebOrder --> BFF
-   FrontAI --> BFF
-   POS --> BFF
-   AdminConsole --> BFF
-   BackAI --> BFF
-
-   BFF --> MenuSvc
-   BFF --> OrderSvc
-   BFF --> PaymentSvc
-   BFF --> Analytics
-   BFF --> Notifier
-
-   MenuSvc --> DB
-   MenuSvc --> ObjectStore
-   MenuSvc --> CDN
-   OrderSvc --> DB
-   PaymentSvc --> Auth
-   PaymentSvc --> OrderSvc
-   MediaSvc --> ObjectStore
-   MediaSvc --> CDN
-   Analytics --> DB
-   Analytics --> TaskQueue
-   Notifier --> TaskQueue
-   TaskQueue --> BackAI
-   TaskQueue --> FrontAI
-   VectorDB --> FrontAI
-   VectorDB --> BackAI
-   ModelHub --> FrontAI
-   ModelHub --> BackAI
-   ObjectStore --> BackAI
-   ObjectStore --> FrontAI
-   Auth --> BFF
-
-   classDef guest fill:#f0f8ff,stroke:#1f4a82,stroke-width:1px;
-   classDef staff fill:#fff4e6,stroke:#a45c00,stroke-width:1px;
-   classDef platform fill:#f3fff0,stroke:#2a6b1f,stroke-width:1px;
-   classDef intelligence fill:#fef0f6,stroke:#a61f5a,stroke-width:1px;
-   classDef infra fill:#f8f8f8,stroke:#555,stroke-width:1px;
-   class WebOrder,FrontAI guest;
-   class POS,AdminConsole,BackAI staff;
-   class BFF,MenuSvc,OrderSvc,PaymentSvc,MediaSvc,Analytics,Notifier platform;
-   class VectorDB,ModelHub intelligence;
-   class Auth,ObjectStore,TaskQueue,CDN,DB infra;
-</div></code></pre>
-<h3 id="component-responsibilities">Component responsibilities</h3>
-<ul>
-<li>Customer Web Ordering &amp; Front-office AI Assistant: Provide QR-based browsing, conversational ordering, personalization, and digital payment capture.</li>
-<li>POS / Staff Tablet &amp; Admin Console: Consolidate order lifecycle management, inventory adjustments, menu configuration, and financial reconciliation tasks.</li>
-<li>Back-office AI Assistant: Automates media enhancement, multilingual copywriting, and operational summaries; feeds approved assets into menu and marketing workflows.</li>
-<li>BFF / API Gateway: Centralizes authentication, locale-aware response shaping, and orchestration of downstream services for all clients.</li>
-<li>Menu &amp; Inventory Service: Maintains menu data, availability, and pricing with real-time sync to POS and customer channels; caches high-frequency reads.</li>
-<li>Order Service: Handles structured order intake, modifiers, routing to kitchen printers/POS, and state transitions.</li>
-<li>Payment Service: Integrates with payment gateways, supports advance payment flows, receipts, and settlement exports.</li>
-<li>Media &amp; Asset Service: Stores dish imagery and promotional media, leveraging object storage and CDN distribution.</li>
-<li>Analytics &amp; Reporting: Aggregates orders, inventory signals, and guest behavior to surface KPIs and anomaly alerts.</li>
-<li>Notification &amp; Messaging: Sends confirmations, promotional pushes, and staff alerts via email/SMS/in-app messaging.</li>
-<li>Vector DB &amp; Model Orchestrator: Deliver semantic search, personalization, and conversational intelligence for front- and back-office assistants.</li>
-<li>IAM / Auth: Provides secure multi-tenant access for staff and guests, handling roles and scoped tokens.</li>
-<li>Object Store, Operational DB, CDN: Persist structured/unstructured data and serve content with low latency.</li>
-<li>Task Queue / Workers: Execute asynchronous tasks (image generation, report compilation, bulk notifications) and throttle AI workloads.</li>
-</ul>
-<h2 id="use-case">Use Case</h2>
-<ol>
-<li>Customer dine‑in ordering
-<ul>
-<li>Guest scans QR, browses adaptive (language-aware) menu</li>
-<li>AI suggests popular or complementary items (e.g., beverage pairing)</li>
-<li>Customer customizes (allergens, spice level) and pays digitally</li>
-<li>Order routed to kitchen &amp; POS with structured modifiers</li>
-</ul>
+<li><strong>POS (tablet):</strong> order lifecycle, table/course
+management, inventory visibility for privileged roles<br />
 </li>
-<li>Staff operations
-<ul>
-<li>Staff tablet consolidates active tables, course fire timing, running inventory signals</li>
-<li>Manager adjusts menu availability (86 items) in real time</li>
-</ul>
+<li><strong>Admin console:</strong> menu/inventory, roles,
+reconciliation, promotions<br />
 </li>
-<li>Menu &amp; content upkeep
-<ul>
-<li>Staff uploads base dish photo &amp; core attributes</li>
-<li>Back‑office assistant generates localized descriptions + promotional snippet</li>
-<li>Admin reviews &amp; publishes</li>
-</ul>
+<li><strong>Back-office AI assistant:</strong> dish images,
+multi-language names/descriptions, promo copy, ops report
+summaries<br />
 </li>
-<li>Insights &amp; reporting
-<ul>
-<li>System aggregates order velocity, category performance, table turnover</li>
-<li>AI surfaces anomalies (e.g., sudden drop in appetizer sales) and drafts shift summary</li>
+<li><strong>Front-office AI assistant:</strong> conversational
+discovery, dietary filtering, pairing suggestions, structured order
+placement via chat</li>
 </ul>
+<h2 id="my-contribution">My contribution</h2>
+<ul>
+<li>Architected front-office assistant with vector-backed semantic
+search for menu discovery and dietary filtering<br />
 </li>
-<li>Conversational ordering fallback
-<ul>
-<li>Guest asks “What’s gluten‑free?”; assistant filters and can add item directly to cart</li>
-</ul>
+<li>Designed back-office assistant for media, multilingual content, and
+operational summarization<br />
 </li>
-</ol>
-<h2 id="pain-point-and-challenges">Pain Point and Challenges</h2>
-<p>Small or mid‑sized restaurants commonly face:</p>
-<ul>
-<li>Language friction for foreign guests leads to ordering mistakes and slower turns</li>
-<li>Manual, inconsistent multi‑language menu maintenance</li>
-<li>Repetitive back‑office content &amp; report creation work</li>
-<li>Limited data leverage for proactive decisions (e.g., stock prediction, menu optimization)</li>
-<li>Missed upsell opportunities without guided recommendations</li>
+<li>Led platform architecture across web ordering, POS, and admin with a
+unified BFF/API gateway<br />
+</li>
+<li>Implemented model orchestration connecting assistants with vector
+DB, media services, and task queues</li>
 </ul>
-<h2 id="solution">Solution</h2>
-<ul>
-<li>Unified digital ordering replaces paper menus and reduces translation friction</li>
-<li>AI-driven localization keeps dish names &amp; descriptions current across languages</li>
-<li>Conversational front assistant accelerates discovery and increases basket size via contextual suggestions</li>
-<li>Back‑office assistant automates media enhancement, multilingual copy, and summary reports</li>
-<li>Real‑time menu / inventory visibility reduces out‑of‑stock disappointment and improves kitchen coordination</li>
-<li>Structured analytics and anomaly hints enable proactive adjustments (menu rotation, staffing)</li>
-</ul>
-<h2 id="business-value">Business Value</h2>
-<ul>
-<li>Faster table turns via reduced ordering friction</li>
-<li>Higher average order value from timely AI recommendations</li>
-<li>Lower manual localization &amp; reporting effort</li>
-<li>Improved stock utilization and fewer missed sales due to early signals</li>
-<li>More consistent guest experience across languages and dietary needs</li>
-</ul>
-<p><a href="index.html">&lt;&lt; Back to Index</a></p>
-
+<p><strong>Key technologies:</strong> Node.js, LLM APIs, vector DB, RAG,
+REST APIs, task queues, cloud-native services, real-time event
+processing, mobile web</p>
+  </article>
+  <footer class="page-foot"><a href="index.html">All products</a></footer>
 </body>
 </html>

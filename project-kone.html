@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KONE — Cloud-Native IoT Platform Migration — Joe</title>
+  <link rel="stylesheet" href="site.css" />
+</head>
+<body>
+  <nav class="page-nav"><a href="index.html">← Products</a></nav>
+  <article class="page-card">
+<h1 id="kone-cloud-native-iot-platform-migration">KONE — Cloud-Native
+IoT Platform Migration</h1>
+<p><strong>Period:</strong> January 2020–December 2021<br />
+<strong>Ownership:</strong> IBM client delivery<br />
+<strong>Client:</strong> KONE Corporation<br />
+<strong>Role:</strong> Cloud Native Application Architect / Full-stack
+Developer</p>
+<h2 id="introduction">Introduction</h2>
+<p>KONE’s 24/7 Connected Services platform monitors elevator and
+escalator telemetry for predictive maintenance and remote monitoring
+across a global fleet. The program re-platformed from <strong>IBM Watson
+IoT</strong> to a <strong>cloud-native AWS IoT</strong> foundation to
+scale connectivity, telemetry volume, and operational analytics.</p>
+<h2 id="architecture-summary">Architecture (summary)</h2>
+<pre class="mermaid"><code>flowchart LR
+  Devices[Connected elevators and escalators] --&gt; IoTCore[AWS IoT Core]
+  IoTCore --&gt; DeviceMgmt[AWS IoT Device Management]
+  IoTCore --&gt; DataStore[Amazon S3]
+  IoTCore --&gt; Analytics[Analytics and data services]
+  Analytics --&gt; Insights[Predictive maintenance insights]</code></pre>
+<h3 id="ops-heavy-focus">Ops-heavy focus</h3>
+<ul>
+<li>Secure device connectivity and high-volume telemetry ingestion<br />
+</li>
+<li>Fleet provisioning and device management<br />
+</li>
+<li>Large-scale telemetry storage and analytics path<br />
+</li>
+<li><strong>DevOps / CI/CD-based cloud operations</strong> for ongoing
+platform evolution<br />
+</li>
+<li>Migration with minimal disruption to connected services</li>
+</ul>
+<h2 id="my-contribution">My contribution</h2>
+<ul>
+<li>Architected the AWS IoT Core replacement for Watson IoT-scale
+connectivity<br />
+</li>
+<li>Led migration of device connectivity, fleet management, and
+telemetry pipelines<br />
+</li>
+<li>Established DevOps-based cloud operations and CI/CD for the IoT
+platform<br />
+</li>
+<li>Coordinated cross-team transition planning for reliability during
+cutover</li>
+</ul>
+<p><strong>Key technologies:</strong> AWS IoT Core, AWS IoT Device
+Management, Amazon S3, cloud-native architecture, DevOps/CI/CD,
+microservices, data analytics</p>
+<h2 id="grounded-outcomes-as-recorded">Grounded outcomes (as
+recorded)</h2>
+<ul>
+<li>Customer-reported elevator/escalator issues reduced by over
+<strong>40%</strong> (predictive analytics path)<br />
+</li>
+<li>Near-<strong>100%</strong> device provisioning success<br />
+</li>
+<li>IoT device scalability uplift about <strong>5×</strong> with
+improved reliability and cost transparency<br />
+</li>
+<li>Proactive identification of more than <strong>70%</strong> of
+equipment faults</li>
+</ul>
+  </article>
+  <footer class="page-foot"><a href="index.html">All products</a></footer>
+</body>
+</html>
