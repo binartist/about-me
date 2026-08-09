@@ -43,17 +43,17 @@ Core mobile engineer specializing in cross-platform application frameworks. Focu
 
 ## Selected Project Showcasing
 
-- 🔗 [AI-Driven Logistics & EDI Automation](projects/edi.html) (\*1), featuring:
+- 🔗 [AI-Driven Logistics & EDI Automation](products/edi.html) (\*1), featuring:
   - AI-assisted schema mapping for EDIFACT/ANSI X12 and canonical data modeling;
   - RAG-powered knowledge retrieval for EDI specifications and partner guidelines;
   - Agentic workflow engine for automating complex partner onboarding and validation.
 
-- 🔗 [Generative AI Marketing SaaS Platform](projects/aihub.html) (\*2), including:
+- 🔗 [Generative AI Marketing SaaS Platform](products/aihub.html) (\*2), including:
   - Secure multi-tenant architecture with granular Role-Based Access Control (RBAC);
   - On-premise knowledge base utilizing LLMs to generate on-brand text and image content for marketing;
   - Unified pipeline integrating Facebook, Instagram, and WordPress APIs for automated publishing.
 
-- 🔗 [Pet Services E-commerce Ecosystem](projects/pet_ecom.html) (\*3), consisting of:
+- 🔗 [Pet Services E-commerce Ecosystem](products/pet_ecom.html) (\*3), consisting of:
   - Unified cross-platform application for iOS, Android, and Web;
   - Comprehensive admin console for order lifecycle and customer support;
   - Content Management System (CMS) integrated with self-hosted WordPress;
@@ -72,6 +72,6 @@ Core mobile engineer specializing in cross-platform application frameworks. Focu
 
 _Links_
 
-- (\*1) _https://binartist.github.io/about-me/en/projects/edi.html_
-- (\*2) _https://binartist.github.io/about-me/en/projects/aihub.html_
-- (\*3) _https://binartist.github.io/about-me/en/projects/pet_ecom.html_
+- (\*1) _https://binartist.github.io/about-me/en/products/edi.html_
+- (\*2) _https://binartist.github.io/about-me/en/products/aihub.html_
+- (\*3) _https://binartist.github.io/about-me/en/products/pet_ecom.html_

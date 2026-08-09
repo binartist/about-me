@@ -2,6 +2,8 @@
 set -euo pipefail
 
 # Clean and prepare directories
+mkdir -p dist/en/products dist/ja/products
+# Legacy URL stubs: /en/projects/* → /en/products/*
 mkdir -p dist/en/projects dist/ja/projects
 cp -r includes dist/
 
@@ -57,7 +59,7 @@ EOF
 }
 
 # Product detail pages from Markdown → polished HTML shell
-render_project() {
+render_product() {
     local src="$1"
     local dest_dir="$2"
     local base=${src##*/}
@@ -105,6 +107,27 @@ EOF
     echo "wrote $out"
 }
 
+# Thin redirect for old /…/projects/… URLs after rename to products/
+write_legacy_project_redirect() {
+    local lang="$1"   # en | ja
+    local base="$2"   # e.g. tutored.html
+    local out="dist/${lang}/projects/${base}"
+    cat > "$out" <<EOF
+<!DOCTYPE html>
+<html lang="${lang}">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="refresh" content="0; url=../products/${base}" />
+  <link rel="canonical" href="../products/${base}" />
+  <title>Redirecting…</title>
+</head>
+<body>
+  <p>Moved to <a href="../products/${base}">products/${base}</a>.</p>
+</body>
+</html>
+EOF
+}
+
 # Shared CSS for en tree
 cp includes/site.css dist/en/site.css 2>/dev/null || cp site.css dist/en/site.css
 cp dist/en/site.css dist/ja/site.css 2>/dev/null || true
@@ -125,10 +148,12 @@ elif [ -f assets/avatar.jpg ]; then
     echo "wrote dist/en/avatar.jpg (from assets/)"
 fi
 
-# English projects
-for f in src/en/projects/*.md; do
+# English product pages
+for f in src/en/products/*.md; do
     [ -f "$f" ] || continue
-    render_project "$f" dist/en/projects
+    render_product "$f" dist/en/products
+    base=${f##*/}
+    write_legacy_project_redirect en "${base%.md}.html"
 done
 
 # Japanese (markdown path; optional)
@@ -136,12 +161,13 @@ if [ -f src/ja/index.md ]; then
     pandoc src/ja/index.md -f gfm -t html -s --include-after-body=includes/common-scripts.html -o dist/ja/index.html
     update_file_timestamp src/ja/index.md dist/ja/index.html
 fi
-for f in src/ja/projects/*.md; do
+for f in src/ja/products/*.md; do
     [ -f "$f" ] || continue
     base=${f##*/}
-    outfile="dist/ja/projects/${base%.md}.html"
+    outfile="dist/ja/products/${base%.md}.html"
     pandoc "$f" -f gfm -t html -s --include-after-body=includes/common-scripts.html -o "$outfile"
     update_file_timestamp "$f" "$outfile"
+    write_legacy_project_redirect ja "${base%.md}.html"
 done
 
 # Personal placeholders
@@ -158,8 +184,37 @@ fi
 # Root redirect to English catalog
 echo '<meta http-equiv="refresh" content="0; url=en/index.html" />' > dist/index.html
 
-# Secondary indexes
-generate_index "dist/en/projects" "Projects"
-generate_index "dist/ja/projects" "プロジェクト"
+# Secondary indexes (canonical products path)
+generate_index "dist/en/products" "Products"
+generate_index "dist/ja/products" "プロダクト"
+# Legacy projects/ index → products/
+cat > dist/en/projects/index.html <<'EOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="refresh" content="0; url=../products/" />
+  <link rel="canonical" href="../products/" />
+  <title>Redirecting…</title>
+</head>
+<body>
+  <p>Moved to <a href="../products/">products/</a>.</p>
+</body>
+</html>
+EOF
+cat > dist/ja/projects/index.html <<'EOF'
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="refresh" content="0; url=../products/" />
+  <link rel="canonical" href="../products/" />
+  <title>Redirecting…</title>
+</head>
+<body>
+  <p><a href="../products/">products/</a> に移動しました。</p>
+</body>
+</html>
+EOF
 
 echo "Build complete."

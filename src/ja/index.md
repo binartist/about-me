@@ -43,17 +43,17 @@ _最終更新日: <span class="local-time" data-iso="{{ISO_TIMESTAMP}}">{{UPDATE
 
 ## 主要プロジェクト紹介
 
-- 🔗 [AI駆動型物流 & EDI自動化](projects/edi.html), 特徴:
+- 🔗 [AI駆動型物流 & EDI自動化](products/edi.html), 特徴:
   - EDIFACT/ANSI X12のためのAI支援スキーママッピングとカノニカルデータモデリング
   - EDI仕様書やパートナーガイドラインのためのRAGベースのナレッジ検索
   - 複雑なパートナーオンボーディングと検証を自動化するエージェントワークフローエンジン
 
-- 🔗 [生成AIマーケティングSaaSプラットフォーム](projects/aihub.html), 含む:
+- 🔗 [生成AIマーケティングSaaSプラットフォーム](products/aihub.html), 含む:
   - きめ細かいロールベースアクセス制御（RBAC）を備えたセキュアなマルチテナントアーキテクチャ
   - LLMを活用してブランドに沿ったマーケティング用のテキストや画像コンテンツを生成するオンプレミスナレッジベース
   - Facebook、Instagram、WordPress APIを統合し、自動投稿を実現する統一パイプライン
 
-- 🔗 [ペットサービスEコマースエコシステム](projects/pet_ecom.html), 構成:
+- 🔗 [ペットサービスEコマースエコシステム](products/pet_ecom.html), 構成:
   - iOS、Android、Web向けの統合クロスプラットフォームアプリケーション
   - 注文ライフサイクルとカスタマーサポートのための包括的な管理コンソール
   - セルフホスト型WordPressと統合されたコンテンツ管理システム（CMS）

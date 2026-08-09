@@ -1,7 +1,7 @@
 # Defect Drainer — Agent harness for product defect fixing
 
 **Period:** 2026–Present  
-**Ownership:** Founder-led · **open-source**  
+**Ownership:** Founder-led · **open-source (MIT)**  
 **Role:** Founder / full-stack platform engineer  
 
 ## Business problem

@@ -1,7 +1,7 @@
 # DeployBot — Open-Source Agentic DevOps Workflow Platform
 
 **Period:** January 2024–Present  
-**Ownership:** Founder-led · **open-source** tooling used by my product teams  
+**Ownership:** Founder-led · **open-source (MIT)** tooling used by my product teams  
 **Role:** Founder / AI & DevOps tooling engineer  
 
 ## Introduction

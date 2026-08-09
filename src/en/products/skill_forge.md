@@ -1,7 +1,7 @@
 # Skill Forge — Agent Skills Registry & Craft Platform
 
 **Period:** Active (ongoing)  
-**Ownership:** Founder-led developer platform · **open-source**  
+**Ownership:** Founder-led developer platform · **open-source (MIT)**  
 **Role:** Founder / platform engineer  
 
 ## Introduction
