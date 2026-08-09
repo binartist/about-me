@@ -36,11 +36,11 @@ Rules when editing:
 
 **Product-focused catalog:** `index.html` (tabs + tags). Minimal header—no long self-intro.
 
-| Tab | Products |
+| Tab | Items |
 |---|---|
-| **Products** | Tutored, Olilo, Mohiguide |
-| **Tooling** | DeployBot, Defect Drainer, Skill Forge |
-| **Enterprise** | MapGenie, KONE, Global e-commerce |
+| **Customer-facing** | Tutored, Olilo, Mohiguide |
+| **SDLC tooling** | DeployBot, Defect Drainer, Skill Forge |
+| **Enterprise Delivery** | MapGenie, KONE, Global e-commerce |
 
 Tags (3 types only): **language** · **tech stack** · **business domain**. Domain chips filter the grid.
 
