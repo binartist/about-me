@@ -1,4 +1,6 @@
-[<< Back to Index](index-ja.html) 
+_Last updated: <span class="local-time" data-iso="{{ISO_TIMESTAMP}}">{{UPDATED_AT}}</span>_
+
+[<< Back to Index](../index.html) 
 
 # グローバル EC プラットフォームのローカライゼーションと統合
 
@@ -103,4 +105,6 @@ flowchart LR
 - コンサルの運用摩擦を軽減し、最新データで活動を支援
 - 地域キャッシュとフォールバックでコンテンツ障害リスクを低減
 
-[<< Back to Index](index.html) 
+[<< Back to Index](../index.html)
+
+_Last updated: <span class="local-time" data-iso="{{ISO_TIMESTAMP}}">{{UPDATED_AT}}</span>_ 

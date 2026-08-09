@@ -1,4 +1,6 @@
-[<< Back to Index](index-ja.html) 
+_Last updated: <span class="local-time" data-iso="{{ISO_TIMESTAMP}}">{{UPDATED_AT}}</span>_
+
+[<< Back to Index](../index.html) 
 
 # エージェント型 AI を活用したレストランシステム
 
@@ -153,4 +155,6 @@ flowchart LR
 - 在庫活用の改善と機会損失の減少
 - 言語・食事制限をまたいだ一貫した体験
 
-[<< Back to Index](index.html) 
+[<< Back to Index](../index.html)
+
+_Last updated: <span class="local-time" data-iso="{{ISO_TIMESTAMP}}">{{UPDATED_AT}}</span>_ 
