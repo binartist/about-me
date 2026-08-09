@@ -1,0 +1,26 @@
+{
+  "name": "cv-playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./scripts/build.sh",
+    "watch": "onchange \"src/**/*.md\" -- npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/binartist/about-me.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/binartist/about-me/issues"
+  },
+  "homepage": "https://github.com/binartist/about-me#readme",
+  "devDependencies": {
+    "onchange": "^7.1.0"
+  }
+}

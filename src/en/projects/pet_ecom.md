@@ -18,7 +18,7 @@ Mohiguide is an **online-to-offline (O2O)** platform for the pet services indust
 | **AIHub (prior / parallel founder work)** | Multi-tenant GenAI marketing SaaS: RAG, agentic workflows, Spring Boot microservices, RBAC/audit/publishing |
 | **Direction** | Refactor Mohiguide so those GenAI SaaS functions enrich Mohiguide capabilities rather than remaining a separate public flagship |
 
-Until enrichment lands, do **not** describe Mohiguide as a live multi-tenant marketing GenAI SaaS. Historical AIHub detail remains under [AIHub (folded)](project-aihub.html) for architecture reference only.
+Until enrichment lands, do **not** describe Mohiguide as a live multi-tenant marketing GenAI SaaS. Historical AIHub detail remains under [AIHub (folded)](aihub.html) for architecture reference only.
 
 ## Architecture (summary)
 

@@ -4,7 +4,7 @@
 **Ownership:** Founder-led  
 **Portfolio status:** **Not featured.** Architecture and capability lineage for **Mohiguide function enrichment** (plan).  
 
-→ Primary public product page: **[Mohiguide](project-pet_ecom.html)**
+→ Primary public product page: **[Mohiguide](pet_ecom.html)**
 
 ## Why this page still exists
 
