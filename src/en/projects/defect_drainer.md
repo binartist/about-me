@@ -1,4 +1,4 @@
-# DefectDrainer — Agent harness for product defect fixing
+# Defect Drainer — Agent harness for product defect fixing
 
 **Period:** 2026–Present  
 **Ownership:** Founder-led · **open-source**  
@@ -8,7 +8,7 @@
 
 Product bugs pile up as screenshots and chat notes while day-to-day work lives in other trackers. Unstructured backlog is hard to triage, unsafe to hand to an AI coding agent on a live checkout, and easy to “resolve” without proof.
 
-DefectDrainer treats defects as a **durable inventory SSOT**, then runs **bounded batch-fix jobs** so coding agents edit only isolated worktrees, attach **fix evidence**, and ship through host **git / PR** actions—not free-form ticket chat.
+Defect Drainer treats defects as a **durable inventory SSOT**, then runs **bounded batch-fix jobs** so coding agents edit only isolated worktrees, attach **fix evidence**, and ship through host **git / PR** actions—not free-form ticket chat.
 
 Operators also need **find and analytics** across heterogeneous artifacts (defects, jobs, prompts, screenshots, logs, future video)—not only CRUD lists.
 
@@ -89,7 +89,7 @@ Heterogeneous artifacts (jobs, images, prompts, evidence notes, logs, future vid
 3. **Analytics:** defect kinds (area/severity/app/source), prompt usage for troubleshooting, harness health—via SQL first, then OpenSearch aggs.  
 4. **Optional later:** Loki for raw job-log firehose; warehouse only if history/volume demands it.
 
-OpenSearch is the chosen Elasticsearch-class engine (AWS-friendly, Apache 2.0). Full rationale: DefectDrainer `docs/search-and-analytics.md`.
+OpenSearch is the chosen Elasticsearch-class engine (AWS-friendly, Apache 2.0). Full rationale: Defect Drainer `docs/search-and-analytics.md`.
 
 **Also planned:** TypeScript / Dart client SDKs; shared chat via sibling **chat-canvas** (MCP into the harness—does not replace it).
 
