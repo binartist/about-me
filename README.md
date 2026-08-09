@@ -46,16 +46,20 @@ Tags (3 types only): **language** · **tech stack** · **business domain**. Doma
 
 Edit the `PRODUCTS` array in `index.html` to change cards.
 
-## Build (project detail pages)
+## Build (product detail pages)
 
 ```bash
-./build.sh
+npm run build
+# or: ./scripts/build.sh
 ```
 
-Requires `pandoc`. Renders `project-*.md` → HTML only — **does not overwrite `index.html`**.
+Requires `pandoc`. Renders `src/{en,ja}/products/*.md` → `dist/.../products/*.html`.  
+Catalog: `src/en/index.html` → `dist/en/index.html`.  
+Legacy URLs under `…/projects/` get thin meta-refresh redirects to `…/products/`.
+
 ## Japanese pages
 
-`index-ja.md` / `project-*-ja.*` may lag the English rebase. Prefer English as the current factual baseline until JA is retranslated.
+`src/ja/**` may lag the English rebase. Prefer English as the current factual baseline until JA is retranslated.
 
 ## Deploy
 
