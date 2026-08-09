@@ -9,7 +9,7 @@ https://binartist.github.io/about-me/
 2. **Olilo** — finance/data product  
 3. **Mohiguide** — commerce O2O product (**plan:** fold AIHub GenAI SaaS functions into Mohiguide enrichment)  
 4. **DeployBot** — DevOps tooling (**open-source**)  
-5. **DefectDrainer** — quality channel tooling (**open-source**)  
+5. **Defect Drainer** — quality channel tooling (**open-source**)  
 6. **Skill Forge** — agent skills platform (**open-source**)  
 7. **MapGenie** — enterprise AI delivery (IBM / Maersk)  
 8. **KONE Connected Services** — cloud-native IoT ops / migration (IBM / KONE)  
@@ -24,7 +24,7 @@ Primary facts for MapGenie, Olilo, Tutored, Mohiguide, DeployBot: private **cv-p
 `../cv-playground/references/professional-experience/**`  
 `../cv-playground/references/skills/**`
 
-DefectDrainer and Skill Forge: curated from live repos (`../defect-drainer`, `../skill-forge`) until mirrored into `references/projects/**`.
+Defect Drainer and Skill Forge: curated from live repos (`../defect-drainer`, `../skill-forge`) until mirrored into `references/projects/**`.
 
 Rules when editing:
 
@@ -39,7 +39,7 @@ Rules when editing:
 | Tab | Products |
 |---|---|
 | **Products** | Tutored, Olilo, Mohiguide |
-| **Tooling** | DeployBot, DefectDrainer, Skill Forge |
+| **Tooling** | DeployBot, Defect Drainer, Skill Forge |
 | **Enterprise** | MapGenie, KONE, Global e-commerce |
 
 Tags (3 types only): **language** · **tech stack** · **business domain**. Domain chips filter the grid.
