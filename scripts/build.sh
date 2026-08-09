@@ -76,6 +76,12 @@ html = re.sub(r"<p>\s*<a[^>]*>.*?Products.*?</a>\s*</p>\s*", "", html, count=1, 
 print(html)
 ')
 
+    # Mermaid + shared widgets live in includes/common-scripts.html
+    local after_body=""
+    if [ -f includes/common-scripts.html ]; then
+        after_body=$(cat includes/common-scripts.html)
+    fi
+
     cat > "$out" <<EOF
 <!DOCTYPE html>
 <html lang="en">
@@ -91,6 +97,7 @@ print(html)
 ${body}
   </article>
   <footer class="page-foot"><a href="../index.html">All products</a></footer>
+${after_body}
 </body>
 </html>
 EOF
@@ -102,13 +109,20 @@ EOF
 cp includes/site.css dist/en/site.css 2>/dev/null || cp site.css dist/en/site.css
 cp dist/en/site.css dist/ja/site.css 2>/dev/null || true
 
-# English product catalog (static)
+# English product catalog (static) + avatar
 if [ -f src/en/index.html ]; then
     cp src/en/index.html dist/en/index.html
     echo "wrote dist/en/index.html (catalog)"
 elif [ -f src/en/index.md ]; then
     pandoc src/en/index.md -f gfm -t html -s --include-after-body=includes/common-scripts.html -o dist/en/index.html
     update_file_timestamp src/en/index.md dist/en/index.html
+fi
+if [ -f src/en/avatar.jpg ]; then
+    cp src/en/avatar.jpg dist/en/avatar.jpg
+    echo "wrote dist/en/avatar.jpg"
+elif [ -f assets/avatar.jpg ]; then
+    cp assets/avatar.jpg dist/en/avatar.jpg
+    echo "wrote dist/en/avatar.jpg (from assets/)"
 fi
 
 # English projects
