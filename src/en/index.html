@@ -64,9 +64,19 @@
       font-weight: 650;
       letter-spacing: -0.02em;
     }
-    header .role {
+    header .headline {
+      margin: .15rem 0 0;
+      font-size: 1rem;
+      font-weight: 550;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+      color: var(--text);
+    }
+    header .subline {
+      margin: .2rem 0 0;
       color: var(--muted);
-      font-size: .95rem;
+      font-size: .9rem;
+      line-height: 1.35;
     }
     header nav a {
       color: var(--accent);
@@ -285,7 +295,8 @@
         <img class="avatar" src="avatar.jpg" width="64" height="64" alt="Joe" />
         <div class="identity-text">
           <h1>Joe</h1>
-          <div class="role">Products · tooling · enterprise delivery</div>
+          <div class="headline">Application Architect, full-stack &amp; AI, cloud-native ops</div>
+          <div class="subline">Hands-on product builder + enterprise delivery</div>
         </div>
       </div>
       <nav>
@@ -356,8 +367,8 @@
         href: "projects/deploybot.html",
         blurb: "Agentic DevOps workflows for container build, deploy, and diagnostics.",
         tab: "tooling",
-        languages: ["Go"],
-        stack: ["Docker", "Kubernetes", "CI/CD"],
+        languages: ["Go", "TypeScript"],
+        stack: ["SvelteKit", "Docker", "Kubernetes", "CI/CD"],
         domain: ["DevOps", "AI"],
         meta: "Founder · open-source · 2024–"
       },
@@ -365,12 +376,12 @@
         id: "defect-drainer",
         name: "DefectDrainer",
         href: "projects/defect_drainer.html",
-        blurb: "Defect inventory channel — capture evidence first, batch-fix later.",
+        blurb: "Agent harness for product bugs — inventory SSOT, worktree batch-fix, fix evidence, then PRs.",
         tab: "tooling",
         languages: ["TypeScript"],
-        stack: ["Fastify", "React"],
-        domain: ["Quality", "DevOps"],
-        meta: "Founder · open-source · active/planned"
+        stack: ["Fastify", "React", "SQLite", "git worktrees"],
+        domain: ["Quality", "Agent harness", "DevOps"],
+        meta: "Founder · open-source"
       },
       {
         id: "skill-forge",

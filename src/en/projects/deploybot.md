@@ -47,4 +47,4 @@ flowchart LR
 - Integrated container registry, CI, Kubernetes/runtime, metrics/logging, and secrets patterns for small-team ops  
 - Positioned as **open-source ops tooling** for founder platforms—not a full commercial PaaS  
 
-**Key technologies:** **Go** (primary services), Docker Engine API, BuildKit, Compose, Kubernetes/Helm-oriented deploy contracts, CI/CD integrations, policy/audit controls, conversational agent orchestration
+**Key technologies:** **Go** (primary services), **TypeScript** + **SvelteKit** (web console frontend), Docker Engine API, BuildKit, Compose, Kubernetes/Helm-oriented deploy contracts, CI/CD integrations, policy/audit controls, conversational agent orchestration
