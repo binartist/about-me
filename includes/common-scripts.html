@@ -84,12 +84,167 @@
   #mermaid-modal-close:hover {
     color: #000;
   }
+
+  /* Screenshot gallery lightbox */
+  #shot-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: rgba(16, 16, 18, 0.92);
+    padding: 3.5rem 1rem 1rem;
+  }
+  #shot-lightbox.open {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  #shot-lightbox img {
+    max-width: min(100%, 30rem);
+    max-height: calc(100vh - 9rem);
+    object-fit: contain;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+  }
+  #shot-lightbox-caption {
+    color: #f2f2f2;
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    font-size: 0.85rem;
+    text-align: center;
+    max-width: 30rem;
+    line-height: 1.45;
+  }
+  #shot-lightbox-count {
+    color: #9a9a9a;
+    font-size: 0.75rem;
+  }
+  .shot-lb-btn {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    border: 0;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .shot-lb-btn:hover {
+    background: rgba(255, 255, 255, 0.24);
+  }
+  #shot-lb-close {
+    top: 1rem;
+    right: 1rem;
+  }
+  #shot-lb-prev {
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  #shot-lb-next {
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .shots .shot img {
+    cursor: zoom-in;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .shots .shot img:hover {
+    border-color: #b9c6de;
+    transform: translateY(-1px);
+  }
 </style>
 
 <div id="mermaid-modal">
   <span id="mermaid-modal-close">&times;</span>
   <div id="mermaid-modal-content"></div>
 </div>
+
+<div id="shot-lightbox" role="dialog" aria-modal="true" aria-label="Screenshot preview">
+  <button class="shot-lb-btn" id="shot-lb-close" aria-label="Close preview">&times;</button>
+  <button class="shot-lb-btn" id="shot-lb-prev" aria-label="Previous screenshot">&#8249;</button>
+  <button class="shot-lb-btn" id="shot-lb-next" aria-label="Next screenshot">&#8250;</button>
+  <img id="shot-lightbox-img" alt="" />
+  <p id="shot-lightbox-caption"></p>
+  <p id="shot-lightbox-count"></p>
+</div>
+
+<!-- Screenshot gallery lightbox (no-op on pages without a .shots gallery) -->
+<script>
+  (function () {
+    function init() {
+      const figures = Array.from(document.querySelectorAll('.shots .shot'));
+      if (!figures.length) return;
+
+      const box = document.getElementById('shot-lightbox');
+      const img = document.getElementById('shot-lightbox-img');
+      const caption = document.getElementById('shot-lightbox-caption');
+      const count = document.getElementById('shot-lightbox-count');
+      const prevBtn = document.getElementById('shot-lb-prev');
+      const nextBtn = document.getElementById('shot-lb-next');
+      const single = figures.length < 2;
+      prevBtn.hidden = single;
+      nextBtn.hidden = single;
+
+      let index = 0;
+
+      function show(i) {
+        index = (i + figures.length) % figures.length;
+        const source = figures[index].querySelector('img');
+        const label = figures[index].querySelector('figcaption');
+        // Thumbnails carry a short label; the full sentence rides on data-caption.
+        const text = figures[index].dataset.caption || (label ? label.textContent : '');
+        img.src = source.src;
+        img.alt = source.alt;
+        caption.textContent = text.trim();
+        count.textContent = single ? '' : index + 1 + ' / ' + figures.length;
+      }
+
+      function open(i) {
+        show(i);
+        box.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function close() {
+        box.classList.remove('open');
+        document.body.style.overflow = '';
+        img.removeAttribute('src');
+      }
+
+      figures.forEach((figure, i) => {
+        const source = figure.querySelector('img');
+        if (!source) return;
+        source.addEventListener('click', () => open(i));
+      });
+
+      document.getElementById('shot-lb-close').addEventListener('click', close);
+      prevBtn.addEventListener('click', () => show(index - 1));
+      nextBtn.addEventListener('click', () => show(index + 1));
+      // Backdrop click closes; clicks on the image or controls do not.
+      box.addEventListener('click', (e) => {
+        if (e.target === box) close();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (!box.classList.contains('open')) return;
+        if (e.key === 'Escape') close();
+        if (!single && e.key === 'ArrowLeft') show(index - 1);
+        if (!single && e.key === 'ArrowRight') show(index + 1);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
 
 
 <!-- Local Time Formatter (Standalone) -->

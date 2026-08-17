@@ -58,6 +58,10 @@ Core mobile engineer specializing in cross-platform application frameworks. Focu
   - Comprehensive admin console for order lifecycle and customer support;
   - Content Management System (CMS) integrated with self-hosted WordPress;
 
+- 🔗 [Sketch Forge](products/sketch_forge.html) (\*4) — native iPad sticker QA in **Swift and SwiftUI** (library, review, compare, publish).
+
+- 🔗 [IBM Internal OA](products/ibm_oa.html) (\*5) — native iOS office-automation / pre-sales workflow app (Swift, UIKit, 2015–2017).
+
 ## Education
 
 - Bachelor Degree in Electronics of Science and Technology – Huazhong University of Science and Technologys, 2003~2007
@@ -75,3 +79,5 @@ _Links_
 - (\*1) _https://binartist.github.io/about-me/en/products/edi.html_
 - (\*2) _https://binartist.github.io/about-me/en/products/aihub.html_
 - (\*3) _https://binartist.github.io/about-me/en/products/pet_ecom.html_
+- (\*4) _https://binartist.github.io/about-me/en/products/sketch_forge.html_
+- (\*5) _https://binartist.github.io/about-me/en/products/ibm_oa.html_

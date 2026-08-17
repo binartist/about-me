@@ -15,6 +15,10 @@ https://binartist.github.io/about-me/
 8. **KONE Connected Services** — cloud-native IoT ops / migration (IBM / KONE)  
 9. **Global e-commerce** — enterprise localization / integration (IBM / Oriflame)  
 
+**Also in the catalog (not in the locked flagship nine):**
+- **Sketch Forge** — founder-led native iOS / Swift / SwiftUI iPad client for Tutored sticker QA  
+- **IBM Internal OA** — IBM internal pre-sales / office-automation iOS app (Swift, UIKit, 2015–2017)  
+
 **Not featured as flagship cards:** AIHub (folded into Mohiguide plan — lineage page only).
 ## Source of truth
 
@@ -36,11 +40,12 @@ Rules when editing:
 
 **Product-focused catalog:** `index.html` (tabs + tags). Minimal header—no long self-intro.
 
-| Tab | Items |
+| Tab | Items (a product can appear in more than one) |
 |---|---|
-| **Customer-facing** | Tutored, Olilo, Mohiguide |
-| **SDLC tooling** | DeployBot, Defect Drainer, Skill Forge |
-| **Enterprise Delivery** | MapGenie, KONE, Global e-commerce |
+| **Mobile** | Tutored, Mohiguide, Sketch Forge, Global e-commerce, IBM Internal OA |
+| **Web** | Tutored, Olilo, Mohiguide, DeployBot, Defect Drainer, MapGenie, Global e-commerce |
+| **Cloud-Native** | Tutored, Olilo, Mohiguide, DeployBot, MapGenie, KONE, Global e-commerce |
+| **AI** | Tutored, Olilo, Mohiguide, DeployBot, Defect Drainer, Skill Forge, Sketch Forge, MapGenie |
 
 Tags (3 types only): **language** · **tech stack** · **business domain**. Domain chips filter the grid.
 
