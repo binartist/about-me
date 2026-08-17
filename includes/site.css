@@ -213,3 +213,31 @@ footer.page-foot {
   font-size: 0.8rem;
   color: #999;
 }
+
+/* Product screenshot thumbnails on detail pages (click → lightbox) */
+.shots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+  gap: 0.85rem 0.7rem;
+  margin: 1.25rem 0 1rem;
+}
+.shot {
+  margin: 0;
+  min-width: 0;
+}
+.shot img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: top center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+}
+.shot figcaption {
+  margin-top: 0.35rem;
+  font-size: 0.72rem;
+  line-height: 1.3;
+  color: var(--muted);
+}

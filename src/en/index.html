@@ -231,6 +231,18 @@
       box-shadow: 0 2px 8px rgba(11,87,208,.08);
     }
     .card.hidden { display: none; }
+    .card .thumb {
+      display: block;
+      width: calc(100% + 2.4rem);
+      margin: -1.15rem -1.2rem .9rem;
+      aspect-ratio: 2 / 1;
+      height: auto;
+      object-fit: cover;
+      object-position: center;
+      border-radius: var(--radius) var(--radius) 0 0;
+      border-bottom: 1px solid var(--border);
+      background: #fff;
+    }
     .card h2 {
       margin: 0 0 .35rem;
       font-size: 1.05rem;
@@ -304,11 +316,12 @@
       </nav>
     </header>
 
-    <div class="tabs" role="tablist" aria-label="Work categories">
+    <div class="tabs" role="tablist" aria-label="Platforms">
       <button type="button" class="tab" role="tab" data-tab="all" aria-selected="true">All <span class="count" data-count-for="all"></span></button>
-      <button type="button" class="tab" role="tab" data-tab="products" aria-selected="false">Customer-facing <span class="count" data-count-for="products"></span></button>
-      <button type="button" class="tab" role="tab" data-tab="tooling" aria-selected="false">SDLC tooling <span class="count" data-count-for="tooling"></span></button>
-      <button type="button" class="tab" role="tab" data-tab="enterprise" aria-selected="false">Enterprise Delivery <span class="count" data-count-for="enterprise"></span></button>
+      <button type="button" class="tab" role="tab" data-tab="mobile" aria-selected="false">Mobile <span class="count" data-count-for="mobile"></span></button>
+      <button type="button" class="tab" role="tab" data-tab="web" aria-selected="false">Web <span class="count" data-count-for="web"></span></button>
+      <button type="button" class="tab" role="tab" data-tab="cloud" aria-selected="false">Cloud-Native <span class="count" data-count-for="cloud"></span></button>
+      <button type="button" class="tab" role="tab" data-tab="ai" aria-selected="false">AI <span class="count" data-count-for="ai"></span></button>
     </div>
 
     <div class="filters" id="attr-filters" aria-label="Filter by domain, stack, or language"></div>
@@ -332,8 +345,8 @@
         id: "tutored",
         name: "Tutored",
         href: "products/tutored.html",
-        blurb: "Language-learning product suite — web, mobile, and production-minded AWS deploy.",
-        tab: "products",
+        blurb: "Invite-style language tutor on a single Tokyo EC2 — web BFF, Fastify API, Flutter; packs authored in tutored-ops.",
+        tabs: ["mobile", "web", "cloud", "ai"],
         languages: ["TypeScript", "Dart"],
         stack: ["SvelteKit", "Fastify", "Flutter", "AWS", "Docker", "Caddy"],
         domain: ["Education", "AI"],
@@ -344,7 +357,7 @@
         name: "Olilo",
         href: "products/olilo.html",
         blurb: "SEC 13F (AI13F) filings to portfolio analytics — ETL, API, charts, LLM insight reports.",
-        tab: "products",
+        tabs: ["web", "cloud", "ai"],
         languages: ["Python", "TypeScript"],
         stack: ["FastAPI", "SvelteKit", "PostgreSQL", "Docker"],
         domain: ["Finance", "Data", "AI"],
@@ -355,7 +368,7 @@
         name: "Mohiguide",
         href: "products/pet_ecom.html",
         blurb: "Pet-services O2O platform. Multi-surface commerce; planned GenAI enrichment (AIHub lineage).",
-        tab: "products",
+        tabs: ["mobile", "web", "cloud", "ai"],
         languages: ["Go", "Dart", "TypeScript"],
         stack: ["Flutter", "SvelteKit", "GraphQL", "React", "AWS"],
         domain: ["E-commerce", "AI"],
@@ -366,7 +379,7 @@
         name: "DeployBot",
         href: "products/deploybot.html",
         blurb: "Agentic DevOps workflows for container build, deploy, and diagnostics.",
-        tab: "tooling",
+        tabs: ["web", "cloud", "ai"],
         languages: ["Go", "TypeScript"],
         stack: ["SvelteKit", "Docker", "Kubernetes", "CI/CD"],
         domain: ["DevOps", "AI"],
@@ -377,7 +390,7 @@
         name: "Defect Drainer",
         href: "products/defect_drainer.html",
         blurb: "Agent harness for product bugs — inventory, worktree batch-fix, evidence, PRs; OpenSearch for multi-artifact search & analytics.",
-        tab: "tooling",
+        tabs: ["web", "ai"],
         languages: ["TypeScript"],
         stack: ["Fastify", "React", "SQLite", "OpenSearch", "git worktrees"],
         domain: ["Quality", "Agent harness", "DevOps", "Search", "Analytics"],
@@ -388,18 +401,29 @@
         name: "Skill Forge",
         href: "products/skill_forge.html",
         blurb: "Registry and sync for agent skills, instructions, and subagents.",
-        tab: "tooling",
+        tabs: ["ai"],
         languages: ["JavaScript", "TypeScript"],
         stack: ["Node.js", "CLI"],
         domain: ["Agent tooling", "Developer platform"],
         meta: "Founder · open-source · developer platform"
       },
       {
+        id: "sketch-forge",
+        name: "Sketch Forge",
+        href: "products/sketch_forge.html",
+        blurb: "Native iPad sticker QA — Swift and SwiftUI client for Tutored masters (library, review, compare, publish).",
+        tabs: ["mobile", "ai"],
+        languages: ["Swift"],
+        stack: ["SwiftUI", "iOS", "REST", "Node"],
+        domain: ["Mobile", "Creator tooling"],
+        meta: "Founder · native iOS · 2026–"
+      },
+      {
         id: "mapgenie",
         name: "MapGenie",
         href: "products/edi.html",
         blurb: "AI-assisted EDI mapping & logistics automation for Maersk — production go-live and awards.",
-        tab: "enterprise",
+        tabs: ["web", "cloud", "ai"],
         languages: ["Python", "TypeScript"],
         stack: ["FastAPI", "React", "Azure", "AKS", "RAG"],
         domain: ["Logistics", "EDI", "AI"],
@@ -410,7 +434,7 @@
         name: "KONE Connected Services",
         href: "products/kone.html",
         blurb: "Watson IoT → AWS IoT re-platform — fleet connectivity, telemetry ops, DevOps/CI/CD for predictive maintenance at scale.",
-        tab: "enterprise",
+        tabs: ["cloud"],
         languages: ["Java", "Python"],
         stack: ["AWS IoT Core", "S3", "CI/CD"],
         domain: ["IoT", "Cloud operations", "DevOps"],
@@ -421,11 +445,22 @@
         name: "Global e-commerce",
         href: "products/glob_ecom.html",
         blurb: "China-market mobile/web localization for Oriflame — regional UX with global systems of record.",
-        tab: "enterprise",
+        tabs: ["mobile", "web", "cloud"],
         languages: ["Swift", "Kotlin", "Java"],
         stack: ["BFF", "CDN", "Mobile"],
         domain: ["E-commerce", "Localization"],
         meta: "IBM client delivery · 2017–2019"
+      },
+      {
+        id: "ibm-oa",
+        name: "IBM Internal OA",
+        href: "products/ibm_oa.html",
+        blurb: "Native iOS office-automation / pre-sales workflow app — Swift and UIKit, enterprise auth, backend-driven tasks.",
+        tabs: ["mobile"],
+        languages: ["Swift"],
+        stack: ["UIKit", "iOS", "REST"],
+        domain: ["Enterprise", "Mobile", "Office automation"],
+        meta: "IBM internal · 2015–2017"
       }
     ];
 
@@ -552,8 +587,13 @@
       });
     });
 
+    function productInTab(p, tab) {
+      if (tab === "all") return true;
+      return (p.tabs || []).includes(tab);
+    }
+
     function matches(p) {
-      if (activeTab !== "all" && p.tab !== activeTab) return false;
+      if (!productInTab(p, activeTab)) return false;
       if (activeFilters.size === 0) return true;
       for (const label of activeFilters) {
         if (!productHasLabel(p, label)) return false;
@@ -569,7 +609,7 @@
         const a = document.createElement("a");
         a.className = "card" + (show ? "" : " hidden");
         a.href = p.href;
-        a.dataset.tab = p.tab;
+        a.dataset.tab = (p.tabs || []).join(" ");
         if (show) visible++;
 
         const tagsHtml = [
@@ -578,7 +618,12 @@
           ...p.languages.map(t => `<span class="tag lang">${t}</span>`)
         ].join("");
 
+        const thumbHtml = p.image
+          ? `<img class="thumb" src="${p.image}" alt="${p.imageAlt || p.name + " screenshot"}" loading="lazy">`
+          : "";
+
         a.innerHTML = `
+          ${thumbHtml}
           <h2>${p.name}</h2>
           <p class="blurb">${p.blurb}</p>
           <div class="tags">${tagsHtml}</div>
@@ -588,9 +633,9 @@
       });
       empty.classList.toggle("show", visible === 0);
 
-      ["all", "products", "tooling", "enterprise"].forEach(tab => {
+      ["all", "mobile", "web", "cloud", "ai"].forEach(tab => {
         const n = PRODUCTS.filter(p => {
-          if (tab !== "all" && p.tab !== tab) return false;
+          if (!productInTab(p, tab)) return false;
           if (activeFilters.size === 0) return true;
           for (const label of activeFilters) if (!productHasLabel(p, label)) return false;
           return true;

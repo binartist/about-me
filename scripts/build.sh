@@ -38,7 +38,7 @@ generate_index() {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>$title</title>
-<link rel="stylesheet" href="../site.css">
+<link rel="stylesheet" href="../site.css?v=${CSS_VER:-0}">
 </head>
 <body>
 <nav class="page-nav"><a href="../index.html">← Products</a></nav>
@@ -91,7 +91,7 @@ print(html)
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>${title} — Joe</title>
-  <link rel="stylesheet" href="../site.css" />
+  <link rel="stylesheet" href="../site.css?v=${CSS_VER}" />
 </head>
 <body>
   <nav class="page-nav"><a href="../index.html">← Products</a></nav>
@@ -132,6 +132,16 @@ EOF
 cp includes/site.css dist/en/site.css 2>/dev/null || cp site.css dist/en/site.css
 cp dist/en/site.css dist/ja/site.css 2>/dev/null || true
 
+# Cache-buster for the stylesheet. Without it browsers (especially over file://)
+# keep serving a stale site.css after a rebuild, so layout changes appear not to land.
+if command -v md5 >/dev/null 2>&1; then
+    CSS_VER=$(md5 -q dist/en/site.css | cut -c1-8)
+else
+    CSS_VER=$(md5sum dist/en/site.css | cut -c1-8)
+fi
+export CSS_VER
+echo "css version: $CSS_VER"
+
 # English product catalog (static) + avatar
 if [ -f src/en/index.html ]; then
     cp src/en/index.html dist/en/index.html
@@ -146,6 +156,14 @@ if [ -f src/en/avatar.jpg ]; then
 elif [ -f assets/avatar.jpg ]; then
     cp assets/avatar.jpg dist/en/avatar.jpg
     echo "wrote dist/en/avatar.jpg (from assets/)"
+fi
+
+# Product page images (screenshots referenced from product markdown + catalog cards)
+if [ -d src/en/products/images ]; then
+    mkdir -p dist/en/products/images
+    # --delete so images removed from src do not linger in dist
+    rsync -a --delete src/en/products/images/ dist/en/products/images/
+    echo "wrote dist/en/products/images/"
 fi
 
 # English product pages
