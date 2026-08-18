@@ -1,21 +1,23 @@
-# AIHub — GenAI SaaS lineage (folded into Mohiguide)
+# AIHub — GenAI marketing SaaS
 
-**Period:** January 2024–Present (as standalone founder work)  
+**Period:** January 2024–Present  
 **Ownership:** Founder-led  
-**Portfolio status:** **Not featured.** Architecture and capability lineage for **Mohiguide function enrichment** (plan).  
+**Role:** Founder / platform engineer  
 
-→ Primary public product page: **[Mohiguide](pet_ecom.html)**
+AIHub is a multi-tenant GenAI platform for marketing operations: brand-aware knowledge, RAG-assisted content, and draft → review → publish with governance. Tenants stay isolated; humans stay on the approval path.
 
-## Why this page still exists
+## Platform
 
-AIHub was a secure, multi-tenant **GenAI SaaS** for enterprise marketing operations (RAG, agentic workflows, Java Spring Boot microservices, RBAC, audit, publishing connectors). That work remains valid engineering history.
+- Multi-tenant SaaS: identity, RBAC, tenant config, audit  
+- RAG over brand and campaign knowledge  
+- Agentic workflows for draft, review, and publish  
+- Connectors for marketing channels  
+- Spring Boot microservices for intake, retrieval, orchestration, and policy gates  
 
-**Portfolio decision:** do not showcase AIHub as a separate flagship. **Plan:** refactor **Mohiguide** so those GenAI SaaS functions enrich Mohiguide’s product surface. Until that ships, treat this page as **reference lineage**, not a second live product brand.
+## My contribution
 
-## What AIHub demonstrated (historical)
+- Multi-tenant GenAI architecture and service boundaries  
+- RAG and agentic publish loop with human review  
+- RBAC, audit, and tenant isolation  
 
-- Multi-tenant GenAI SaaS for marketing content: brand-aware knowledge, RAG, agentic draft → review → publish  
-- Spring Boot microservices: identity/RBAC, tenant config, intake, retrieval, orchestration, tools, audit, publishing  
-- Governance: human review, policy gates, tenant isolation  
-
-**Key technologies:** LLM APIs, RAG, agentic workflows, multi-tenant SaaS, Java, Spring Boot, Spring Security, Python, REST APIs, RBAC, audit logging
+**Key technologies:** Java, Spring Boot, Python, LLM APIs, RAG, REST APIs, RBAC

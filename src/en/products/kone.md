@@ -37,7 +37,7 @@ flowchart LR
 
 **Key technologies:** AWS IoT Core, AWS IoT Device Management, Amazon S3, cloud-native architecture, DevOps/CI/CD, microservices, data analytics  
 
-## Grounded outcomes (as recorded)
+## Outcomes
 
 - Customer-reported elevator/escalator issues reduced by over **40%** (predictive analytics path)  
 - Near-**100%** device provisioning success  
