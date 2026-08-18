@@ -17,17 +17,29 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      PANDOC_VERSION: "3.10.1"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          # Full history: scripts/build.sh stamps pages from git log.
           fetch-depth: 0
 
       - name: Install Pandoc
-        run: sudo apt-get update && sudo apt-get install -y pandoc
-      
-      - name: Create dist directory
-        run: mkdir -p dist
+        run: |
+          set -euo pipefail
+          arch="$(dpkg --print-architecture)"
+          case "$arch" in
+            amd64|arm64) ;;
+            *) echo "unsupported arch: ${arch}" >&2; exit 1 ;;
+          esac
+          pkg="pandoc-${PANDOC_VERSION}-1-${arch}.deb"
+          url="https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/${pkg}"
+          echo "Downloading ${url}"
+          curl -fsSL -o /tmp/pandoc.deb "${url}"
+          sudo dpkg -i /tmp/pandoc.deb
+          pandoc --version
 
       - name: Build HTML
         run: npm run build
