@@ -30,11 +30,12 @@ Primary facts for MapGenie, Olilo, Tutored, Mohiguide, DeployBot: private **cv-p
 
 Defect Drainer and Skill Forge: curated from live repos (`../defect-drainer`, `../skill-forge`) until mirrored into `references/projects/**`.
 
+Authoring workflow and public-page voice: `.agents/skills/about-me-author/SKILL.md`.
+
 Rules when editing:
 
 - No over-state, miss-state, or under-state relative to those notes  
-- Label ownership: **IBM client delivery** vs **founder-led**  
-- Prefer “adopting / under active development / planned” when that is the truth  
+- Label ownership: **IBM client delivery** vs **founder-led** vs **IBM internal**  
 
 ## Homepage
 
