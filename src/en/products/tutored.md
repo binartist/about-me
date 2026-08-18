@@ -1,58 +1,53 @@
-# Tutored — language-learning product in production
+# Tutored — multi-surface language-learning SaaS
 
 **Period:** July 2026–Present  
 **Ownership:** Founder-led  
 **Role:** Founder / platform owner  
 
-Invite-style language tutor: bring material (chat or photo), approve a drill, practice, then review. Runtime lives in `tutored`. Course authoring and publish live in `tutored-ops`.
+A language tutor that turns chat, a photographed page, or past mistakes into an approved practice set, then remembers what the learner got wrong. Web and mobile share one API. Course authoring is a separate publish pipeline from the learner product.
 
-**Now:** closed/invite testing on a single Tokyo host. Web is the product path; iOS/Android talk the same API. Billing, Postgres, and quota are deferred.
+## Platform
 
-## Runtime (`tutored`)
-
-One Compose stack locally and in prod: Caddy (TLS) → SvelteKit BFF → Fastify API. Flutter uses bearer tokens against the API, not the BFF.
+SvelteKit is a same-origin BFF for the **web** (httpOnly cookies, streamed LLM). Fastify is the system of record — auth, plans, quota, speech, and data. **Mobile talks to Fastify directly** with bearer tokens — it does not go through the BFF. Hashed web assets sit on a CDN; SSR stays in-region next to the API.
 
 ```mermaid
 flowchart LR
-  Browser -->|HTTPS| Caddy
-  Mobile[Flutter] -->|bearer| Caddy
-  Caddy --> App[SvelteKit BFF]
-  App --> API[Fastify]
-  API --> SQLite[(SQLite WAL on EBS)]
-  API --> Audio[(audio / TTS cache on EBS)]
-  API -->|outbound| US[US LLM / STT / TTS]
+  Browser -->|cookie / same origin| BFF[SvelteKit BFF]
+  CDN[CDN static] --> Browser
+  Mobile[Mobile] -->|bearer| API[Fastify]
+  BFF --> API
+  API --> PG[(PostgreSQL)]
+  API --> Auth[Better Auth]
+  API --> Pay[Stripe / plan]
+  API -->|LLM STT TTS| AI[AI providers]
 ```
 
-- **API** owns auth, SQLite, agent, speech, course catalog.  
-- **BFF** is same-origin cookie proxy — no DB or model calls of its own.  
-- **Host:** one EC2 in `ap-northeast-1`. State on **EBS** (SQLite WAL is unsafe on EFS/NFS).  
-- **TLS:** Let's Encrypt in prod; internal CA locally. Mic features need HTTPS.  
-- **Region:** testers in Asia/NZ; models are US-hosted. Inference dwarfs the Pacific hop, so the box stays near users and fat STT uploads ride the AWS backbone.
+- **Identity:** Better Auth — email register / verify / reset and Google, one model for web cookie and mobile bearer.  
+- **Plans:** Stripe drives `request.plan`; Fastify hooks enforce Free vs Pro and usage quota (LLM / STT / TTS).  
+- **Data:** PostgreSQL (Drizzle) for multi-tenant accounts, usage, and learning records.  
+- **Ops:** request-correlated logs, product events, metrics; automated backup and restore; CI/CD to a containerized regional stack.
 
-## Content ops (`tutored-ops`)
+## Content ops
 
-Authoring is a separate pipeline, not a CMS inside the learner app.
+Curriculum is a publish pipeline, not an in-app CMS.
 
 ```text
-ops packs/  →  validate / publish  →  runtime content/courses + static/courses  →  enroll / study
+author packs  →  validate  →  publish  →  catalog / enroll / study
 ```
 
-- Pack = one enrollable SKU (`pack.json` + assets). Live example: **NZ School English Y5–8**.  
-- Studio: React console + Fastify authoring API. Schema/CLI in TypeScript + Zod.  
-- Learner store is file-backed after publish; do not hand-edit runtime course files.
+A pack is one enrollable SKU (`pack.json` + assets). Studio: React console, Fastify authoring API, Zod schema and CLI. Example series: **NZ School English**.
 
-## Cost and safety (what is live)
+## Product design
 
-- High-frequency read-aloud grading is a **local text diff**, not an LLM call. TTS is cached on disk.  
-- Agent tools are allowlisted and owner-scoped; learner notes are treated as data, not instructions.  
-- Login is live (web cookie, mobile bearer). Self-serve signup, invite-gate, rate limits, and off-site backup are planned, not the current floor.  
-- Observability: structured logs today; Prometheus/Grafana adopting, not a production fleet.
+- The tutor **proposes**; the learner **approves** — no silent tool side-effects.  
+- Read-aloud grading is a local text diff; TTS is cached. Model spend stays on generation and explanation.  
+- Agent tools are allowlisted and owner-scoped. Learner notes are data, not instructions.
 
 ## My contribution
 
-- Split an all-in-one app into Fastify API + thin BFF + Flutter client on one contract.  
-- Production deploy path: multi-stage images, Compose, Caddy, EBS volumes, Tokyo/network runbooks.  
-- Content factory: pack model, validate/publish into the runtime, catalog sync.  
-- Speech and agent path designed so spend and data scope stay bounded.
+- SaaS topology: Fastify API, thin SvelteKit BFF for web, mobile on the same API (not via BFF).  
+- Auth, plan, and quota as middleware — not per-handler special cases.  
+- Content factory: pack model, validate/publish, catalog sync.  
+- Speech and agent path designed so cost and data scope stay bounded.
 
-**Key technologies:** TypeScript, Fastify, SvelteKit, Flutter, SQLite (WAL), Docker Compose, Caddy, AWS EC2/EBS
+**Key technologies:** TypeScript, Fastify, SvelteKit, Mobile, PostgreSQL, Better Auth, Stripe, Docker, Caddy, AWS, CDN

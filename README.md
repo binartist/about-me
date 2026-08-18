@@ -7,7 +7,7 @@ https://binartist.github.io/about-me/
 
 1. **Tutored** — education product  
 2. **Olilo** — finance/data product  
-3. **Mohiguide** — commerce O2O product (**plan:** fold AIHub GenAI SaaS functions into Mohiguide enrichment)  
+3. **Mohiguide** — commerce O2O product  
 4. **DeployBot** — DevOps tooling (**open-source**)  
 5. **Defect Drainer** — quality channel tooling (**open-source**)  
 6. **Skill Forge** — agent skills platform (**open-source**)  
@@ -19,7 +19,7 @@ https://binartist.github.io/about-me/
 - **Sketch Forge** — founder-led native iOS / Swift / SwiftUI iPad client for Tutored sticker QA  
 - **IBM Internal OA** — IBM internal pre-sales / office-automation iOS app (Swift, UIKit, 2015–2017)  
 
-**Not featured as flagship cards:** AIHub (folded into Mohiguide plan — lineage page only).
+**Also in the product tree (not a catalog card):** AIHub — GenAI marketing SaaS.
 ## Source of truth
 
 Primary facts for MapGenie, Olilo, Tutored, Mohiguide, DeployBot: private **cv-playground** notes:
@@ -44,8 +44,8 @@ Rules when editing:
 |---|---|
 | **Mobile** | Tutored, Mohiguide, Sketch Forge, Global e-commerce, IBM Internal OA |
 | **Web** | Tutored, Olilo, Mohiguide, DeployBot, Defect Drainer, MapGenie, Global e-commerce |
-| **Cloud-Native** | Tutored, Olilo, Mohiguide, DeployBot, MapGenie, KONE, Global e-commerce |
-| **AI** | Tutored, Olilo, Mohiguide, DeployBot, Defect Drainer, Skill Forge, Sketch Forge, MapGenie |
+| **Cloud-Native** | Tutored, Olilo, Mohiguide, DeployBot, Defect Drainer, MapGenie, KONE, Global e-commerce |
+| **AI** | Tutored, Olilo, DeployBot, Defect Drainer, Skill Forge, Sketch Forge, MapGenie |
 
 Tags (3 types only): **language** · **tech stack** · **business domain**. Domain chips filter the grid.
 

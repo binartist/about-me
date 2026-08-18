@@ -1,34 +1,24 @@
-# Skill Forge — Agent Skills Registry & Craft Platform
+# Skill Forge — Agent skills registry
 
-**Period:** Active (ongoing)  
-**Ownership:** Founder-led developer platform · **open-source (MIT)**  
+**Period:** 2026–Present  
+**Ownership:** Founder-led · open-source (MIT)  
 **Role:** Founder / platform engineer  
 
-## Introduction
+Skill Forge is how agent skills, instructions, and subagents are stored, installed, and kept consistent across tools. The registry is the source of truth. Consumer repos (and a home profile) declare what they need; `skf sync` vendors exact copies. Tool runtime folders are install targets, not the system of record.
 
-Skill Forge manages how **agent tools and artifacts**—skills, managed instructions, subagents—are stored, installed, and evolved. Substrate:
+## Platform
 
-- **Skills** — reusable task guidance  
-- **Managed agent instruction overlays** — Codex, Copilot CLI, Claude Code, Grok, etc.  
-- **Managed subagent definitions** for supported tools  
-
-The **repository is the source of truth**. Consumer repos (and `$HOME` for machine-wide skills) declare a profile in `skill-forge.json`; `skf sync` vendors exact copies. Runtime tool directories are **deployment targets**, never the SSOT.
-
-A longer-term arc evaluates agent + artifact performance across SDLC lenses and evolves artifacts from evidence (see product design docs).
-
-## Capabilities (grounded in product README)
-
-- Registry + integrity lock (SHA-256 style package lock)  
-- Project and home profile sync (manifest + lock + vendored skills)  
-- Compose managed agent instructions (core + tool overlay)  
-- Validate registry metadata, skill frontmatter, paths, lock freshness  
-- Diff inventory vs runtime without writing; confirm before overwrite  
+- Registry with an integrity lock (package-lock style)  
+- Project and home profile sync  
+- Composed instructions for Codex, Copilot CLI, Claude Code, Grok, and similar  
+- Managed subagent definitions  
+- Validate metadata, paths, and lock freshness; diff before overwrite  
 
 ## My contribution
 
-- Source-of-truth registry model and consumer profile/sync CLI path  
-- Multi-tool instruction composition and subagent install targets  
-- Validation and lock integrity for agent craft supply chain  
-- Design for evaluation-driven evolution of skills (roadmap-aware, not oversold as finished)  
+- Registry and lock model  
+- Profile sync CLI  
+- Multi-tool instruction composition and install targets  
+- Validation so agent craft stays reproducible
 
-**Key technologies:** Node.js CLI, registry/lock JSON, skill frontmatter, multi-tool runtime install, optional local observability stack (otel/compose)
+**Key technologies:** Node.js, CLI, registry/lock JSON, skill frontmatter
