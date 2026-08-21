@@ -1,4 +1,4 @@
-# IBM Internal OA — Pre-sales workflow iOS app
+# IBM Enterprise OA — Pre-sales workflow iOS app
 
 **Period:** January 2015–March 2017  
 **Ownership:** IBM internal delivery  
