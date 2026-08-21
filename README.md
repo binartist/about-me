@@ -18,7 +18,7 @@ https://binartist.github.io/about-me/
 **Also in the catalog (not in the locked flagship nine):**
 - **KONE Connected Services** — cloud-native IoT ops / migration (IBM / KONE)  
 - **Gan Ai Bang (敢爱邦)** — Infiniti China owner app; whole native iOS app in Swift/UIKit, China App Store (independent contract, 2017–2018)  
-- **IBM Internal OA** — IBM internal pre-sales / office-automation iOS app (Objective-C, UIKit, 2015–2017)  
+- **IBM Enterprise OA** — IBM internal pre-sales / office-automation iOS app (Objective-C, UIKit, 2015–2017)  
 
 **Also in the product tree (not a catalog card):** AIHub — GenAI marketing SaaS.
 ## Source of truth
@@ -44,7 +44,7 @@ Rules when editing:
 
 | Tab | Items (a product can appear in more than one) |
 |---|---|
-| **Mobile** | Tutored, Mohiguide, Sketch Forge, Global e-commerce, IBM Internal OA |
+| **Mobile** | Tutored, Mohiguide, Sketch Forge, Global e-commerce, IBM Enterprise OA |
 | **Web** | Tutored, Olilo, Mohiguide, DeployBot, Defect Drainer, MapGenie, Global e-commerce |
 | **Cloud-Native** | Tutored, Olilo, Mohiguide, DeployBot, Defect Drainer, MapGenie, KONE, Global e-commerce |
 | **AI** | Tutored, Olilo, DeployBot, Defect Drainer, Skill Forge, Sketch Forge, MapGenie |
