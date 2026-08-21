@@ -6,18 +6,19 @@ https://binartist.github.io/about-me/
 ## Featured set (locked)
 
 1. **Tutored** — education product  
-2. **Olilo** — finance/data product  
-3. **Mohiguide** — commerce O2O product  
-4. **DeployBot** — DevOps tooling (**open-source**)  
-5. **Defect Drainer** — quality channel tooling (**open-source**)  
-6. **Skill Forge** — agent skills platform (**open-source**)  
-7. **MapGenie** — enterprise AI delivery (IBM / Maersk)  
-8. **KONE Connected Services** — cloud-native IoT ops / migration (IBM / KONE)  
+2. **Sketch Forge** — founder-led native iOS / Swift / SwiftUI iPad client  
+3. **Olilo** — finance/data product  
+4. **Mohiguide** — commerce O2O product  
+5. **DeployBot** — DevOps tooling (**open-source**)  
+6. **Defect Drainer** — quality channel tooling (**open-source**)  
+7. **Skill Forge** — agent skills platform (**open-source**)  
+8. **MapGenie** — enterprise AI delivery (IBM / Maersk)  
 9. **Global e-commerce** — enterprise localization / integration (IBM / Oriflame)  
 
 **Also in the catalog (not in the locked flagship nine):**
-- **Sketch Forge** — founder-led native iOS / Swift / SwiftUI iPad client for Tutored sticker QA  
-- **IBM Internal OA** — IBM internal pre-sales / office-automation iOS app (Swift, UIKit, 2015–2017)  
+- **KONE Connected Services** — cloud-native IoT ops / migration (IBM / KONE)  
+- **Gan Ai Bang (敢爱邦)** — Infiniti China owner app; whole native iOS app in Swift/UIKit, China App Store (independent contract, 2017–2018)  
+- **IBM Internal OA** — IBM internal pre-sales / office-automation iOS app (Objective-C, UIKit, 2015–2017)  
 
 **Also in the product tree (not a catalog card):** AIHub — GenAI marketing SaaS.
 ## Source of truth

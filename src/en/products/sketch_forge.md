@@ -1,6 +1,6 @@
 # Sketch Forge — Native iOS sticker studio
 
-**Period:** July 2026–Present  
+**Period:** January 2026–Present  
 **Ownership:** Founder-led  
 **Role:** Founder / native iOS engineer  
 
