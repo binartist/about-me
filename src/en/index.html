@@ -6,15 +6,18 @@
   <title>Joe Zhou — Products across the software lifecycle</title>
   <style>
     :root {
-      --bg: #fafafa;
+      --bg: #fbfafd;
       --surface: #fff;
-      --text: #141414;
-      --muted: #5c5c5c;
-      --border: #e8e8e8;
-      --accent: #0b57d0;
-      --tag-bg: #f0f2f5;
-      --radius: 12px;
-      --shadow: 0 1px 2px rgba(0,0,0,.04), 0 4px 16px rgba(0,0,0,.04);
+      --text: #1a1a1a;
+      --muted: #45454d;
+      --border: #dcdcde;
+      --link: #0a4fa8;
+      --focus: #0a4fa8;
+      --available: #0d5c32;
+      --available-bg: #e7f6ee;
+      --planned: #7a3e00;
+      --planned-bg: #fff3e0;
+      --row: #f7f7f8;
     }
     * { box-sizing: border-box; }
     body {
@@ -24,28 +27,33 @@
       color: var(--text);
       line-height: 1.45;
     }
-    .wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 2rem 1.25rem 4rem;
+    .skip {
+      position: absolute;
+      left: .75rem;
+      top: .75rem;
+      padding: .4rem .7rem;
+      background: #fff;
+      color: var(--link);
+      border-radius: 6px;
+      z-index: 5;
+      transform: translateY(-150%);
     }
-    header {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: .75rem 1.5rem;
-      margin-bottom: 1.75rem;
-      padding-bottom: 1.25rem;
-      border-bottom: 1px solid var(--border);
+    .skip:focus {
+      transform: none;
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 1.75rem 1.25rem 3rem;
     }
     header .identity {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: .9rem;
-      min-width: 0;
     }
-    header .avatar {
+    .avatar {
       width: 64px;
       height: 64px;
       border-radius: 50%;
@@ -53,312 +61,353 @@
       border: 2px solid var(--border);
       background: var(--surface);
       flex: 0 0 auto;
-      box-shadow: var(--shadow);
     }
-    header .identity-text {
-      min-width: 0;
-    }
-    header h1 {
+    h1 {
       margin: 0;
-      font-size: 1.35rem;
-      font-weight: 650;
+      font-size: 1.6rem;
+      font-weight: 700;
       letter-spacing: -0.02em;
+      line-height: 1.2;
     }
-    header .headline {
-      margin: .15rem 0 0;
-      font-size: 1rem;
-      font-weight: 550;
+    .intro {
+      margin: .35rem 0 0;
+      max-width: 40rem;
+      font-size: 1.02rem;
+      line-height: 1.45;
+    }
+    .intro a {
+      color: var(--link);
+      font-weight: 600;
+    }
+    a:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    main { margin-top: 2rem; }
+    h2 {
+      margin: 0 0 .75rem;
+      font-size: 1.15rem;
+      font-weight: 700;
       letter-spacing: -0.01em;
-      line-height: 1.3;
-      color: var(--text);
     }
-    header .subline {
-      margin: .2rem 0 0;
-      color: var(--muted);
-      font-size: .9rem;
-      line-height: 1.35;
-    }
-    header nav a {
-      color: var(--accent);
-      text-decoration: none;
-      font-size: .9rem;
-      margin-left: 1rem;
-    }
-    header nav a:hover { text-decoration: underline; }
-
-    .tabs {
+    .legend {
       display: flex;
       flex-wrap: wrap;
-      gap: .5rem;
-      margin-bottom: 1rem;
+      gap: .5rem .9rem;
+      margin: 0 0 .75rem;
+      padding: 0;
+      list-style: none;
     }
-    .tab {
-      appearance: none;
+    .scroll-hint {
+      display: none;
+      margin: 0 0 .5rem;
+      color: var(--muted);
+      font-size: .82rem;
+    }
+    .matrix-scroll {
+      overflow-x: auto;
       border: 1px solid var(--border);
+      border-radius: 8px;
       background: var(--surface);
-      color: var(--text);
-      border-radius: 999px;
-      padding: .45rem .95rem;
-      font-size: .875rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background .15s, border-color .15s, color .15s;
+      container-type: inline-size;
     }
-    .tab:hover { border-color: #ccc; }
-    .tab[aria-selected="true"] {
-      background: var(--text);
-      border-color: var(--text);
-      color: #fff;
+    table {
+      border-collapse: separate;
+      border-spacing: 0;
+      width: 100%;
+      min-width: 46rem;
     }
-    .tab .count {
-      opacity: .65;
+    caption {
+      caption-side: top;
+      position: sticky;
+      left: 0;
+      padding: .7rem .85rem .4rem;
+      text-align: left;
+      font-size: .9rem;
+      color: var(--muted);
       font-weight: 400;
-      margin-left: .25rem;
     }
-
-    .filters {
-      display: flex;
-      flex-direction: column;
-      gap: .55rem;
-      margin-bottom: 1.25rem;
+    caption span {
+      display: block;
+      width: calc(100cqi - 1.7rem);
+      max-width: 52rem;
+      white-space: normal;
     }
-    .filter-group {
-      display: grid;
-      grid-template-columns: 5.75rem minmax(0, 1fr) auto;
-      align-items: start;
-      column-gap: .5rem;
-      row-gap: .35rem;
+    th, td {
+      padding: .8rem .85rem;
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      vertical-align: middle;
+      background: var(--surface);
     }
-    .filter-group-label {
-      grid-column: 1;
-      padding-top: .28rem;
+    thead th {
+      vertical-align: bottom;
+      background: var(--surface);
+    }
+    thead th:first-child,
+    tbody th[scope="row"] {
+      position: sticky;
+      left: 0;
+      text-align: left;
+      min-width: 9.5rem;
+      max-width: 12rem;
+    }
+    thead th:first-child { z-index: 3; }
+    tbody th[scope="row"] { z-index: 1; }
+    thead th:not(:first-child) {
+      text-align: center;
+      min-width: 12.25rem;
+    }
+    tbody td { text-align: center; }
+    tbody tr:nth-child(even) th,
+    tbody tr:nth-child(even) td { background: var(--row); }
+    .corner {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .area {
+      display: block;
+      margin-bottom: .45rem;
       font-size: .68rem;
       font-weight: 700;
-      letter-spacing: .03em;
+      letter-spacing: .06em;
       text-transform: uppercase;
-    }
-    .filter-group-label.domain { color: #5b2b9e; }
-    .filter-group-label.stack { color: #174ea6; }
-    .filter-group-label.lang { color: #1b5e20; }
-    .filter-group-chips {
-      grid-column: 2;
-      display: flex;
-      flex-wrap: wrap;
-      gap: .28rem;
-      min-width: 0;
-      /* one line when collapsed */
-      max-height: 1.55rem;
-      overflow: hidden;
-    }
-    .filter-group.open .filter-group-chips {
-      max-height: none;
-      overflow: visible;
-    }
-    .filter-group-more {
-      grid-column: 3;
-      appearance: none;
-      border: none;
-      background: transparent;
       color: var(--muted);
-      font: inherit;
-      font-size: .7rem;
-      font-weight: 550;
-      cursor: pointer;
-      padding: .2rem .15rem;
-      white-space: nowrap;
-      align-self: start;
     }
-    .filter-group-more:hover { color: var(--text); }
-    .filter-group-more.hidden { visibility: hidden; pointer-events: none; }
-    .chip {
-      appearance: none;
-      border-radius: 999px;
-      padding: .18rem .5rem;
-      font-size: .7rem;
-      font-weight: 500;
-      cursor: pointer;
-      border: 1px solid var(--border);
-      background: #fff;
-      color: var(--muted);
-      line-height: 1.25;
-    }
-    .chip:hover {
-      color: var(--text);
-      border-color: #ccc;
-      background: #f7f7f7;
-    }
-    /* selected: type colors */
-    .chip.domain[aria-pressed="true"] {
-      background: #7b1fa2;
-      border-color: #6a1b9a;
-      color: #fff;
-      font-weight: 600;
-    }
-    .chip.stack[aria-pressed="true"] {
-      background: #1967d2;
-      border-color: #174ea6;
-      color: #fff;
-      font-weight: 600;
-    }
-    .chip.lang[aria-pressed="true"] {
-      background: #2e7d32;
-      border-color: #1b5e20;
-      color: #fff;
-      font-weight: 600;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1rem;
-    }
-    .card {
+    .product-id {
       display: flex;
-      flex-direction: column;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.15rem 1.2rem 1.2rem;
-      box-shadow: var(--shadow);
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+    }
+    .icon-link {
+      width: 36px;
+      height: 36px;
+      display: inline-grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 8px;
+      background: #eef1f6;
+      color: #173a67;
       text-decoration: none;
-      color: inherit;
-      transition: border-color .15s, transform .15s, box-shadow .15s;
-      min-height: 11.5rem;
     }
-    .card:hover {
-      border-color: #c8d4ea;
-      transform: translateY(-1px);
-      box-shadow: 0 2px 8px rgba(11,87,208,.08);
+    .icon-link svg { width: 22px; height: 22px; }
+    .icon-link-logo {
+      background: transparent;
+      padding: 0;
     }
-    .card.hidden { display: none; }
-    .card .thumb {
+    .icon-link-logo img {
+      width: 36px;
+      height: 36px;
       display: block;
-      width: calc(100% + 2.4rem);
-      margin: -1.15rem -1.2rem .9rem;
-      aspect-ratio: 2 / 1;
-      height: auto;
-      object-fit: cover;
-      object-position: center;
-      border-radius: var(--radius) var(--radius) 0 0;
-      border-bottom: 1px solid var(--border);
-      background: #fff;
+      border-radius: 8px;
     }
-    .card h2 {
-      margin: 0 0 .35rem;
+    .name-link {
+      color: var(--text);
+      font-weight: 700;
       font-size: 1.05rem;
-      font-weight: 650;
+      text-decoration: none;
       letter-spacing: -0.01em;
     }
-    .card .blurb {
-      margin: 0 0 .85rem;
+    .name-link:hover,
+    .intro a:hover,
+    footer a:hover { text-decoration: underline; }
+    .blurb, .meta {
+      display: block;
+      margin: .4rem auto 0;
+      max-width: 16rem;
+      font-weight: 400;
+      font-size: .78rem;
+      line-height: 1.35;
       color: var(--muted);
-      font-size: .88rem;
-      flex: 1;
+      text-transform: none;
+      letter-spacing: 0;
     }
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .3rem;
+    .meta { margin-top: .2rem; }
+    .cap-name {
+      display: block;
+      font-size: .95rem;
+      font-weight: 700;
     }
-    .tag {
-      font-size: .68rem;
-      font-weight: 500;
-      padding: .15rem .4rem;
-      border-radius: 5px;
+    .cap-note {
+      display: block;
+      margin-top: .15rem;
+      font-size: .75rem;
+      font-weight: 400;
+      color: var(--muted);
+      line-height: 1.3;
+    }
+    .mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .35rem;
+      font-size: .82rem;
+      font-weight: 700;
+      line-height: 1.2;
       white-space: nowrap;
     }
-    .tag.domain {
-      background: #f3eefc;
-      color: #5b2b9e;
+    .mark svg { flex: 0 0 auto; }
+    .mark-available {
+      color: var(--available);
+      background: var(--available-bg);
+      border-radius: 999px;
+      padding: .2rem .5rem .2rem .35rem;
     }
-    .tag.stack {
-      background: #e8f0fe;
-      color: #174ea6;
+    .mark-planned {
+      color: var(--planned);
+      background: var(--planned-bg);
+      border-radius: 999px;
+      padding: .2rem .5rem .2rem .35rem;
     }
-    .tag.lang {
-      background: #e8f5e9;
-      color: #1b5e20;
+    .mark-na {
+      color: var(--text);
+      font-size: 1.15rem;
+      font-weight: 500;
     }
-    .meta {
-      margin-top: .75rem;
-      font-size: .72rem;
-      color: #888;
-    }
-    .empty {
-      display: none;
-      color: var(--muted);
-      font-size: .95rem;
-      padding: 2rem 0;
-    }
-    .empty.show { display: block; }
     footer {
-      margin-top: 2.5rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border);
-      font-size: .8rem;
-      color: #999;
+      margin-top: 1.25rem;
+      font-size: .9rem;
     }
-      .intro { max-width: 760px; font-size: 1.05rem; line-height: 1.6; margin: 0 0 1.75rem; }
-    h2.matrix-title { font-size: 1.1rem; margin: 0 0 .9rem; }
-    .matrix { display: grid; gap: .75rem; }
-    .row {
-      display: grid; grid-template-columns: 170px 220px 1fr; gap: 1rem; align-items: center;
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-      box-shadow: var(--shadow); padding: 1rem 1.1rem;
-    }
-    .phase { font-weight: 600; font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
-    .project { display: flex; align-items: center; gap: .65rem; color: var(--text); text-decoration: none; font-weight: 600; font-size: 1.05rem; }
-    .project:hover .pname { color: var(--accent); text-decoration: underline; }
-    .icon { width: 40px; height: 40px; border-radius: 10px; background: var(--tag-bg); color: var(--accent); display: grid; place-items: center; flex: 0 0 auto; }
-    .icon svg { width: 22px; height: 22px; }
-    .desc { margin: 0 0 .4rem; color: var(--text); }
-    .caps { display: flex; flex-wrap: wrap; gap: .35rem; margin: 0; padding: 0; list-style: none; }
-    .caps li { font-size: .78rem; padding: .15rem .55rem; border-radius: 999px; background: var(--tag-bg); color: var(--muted); }
-    .caps li.planned { background: transparent; border: 1px dashed #bbb; }
-    .caps li em { font-style: normal; color: #999; }
+    footer a { color: var(--link); font-weight: 600; }
     @media (max-width: 760px) {
-      .row { grid-template-columns: 1fr; gap: .5rem; }
+      .scroll-hint { display: block; }
+      .wrap { padding: 1.25rem .75rem 2.5rem; }
+      h1 { font-size: 1.4rem; }
     }
   </style>
 </head>
 <body>
+  <a class="skip" href="#matrix">Skip to product matrix</a>
   <div class="wrap">
     <header>
       <div class="identity">
         <img class="avatar" src="avatar.jpg" width="64" height="64" alt="Joe Zhou" />
-        <div class="identity-text">
+        <div>
           <h1>Joe Zhou</h1>
-          <div class="headline">Full-stack AI engineer &amp; cloud-native application architect</div>
-          <div class="subline">Auckland, New Zealand</div>
+          <p class="intro">Joe Zhou is a full-stack AI engineer with 15+ years of experience, based in Auckland, New Zealand.</p>
+          <p class="intro">With IBM since January 2015. <a href="https://www.linkedin.com/in/joezhou2026">Joe Zhou on LinkedIn</a>.</p>
         </div>
       </div>
-      <nav>
-        <a href="https://www.linkedin.com/in/joezhou2026" rel="noopener">LinkedIn</a>
-      </nav>
     </header>
 
-    <p class="intro">I'm Joe Zhou, a full-stack AI engineer with 15+ years of building software, based in Auckland, New Zealand. Since January 2015 I've been with IBM China as a Cloud-Native Application Architect and Full-Stack Developer. Alongside that I build my own products, and together they cover the software lifecycle with AI agents.</p>
+    <main>
+      <h2>Products across the software lifecycle</h2>
+      <ul class="legend" aria-label="Status legend">
+        <li>
+          <span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span>
+        </li>
+        <li>
+          <span class="mark mark-planned"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M8 1.6 14.2 8 8 14.4 1.8 8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span>Planned</span></span>
+        </li>
+        <li>
+          <span class="mark mark-na"><span aria-label="Not applicable">—</span></span>
+          <span>Not applicable</span>
+        </li>
+      </ul>
+      <p class="scroll-hint">Scroll sideways to compare products. The capability names stay in view.</p>
+      <div class="matrix-scroll">
+        <table id="matrix">
+          <caption><span>Capability coverage for Skill Forge, Defect Drainer, and Deploybot. A dash means that capability does not apply.</span></caption>
+          <thead>
+            <tr>
+              <th class="corner" scope="col">Capability</th>
+              <th scope="col">
+                <span class="area">Development</span>
+                <span class="product-id">
+                  <a class="icon-link" href="products/skill_forge.html" aria-label="Skill Forge">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="16 18 22 12 16 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="8 6 2 12 8 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                  <a class="name-link" href="products/skill_forge.html">Skill Forge</a>
+                </span>
+                <span class="blurb">Coding agents driven by skill instructions.</span>
+                <span class="meta">Public repo · MIT · 35 skills</span>
+              </th>
+              <th scope="col">
+                <span class="area">Quality assurance</span>
+                <span class="product-id">
+                  <a class="icon-link" href="products/defect_drainer.html" aria-label="Defect Drainer">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 11l3 3 8-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                  <a class="name-link" href="products/defect_drainer.html">Defect Drainer</a>
+                </span>
+                <span class="blurb">Testing and bug fixing in isolated worktrees.</span>
+                <span class="meta">Public repos · MIT</span>
+              </th>
+              <th scope="col">
+                <span class="area">DevOps</span>
+                <span class="product-id">
+                  <a class="icon-link icon-link-logo" href="products/deploybot.html">
+                    <img src="icons/deploybot.svg" width="36" height="36" alt="Deploybot" />
+                  </a>
+                  <a class="name-link" href="products/deploybot.html">Deploybot</a>
+                </span>
+                <span class="blurb">Allowlisted deploys, monitoring, and host operations.</span>
+                <span class="meta">Public repos · 22 tools · ~1,100 tests</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><span class="cap-name">Code</span><span class="cap-note">Skills-driven coding agents</span></th>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="cap-name">Test</span><span class="cap-note">Plans, runs, and verification</span></th>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="cap-name">Bug fixing</span><span class="cap-note">Inventory through pull request</span></th>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="cap-name">Build</span><span class="cap-note">Produce a release artifact</span></th>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-planned"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M8 1.6 14.2 8 8 14.4 1.8 8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span>Planned</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="cap-name">Deploy</span><span class="cap-note">Release onto a host</span></th>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="cap-name">Monitor</span><span class="cap-note">Host and service health</span></th>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="cap-name">Troubleshoot</span><span class="cap-note">Logs, status, and probes</span></th>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="cap-name">Automated diagnosis</span><span class="cap-note">Explain a failure</span></th>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-planned"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M8 1.6 14.2 8 8 14.4 1.8 8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span>Planned</span></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
 
-    <h2 class="matrix-title">Products across the software lifecycle</h2>
-    <div class="matrix">
-      <div class="row">
-        <div class="phase">Development</div>
-        <a class="project" href="products/skill_forge.html"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span><span class="pname">Skill Forge</span></a>
-        <div><p class="desc">Coding agents driven by skill instructions: a CLI and registry that ships skills, instructions, subagents and hooks to Claude Code, Codex, Copilot CLI and Grok as integrity-locked packages.</p><ul class="caps"><li>35 skills</li><li>Subagents &amp; hooks</li><li>SHA-256 integrity lock</li><li>Open source (MIT)</li></ul></div>
-      </div>
-      <div class="row">
-        <div class="phase">Quality assurance</div>
-        <a class="project" href="products/defect_drainer.html"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg></span><span class="pname">Defect Drainer</span></a>
-        <div><p class="desc">Testing and bug fixing: coding agents batch-fix defects in isolated git worktrees, and a defect only resolves once verification passes with no regressions.</p><ul class="caps"><li>Defect inventory</li><li>Batch fix in worktrees</li><li>Before/after verification</li><li>Pull requests</li><li>Open source (MIT)</li></ul></div>
-      </div>
-      <div class="row">
-        <div class="phase">DevOps</div>
-        <a class="project" href="products/deploybot.html"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span><span class="pname">Deploybot</span></a>
-        <div><p class="desc">Deploy and operations: a self-hosted platform with an OAuth-secured MCP gateway, so AI agents can inspect hosts and make changes only after confirmation.</p><ul class="caps"><li>Deploy with health checks &amp; rollback</li><li>Host &amp; service monitoring</li><li>Logs, status &amp; probes</li><li>MCP gateway (22 tools)</li><li class="planned">Build <em>planned</em></li><li class="planned">Automated diagnosis <em>planned</em></li><li>Public repos</li></ul></div>
-      </div>
-    </div>
-
-    <footer>Each product links to its detail page · <a href="products/index.html">all product pages</a></footer>
+    <footer>
+      <a href="products/index.html">All product pages</a>
+    </footer>
   </div>
 </body>
 </html>

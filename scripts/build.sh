@@ -157,6 +157,12 @@ elif [ -f assets/avatar.jpg ]; then
     cp assets/avatar.jpg dist/en/avatar.jpg
     echo "wrote dist/en/avatar.jpg (from assets/)"
 fi
+# Homepage product marks (column headers). Same copy pattern as avatar.jpg.
+if [ -d src/en/icons ]; then
+    mkdir -p dist/en/icons
+    cp -a src/en/icons/. dist/en/icons/
+    echo "wrote dist/en/icons/"
+fi
 
 # Product page images (screenshots referenced from product markdown + catalog cards)
 if [ -d src/en/products/images ]; then
