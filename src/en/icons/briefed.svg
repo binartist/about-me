@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-	<rect width="32" height="32" rx="8" fill="#1a2332"/>
-	<path d="M8 9h16v11H14l-4 4v-4H8z" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="#9ece6a"/>
-	<path d="M12 13.5h8M12 16.5h5" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="#9ece6a"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-labelledby="title">
+  <title id="title">Briefed</title>
+  <path fill="#1A3C5E" fill-rule="evenodd" d="M18 8 H36 L52 24 V49 Q52 56 45 56 H18 Q11 56 11 49 V15 Q11 8 18 8 Z M 19.153 38.94 L 28.153 49.44 A 3.75 3.75 0 0 0 33.797 49.498 L 46.297 35.498 A 3.75 3.75 0 0 0 40.703 30.502 L 28.203 44.502 A 3.75 3.75 0 0 1 33.847 44.56 L 24.847 34.06 A 3.75 3.75 0 0 0 19.153 38.94 Z"/>
 </svg>
