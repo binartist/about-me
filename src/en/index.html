@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Joe Zhou — Full-Stack AI Engineer &amp; Cloud-Native Application Architect</title>
+  <title>Joe Zhou — Products across the software lifecycle</title>
   <style>
     :root {
       --bg: #fafafa;
@@ -298,14 +298,27 @@
       font-size: .8rem;
       color: #999;
     }
-      .story {
-      max-width: 720px;
-      font-size: 1.05rem;
-      line-height: 1.65;
+      .intro { max-width: 760px; font-size: 1.05rem; line-height: 1.6; margin: 0 0 1.75rem; }
+    h2.matrix-title { font-size: 1.1rem; margin: 0 0 .9rem; }
+    .matrix { display: grid; gap: .75rem; }
+    .row {
+      display: grid; grid-template-columns: 170px 220px 1fr; gap: 1rem; align-items: center;
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      box-shadow: var(--shadow); padding: 1rem 1.1rem;
     }
-    .story p { margin: 0 0 1.15rem; }
-    .story a { color: var(--accent); text-decoration: none; }
-    .story a:hover { text-decoration: underline; }
+    .phase { font-weight: 600; font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+    .project { display: flex; align-items: center; gap: .65rem; color: var(--text); text-decoration: none; font-weight: 600; font-size: 1.05rem; }
+    .project:hover .pname { color: var(--accent); text-decoration: underline; }
+    .icon { width: 40px; height: 40px; border-radius: 10px; background: var(--tag-bg); color: var(--accent); display: grid; place-items: center; flex: 0 0 auto; }
+    .icon svg { width: 22px; height: 22px; }
+    .desc { margin: 0 0 .4rem; color: var(--text); }
+    .caps { display: flex; flex-wrap: wrap; gap: .35rem; margin: 0; padding: 0; list-style: none; }
+    .caps li { font-size: .78rem; padding: .15rem .55rem; border-radius: 999px; background: var(--tag-bg); color: var(--muted); }
+    .caps li.planned { background: transparent; border: 1px dashed #bbb; }
+    .caps li em { font-style: normal; color: #999; }
+    @media (max-width: 760px) {
+      .row { grid-template-columns: 1fr; gap: .5rem; }
+    }
   </style>
 </head>
 <body>
@@ -324,17 +337,28 @@
       </nav>
     </header>
 
-    <main class="story">
-      <p>I'm Joe Zhou, a full-stack AI engineer and cloud-native application architect with 15+ years of building software, based in Auckland, New Zealand. My work sits where enterprise delivery meets hands-on product building: AI that is grounded in real data, systems that are safe to change, and products I can take from idea to production myself.</p>
+    <p class="intro">I'm Joe Zhou, a full-stack AI engineer with 15+ years of building software, based in Auckland, New Zealand. Since January 2015 I've been with IBM China as a Cloud-Native Application Architect and Full-Stack Developer. Alongside that I build my own products, and together they cover the software lifecycle with AI agents.</p>
 
-      <p>Since January 2015 I've been with IBM China as a Cloud-Native Application Architect and Full-Stack Developer, delivering for global enterprise clients. Most recently, for A.P. Moller - Maersk, I was the senior application architect and AI engineer on <a href="products/edi.html">MapGenie</a>, a RAG and LLM platform for EDI mapping on Azure. It went live in February 2026, cut mapping change time from about 23 hours to about 30 minutes, and won three Danish Digital Award categories. Before that I re-architected KONE's connected-services platform from IBM Watson IoT to AWS for global elevator and escalator telemetry (<a href="products/kone.html">Cloud Migration: IBM Watson IoT to AWS IoT Platform</a>), and led the architecture of Oriflame's China-market e-commerce platform on Azure China (<a href="products/glob_ecom.html">Global E-Commerce Modernization</a>).</p>
+    <h2 class="matrix-title">Products across the software lifecycle</h2>
+    <div class="matrix">
+      <div class="row">
+        <div class="phase">Development</div>
+        <a class="project" href="products/skill_forge.html"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span><span class="pname">Skill Forge</span></a>
+        <div><p class="desc">Coding agents driven by skill instructions: a CLI and registry that ships skills, instructions, subagents and hooks to Claude Code, Codex, Copilot CLI and Grok as integrity-locked packages.</p><ul class="caps"><li>35 skills</li><li>Subagents &amp; hooks</li><li>SHA-256 integrity lock</li><li>Open source (MIT)</li></ul></div>
+      </div>
+      <div class="row">
+        <div class="phase">Quality assurance</div>
+        <a class="project" href="products/defect_drainer.html"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg></span><span class="pname">Defect Drainer</span></a>
+        <div><p class="desc">Testing and bug fixing: coding agents batch-fix defects in isolated git worktrees, and a defect only resolves once verification passes with no regressions.</p><ul class="caps"><li>Defect inventory</li><li>Batch fix in worktrees</li><li>Before/after verification</li><li>Pull requests</li><li>Open source (MIT)</li></ul></div>
+      </div>
+      <div class="row">
+        <div class="phase">DevOps</div>
+        <a class="project" href="products/deploybot.html"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span><span class="pname">Deploybot</span></a>
+        <div><p class="desc">Deploy and operations: a self-hosted platform with an OAuth-secured MCP gateway, so AI agents can inspect hosts and make changes only after confirmation.</p><ul class="caps"><li>Deploy with health checks &amp; rollback</li><li>Host &amp; service monitoring</li><li>Logs, status &amp; probes</li><li>MCP gateway (22 tools)</li><li class="planned">Build <em>planned</em></li><li class="planned">Automated diagnosis <em>planned</em></li><li>Public repos</li></ul></div>
+      </div>
+    </div>
 
-      <p>Alongside client work I build my own products. <a href="products/briefed.html">Briefed</a>, live at <a href="https://briefed.cv" rel="noopener">briefed.cv</a>, is an AI career agent that turns job adverts into tracked applications and CVs grounded only in the user's own career facts, running on Vercel with Supabase. <a href="products/deploybot.html">Deploybot</a> is a self-hosted deploy and operations platform with an OAuth-secured MCP gateway, so AI agents can inspect hosts and make changes only after confirmation. <a href="products/tutored.html">Tutored</a> is a language-learning platform with web and mobile clients and its own course-authoring pipeline.</p>
-
-      <p>I also build tooling for AI coding agents: <a href="products/skill_forge.html">Skill Forge</a>, a registry that ships skills, instructions and subagents to Claude Code, Codex, Copilot CLI and Grok as integrity-locked packages, and <a href="products/defect_drainer.html">Defect Drainer</a>, a harness that only closes a defect once a verified fix is in. Both are open source under MIT.</p>
-
-      <p>I started out in 2007 as a software engineer at Mahong Network Tech, working on embedded systems and mobile platforms, after a BSc in Electronic Science and Technology from Huazhong University of Science and Technology. Detail on other work is in the <a href="products/index.html">product pages</a>, and the best way to reach me is on <a href="https://www.linkedin.com/in/joezhou2026" rel="noopener">LinkedIn</a>.</p>
-    </main>
+    <footer>Each product links to its detail page · <a href="products/index.html">all product pages</a></footer>
   </div>
 </body>
 </html>
