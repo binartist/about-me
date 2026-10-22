@@ -90,7 +90,7 @@ print(html)
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>${title} — Joe</title>
+  <title>${title} — Joe Zhou</title>
   <link rel="stylesheet" href="../site.css?v=${CSS_VER}" />
 </head>
 <body>

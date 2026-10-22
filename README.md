@@ -3,27 +3,30 @@
 Static portfolio published via **GitHub Pages**:  
 https://binartist.github.io/about-me/
 
+The English homepage (`src/en/index.html`) is a short narrative profile of Joe Zhou that links to selected product pages inline. Product detail pages live in `src/en/products/*.md`; the build also generates a product index at `en/products/index.html`.
+
 ## Featured set (locked)
 
-1. **Tutored** — education product  
-2. **Sketch Forge** — founder-led native iOS / Swift / SwiftUI iPad client  
-3. **Olilo** — finance/data product  
-4. **Mohiguide** — commerce O2O product  
-5. **DeployBot** — DevOps tooling (**open-source**)  
-6. **Defect Drainer** — quality channel tooling (**open-source**)  
-7. **Skill Forge** — agent skills platform (**open-source**)  
-8. **MapGenie** — enterprise AI delivery (IBM / Maersk)  
-9. **Global e-commerce** — enterprise localization / integration (IBM / Oriflame)  
+1. **Briefed** — AI career agent (founder-led, live at briefed.cv)  
+2. **Tutored** — education product  
+3. **Sketch Forge** — founder-led native iOS / Swift / SwiftUI iPad client  
+4. **Olilo** — finance/data product  
+5. **Mohiguide** — commerce O2O product  
+6. **Deploybot** — self-hosted deploy & operations platform with an AI-agent gateway (**public repos**)  
+7. **Defect Drainer** — quality channel tooling (**open-source**)  
+8. **Skill Forge** — agent skills platform (**open-source**)  
+9. **MapGenie** — enterprise AI delivery (IBM / Maersk)  
+10. **Global e-commerce** — enterprise localization / integration (IBM / Oriflame)  
 
-**Also in the catalog (not in the locked flagship nine):**
-- **KONE Connected Services** — cloud-native IoT ops / migration (IBM / KONE)  
+**Also in the product pages (not in the locked flagship ten):**
+- **Cloud Migration: IBM Watson IoT to AWS IoT Platform** — cloud-native IoT ops / migration (IBM / KONE)  
 - **Gan Ai Bang (敢爱邦)** — Infiniti China owner app; whole native iOS app in Swift/UIKit, China App Store (independent contract, 2017–2018)  
 - **IBM Enterprise OA** — IBM internal pre-sales / office-automation iOS app (Objective-C, UIKit, 2015–2017)  
 
 **Also in the product tree (not a catalog card):** AIHub — GenAI marketing SaaS.
 ## Source of truth
 
-Primary facts for MapGenie, Olilo, Tutored, Mohiguide, DeployBot: private **cv-playground** notes:
+Primary facts for MapGenie, Olilo, Tutored, Mohiguide, Deploybot, Briefed: private **cv-playground** notes:
 
 `../cv-playground/references/projects/**`  
 `../cv-playground/references/professional-experience/**`  
@@ -40,18 +43,7 @@ Rules when editing:
 
 ## Homepage
 
-**Product-focused catalog:** `index.html` (tabs + tags). Minimal header—no long self-intro.
-
-| Tab | Items (a product can appear in more than one) |
-|---|---|
-| **Mobile** | Tutored, Mohiguide, Sketch Forge, Global e-commerce, IBM Enterprise OA |
-| **Web** | Tutored, Olilo, Mohiguide, DeployBot, Defect Drainer, MapGenie, Global e-commerce |
-| **Cloud-Native** | Tutored, Olilo, Mohiguide, DeployBot, Defect Drainer, MapGenie, KONE, Global e-commerce |
-| **AI** | Tutored, Olilo, DeployBot, Defect Drainer, Skill Forge, Sketch Forge, MapGenie |
-
-Tags (3 types only): **language** · **tech stack** · **business domain**. Domain chips filter the grid.
-
-Edit the `PRODUCTS` array in `index.html` to change cards.
+**Narrative profile:** `src/en/index.html` — header (Joe Zhou, LinkedIn) plus a few short paragraphs on who Joe is and what he does, linking selected product pages inline. It no longer lists every project as a card.
 
 ## Build (product detail pages)
 
@@ -70,4 +62,4 @@ Legacy URLs under `…/projects/` get thin meta-refresh redirects to `…/produc
 
 ## Deploy
 
-Commit HTML + Markdown on `main`; GitHub Pages serves the repo root for `binartist.github.io/about-me/`.
+`.github/workflows/deploy.yml` runs on push to `main`: it runs `scripts/build.sh` and deploys the built `dist/` to GitHub Pages (`binartist.github.io/about-me/`).

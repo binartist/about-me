@@ -1,6 +1,6 @@
 # Tutored — multi-surface language-learning SaaS
 
-**Period:** July 2026–Present  
+**Period:** January 2026–Present  
 **Ownership:** Founder-led  
 **Role:** Founder / platform owner  
 
@@ -25,7 +25,7 @@ flowchart LR
 - **Identity:** Better Auth — email register / verify / reset and Google, one model for web cookie and mobile bearer.  
 - **Plans:** Stripe drives `request.plan`; Fastify hooks enforce Free vs Pro and usage quota (LLM / STT / TTS).  
 - **Data:** PostgreSQL (Drizzle) for multi-tenant accounts, usage, and learning records.  
-- **Ops:** request-correlated logs, product events, metrics; automated backup and restore; CI/CD to a containerized regional stack.
+- **Ops:** request-correlated logs, product events, metrics; automated backup and restore; CI/CD to Vercel, with data on Supabase.
 
 ## Content ops
 
@@ -50,4 +50,4 @@ A pack is one enrollable SKU (`pack.json` + assets). Studio: React console, Fast
 - Content factory: pack model, validate/publish, catalog sync.  
 - Speech and agent path designed so cost and data scope stay bounded.
 
-**Key technologies:** TypeScript, Fastify, SvelteKit, Mobile, PostgreSQL, Better Auth, Stripe, Docker, Caddy, AWS, CDN
+**Key technologies:** TypeScript, Fastify, SvelteKit, Mobile, PostgreSQL, Better Auth, Stripe, Vercel, Supabase

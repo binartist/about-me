@@ -1,4 +1,4 @@
-# KONE — Cloud-Native IoT Platform Migration
+# Cloud Migration: IBM Watson IoT to AWS IoT Platform
 
 **Period:** January 2020–December 2021  
 **Ownership:** IBM client delivery  
