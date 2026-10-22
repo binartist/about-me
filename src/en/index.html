@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Joe — Products</title>
+  <title>Joe Zhou — Full-Stack AI Engineer &amp; Cloud-Native Application Architect</title>
   <style>
     :root {
       --bg: #fafafa;
@@ -298,378 +298,43 @@
       font-size: .8rem;
       color: #999;
     }
+      .story {
+      max-width: 720px;
+      font-size: 1.05rem;
+      line-height: 1.65;
+    }
+    .story p { margin: 0 0 1.15rem; }
+    .story a { color: var(--accent); text-decoration: none; }
+    .story a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
       <div class="identity">
-        <img class="avatar" src="avatar.jpg" width="64" height="64" alt="Joe" />
+        <img class="avatar" src="avatar.jpg" width="64" height="64" alt="Joe Zhou" />
         <div class="identity-text">
-          <h1>Joe</h1>
-          <div class="headline">Application Architect, full-stack &amp; AI, cloud-native ops</div>
-          <div class="subline">Hands-on product builder + enterprise delivery</div>
+          <h1>Joe Zhou</h1>
+          <div class="headline">Full-stack AI engineer &amp; cloud-native application architect</div>
+          <div class="subline">Auckland, New Zealand</div>
         </div>
       </div>
       <nav>
-        <a href="https://www.linkedin.com/in/mi-zhou-46553092/" rel="noopener">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/joezhou2026" rel="noopener">LinkedIn</a>
       </nav>
     </header>
 
-    <div class="tabs" role="tablist" aria-label="Platforms">
-      <button type="button" class="tab" role="tab" data-tab="all" aria-selected="true">All <span class="count" data-count-for="all"></span></button>
-      <button type="button" class="tab" role="tab" data-tab="mobile" aria-selected="false">Mobile <span class="count" data-count-for="mobile"></span></button>
-      <button type="button" class="tab" role="tab" data-tab="web" aria-selected="false">Web <span class="count" data-count-for="web"></span></button>
-      <button type="button" class="tab" role="tab" data-tab="cloud" aria-selected="false">Cloud-Native <span class="count" data-count-for="cloud"></span></button>
-      <button type="button" class="tab" role="tab" data-tab="ai" aria-selected="false">AI <span class="count" data-count-for="ai"></span></button>
-    </div>
+    <main class="story">
+      <p>I'm Joe Zhou, a full-stack AI engineer and cloud-native application architect with 15+ years of building software, based in Auckland, New Zealand. My work sits where enterprise delivery meets hands-on product building: AI that is grounded in real data, systems that are safe to change, and products I can take from idea to production myself.</p>
 
-    <div class="filters" id="attr-filters" aria-label="Filter by domain, stack, or language"></div>
+      <p>Since January 2015 I've been with IBM China as a Cloud-Native Application Architect and Full-Stack Developer, delivering for global enterprise clients. Most recently, for A.P. Moller - Maersk, I was the senior application architect and AI engineer on <a href="products/edi.html">MapGenie</a>, a RAG and LLM platform for EDI mapping on Azure. It went live in February 2026, cut mapping change time from about 23 hours to about 30 minutes, and won three Danish Digital Award categories. Before that I re-architected KONE's connected-services platform from IBM Watson IoT to AWS for global elevator and escalator telemetry (<a href="products/kone.html">Cloud Migration: IBM Watson IoT to AWS IoT Platform</a>), and led the architecture of Oriflame's China-market e-commerce platform on Azure China (<a href="products/glob_ecom.html">Global E-Commerce Modernization</a>).</p>
 
-    <div class="grid" id="grid"></div>
-    <p class="empty" id="empty">No products match this filter.</p>
+      <p>Alongside client work I build my own products. <a href="products/briefed.html">Briefed</a>, live at <a href="https://briefed.cv" rel="noopener">briefed.cv</a>, is an AI career agent that turns job adverts into tracked applications and CVs grounded only in the user's own career facts, running on Vercel with Supabase. <a href="products/deploybot.html">Deploybot</a> is a self-hosted deploy and operations platform with an OAuth-secured MCP gateway, so AI agents can inspect hosts and make changes only after confirmation. <a href="products/tutored.html">Tutored</a> is a language-learning platform with web and mobile clients and its own course-authoring pipeline.</p>
 
-    <footer>Product-focused catalog · detail pages linked from each card</footer>
+      <p>I also build tooling for AI coding agents: <a href="products/skill_forge.html">Skill Forge</a>, a registry that ships skills, instructions and subagents to Claude Code, Codex, Copilot CLI and Grok as integrity-locked packages, and <a href="products/defect_drainer.html">Defect Drainer</a>, a harness that only closes a defect once a verified fix is in. Both are open source under MIT.</p>
+
+      <p>I started out in 2007 as a software engineer at Mahong Network Tech, working on embedded systems and mobile platforms, after a BSc in Electronic Science and Technology from Huazhong University of Science and Technology. Detail on other work is in the <a href="products/index.html">product pages</a>, and the best way to reach me is on <a href="https://www.linkedin.com/in/joezhou2026" rel="noopener">LinkedIn</a>.</p>
+    </main>
   </div>
-
-  <script>
-    /**
-     * Tag model (exactly 3 types):
-     * - languages: programming languages (Go, TypeScript, Python, …)
-     * - stack: frameworks / platforms / infra (FastAPI, Flutter, AWS, …)
-     * - domain: business domain (education, e-commerce, DevOps, finance, …)
-     * Filter chips are grouped: Language · Tech stack · Domain.
-     */
-    const PRODUCTS = [
-      {
-        id: "tutored",
-        name: "Tutored",
-        href: "products/tutored.html",
-        blurb: "Multi-surface language-learning SaaS — web via SvelteKit BFF, mobile to Fastify; separate course publish pipeline.",
-        tabs: ["mobile", "web", "cloud", "ai"],
-        languages: ["TypeScript", "Dart"],
-        stack: ["SvelteKit", "Fastify", "Mobile", "PostgreSQL", "AWS", "Docker"],
-        domain: ["Education", "AI"],
-        meta: "Founder · 2026–"
-      },
-      {
-        id: "sketch-forge",
-        name: "Sketch Forge",
-        href: "products/sketch_forge.html",
-        blurb: "Native iPad sticker studio — Swift and SwiftUI for library, review, compare, and publish.",
-        tabs: ["mobile", "ai"],
-        languages: ["Swift"],
-        stack: ["SwiftUI", "iOS", "REST", "Node"],
-        domain: ["Mobile", "Creator tooling"],
-        meta: "Founder · native iOS · 2026–"
-      },
-      {
-        id: "olilo",
-        name: "Olilo",
-        href: "products/olilo.html",
-        blurb: "SEC 13F (AI13F) filings to portfolio analytics — ETL, API, charts, LLM insight reports.",
-        tabs: ["web", "cloud", "ai"],
-        languages: ["Python", "TypeScript"],
-        stack: ["FastAPI", "SvelteKit", "PostgreSQL", "Docker"],
-        domain: ["Finance", "Data", "AI"],
-        meta: "Founder · 2026–"
-      },
-      {
-        id: "mohiguide",
-        name: "Mohiguide",
-        href: "products/pet_ecom.html",
-        blurb: "Pet-services O2O platform — mobile, web, and admin on Go services and AWS.",
-        tabs: ["mobile", "web", "cloud"],
-        languages: ["Go", "TypeScript"],
-        stack: ["Mobile", "SvelteKit", "GraphQL", "React", "AWS"],
-        domain: ["E-commerce"],
-        meta: "Founder · 2022–"
-      },
-      {
-        id: "deploybot",
-        name: "DeployBot",
-        href: "products/deploybot.html",
-        blurb: "Agentic DevOps workflows for container build, deploy, and diagnostics.",
-        tabs: ["web", "cloud", "ai"],
-        languages: ["Go", "TypeScript"],
-        stack: ["SvelteKit", "Docker", "Kubernetes", "CI/CD"],
-        domain: ["DevOps", "AI"],
-        meta: "Founder · open-source · 2024–"
-      },
-      {
-        id: "defect-drainer",
-        name: "Defect Drainer",
-        href: "products/defect_drainer.html",
-        blurb: "Agent harness for product defects — inventory, verified batch-fix, pull requests, search and analytics.",
-        tabs: ["web", "cloud", "ai"],
-        languages: ["Go", "TypeScript"],
-        stack: ["React", "OpenSearch", "Docker", "Caddy"],
-        domain: ["Quality", "Agent harness", "DevOps", "Search", "Analytics"],
-        meta: "Founder · open-source"
-      },
-      {
-        id: "skill-forge",
-        name: "Skill Forge",
-        href: "products/skill_forge.html",
-        blurb: "Registry and sync for agent skills, instructions, and subagents.",
-        tabs: ["ai"],
-        languages: ["JavaScript", "TypeScript"],
-        stack: ["Node.js", "CLI"],
-        domain: ["Agent tooling", "Developer platform"],
-        meta: "Founder · open-source · developer platform"
-      },
-      {
-        id: "infiniti-owner-app",
-        name: "Gan Ai Bang",
-        href: "products/infiniti_owner_app.html",
-        blurb: "Infiniti owner app for China — whole native iOS app in Swift, shipped to the China App Store.",
-        tabs: ["mobile"],
-        languages: ["Swift"],
-        stack: ["UIKit", "iOS", "REST"],
-        domain: ["Mobile", "Automotive"],
-        meta: "Contract · native iOS · 2017–2018"
-      },
-      {
-        id: "mapgenie",
-        name: "MapGenie",
-        href: "products/edi.html",
-        blurb: "AI-assisted EDI mapping & logistics automation for Maersk — production go-live and awards.",
-        tabs: ["web", "cloud", "ai"],
-        languages: ["Python", "TypeScript"],
-        stack: ["FastAPI", "React", "Azure", "AKS", "RAG"],
-        domain: ["Logistics", "EDI", "AI"],
-        meta: "IBM client delivery · 2025–2026"
-      },
-      {
-        id: "kone",
-        name: "KONE Connected Services",
-        href: "products/kone.html",
-        blurb: "Watson IoT → AWS IoT re-platform — fleet connectivity, telemetry ops, DevOps/CI/CD for predictive maintenance at scale.",
-        tabs: ["cloud"],
-        languages: ["Java", "Python"],
-        stack: ["AWS IoT Core", "S3", "CI/CD"],
-        domain: ["IoT", "Cloud operations", "DevOps"],
-        meta: "IBM client delivery · 2020–2021"
-      },
-      {
-        id: "glob-ecom",
-        name: "Global e-commerce",
-        href: "products/glob_ecom.html",
-        blurb: "China-market mobile/web localization for Oriflame — regional UX with global systems of record.",
-        tabs: ["mobile", "web", "cloud"],
-        languages: ["Swift", "Kotlin", "Java"],
-        stack: ["BFF", "CDN", "Mobile"],
-        domain: ["E-commerce", "Localization"],
-        meta: "IBM client delivery · 2017–2019"
-      },
-      {
-        id: "ibm-oa",
-        name: "IBM Enterprise OA",
-        href: "products/ibm_oa.html",
-        blurb: "Native iOS office-automation / pre-sales workflow app — Swift and UIKit, enterprise auth, backend-driven tasks.",
-        tabs: ["mobile"],
-        languages: ["Swift"],
-        stack: ["UIKit", "iOS", "REST"],
-        domain: ["Enterprise", "Mobile", "Office automation"],
-        meta: "IBM internal · 2015–2017"
-      }
-    ];
-
-    let activeTab = "all";
-    /** Selected filter labels (AND). Any match against languages | stack | domain. */
-    let activeFilters = new Set();
-
-    const grid = document.getElementById("grid");
-    const empty = document.getElementById("empty");
-    const filtersEl = document.getElementById("attr-filters");
-
-    const FILTER_GROUPS = [
-      { key: "domain", label: "Domain", chipClass: "domain" },
-      { key: "stack", label: "Tech stack", chipClass: "stack" },
-      { key: "languages", label: "Language", chipClass: "lang" }
-    ];
-
-    function collectUsed(key) {
-      const used = new Set();
-      PRODUCTS.forEach(p => (p[key] || []).forEach(t => used.add(t)));
-      return [...used].sort((a, b) => a.localeCompare(b));
-    }
-
-    function productHasLabel(p, label) {
-      return p.languages.includes(label) || p.stack.includes(label) || p.domain.includes(label);
-    }
-
-    /** Expanded when tags need more than one line. */
-    const groupOpen = { domain: false, stack: false, languages: false };
-
-    function renderFilters() {
-      filtersEl.innerHTML = "";
-      FILTER_GROUPS.forEach(group => {
-        const labels = collectUsed(group.key);
-        if (!labels.length) return;
-
-        const open = !!groupOpen[group.key];
-        const row = document.createElement("div");
-        row.className = "filter-group" + (open ? " open" : "");
-        row.dataset.key = group.key;
-        row.setAttribute("role", "group");
-        row.setAttribute("aria-label", group.label);
-
-        const title = document.createElement("span");
-        title.className = `filter-group-label ${group.chipClass}`;
-        title.textContent = group.label;
-
-        const chips = document.createElement("div");
-        chips.className = "filter-group-chips";
-
-        labels.forEach(label => {
-          const b = document.createElement("button");
-          b.type = "button";
-          b.className = `chip ${group.chipClass}`;
-          b.textContent = label;
-          b.setAttribute("aria-pressed", activeFilters.has(label) ? "true" : "false");
-          b.addEventListener("click", () => {
-            if (activeFilters.has(label)) activeFilters.delete(label);
-            else activeFilters.add(label);
-            b.setAttribute("aria-pressed", activeFilters.has(label) ? "true" : "false");
-            applyFilters();
-          });
-          chips.appendChild(b);
-        });
-
-        const more = document.createElement("button");
-        more.type = "button";
-        more.className = "filter-group-more hidden";
-        more.setAttribute("aria-expanded", open ? "true" : "false");
-        more.textContent = open ? "Less" : "More";
-        more.addEventListener("click", () => {
-          groupOpen[group.key] = !groupOpen[group.key];
-          renderFilters();
-        });
-
-        row.appendChild(title);
-        row.appendChild(chips);
-        row.appendChild(more);
-        filtersEl.appendChild(row);
-      });
-
-      // After layout: show More only when chips wrap past one line
-      requestAnimationFrame(() => {
-        filtersEl.querySelectorAll(".filter-group").forEach(row => {
-          const chips = row.querySelector(".filter-group-chips");
-          const more = row.querySelector(".filter-group-more");
-          if (!chips || !more) return;
-          const wasOpen = row.classList.contains("open");
-          // measure collapsed height
-          row.classList.remove("open");
-          const overflows = chips.scrollHeight > chips.clientHeight + 1;
-          if (wasOpen) row.classList.add("open");
-          if (overflows || wasOpen) {
-            more.classList.remove("hidden");
-            more.textContent = wasOpen ? "Less" : "More";
-            more.setAttribute("aria-expanded", wasOpen ? "true" : "false");
-          } else {
-            more.classList.add("hidden");
-          }
-        });
-      });
-    }
-
-    window.addEventListener("resize", () => {
-      // re-check overflow without resetting open state
-      requestAnimationFrame(() => {
-        filtersEl.querySelectorAll(".filter-group").forEach(row => {
-          const chips = row.querySelector(".filter-group-chips");
-          const more = row.querySelector(".filter-group-more");
-          if (!chips || !more) return;
-          const wasOpen = row.classList.contains("open");
-          row.classList.remove("open");
-          const overflows = chips.scrollHeight > chips.clientHeight + 1;
-          if (wasOpen) row.classList.add("open");
-          if (overflows || wasOpen) {
-            more.classList.remove("hidden");
-            more.textContent = wasOpen ? "Less" : "More";
-          } else {
-            more.classList.add("hidden");
-            const key = row.dataset.key;
-            if (key) groupOpen[key] = false;
-          }
-        });
-      });
-    });
-
-    function productInTab(p, tab) {
-      if (tab === "all") return true;
-      return (p.tabs || []).includes(tab);
-    }
-
-    function matches(p) {
-      if (!productInTab(p, activeTab)) return false;
-      if (activeFilters.size === 0) return true;
-      for (const label of activeFilters) {
-        if (!productHasLabel(p, label)) return false;
-      }
-      return true;
-    }
-
-    function renderCards() {
-      grid.innerHTML = "";
-      let visible = 0;
-      PRODUCTS.forEach(p => {
-        const show = matches(p);
-        const a = document.createElement("a");
-        a.className = "card" + (show ? "" : " hidden");
-        a.href = p.href;
-        a.dataset.tab = (p.tabs || []).join(" ");
-        if (show) visible++;
-
-        const tagsHtml = [
-          ...p.domain.map(t => `<span class="tag domain">${t}</span>`),
-          ...p.stack.map(t => `<span class="tag stack">${t}</span>`),
-          ...p.languages.map(t => `<span class="tag lang">${t}</span>`)
-        ].join("");
-
-        const thumbHtml = p.image
-          ? `<img class="thumb" src="${p.image}" alt="${p.imageAlt || p.name + " screenshot"}" loading="lazy">`
-          : "";
-
-        a.innerHTML = `
-          ${thumbHtml}
-          <h2>${p.name}</h2>
-          <p class="blurb">${p.blurb}</p>
-          <div class="tags">${tagsHtml}</div>
-          <div class="meta">${p.meta}</div>
-        `;
-        grid.appendChild(a);
-      });
-      empty.classList.toggle("show", visible === 0);
-
-      ["all", "mobile", "web", "cloud", "ai"].forEach(tab => {
-        const n = PRODUCTS.filter(p => {
-          if (!productInTab(p, tab)) return false;
-          if (activeFilters.size === 0) return true;
-          for (const label of activeFilters) if (!productHasLabel(p, label)) return false;
-          return true;
-        }).length;
-        const el = document.querySelector(`[data-count-for="${tab}"]`);
-        if (el) el.textContent = `(${n})`;
-      });
-    }
-
-    function applyFilters() {
-      renderCards();
-    }
-
-    document.querySelectorAll(".tab").forEach(tab => {
-      tab.addEventListener("click", () => {
-        activeTab = tab.dataset.tab;
-        document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", t === tab ? "true" : "false"));
-        applyFilters();
-      });
-    });
-
-    renderFilters();
-    renderCards();
-  </script>
 </body>
 </html>

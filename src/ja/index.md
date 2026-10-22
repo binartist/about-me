@@ -1,4 +1,4 @@
-<!-- - 🔗 [LinkedIn](https://www.linkedin.com/in/mi-zhou-46553092/)  -->
+<!-- - 🔗 [LinkedIn](https://www.linkedin.com/in/joezhou2026)  -->
 
 _最終更新日: <span class="local-time" data-iso="{{ISO_TIMESTAMP}}">{{UPDATED_AT}}</span>_
 

@@ -1,4 +1,4 @@
-<!-- - 🔗 [LinkedIn](https://www.linkedin.com/in/mi-zhou-46553092/)  -->
+<!-- - 🔗 [LinkedIn](https://www.linkedin.com/in/joezhou2026)  -->
 
 _Last updated: <span class="local-time" data-iso="{{ISO_TIMESTAMP}}">{{UPDATED_AT}}</span>_
 
@@ -64,7 +64,7 @@ Core mobile engineer specializing in cross-platform application frameworks. Focu
 
 ## Education
 
-- Bachelor Degree in Electronics of Science and Technology – Huazhong University of Science and Technologys, 2003~2007
+- Bachelor Degree in Electronics of Science and Technology – Huazhong University of Science and Technology, 2003~2007
 
 ## Language Proficiency
 

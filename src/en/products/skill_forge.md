@@ -1,10 +1,10 @@
 # Skill Forge — Agent skills registry
 
-**Period:** 2026–Present  
+**Period:** June 2026–Present  
 **Ownership:** Founder-led · open-source (MIT)  
 **Role:** Founder / platform engineer  
 
-Skill Forge is how agent skills, instructions, and subagents are stored, installed, and kept consistent across tools. The registry is the source of truth. Consumer repos (and a home profile) declare what they need; `skf sync` vendors exact copies. Tool runtime folders are install targets, not the system of record.
+Skill Forge is a Node.js CLI and registry that distributes agent instructions, 35 skills, subagents and hooks to Claude Code, Codex, Copilot CLI and Grok as SHA-256 integrity-locked packages. It is how agent skills, instructions, and subagents are stored, installed, and kept consistent across tools. The registry is the source of truth. Consumer repos (and a home profile) declare what they need; `skf sync` vendors exact copies. Tool runtime folders are install targets, not the system of record.
 
 ## Platform
 
