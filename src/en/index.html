@@ -284,6 +284,49 @@
       font-size: .9rem;
     }
     footer a { color: var(--link); font-weight: 600; }
+    a.fn-ref {
+      color: var(--link);
+      font-size: .72rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-left: .12rem;
+      text-decoration: none;
+      vertical-align: super;
+    }
+    a.fn-ref:hover { text-decoration: underline; }
+    .table-fn {
+      margin: .45rem 0 0;
+      color: var(--muted);
+      font-size: .82rem;
+      line-height: 1.35;
+    }
+    @media (min-width: 1100px) {
+      .wrap { max-width: 1200px; }
+      table {
+        min-width: 0;
+        width: 100%;
+        table-layout: fixed;
+      }
+      th, td { padding: .5rem .35rem; }
+      .cap-name { font-size: .86rem; }
+      .cap-note { font-size: .68rem; line-height: 1.25; }
+      .mark { font-size: .74rem; gap: .22rem; }
+      .mark-available,
+      .mark-planned { padding: .12rem .38rem .12rem .26rem; }
+      .name-link { font-size: .92rem; }
+      thead th:first-child,
+      tbody th[scope="row"] {
+        width: 22%;
+        min-width: 0;
+        max-width: none;
+      }
+      thead th:not(:first-child),
+      tbody td {
+        width: 13%;
+        min-width: 0;
+      }
+      tbody th[scope="row"] .name-link { min-width: 0; }
+    }
     @media (max-width: 760px) {
       .scroll-hint { display: block; }
       .wrap { padding: 1.25rem .75rem 2.5rem; }
@@ -351,7 +394,7 @@
               <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
               <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
               <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available (Defect Drainer)</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span><a class="fn-ref" href="#suite-cloud-note" aria-label="Note: Cloud on the Software lifecycle suite row refers to Defect Drainer"><sup>*</sup></a></td>
               <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
               <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
             </tr>
@@ -521,6 +564,7 @@
           </tbody>
         </table>
       </div>
+      <p class="table-fn" id="suite-cloud-note"><sup>*</sup> Cloud on the Software lifecycle suite row refers to Defect Drainer.</p>
     </main>
 
     <footer>
