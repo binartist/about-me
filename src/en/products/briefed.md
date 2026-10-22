@@ -28,6 +28,6 @@ flowchart LR
 ## My contribution
 
 - Product, agent and platform design end to end.  
-- 980+ automated tests covering the grounding guards, SSRF rules and cross-account isolation.
+- About 1,460 automated tests covering the grounding guards, SSRF rules and cross-account isolation.
 
 **Key technologies:** TypeScript, SvelteKit 5, Tailwind CSS, Fastify 5, Drizzle ORM, PostgreSQL (Supabase), Vercel AI SDK, OpenAI-compatible LLM APIs, Zod, Vitest, Vercel

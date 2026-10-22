@@ -17,14 +17,14 @@ flowchart LR
     Services --> Data[Enterprise data]
 ```
 
-- Native iOS (Objective-C, UIKit) for day-to-day workflow  
+- Native iOS for day-to-day workflow  
 - Enterprise authentication for internal sessions  
 - Backend-driven task state — not duplicated on the device  
 
 ## My contribution
 
-- Native Objective-C/UIKit experience for OA and pre-sales workflow  
+- Native iOS experience for OA and pre-sales workflow  
 - Enterprise authentication and workflow API integration  
 - Mobile flows that stay consistent with internal systems  
 
-**Key technologies:** iOS, Objective-C, UIKit, REST APIs, enterprise authentication
+**Key technologies:** iOS, REST APIs, enterprise authentication

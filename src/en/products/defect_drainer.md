@@ -38,7 +38,7 @@ flowchart LR
 - **Control plane** — static Go binary (`defect-drainer serve`): inventory, intake, evidence, batches, search. Operator hosts do not need Node at runtime.  
 - **Console** — React: onboarding by app, defects, jobs and logs, analytics, per-repo settings.  
 - **Search** — OpenSearch over defects, jobs, prompts, and evidence metadata; binaries stay in the evidence store.  
-- **Deploy** — Compose: API, console, OpenSearch, Caddy (TLS). Same shape locally and in the cloud.
+- **Deploy** — Compose: API, console, OpenSearch. Same shape locally and in the cloud.
 
 ## My contribution
 
@@ -47,4 +47,4 @@ flowchart LR
 - Multi-repo app model (web, mobile, backends as one product).  
 - Search, analytics, and verification so a “fixed” defect is something the harness can prove.
 
-**Key technologies:** Go, React, OpenSearch, git worktrees, GitHub CLI, Docker, Caddy
+**Key technologies:** Go, React, OpenSearch, git worktrees, GitHub CLI, Docker

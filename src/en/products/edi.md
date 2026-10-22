@@ -9,7 +9,7 @@
 
 MapGenie is an AI-driven automation platform for processing logistics messages, orchestrating EDI transactions, and accelerating partner onboarding across a global supply chain network. It combines standards-aware parsing, a **RAG-backed knowledge base**, **agentic workflows**, and **human-in-the-loop** review to reduce the time and manual effort of partner-specific integrations—including work against the enterprise **Seeburger** integration platform.
 
-After the **February 2026 go-live**, the Lumina / MapGenie workflow reduced mapping change effort from roughly **23 hours to about 30 minutes**, increased throughput by about **46×**, freed about **30,000 specialist hours annually**, and reported **zero AI-generated production incidents** since launch.
+After the **February 2026 go-live**, the MapGenie workflow reduced mapping change effort from roughly **23 hours to about 30 minutes**, increased throughput by about **46×**, and reported **zero AI-generated production incidents** since launch.
 
 ## Architecture (logical)
 

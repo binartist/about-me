@@ -21,7 +21,7 @@ The English homepage (`src/en/index.html`) is a short narrative profile of Joe Z
 **Also in the product pages (not in the locked flagship ten):**
 - **Cloud Migration: IBM Watson IoT to AWS IoT Platform** — cloud-native IoT ops / migration (IBM / KONE)  
 - **Gan Ai Bang (敢爱邦)** — Infiniti China owner app; whole native iOS app in Swift/UIKit, China App Store (independent contract, 2017–2018)  
-- **IBM Enterprise OA** — IBM internal pre-sales / office-automation iOS app (Objective-C, UIKit, 2015–2017)  
+- **IBM Enterprise OA** — IBM internal pre-sales / office-automation iOS app (2015–2017)  
 
 **Also in the product tree (not a catalog card):** AIHub — GenAI marketing SaaS.
 ## Source of truth
