@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Joe Zhou — Products across the software lifecycle</title>
+  <title>Joe Zhou — Projects by tech platform</title>
   <style>
     :root {
       --bg: #fbfafd;
@@ -116,7 +116,7 @@
       border-collapse: separate;
       border-spacing: 0;
       width: 100%;
-      min-width: 46rem;
+      min-width: 64rem;
     }
     caption {
       caption-side: top;
@@ -150,18 +150,39 @@
       position: sticky;
       left: 0;
       text-align: left;
-      min-width: 9.5rem;
-      max-width: 12rem;
+      min-width: 12.75rem;
+      max-width: 15rem;
+      width: 13.5rem;
     }
     thead th:first-child { z-index: 3; }
     tbody th[scope="row"] { z-index: 1; }
     thead th:not(:first-child) {
       text-align: center;
-      min-width: 12.25rem;
+      min-width: 8.25rem;
     }
-    tbody td { text-align: center; }
+    tbody td { text-align: center; min-width: 8.25rem; }
     tbody tr:nth-child(even) th,
     tbody tr:nth-child(even) td { background: var(--row); }
+    tbody tr.section th {
+      background: #eef1f6;
+      text-align: left;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: .55rem;
+      padding-bottom: .55rem;
+    }
+    tbody tr.section th span {
+      position: sticky;
+      left: .85rem;
+    }
+    tbody tr.section a {
+      color: var(--link);
+      text-decoration: none;
+    }
+    tbody tr.section a:hover { text-decoration: underline; }
     .corner {
       font-size: .75rem;
       font-weight: 700;
@@ -169,19 +190,10 @@
       text-transform: uppercase;
       color: var(--muted);
     }
-    .area {
-      display: block;
-      margin-bottom: .45rem;
-      font-size: .68rem;
-      font-weight: 700;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
     .product-id {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       gap: .5rem;
     }
     .icon-link {
@@ -209,25 +221,23 @@
     .name-link {
       color: var(--text);
       font-weight: 700;
-      font-size: 1.05rem;
+      font-size: 1rem;
       text-decoration: none;
       letter-spacing: -0.01em;
+      text-align: left;
+      line-height: 1.25;
     }
     .name-link:hover,
     .intro a:hover,
     footer a:hover { text-decoration: underline; }
-    .blurb, .meta {
+    .row-note {
       display: block;
-      margin: .4rem auto 0;
-      max-width: 16rem;
+      margin-top: .28rem;
       font-weight: 400;
-      font-size: .78rem;
+      font-size: .75rem;
       line-height: 1.35;
       color: var(--muted);
-      text-transform: none;
-      letter-spacing: 0;
     }
-    .meta { margin-top: .2rem; }
     .cap-name {
       display: block;
       font-size: .95rem;
@@ -278,11 +288,20 @@
       .scroll-hint { display: block; }
       .wrap { padding: 1.25rem .75rem 2.5rem; }
       h1 { font-size: 1.4rem; }
+      thead th:first-child,
+      tbody th[scope="row"] {
+        min-width: 9.5rem;
+        max-width: 10.75rem;
+        width: 9.75rem;
+      }
+      thead th:not(:first-child),
+      tbody td { min-width: 7.5rem; }
+      th, td { padding: .65rem .55rem; }
     }
   </style>
 </head>
 <body>
-  <a class="skip" href="#matrix">Skip to product matrix</a>
+  <a class="skip" href="#matrix">Skip to platform matrix</a>
   <div class="wrap">
     <header>
       <div class="identity">
@@ -296,7 +315,7 @@
     </header>
 
     <main>
-      <h2>Products across the software lifecycle</h2>
+      <h2>Projects by tech platform</h2>
       <ul class="legend" aria-label="Status legend">
         <li>
           <span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span>
@@ -309,96 +328,229 @@
           <span>Not applicable</span>
         </li>
       </ul>
-      <p class="scroll-hint">Scroll sideways to compare products. The capability names stay in view.</p>
+      <p class="scroll-hint">Scroll sideways to compare platforms. Project names stay in view.</p>
       <div class="matrix-scroll">
         <table id="matrix">
-          <caption><span>Capability coverage for Skill Forge, Defect Drainer, and Deploybot. A dash means that capability does not apply.</span></caption>
+          <caption><span>Where each product sits on mobile, web, backend, cloud, data, and AI. Founder-led work, contract work, client delivery, and IBM internal delivery are grouped apart. The software lifecycle suite heading opens the capability matrix. A dash means that platform does not apply.</span></caption>
           <thead>
             <tr>
-              <th class="corner" scope="col">Capability</th>
-              <th scope="col">
-                <span class="area">Development</span>
-                <span class="product-id">
-                  <a class="icon-link" href="products/skill_forge.html" aria-label="Skill Forge">
-                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="16 18 22 12 16 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="8 6 2 12 8 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </a>
-                  <a class="name-link" href="products/skill_forge.html">Skill Forge</a>
-                </span>
-                <span class="blurb">Coding agents driven by skill instructions.</span>
-                <span class="meta">Public repo · MIT · 35 skills</span>
-              </th>
-              <th scope="col">
-                <span class="area">Quality assurance</span>
-                <span class="product-id">
-                  <a class="icon-link" href="products/defect_drainer.html" aria-label="Defect Drainer">
-                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 11l3 3 8-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </a>
-                  <a class="name-link" href="products/defect_drainer.html">Defect Drainer</a>
-                </span>
-                <span class="blurb">Testing and bug fixing in isolated worktrees.</span>
-                <span class="meta">Public repos · MIT</span>
-              </th>
-              <th scope="col">
-                <span class="area">DevOps</span>
-                <span class="product-id">
-                  <a class="icon-link icon-link-logo" href="products/deploybot.html">
-                    <img src="icons/deploybot.svg" width="36" height="36" alt="Deploybot" />
-                  </a>
-                  <a class="name-link" href="products/deploybot.html">Deploybot</a>
-                </span>
-                <span class="blurb">Allowlisted deploys, monitoring, and host operations.</span>
-                <span class="meta">Public repos · 22 tools · ~1,100 tests</span>
-              </th>
+              <th class="corner" scope="col">Project</th>
+              <th scope="col"><span class="cap-name">Mobile</span><span class="cap-note">Phone and tablet apps</span></th>
+              <th scope="col"><span class="cap-name">Web</span><span class="cap-note">Browser interfaces</span></th>
+              <th scope="col"><span class="cap-name">Backend</span><span class="cap-note">APIs and services</span></th>
+              <th scope="col"><span class="cap-name">Cloud</span><span class="cap-note">Hosted platforms</span></th>
+              <th scope="col"><span class="cap-name">Data</span><span class="cap-note">Ingestion and analytics</span></th>
+              <th scope="col"><span class="cap-name">AI</span><span class="cap-note">Models and agents</span></th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row"><span class="cap-name">Code</span><span class="cap-note">Skills-driven coding agents</span></th>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+            <tr class="section">
+              <th colspan="7" scope="rowgroup"><span><a href="lifecycle.html">Software lifecycle suite</a></span></th>
             </tr>
             <tr>
-              <th scope="row"><span class="cap-name">Test</span><span class="cap-note">Plans, runs, and verification</span></th>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-            </tr>
-            <tr>
-              <th scope="row"><span class="cap-name">Bug fixing</span><span class="cap-note">Inventory through pull request</span></th>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-            </tr>
-            <tr>
-              <th scope="row"><span class="cap-name">Build</span><span class="cap-note">Produce a release artifact</span></th>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link" href="products/skill_forge.html" aria-label="Skill Forge"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="16 18 22 12 16 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="8 6 2 12 8 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                  <a class="name-link" href="products/skill_forge.html">Skill Forge</a>
+                </span>
+              </th>
               <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
               <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-planned"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M8 1.6 14.2 8 8 14.4 1.8 8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span>Planned</span></span></td>
-            </tr>
-            <tr>
-              <th scope="row"><span class="cap-name">Deploy</span><span class="cap-note">Release onto a host</span></th>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
               <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
               <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
               <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
             </tr>
             <tr>
-              <th scope="row"><span class="cap-name">Monitor</span><span class="cap-note">Host and service health</span></th>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link" href="products/defect_drainer.html" aria-label="Defect Drainer"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 11l3 3 8-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                  <a class="name-link" href="products/defect_drainer.html">Defect Drainer</a>
+                </span>
+              </th>
               <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
               <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
               <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
             </tr>
             <tr>
-              <th scope="row"><span class="cap-name">Troubleshoot</span><span class="cap-note">Logs, status, and probes</span></th>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link icon-link-logo" href="products/deploybot.html" aria-label="Deploybot"><img src="icons/deploybot.svg" width="36" height="36" alt="" /></a>
+                  <a class="name-link" href="products/deploybot.html">Deploybot</a>
+                </span>
+              </th>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
               <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
               <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
               <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
             </tr>
+          </tbody>
+          <tbody>
+            <tr class="section">
+              <th colspan="7" scope="rowgroup"><span>Founder-led</span></th>
+            </tr>
             <tr>
-              <th scope="row"><span class="cap-name">Automated diagnosis</span><span class="cap-note">Explain a failure</span></th>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link" href="products/briefed.html" aria-label="Briefed"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 6h14v9H8l-3 3V6Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></a>
+                  <a class="name-link" href="products/briefed.html">Briefed</a>
+                </span>
+              </th>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link" href="products/tutored.html" aria-label="Tutored"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M4 5.5A2.5 2.5 0 0 1 6.5 8H20" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+                  <a class="name-link" href="products/tutored.html">Tutored</a>
+                </span>
+              </th>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link" href="products/sketch_forge.html" aria-label="Sketch Forge"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 15.5 10.2 10 16 8.2 13.8 13.8 8 15.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></a>
+                  <a class="name-link" href="products/sketch_forge.html">Sketch Forge</a>
+                </span>
+              </th>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
               <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
               <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-planned"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M8 1.6 14.2 8 8 14.4 1.8 8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span>Planned</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link" href="products/olilo.html" aria-label="Olilo"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 19V5M4 19h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M8 19v-6M12 19V8M16 19v-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
+                  <a class="name-link" href="products/olilo.html">Olilo</a>
+                </span>
+              </th>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link" href="products/pet_ecom.html" aria-label="Mohiguide"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 10.5 12 4l8 6.5V20H4v-9.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M10 20v-5h4v5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></a>
+                  <a class="name-link" href="products/pet_ecom.html">Mohiguide</a>
+                </span>
+              </th>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr class="section">
+              <th colspan="7" scope="rowgroup"><span>Contract</span></th>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link" href="products/infiniti_owner_app.html" aria-label="Gan Ai Bang"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="8" y="3" width="8" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 18h2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
+                  <a class="name-link" href="products/infiniti_owner_app.html">Gan Ai Bang</a>
+                </span>
+                <span class="row-note">Infiniti owner app</span>
+              </th>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr class="section">
+              <th colspan="7" scope="rowgroup"><span>Client delivery</span></th>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link" href="products/edi.html" aria-label="MapGenie"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="6" cy="18" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6 8v8M8 6.8c4.2.4 4.2 4.4 8 4.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
+                  <a class="name-link" href="products/edi.html">MapGenie</a>
+                </span>
+                <span class="row-note">Maersk</span>
+              </th>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link" href="products/kone.html" aria-label="KONE Connected Services"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 20V6h8v14M12 20V10h8v10M4 20h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M7 9h2M7 13h2M15 13h2M15 16h2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
+                  <a class="name-link" href="products/kone.html">KONE Connected Services</a>
+                </span>
+              </th>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link" href="products/glob_ecom.html" aria-label="Global e-commerce"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 8h12l-1 12H7L6 8Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8a3 3 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+                  <a class="name-link" href="products/glob_ecom.html">Global e-commerce</a>
+                </span>
+                <span class="row-note">Oriflame</span>
+              </th>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr class="section">
+              <th colspan="7" scope="rowgroup"><span>IBM internal</span></th>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link" href="products/ibm_oa.html" aria-label="IBM Enterprise OA"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="6" y="3" width="12" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 8h6M9 12h6M9 16h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
+                  <a class="name-link" href="products/ibm_oa.html">IBM Enterprise OA</a>
+                </span>
+              </th>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
             </tr>
           </tbody>
         </table>

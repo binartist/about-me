@@ -150,6 +150,11 @@ elif [ -f src/en/index.md ]; then
     pandoc src/en/index.md -f gfm -t html -s --include-after-body=includes/common-scripts.html -o dist/en/index.html
     update_file_timestamp src/en/index.md dist/en/index.html
 fi
+# SDLC capability matrix. Raw HTML, same copy path as the homepage.
+if [ -f src/en/lifecycle.html ]; then
+    cp src/en/lifecycle.html dist/en/lifecycle.html
+    echo "wrote dist/en/lifecycle.html"
+fi
 if [ -f src/en/avatar.jpg ]; then
     cp src/en/avatar.jpg dist/en/avatar.jpg
     echo "wrote dist/en/avatar.jpg"
