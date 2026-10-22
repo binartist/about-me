@@ -284,22 +284,6 @@
       font-size: .9rem;
     }
     footer a { color: var(--link); font-weight: 600; }
-    a.fn-ref {
-      color: var(--link);
-      font-size: .72rem;
-      font-weight: 700;
-      line-height: 1;
-      margin-left: .12rem;
-      text-decoration: none;
-      vertical-align: super;
-    }
-    a.fn-ref:hover { text-decoration: underline; }
-    .table-fn {
-      margin: .45rem 0 0;
-      color: var(--muted);
-      font-size: .82rem;
-      line-height: 1.35;
-    }
     @media (min-width: 1100px) {
       .wrap { max-width: 1200px; }
       table {
@@ -374,7 +358,7 @@
       <p class="scroll-hint">Scroll sideways to compare platforms. Project names stay in view.</p>
       <div class="matrix-scroll">
         <table id="matrix">
-          <caption><span>Where each product sits on mobile, web, backend, cloud, data, and AI. Founder-led work, contract work, client delivery, and IBM internal delivery are grouped apart. The software lifecycle suite heading opens the capability matrix. A dash means that platform does not apply.</span></caption>
+          <caption><span>Where each product sits on mobile, web, backend, cloud, data, and AI. SDLC, founder-led work, contract work, client delivery, and IBM internal delivery are grouped apart. The SDLC heading opens the capability matrix. A dash means that platform does not apply.</span></caption>
           <thead>
             <tr>
               <th class="corner" scope="col">Project</th>
@@ -387,14 +371,48 @@
             </tr>
           </thead>
           <tbody>
+            <tr class="section">
+              <th colspan="7" scope="rowgroup"><span><a href="lifecycle.html">SDLC</a></span></th>
+            </tr>
             <tr>
               <th scope="row">
-                <a class="name-link" href="lifecycle.html">Software lifecycle suite</a>: <a class="name-link" href="products/skill_forge.html">Skill Forge</a>, <a class="name-link" href="products/defect_drainer.html">Defect Drainer</a>, <a class="name-link" href="products/deploybot.html">Deploybot</a>
+                <span class="product-id">
+                  <a class="icon-link" href="products/skill_forge.html" aria-label="Skill Forge"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="16 18 22 12 16 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="8 6 2 12 8 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                  <a class="name-link" href="products/skill_forge.html">Skill Forge</a>
+                </span>
+              </th>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link" href="products/defect_drainer.html" aria-label="Defect Drainer"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 11l3 3 8-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                  <a class="name-link" href="products/defect_drainer.html">Defect Drainer</a>
+                </span>
               </th>
               <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
               <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
               <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span><a class="fn-ref" href="#suite-cloud-note" aria-label="Note: Cloud on the Software lifecycle suite row refers to Defect Drainer"><sup>*</sup></a></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link icon-link-logo" href="products/deploybot.html" aria-label="Deploybot"><img src="icons/deploybot.svg" width="36" height="36" alt="" /></a>
+                  <a class="name-link" href="products/deploybot.html">Deploybot</a>
+                </span>
+              </th>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
               <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
               <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
             </tr>
@@ -564,7 +582,6 @@
           </tbody>
         </table>
       </div>
-      <p class="table-fn" id="suite-cloud-note"><sup>*</sup> Cloud on the Software lifecycle suite row refers to Defect Drainer.</p>
     </main>
 
     <footer>
