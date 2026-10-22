@@ -1,8 +1,8 @@
 # Mohiguide — Pet Services O2O Platform
 
 **Period:** February 2022–Present  
-**Ownership:** Founder-led product  
-**Role:** Founder / full-stack product engineer  
+**Ownership:** Commercial client delivery  
+**Role:** Full-stack product engineer  
 
 Mohiguide is an online-to-offline platform for pet services: content, shops, events, vouchers, commerce, and community. Pet owners and operators share one product across mobile, web, and admin, on a Go services backend.
 

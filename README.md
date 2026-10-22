@@ -11,7 +11,7 @@ The English homepage (`src/en/index.html`) is a short narrative profile of Joe Z
 2. **Tutored** — education product  
 3. **Sketch Forge** — founder-led native iOS / Swift / SwiftUI iPad client  
 4. **Olilo** — finance/data product  
-5. **Mohiguide** — commerce O2O product  
+5. **Mohiguide** — commerce O2O product (commercial client delivery)  
 6. **Deploybot** — self-hosted deploy & operations platform with an AI-agent gateway (**public repos**)  
 7. **Defect Drainer** — quality channel tooling (**open-source**)  
 8. **Skill Forge** — agent skills platform (**open-source**)  
