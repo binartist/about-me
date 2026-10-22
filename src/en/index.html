@@ -3,18 +3,21 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Joe — Products</title>
+  <title>Joe Zhou — Projects by tech platform</title>
   <style>
     :root {
-      --bg: #fafafa;
+      --bg: #fbfafd;
       --surface: #fff;
-      --text: #141414;
-      --muted: #5c5c5c;
-      --border: #e8e8e8;
-      --accent: #0b57d0;
-      --tag-bg: #f0f2f5;
-      --radius: 12px;
-      --shadow: 0 1px 2px rgba(0,0,0,.04), 0 4px 16px rgba(0,0,0,.04);
+      --text: #1a1a1a;
+      --muted: #45454d;
+      --border: #dcdcde;
+      --link: #0a4fa8;
+      --focus: #0a4fa8;
+      --available: #0d5c32;
+      --available-bg: #e7f6ee;
+      --planned: #7a3e00;
+      --planned-bg: #fff3e0;
+      --row: #f7f7f8;
     }
     * { box-sizing: border-box; }
     body {
@@ -24,28 +27,33 @@
       color: var(--text);
       line-height: 1.45;
     }
-    .wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 2rem 1.25rem 4rem;
+    .skip {
+      position: absolute;
+      left: .75rem;
+      top: .75rem;
+      padding: .4rem .7rem;
+      background: #fff;
+      color: var(--link);
+      border-radius: 6px;
+      z-index: 5;
+      transform: translateY(-150%);
     }
-    header {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: .75rem 1.5rem;
-      margin-bottom: 1.75rem;
-      padding-bottom: 1.25rem;
-      border-bottom: 1px solid var(--border);
+    .skip:focus {
+      transform: none;
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 1.75rem 1.25rem 3rem;
     }
     header .identity {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: .9rem;
-      min-width: 0;
     }
-    header .avatar {
+    .avatar {
       width: 64px;
       height: 64px;
       border-radius: 50%;
@@ -53,623 +61,532 @@
       border: 2px solid var(--border);
       background: var(--surface);
       flex: 0 0 auto;
-      box-shadow: var(--shadow);
     }
-    header .identity-text {
-      min-width: 0;
-    }
-    header h1 {
+    h1 {
       margin: 0;
-      font-size: 1.35rem;
-      font-weight: 650;
-      letter-spacing: -0.02em;
-    }
-    header .headline {
-      margin: .15rem 0 0;
-      font-size: 1rem;
-      font-weight: 550;
-      letter-spacing: -0.01em;
-      line-height: 1.3;
-      color: var(--text);
-    }
-    header .subline {
-      margin: .2rem 0 0;
-      color: var(--muted);
-      font-size: .9rem;
-      line-height: 1.35;
-    }
-    header nav a {
-      color: var(--accent);
-      text-decoration: none;
-      font-size: .9rem;
-      margin-left: 1rem;
-    }
-    header nav a:hover { text-decoration: underline; }
-
-    .tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-      margin-bottom: 1rem;
-    }
-    .tab {
-      appearance: none;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text);
-      border-radius: 999px;
-      padding: .45rem .95rem;
-      font-size: .875rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background .15s, border-color .15s, color .15s;
-    }
-    .tab:hover { border-color: #ccc; }
-    .tab[aria-selected="true"] {
-      background: var(--text);
-      border-color: var(--text);
-      color: #fff;
-    }
-    .tab .count {
-      opacity: .65;
-      font-weight: 400;
-      margin-left: .25rem;
-    }
-
-    .filters {
-      display: flex;
-      flex-direction: column;
-      gap: .55rem;
-      margin-bottom: 1.25rem;
-    }
-    .filter-group {
-      display: grid;
-      grid-template-columns: 5.75rem minmax(0, 1fr) auto;
-      align-items: start;
-      column-gap: .5rem;
-      row-gap: .35rem;
-    }
-    .filter-group-label {
-      grid-column: 1;
-      padding-top: .28rem;
-      font-size: .68rem;
+      font-size: 1.6rem;
       font-weight: 700;
-      letter-spacing: .03em;
-      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
     }
-    .filter-group-label.domain { color: #5b2b9e; }
-    .filter-group-label.stack { color: #174ea6; }
-    .filter-group-label.lang { color: #1b5e20; }
-    .filter-group-chips {
-      grid-column: 2;
+    .intro {
+      margin: .35rem 0 0;
+      max-width: 40rem;
+      font-size: 1.02rem;
+      line-height: 1.45;
+    }
+    .intro a {
+      color: var(--link);
+      font-weight: 600;
+    }
+    a:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    main { margin-top: 2rem; }
+    h2 {
+      margin: 0 0 .75rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .legend {
       display: flex;
       flex-wrap: wrap;
-      gap: .28rem;
-      min-width: 0;
-      /* one line when collapsed */
-      max-height: 1.55rem;
-      overflow: hidden;
+      gap: .5rem .9rem;
+      margin: 0 0 .75rem;
+      padding: 0;
+      list-style: none;
     }
-    .filter-group.open .filter-group-chips {
-      max-height: none;
-      overflow: visible;
-    }
-    .filter-group-more {
-      grid-column: 3;
-      appearance: none;
-      border: none;
-      background: transparent;
+    .scroll-hint {
+      display: none;
+      margin: 0 0 .5rem;
       color: var(--muted);
-      font: inherit;
-      font-size: .7rem;
-      font-weight: 550;
-      cursor: pointer;
-      padding: .2rem .15rem;
-      white-space: nowrap;
-      align-self: start;
+      font-size: .82rem;
     }
-    .filter-group-more:hover { color: var(--text); }
-    .filter-group-more.hidden { visibility: hidden; pointer-events: none; }
-    .chip {
-      appearance: none;
-      border-radius: 999px;
-      padding: .18rem .5rem;
-      font-size: .7rem;
-      font-weight: 500;
-      cursor: pointer;
+    .matrix-scroll {
+      overflow-x: auto;
       border: 1px solid var(--border);
-      background: #fff;
+      border-radius: 8px;
+      background: var(--surface);
+      container-type: inline-size;
+    }
+    table {
+      border-collapse: separate;
+      border-spacing: 0;
+      width: 100%;
+      min-width: 64rem;
+    }
+    caption {
+      caption-side: top;
+      position: sticky;
+      left: 0;
+      padding: .7rem .85rem .4rem;
+      text-align: left;
+      font-size: .9rem;
       color: var(--muted);
+      font-weight: 400;
+    }
+    caption span {
+      display: block;
+      width: calc(100cqi - 1.7rem);
+      max-width: 52rem;
+      white-space: normal;
+    }
+    th, td {
+      padding: .8rem .85rem;
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      vertical-align: middle;
+      background: var(--surface);
+    }
+    thead th {
+      vertical-align: bottom;
+      background: var(--surface);
+    }
+    thead th:first-child,
+    tbody th[scope="row"] {
+      position: sticky;
+      left: 0;
+      text-align: left;
+      min-width: 12.75rem;
+      max-width: 15rem;
+      width: 13.5rem;
+    }
+    thead th:first-child { z-index: 3; }
+    tbody th[scope="row"] { z-index: 1; }
+    thead th:not(:first-child) {
+      text-align: center;
+      min-width: 8.25rem;
+    }
+    tbody td { text-align: center; min-width: 8.25rem; }
+    tbody tr:nth-child(even) th,
+    tbody tr:nth-child(even) td { background: var(--row); }
+    tbody tr.section th {
+      background: #eef1f6;
+      text-align: left;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: .55rem;
+      padding-bottom: .55rem;
+    }
+    tbody tr.section th span {
+      position: sticky;
+      left: .85rem;
+    }
+    tbody tr.section a {
+      color: var(--link);
+      text-decoration: none;
+    }
+    tbody tr.section a:hover { text-decoration: underline; }
+    .corner {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .product-id {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: .5rem;
+    }
+    .icon-link {
+      width: 36px;
+      height: 36px;
+      display: inline-grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 8px;
+      background: #eef1f6;
+      color: #173a67;
+      text-decoration: none;
+    }
+    .icon-link svg { width: 22px; height: 22px; }
+    .icon-link-logo {
+      background: transparent;
+      padding: 0;
+    }
+    .icon-link-logo img {
+      width: 36px;
+      height: 36px;
+      display: block;
+      border-radius: 8px;
+    }
+    .name-link {
+      color: var(--text);
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      text-align: left;
       line-height: 1.25;
     }
-    .chip:hover {
-      color: var(--text);
-      border-color: #ccc;
-      background: #f7f7f7;
-    }
-    /* selected: type colors */
-    .chip.domain[aria-pressed="true"] {
-      background: #7b1fa2;
-      border-color: #6a1b9a;
-      color: #fff;
-      font-weight: 600;
-    }
-    .chip.stack[aria-pressed="true"] {
-      background: #1967d2;
-      border-color: #174ea6;
-      color: #fff;
-      font-weight: 600;
-    }
-    .chip.lang[aria-pressed="true"] {
-      background: #2e7d32;
-      border-color: #1b5e20;
-      color: #fff;
-      font-weight: 600;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1rem;
-    }
-    .card {
-      display: flex;
-      flex-direction: column;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.15rem 1.2rem 1.2rem;
-      box-shadow: var(--shadow);
-      text-decoration: none;
-      color: inherit;
-      transition: border-color .15s, transform .15s, box-shadow .15s;
-      min-height: 11.5rem;
-    }
-    .card:hover {
-      border-color: #c8d4ea;
-      transform: translateY(-1px);
-      box-shadow: 0 2px 8px rgba(11,87,208,.08);
-    }
-    .card.hidden { display: none; }
-    .card .thumb {
+    .name-link:hover,
+    .intro a:hover,
+    footer a:hover { text-decoration: underline; }
+    .row-note {
       display: block;
-      width: calc(100% + 2.4rem);
-      margin: -1.15rem -1.2rem .9rem;
-      aspect-ratio: 2 / 1;
-      height: auto;
-      object-fit: cover;
-      object-position: center;
-      border-radius: var(--radius) var(--radius) 0 0;
-      border-bottom: 1px solid var(--border);
-      background: #fff;
-    }
-    .card h2 {
-      margin: 0 0 .35rem;
-      font-size: 1.05rem;
-      font-weight: 650;
-      letter-spacing: -0.01em;
-    }
-    .card .blurb {
-      margin: 0 0 .85rem;
+      margin-top: .28rem;
+      font-weight: 400;
+      font-size: .75rem;
+      line-height: 1.35;
       color: var(--muted);
-      font-size: .88rem;
-      flex: 1;
     }
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .3rem;
+    .cap-name {
+      display: block;
+      font-size: .95rem;
+      font-weight: 700;
     }
-    .tag {
-      font-size: .68rem;
-      font-weight: 500;
-      padding: .15rem .4rem;
-      border-radius: 5px;
+    .cap-note {
+      display: block;
+      margin-top: .15rem;
+      font-size: .75rem;
+      font-weight: 400;
+      color: var(--muted);
+      line-height: 1.3;
+    }
+    .mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .35rem;
+      font-size: .82rem;
+      font-weight: 700;
+      line-height: 1.2;
       white-space: nowrap;
     }
-    .tag.domain {
-      background: #f3eefc;
-      color: #5b2b9e;
+    .mark svg { flex: 0 0 auto; }
+    .mark-available {
+      color: var(--available);
+      background: var(--available-bg);
+      border-radius: 999px;
+      padding: .2rem .5rem .2rem .35rem;
     }
-    .tag.stack {
-      background: #e8f0fe;
-      color: #174ea6;
+    .mark-planned {
+      color: var(--planned);
+      background: var(--planned-bg);
+      border-radius: 999px;
+      padding: .2rem .5rem .2rem .35rem;
     }
-    .tag.lang {
-      background: #e8f5e9;
-      color: #1b5e20;
+    .mark-na {
+      color: var(--text);
+      font-size: 1.15rem;
+      font-weight: 500;
     }
-    .meta {
-      margin-top: .75rem;
-      font-size: .72rem;
-      color: #888;
-    }
-    .empty {
-      display: none;
-      color: var(--muted);
-      font-size: .95rem;
-      padding: 2rem 0;
-    }
-    .empty.show { display: block; }
     footer {
-      margin-top: 2.5rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border);
-      font-size: .8rem;
-      color: #999;
+      margin-top: 1.25rem;
+      font-size: .9rem;
+    }
+    footer a { color: var(--link); font-weight: 600; }
+    @media (min-width: 1100px) {
+      .wrap { max-width: 1200px; }
+      table {
+        min-width: 0;
+        width: 100%;
+        table-layout: fixed;
+      }
+      th, td { padding: .5rem .35rem; }
+      .cap-name { font-size: .86rem; }
+      .cap-note { font-size: .68rem; line-height: 1.25; }
+      .mark { font-size: .74rem; gap: .22rem; }
+      .mark-available,
+      .mark-planned { padding: .12rem .38rem .12rem .26rem; }
+      .name-link { font-size: .92rem; }
+      thead th:first-child,
+      tbody th[scope="row"] {
+        width: 22%;
+        min-width: 0;
+        max-width: none;
+      }
+      thead th:not(:first-child),
+      tbody td {
+        width: 13%;
+        min-width: 0;
+      }
+      tbody th[scope="row"] .name-link { min-width: 0; }
+    }
+    @media (max-width: 760px) {
+      .scroll-hint { display: block; }
+      .wrap { padding: 1.25rem .75rem 2.5rem; }
+      h1 { font-size: 1.4rem; }
+      thead th:first-child,
+      tbody th[scope="row"] {
+        min-width: 9.5rem;
+        max-width: 10.75rem;
+        width: 9.75rem;
+      }
+      thead th:not(:first-child),
+      tbody td { min-width: 7.5rem; }
+      th, td { padding: .65rem .55rem; }
     }
   </style>
 </head>
 <body>
+  <a class="skip" href="#matrix">Skip to platform matrix</a>
   <div class="wrap">
     <header>
       <div class="identity">
-        <img class="avatar" src="avatar.jpg" width="64" height="64" alt="Joe" />
-        <div class="identity-text">
-          <h1>Joe</h1>
-          <div class="headline">Application Architect, full-stack &amp; AI, cloud-native ops</div>
-          <div class="subline">Hands-on product builder + enterprise delivery</div>
+        <img class="avatar" src="avatar.jpg" width="64" height="64" alt="Joe Zhou" />
+        <div>
+          <h1>Joe Zhou</h1>
+          <p class="intro">Full-stack AI engineer with 15+ years of experience, based in Auckland, New Zealand.</p>
+          <p class="intro">With IBM since January 2015. <a href="https://www.linkedin.com/in/joezhou2026">Joe Zhou on LinkedIn</a>.</p>
         </div>
       </div>
-      <nav>
-        <a href="https://www.linkedin.com/in/mi-zhou-46553092/" rel="noopener">LinkedIn</a>
-      </nav>
     </header>
 
-    <div class="tabs" role="tablist" aria-label="Platforms">
-      <button type="button" class="tab" role="tab" data-tab="all" aria-selected="true">All <span class="count" data-count-for="all"></span></button>
-      <button type="button" class="tab" role="tab" data-tab="mobile" aria-selected="false">Mobile <span class="count" data-count-for="mobile"></span></button>
-      <button type="button" class="tab" role="tab" data-tab="web" aria-selected="false">Web <span class="count" data-count-for="web"></span></button>
-      <button type="button" class="tab" role="tab" data-tab="cloud" aria-selected="false">Cloud-Native <span class="count" data-count-for="cloud"></span></button>
-      <button type="button" class="tab" role="tab" data-tab="ai" aria-selected="false">AI <span class="count" data-count-for="ai"></span></button>
-    </div>
+    <main>
+      <h2>Projects by tech platform</h2>
+      <ul class="legend" aria-label="Status legend">
+        <li>
+          <span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span>
+        </li>
+        <li>
+          <span class="mark mark-planned"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M8 1.6 14.2 8 8 14.4 1.8 8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span>Planned</span></span>
+        </li>
+        <li>
+          <span class="mark mark-na"><span aria-label="Not applicable">—</span></span>
+          <span>Not applicable</span>
+        </li>
+      </ul>
+      <p class="scroll-hint">Scroll sideways to compare platforms. Project names stay in view.</p>
+      <div class="matrix-scroll">
+        <table id="matrix">
+          <caption><span>Where each product sits on mobile, web, backend, cloud, data, and AI. SDLC, founder-led work, contract work, client delivery, and IBM internal delivery are grouped apart. The SDLC heading opens the capability matrix. A dash means that platform does not apply.</span></caption>
+          <thead>
+            <tr>
+              <th class="corner" scope="col">Project</th>
+              <th scope="col"><span class="cap-name">Mobile</span><span class="cap-note">Phone and tablet apps</span></th>
+              <th scope="col"><span class="cap-name">Web</span><span class="cap-note">Browser interfaces</span></th>
+              <th scope="col"><span class="cap-name">Backend</span><span class="cap-note">APIs and services</span></th>
+              <th scope="col"><span class="cap-name">Cloud</span><span class="cap-note">Hosted platforms</span></th>
+              <th scope="col"><span class="cap-name">Data</span><span class="cap-note">Ingestion and analytics</span></th>
+              <th scope="col"><span class="cap-name">AI</span><span class="cap-note">Models and agents</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="section">
+              <th colspan="7" scope="rowgroup"><span><a href="lifecycle.html">SDLC</a></span></th>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link" href="products/skill_forge.html" aria-label="Skill Forge"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="16 18 22 12 16 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="8 6 2 12 8 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                  <a class="name-link" href="products/skill_forge.html">Skill Forge</a>
+                </span>
+              </th>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link" href="products/defect_drainer.html" aria-label="Defect Drainer"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 11l3 3 8-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                  <a class="name-link" href="products/defect_drainer.html">Defect Drainer</a>
+                </span>
+              </th>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link icon-link-logo" href="products/deploybot.html" aria-label="Deploybot"><img src="icons/deploybot.svg" width="36" height="36" alt="" /></a>
+                  <a class="name-link" href="products/deploybot.html">Deploybot</a>
+                </span>
+              </th>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr class="section">
+              <th colspan="7" scope="rowgroup"><span>Founder-led</span></th>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link" href="products/briefed.html" aria-label="Briefed"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 6h14v9H8l-3 3V6Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></a>
+                  <a class="name-link" href="products/briefed.html">Briefed</a>
+                </span>
+              </th>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link" href="products/tutored.html" aria-label="Tutored"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M4 5.5A2.5 2.5 0 0 1 6.5 8H20" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+                  <a class="name-link" href="products/tutored.html">Tutored</a>
+                </span>
+              </th>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link" href="products/sketch_forge.html" aria-label="Sketch Forge"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 15.5 10.2 10 16 8.2 13.8 13.8 8 15.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></a>
+                  <a class="name-link" href="products/sketch_forge.html">Sketch Forge</a>
+                </span>
+              </th>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link" href="products/olilo.html" aria-label="Olilo"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 19V5M4 19h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M8 19v-6M12 19V8M16 19v-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
+                  <a class="name-link" href="products/olilo.html">Olilo</a>
+                </span>
+              </th>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link" href="products/pet_ecom.html" aria-label="Mohiguide"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 10.5 12 4l8 6.5V20H4v-9.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M10 20v-5h4v5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></a>
+                  <a class="name-link" href="products/pet_ecom.html">Mohiguide</a>
+                </span>
+              </th>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr class="section">
+              <th colspan="7" scope="rowgroup"><span>Contract</span></th>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link" href="products/infiniti_owner_app.html" aria-label="Gan Ai Bang"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="8" y="3" width="8" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 18h2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
+                  <a class="name-link" href="products/infiniti_owner_app.html">Gan Ai Bang</a>
+                </span>
+                <span class="row-note">Infiniti owner app</span>
+              </th>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr class="section">
+              <th colspan="7" scope="rowgroup"><span>Client delivery</span></th>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link" href="products/edi.html" aria-label="MapGenie"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="6" cy="18" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6 8v8M8 6.8c4.2.4 4.2 4.4 8 4.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
+                  <a class="name-link" href="products/edi.html">MapGenie</a>
+                </span>
+                <span class="row-note">Maersk</span>
+              </th>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link" href="products/kone.html" aria-label="KONE Connected Services"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 20V6h8v14M12 20V10h8v10M4 20h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M7 9h2M7 13h2M15 13h2M15 16h2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
+                  <a class="name-link" href="products/kone.html">KONE Connected Services</a>
+                </span>
+              </th>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link" href="products/glob_ecom.html" aria-label="Global e-commerce"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 8h12l-1 12H7L6 8Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8a3 3 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+                  <a class="name-link" href="products/glob_ecom.html">Global e-commerce</a>
+                </span>
+                <span class="row-note">Oriflame</span>
+              </th>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr class="section">
+              <th colspan="7" scope="rowgroup"><span>IBM internal</span></th>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="product-id">
+                  <a class="icon-link" href="products/ibm_oa.html" aria-label="IBM Enterprise OA"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="6" y="3" width="12" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 8h6M9 12h6M9 16h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
+                  <a class="name-link" href="products/ibm_oa.html">IBM Enterprise OA</a>
+                </span>
+              </th>
+              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
 
-    <div class="filters" id="attr-filters" aria-label="Filter by domain, stack, or language"></div>
-
-    <div class="grid" id="grid"></div>
-    <p class="empty" id="empty">No products match this filter.</p>
-
-    <footer>Product-focused catalog · detail pages linked from each card</footer>
+    <footer>
+      <a href="products/index.html">All product pages</a>
+    </footer>
   </div>
-
-  <script>
-    /**
-     * Tag model (exactly 3 types):
-     * - languages: programming languages (Go, TypeScript, Python, …)
-     * - stack: frameworks / platforms / infra (FastAPI, Flutter, AWS, …)
-     * - domain: business domain (education, e-commerce, DevOps, finance, …)
-     * Filter chips are grouped: Language · Tech stack · Domain.
-     */
-    const PRODUCTS = [
-      {
-        id: "tutored",
-        name: "Tutored",
-        href: "products/tutored.html",
-        blurb: "Multi-surface language-learning SaaS — web via SvelteKit BFF, mobile to Fastify; separate course publish pipeline.",
-        tabs: ["mobile", "web", "cloud", "ai"],
-        languages: ["TypeScript", "Dart"],
-        stack: ["SvelteKit", "Fastify", "Mobile", "PostgreSQL", "AWS", "Docker"],
-        domain: ["Education", "AI"],
-        meta: "Founder · 2026–"
-      },
-      {
-        id: "sketch-forge",
-        name: "Sketch Forge",
-        href: "products/sketch_forge.html",
-        blurb: "Native iPad sticker studio — Swift and SwiftUI for library, review, compare, and publish.",
-        tabs: ["mobile", "ai"],
-        languages: ["Swift"],
-        stack: ["SwiftUI", "iOS", "REST", "Node"],
-        domain: ["Mobile", "Creator tooling"],
-        meta: "Founder · native iOS · 2026–"
-      },
-      {
-        id: "olilo",
-        name: "Olilo",
-        href: "products/olilo.html",
-        blurb: "SEC 13F (AI13F) filings to portfolio analytics — ETL, API, charts, LLM insight reports.",
-        tabs: ["web", "cloud", "ai"],
-        languages: ["Python", "TypeScript"],
-        stack: ["FastAPI", "SvelteKit", "PostgreSQL", "Docker"],
-        domain: ["Finance", "Data", "AI"],
-        meta: "Founder · 2026–"
-      },
-      {
-        id: "mohiguide",
-        name: "Mohiguide",
-        href: "products/pet_ecom.html",
-        blurb: "Pet-services O2O platform — mobile, web, and admin on Go services and AWS.",
-        tabs: ["mobile", "web", "cloud"],
-        languages: ["Go", "TypeScript"],
-        stack: ["Mobile", "SvelteKit", "GraphQL", "React", "AWS"],
-        domain: ["E-commerce"],
-        meta: "Founder · 2022–"
-      },
-      {
-        id: "deploybot",
-        name: "DeployBot",
-        href: "products/deploybot.html",
-        blurb: "Agentic DevOps workflows for container build, deploy, and diagnostics.",
-        tabs: ["web", "cloud", "ai"],
-        languages: ["Go", "TypeScript"],
-        stack: ["SvelteKit", "Docker", "Kubernetes", "CI/CD"],
-        domain: ["DevOps", "AI"],
-        meta: "Founder · open-source · 2024–"
-      },
-      {
-        id: "defect-drainer",
-        name: "Defect Drainer",
-        href: "products/defect_drainer.html",
-        blurb: "Agent harness for product defects — inventory, verified batch-fix, pull requests, search and analytics.",
-        tabs: ["web", "cloud", "ai"],
-        languages: ["Go", "TypeScript"],
-        stack: ["React", "OpenSearch", "Docker", "Caddy"],
-        domain: ["Quality", "Agent harness", "DevOps", "Search", "Analytics"],
-        meta: "Founder · open-source"
-      },
-      {
-        id: "skill-forge",
-        name: "Skill Forge",
-        href: "products/skill_forge.html",
-        blurb: "Registry and sync for agent skills, instructions, and subagents.",
-        tabs: ["ai"],
-        languages: ["JavaScript", "TypeScript"],
-        stack: ["Node.js", "CLI"],
-        domain: ["Agent tooling", "Developer platform"],
-        meta: "Founder · open-source · developer platform"
-      },
-      {
-        id: "infiniti-owner-app",
-        name: "Gan Ai Bang",
-        href: "products/infiniti_owner_app.html",
-        blurb: "Infiniti owner app for China — whole native iOS app in Swift, shipped to the China App Store.",
-        tabs: ["mobile"],
-        languages: ["Swift"],
-        stack: ["UIKit", "iOS", "REST"],
-        domain: ["Mobile", "Automotive"],
-        meta: "Contract · native iOS · 2017–2018"
-      },
-      {
-        id: "mapgenie",
-        name: "MapGenie",
-        href: "products/edi.html",
-        blurb: "AI-assisted EDI mapping & logistics automation for Maersk — production go-live and awards.",
-        tabs: ["web", "cloud", "ai"],
-        languages: ["Python", "TypeScript"],
-        stack: ["FastAPI", "React", "Azure", "AKS", "RAG"],
-        domain: ["Logistics", "EDI", "AI"],
-        meta: "IBM client delivery · 2025–2026"
-      },
-      {
-        id: "kone",
-        name: "KONE Connected Services",
-        href: "products/kone.html",
-        blurb: "Watson IoT → AWS IoT re-platform — fleet connectivity, telemetry ops, DevOps/CI/CD for predictive maintenance at scale.",
-        tabs: ["cloud"],
-        languages: ["Java", "Python"],
-        stack: ["AWS IoT Core", "S3", "CI/CD"],
-        domain: ["IoT", "Cloud operations", "DevOps"],
-        meta: "IBM client delivery · 2020–2021"
-      },
-      {
-        id: "glob-ecom",
-        name: "Global e-commerce",
-        href: "products/glob_ecom.html",
-        blurb: "China-market mobile/web localization for Oriflame — regional UX with global systems of record.",
-        tabs: ["mobile", "web", "cloud"],
-        languages: ["Swift", "Kotlin", "Java"],
-        stack: ["BFF", "CDN", "Mobile"],
-        domain: ["E-commerce", "Localization"],
-        meta: "IBM client delivery · 2017–2019"
-      },
-      {
-        id: "ibm-oa",
-        name: "IBM Enterprise OA",
-        href: "products/ibm_oa.html",
-        blurb: "Native iOS office-automation / pre-sales workflow app — Swift and UIKit, enterprise auth, backend-driven tasks.",
-        tabs: ["mobile"],
-        languages: ["Swift"],
-        stack: ["UIKit", "iOS", "REST"],
-        domain: ["Enterprise", "Mobile", "Office automation"],
-        meta: "IBM internal · 2015–2017"
-      }
-    ];
-
-    let activeTab = "all";
-    /** Selected filter labels (AND). Any match against languages | stack | domain. */
-    let activeFilters = new Set();
-
-    const grid = document.getElementById("grid");
-    const empty = document.getElementById("empty");
-    const filtersEl = document.getElementById("attr-filters");
-
-    const FILTER_GROUPS = [
-      { key: "domain", label: "Domain", chipClass: "domain" },
-      { key: "stack", label: "Tech stack", chipClass: "stack" },
-      { key: "languages", label: "Language", chipClass: "lang" }
-    ];
-
-    function collectUsed(key) {
-      const used = new Set();
-      PRODUCTS.forEach(p => (p[key] || []).forEach(t => used.add(t)));
-      return [...used].sort((a, b) => a.localeCompare(b));
-    }
-
-    function productHasLabel(p, label) {
-      return p.languages.includes(label) || p.stack.includes(label) || p.domain.includes(label);
-    }
-
-    /** Expanded when tags need more than one line. */
-    const groupOpen = { domain: false, stack: false, languages: false };
-
-    function renderFilters() {
-      filtersEl.innerHTML = "";
-      FILTER_GROUPS.forEach(group => {
-        const labels = collectUsed(group.key);
-        if (!labels.length) return;
-
-        const open = !!groupOpen[group.key];
-        const row = document.createElement("div");
-        row.className = "filter-group" + (open ? " open" : "");
-        row.dataset.key = group.key;
-        row.setAttribute("role", "group");
-        row.setAttribute("aria-label", group.label);
-
-        const title = document.createElement("span");
-        title.className = `filter-group-label ${group.chipClass}`;
-        title.textContent = group.label;
-
-        const chips = document.createElement("div");
-        chips.className = "filter-group-chips";
-
-        labels.forEach(label => {
-          const b = document.createElement("button");
-          b.type = "button";
-          b.className = `chip ${group.chipClass}`;
-          b.textContent = label;
-          b.setAttribute("aria-pressed", activeFilters.has(label) ? "true" : "false");
-          b.addEventListener("click", () => {
-            if (activeFilters.has(label)) activeFilters.delete(label);
-            else activeFilters.add(label);
-            b.setAttribute("aria-pressed", activeFilters.has(label) ? "true" : "false");
-            applyFilters();
-          });
-          chips.appendChild(b);
-        });
-
-        const more = document.createElement("button");
-        more.type = "button";
-        more.className = "filter-group-more hidden";
-        more.setAttribute("aria-expanded", open ? "true" : "false");
-        more.textContent = open ? "Less" : "More";
-        more.addEventListener("click", () => {
-          groupOpen[group.key] = !groupOpen[group.key];
-          renderFilters();
-        });
-
-        row.appendChild(title);
-        row.appendChild(chips);
-        row.appendChild(more);
-        filtersEl.appendChild(row);
-      });
-
-      // After layout: show More only when chips wrap past one line
-      requestAnimationFrame(() => {
-        filtersEl.querySelectorAll(".filter-group").forEach(row => {
-          const chips = row.querySelector(".filter-group-chips");
-          const more = row.querySelector(".filter-group-more");
-          if (!chips || !more) return;
-          const wasOpen = row.classList.contains("open");
-          // measure collapsed height
-          row.classList.remove("open");
-          const overflows = chips.scrollHeight > chips.clientHeight + 1;
-          if (wasOpen) row.classList.add("open");
-          if (overflows || wasOpen) {
-            more.classList.remove("hidden");
-            more.textContent = wasOpen ? "Less" : "More";
-            more.setAttribute("aria-expanded", wasOpen ? "true" : "false");
-          } else {
-            more.classList.add("hidden");
-          }
-        });
-      });
-    }
-
-    window.addEventListener("resize", () => {
-      // re-check overflow without resetting open state
-      requestAnimationFrame(() => {
-        filtersEl.querySelectorAll(".filter-group").forEach(row => {
-          const chips = row.querySelector(".filter-group-chips");
-          const more = row.querySelector(".filter-group-more");
-          if (!chips || !more) return;
-          const wasOpen = row.classList.contains("open");
-          row.classList.remove("open");
-          const overflows = chips.scrollHeight > chips.clientHeight + 1;
-          if (wasOpen) row.classList.add("open");
-          if (overflows || wasOpen) {
-            more.classList.remove("hidden");
-            more.textContent = wasOpen ? "Less" : "More";
-          } else {
-            more.classList.add("hidden");
-            const key = row.dataset.key;
-            if (key) groupOpen[key] = false;
-          }
-        });
-      });
-    });
-
-    function productInTab(p, tab) {
-      if (tab === "all") return true;
-      return (p.tabs || []).includes(tab);
-    }
-
-    function matches(p) {
-      if (!productInTab(p, activeTab)) return false;
-      if (activeFilters.size === 0) return true;
-      for (const label of activeFilters) {
-        if (!productHasLabel(p, label)) return false;
-      }
-      return true;
-    }
-
-    function renderCards() {
-      grid.innerHTML = "";
-      let visible = 0;
-      PRODUCTS.forEach(p => {
-        const show = matches(p);
-        const a = document.createElement("a");
-        a.className = "card" + (show ? "" : " hidden");
-        a.href = p.href;
-        a.dataset.tab = (p.tabs || []).join(" ");
-        if (show) visible++;
-
-        const tagsHtml = [
-          ...p.domain.map(t => `<span class="tag domain">${t}</span>`),
-          ...p.stack.map(t => `<span class="tag stack">${t}</span>`),
-          ...p.languages.map(t => `<span class="tag lang">${t}</span>`)
-        ].join("");
-
-        const thumbHtml = p.image
-          ? `<img class="thumb" src="${p.image}" alt="${p.imageAlt || p.name + " screenshot"}" loading="lazy">`
-          : "";
-
-        a.innerHTML = `
-          ${thumbHtml}
-          <h2>${p.name}</h2>
-          <p class="blurb">${p.blurb}</p>
-          <div class="tags">${tagsHtml}</div>
-          <div class="meta">${p.meta}</div>
-        `;
-        grid.appendChild(a);
-      });
-      empty.classList.toggle("show", visible === 0);
-
-      ["all", "mobile", "web", "cloud", "ai"].forEach(tab => {
-        const n = PRODUCTS.filter(p => {
-          if (!productInTab(p, tab)) return false;
-          if (activeFilters.size === 0) return true;
-          for (const label of activeFilters) if (!productHasLabel(p, label)) return false;
-          return true;
-        }).length;
-        const el = document.querySelector(`[data-count-for="${tab}"]`);
-        if (el) el.textContent = `(${n})`;
-      });
-    }
-
-    function applyFilters() {
-      renderCards();
-    }
-
-    document.querySelectorAll(".tab").forEach(tab => {
-      tab.addEventListener("click", () => {
-        activeTab = tab.dataset.tab;
-        document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", t === tab ? "true" : "false"));
-        applyFilters();
-      });
-    });
-
-    renderFilters();
-    renderCards();
-  </script>
 </body>
 </html>

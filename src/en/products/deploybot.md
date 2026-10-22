@@ -1,34 +1,31 @@
-# DeployBot — Agentic DevOps workflows
+# Deploybot — Self-hosted deploy & operations platform with an AI-agent gateway
 
 **Period:** January 2024–Present  
-**Ownership:** Founder-led · open-source (MIT)  
+**Ownership:** Founder-led · public repos  
 **Role:** Founder / platform engineer  
 
-DeployBot is an agentic DevOps platform for teams running containers. Build, deploy, configuration, diagnostics, and troubleshooting run as guided, auditable workflows from a console or CLI—not as a pile of one-off scripts.
+Deploybot is a self-hosted deploy and operations platform with an AI-agent gateway, rewritten in October 2026 on Go and SvelteKit. A sandboxed host agent runs allowlisted container and service deploys with health checks and rollback, a Go API keeps projects, encrypted environment sets and an audit log, and an OAuth-secured MCP gateway lets AI agents inspect hosts and make changes only after confirmation.
 
 ## Platform
 
 ```mermaid
 flowchart LR
-  Web[Web console] --> Intent[Intent]
-  CLI[CLI] --> Intent
-  Intent --> Policy[Policy]
-  Policy --> Orch[Orchestrator]
-  Orch --> Audit[Audit]
-  Orch --> Build[Build]
-  Orch --> Deploy[Deploy]
-  Orch --> Config[Config]
-  Orch --> Observe[Observability]
+  Agents[AI agents] -->|OAuth| MCP[MCP gateway]
+  Console[SvelteKit console] --> API[Go API]
+  MCP --> API
+  API --> PG[(PostgreSQL / TimescaleDB)]
+  HostAgent[Go host agent] -->|outbound only| API
+  HostAgent --> Deploy[Allowlisted deploys + rollback]
 ```
 
-- Conversational control plane over build, deploy, config, and observe APIs  
-- Policy and audit on every run  
-- Container registry, CI, Kubernetes/runtime, logs, and secrets as first-class integrations  
+- **Host agent** — sandboxed, outbound-only Go agent (systemd, no listening ports) for allowlisted container and service deploys with health checks and rollback.  
+- **API** — Go on PostgreSQL/TimescaleDB with Google sign-in, projects, encrypted environment sets and an audit log.  
+- **Console** — SvelteKit operator console.  
+- **MCP gateway** — OAuth-secured, exposing 22 tools; changes happen only after confirmation.  
 
 ## My contribution
 
-- Control plane: intent, policy, orchestration, audit  
-- Integrations for registry, CI, Kubernetes, metrics, and secrets  
-- Web console and API used by my product teams  
+- Host agent, API, operator console and MCP gateway across four public repos: [bot-agent](https://github.com/more-than-code/bot-agent), [bot-api-server](https://github.com/more-than-code/bot-api-server), [bot-console](https://github.com/more-than-code/bot-console), [bot-mcp-server](https://github.com/more-than-code/bot-mcp-server).  
+- ~1,100 automated tests across the four repos.
 
-**Key technologies:** Go, TypeScript, SvelteKit, Docker, Kubernetes, CI/CD
+**Key technologies:** Go, PostgreSQL, TimescaleDB, SvelteKit, TypeScript, Docker, systemd, MCP, OAuth, Google sign-in

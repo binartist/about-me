@@ -90,7 +90,7 @@ print(html)
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>${title} — Joe</title>
+  <title>${title} — Joe Zhou</title>
   <link rel="stylesheet" href="../site.css?v=${CSS_VER}" />
 </head>
 <body>
@@ -150,12 +150,23 @@ elif [ -f src/en/index.md ]; then
     pandoc src/en/index.md -f gfm -t html -s --include-after-body=includes/common-scripts.html -o dist/en/index.html
     update_file_timestamp src/en/index.md dist/en/index.html
 fi
+# SDLC capability matrix. Raw HTML, same copy path as the homepage.
+if [ -f src/en/lifecycle.html ]; then
+    cp src/en/lifecycle.html dist/en/lifecycle.html
+    echo "wrote dist/en/lifecycle.html"
+fi
 if [ -f src/en/avatar.jpg ]; then
     cp src/en/avatar.jpg dist/en/avatar.jpg
     echo "wrote dist/en/avatar.jpg"
 elif [ -f assets/avatar.jpg ]; then
     cp assets/avatar.jpg dist/en/avatar.jpg
     echo "wrote dist/en/avatar.jpg (from assets/)"
+fi
+# Homepage product marks (column headers). Same copy pattern as avatar.jpg.
+if [ -d src/en/icons ]; then
+    mkdir -p dist/en/icons
+    cp -a src/en/icons/. dist/en/icons/
+    echo "wrote dist/en/icons/"
 fi
 
 # Product page images (screenshots referenced from product markdown + catalog cards)
