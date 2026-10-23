@@ -17,23 +17,23 @@ flowchart LR
   GW --> Svc[Go services]
   Svc --> Data[(MongoDB / Redis)]
   Svc --> Pay[Payments]
-  Svc --> Cloud[AWS]
+  Svc --> Cloud[Alibaba Cloud]
 ```
 
 - **Mobile** — iOS and Android: content, booking, enrollment, payments  
 - **Web** — SvelteKit customer channel  
 - **Admin** — React operations console (orders, inventory, support)  
 - **Backend** — Go microservices (users, pets, events, vouchers, orders, messaging) behind a GraphQL gateway  
-- **Cloud** — containerized services on AWS (load balancing, CloudFront, S3, IAM), CI/CD on GitHub Actions  
+- **Cloud** — containerized services on Alibaba Cloud (ECS, ApsaraDB for MongoDB, OSS object storage), recently migrated from AWS; CI/CD on GitHub Actions  
 
 ## My contribution
 
 - End-to-end product: mobile, web, admin, and Go APIs  
 - GraphQL gateway so all surfaces share one contract  
-- AWS delivery, Compose-based service stack, GitHub Actions  
+- Cloud delivery and the AWS to Alibaba Cloud migration, Compose-based service stack, GitHub Actions  
 - Payments, messaging, object storage, and content/commerce connectors  
 
-**Key technologies:** Mobile, SvelteKit, React, TypeScript, GraphQL, Go, MongoDB, Redis, Docker, AWS, GitHub Actions, Stripe  
+**Key technologies:** Mobile, SvelteKit, React, TypeScript, GraphQL, Go, MongoDB, Redis, Docker, Alibaba Cloud, GitHub Actions, Stripe  
 
 ## Outcomes
 
