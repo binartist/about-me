@@ -3,6 +3,7 @@
 **Period:** February 2022–Present  
 **Ownership:** Independent contract (commercial)  
 **Role:** Full-stack product engineer  
+**Live:** [mohiguide.com](https://mohiguide.com)  
 
 Mohiguide is an online-to-offline platform for pet services: content, shops, events, vouchers, commerce, and community. Pet owners and operators share one product across mobile, web, and admin, on a Go services backend.
 
