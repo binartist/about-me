@@ -12,7 +12,8 @@ Deploybot is a self-hosted deploy and operations platform with an AI-agent gatew
 ```mermaid
 flowchart LR
   Agents[AI agents] -->|OAuth| MCP[MCP gateway]
-  Console[SvelteKit console] --> API[Go API]
+  CI[GitHub Actions workflow] -->|webhook| API[Go API]
+  Console[SvelteKit console] --> API
   MCP --> API
   API --> PG[(PostgreSQL / TimescaleDB)]
   HostAgent[Go host agent] -->|outbound only| API
@@ -20,6 +21,7 @@ flowchart LR
 ```
 
 - **Host agent** — sandboxed, outbound-only Go agent (systemd, no listening ports) for allowlisted container and service deploys with health checks and rollback.  
+- **Build** — releases are built by a GitHub Actions workflow, which notifies Deploybot by webhook.  
 - **API** — Go on PostgreSQL/TimescaleDB with Google sign-in, projects, encrypted environment sets and an audit log.  
 - **Console** — SvelteKit operator console.  
 - **MCP gateway** — OAuth-secured, exposing 22 tools; changes happen only after confirmation.  
