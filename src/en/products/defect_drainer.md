@@ -3,6 +3,7 @@
 **Period:** June 2026–Present  
 **Ownership:** Founder-led · open-source (MIT)  
 **Role:** Founder / platform engineer  
+**Repos:** [defect-drainer-backend-go](https://github.com/more-than-code/defect-drainer-backend-go) · [defect-drainer-console](https://github.com/more-than-code/defect-drainer-console)  
 
 Defect Drainer is an agent harness for product bugs. Screenshots and notes become a durable inventory. A coding agent then fixes selected defects in isolated git worktrees, and a defect does not close until evidence and verification both pass. Pull requests are created on the host remote; merge stays on GitHub.
 

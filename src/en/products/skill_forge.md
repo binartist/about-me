@@ -3,6 +3,7 @@
 **Period:** June 2026–Present  
 **Ownership:** Founder-led · open-source (MIT)  
 **Role:** Founder / platform engineer  
+**Repo:** [github.com/more-than-code/skill-forge](https://github.com/more-than-code/skill-forge)  
 
 Skill Forge is a Node.js CLI and registry that distributes agent instructions, 35 skills, subagents and hooks to Claude Code, Codex, Copilot CLI and Grok as SHA-256 integrity-locked packages. It is how agent skills, instructions, and subagents are stored, installed, and kept consistent across tools. The registry is the source of truth. Consumer repos (and a home profile) declare what they need; `skf sync` vendors exact copies. Tool runtime folders are install targets, not the system of record.
 
