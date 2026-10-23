@@ -28,6 +28,17 @@ flowchart LR
 - **Data:** PostgreSQL (Drizzle) for multi-tenant accounts, usage, and learning records.  
 - **Ops:** request-correlated logs, product events, metrics; automated backup and restore; CI/CD to Vercel, with data on Supabase.
 
+## Features
+
+- **Practice modes** — Read Aloud (the tutor speaks, the learner answers by voice), Dictation (typed, or a photo of handwriting) and Translation (typed or voice).  
+- **Photo to practice** — a photographed page or word list becomes practice items.  
+- **Study log** — every session records outcomes, weaknesses and improvement directions.  
+- **Four strategies** — ad hoc drills, mistake re-test, paced review on a spaced-repetition schedule, and extended exercises that add new items on the same theme.  
+- **Library and learning content** — courses, dictionary, stickers, and a private library of documents, images and videos.  
+- **Tutor personas** — a cast of characters with their own families, hobbies and stickers.  
+- **Languages and access** — interface in English, Japanese, French and Chinese (Simplified and Traditional); guest mode to try it without an account.  
+- **Mobile** — a native client on the same API, in progress.
+
 ## Content ops
 
 Curriculum is a publish pipeline, not an in-app CMS.

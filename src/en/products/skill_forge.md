@@ -14,6 +14,7 @@ Skill Forge is a Node.js CLI and registry that distributes agent instructions, 3
 - Composed instructions for Codex, Copilot CLI, Claude Code, Grok, and similar  
 - Managed subagent definitions  
 - Validate metadata, paths, and lock freshness; diff before overwrite  
+- Usage-stats hook and a local OpenTelemetry stack for observing agent runs  
 
 ## My contribution
 

@@ -19,7 +19,7 @@ Report → Inventory → Batch fix → Verify → Pull request → Close
 - **Inventory** — triage by app, severity, area, and reporter.  
 - **Batch fix** — isolated worktrees per repo; the live checkout is not edited. Each app repo has a GitHub or local base and branch.  
 - **Verify** — operator-authored commands run twice (baseline, then after the agent). Resolve is blocked on regression or a command that cannot run. Pre-existing failures do not block.  
-- **Ship** — create and refresh PRs; resolve only with fix evidence.
+- **Ship** — create and refresh PRs; resolve only with fix evidence. Pull requests are created through the GitHub CLI.
 
 ## Platform
 

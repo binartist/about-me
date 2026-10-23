@@ -15,19 +15,22 @@ flowchart LR
   Console[SvelteKit console] --> API[Go API]
   MCP --> API
   API --> PG[(PostgreSQL / TimescaleDB)]
-  HostAgent[Go host agent] -->|outbound only| API
+  HostAgent[Go host agent] -->|outbound only: tasks and metrics| API
+  Registry[Container registry] -->|image| HostAgent
   HostAgent --> Deploy[Allowlisted deploys + rollback]
 ```
 
 - **Host agent** — sandboxed, outbound-only Go agent (systemd, no listening ports) for allowlisted container and service deploys with health checks and rollback.  
 - **Releases** — built in CI (GitHub Actions) and published to a container registry; Deploybot deploys the published image, with stored registry credentials for private registries.  
 - **API** — Go on PostgreSQL/TimescaleDB with Google sign-in, projects, encrypted environment sets and an audit log.  
-- **Console** — SvelteKit operator console.  
+- **Monitoring** — host metrics ingested into TimescaleDB, live probes, service discovery and health history.  
+- **Projects and hosts** — project members and invites, join tokens and host credentials, and hosts shared between projects at metrics or deploy level.  
+- **Console** — SvelteKit operator console, with environment editing and container logs.  
 - **MCP gateway** — OAuth-secured, exposing 22 tools; changes happen only after confirmation.  
 
 ## My contribution
 
 - Host agent, API, operator console and MCP gateway across four public repos: [bot-agent](https://github.com/more-than-code/bot-agent), [bot-api-server](https://github.com/more-than-code/bot-api-server), [bot-console](https://github.com/more-than-code/bot-console), [bot-mcp-server](https://github.com/more-than-code/bot-mcp-server).  
-- ~1,100 automated tests across the four repos.
+- 900+ automated tests across the four repos.
 
 **Key technologies:** Go, PostgreSQL, TimescaleDB, SvelteKit, TypeScript, Docker, systemd, MCP, OAuth, Google sign-in
