@@ -3,6 +3,7 @@
 **Period:** January 2026–Present  
 **Ownership:** Founder-led  
 **Role:** Founder / platform owner  
+**Live:** [tutored.app](https://tutored.app)  
 
 A language tutor that turns chat, a photographed page, or past mistakes into an approved practice set, then remembers what the learner got wrong. Web and mobile share one API. Course authoring is a separate publish pipeline from the learner product.
 

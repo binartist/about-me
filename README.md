@@ -8,7 +8,7 @@ The English homepage (`src/en/index.html`) is a short narrative profile of Joe Z
 ## Featured set (locked)
 
 1. **Briefed** — AI career agent (founder-led, live at briefed.cv)  
-2. **Tutored** — education product  
+2. **Tutored** — education product (live at tutored.app)  
 3. **Sketch Forge** — founder-led native iOS / Swift / SwiftUI iPad client  
 4. **Olilo** — finance/data product  
 5. **Mohiguide** — commerce O2O product (independent commercial contract)  
