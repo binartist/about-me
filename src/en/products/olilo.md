@@ -1,8 +1,8 @@
 # Olilo — SEC 13F portfolio analytics
 
 **Period:** April 2026–Present  
-**Ownership:** Founder-led personal product  
-**Role:** Founder / full-stack product engineer  
+**Ownership:** Independent contract (commercial)  
+**Role:** Full-stack product engineer  
 
 ## Introduction
 

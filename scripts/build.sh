@@ -185,6 +185,22 @@ for f in src/en/products/*.md; do
     write_legacy_project_redirect en "${base%.md}.html"
 done
 
+# Sketch Forge was folded into Tutored: keep the old URL working
+cat > dist/en/products/sketch_forge.html <<'EOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="refresh" content="0; url=tutored.html#sticker-studio" />
+  <link rel="canonical" href="tutored.html#sticker-studio" />
+  <title>Redirecting…</title>
+</head>
+<body>
+  <p>Sketch Forge is now part of <a href="tutored.html#sticker-studio">Tutored</a>.</p>
+</body>
+</html>
+EOF
+
 # Japanese (markdown path; optional)
 if [ -f src/ja/index.md ]; then
     pandoc src/ja/index.md -f gfm -t html -s --include-after-body=includes/common-scripts.html -o dist/ja/index.html

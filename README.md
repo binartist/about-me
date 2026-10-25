@@ -8,17 +8,16 @@ The English homepage (`src/en/index.html`) is a short narrative profile of Joe Z
 ## Featured set (locked)
 
 1. **Briefed** — AI career agent (founder-led, live at briefed.cv)  
-2. **Tutored** — education product (live at tutored.app)  
-3. **Sketch Forge** — founder-led native iOS / Swift / SwiftUI iPad client  
-4. **Olilo** — finance/data product  
-5. **Mohiguide** — commerce O2O product (independent commercial contract)  
-6. **Deploybot** — self-hosted deploy & operations platform with an AI-agent gateway (**public repos**, live at deploybot.dev)  
-7. **Defect Drainer** — quality channel tooling (**open-source**)  
-8. **Skill Forge** — agent skills platform (**open-source**)  
-9. **MapGenie** — enterprise AI delivery (IBM / Maersk)  
-10. **Global e-commerce** — enterprise localization / integration (IBM / Oriflame)  
+2. **Tutored** — education product (live at tutored.app); includes the Sketch Forge iPad sticker studio  
+3. **Olilo** — finance/data product (independent commercial contract)  
+4. **Mohiguide** — commerce O2O product (independent commercial contract)  
+5. **Deploybot** — self-hosted deploy & operations platform with an AI-agent gateway (**public repos**, live at deploybot.dev)  
+6. **Defect Drainer** — quality channel tooling (**open-source**)  
+7. **Skill Forge** — agent skills platform (**open-source**)  
+8. **MapGenie** — enterprise AI delivery (IBM / Maersk)  
+9. **Global e-commerce** — enterprise localization / integration (IBM / Oriflame)  
 
-**Also in the product pages (not in the locked flagship ten):**
+**Also in the product pages (not in the locked flagship nine):**
 - **Cloud Migration: IBM Watson IoT to AWS IoT Platform** — cloud-native IoT ops / migration (IBM / KONE)  
 - **Gan Ai Bang (敢爱邦)** — Infiniti China owner app; whole native iOS app in Swift/UIKit, China App Store (independent contract, 2017–2018)  
 - **IBM Enterprise OA** — IBM internal pre-sales / office-automation iOS app (2015–2017)  

@@ -49,6 +49,24 @@ author packs  →  validate  →  publish  →  catalog / enroll / study
 
 A pack is one enrollable SKU (`pack.json` + assets). Studio: React console, Fastify authoring API, Zod schema and CLI. Example series: **NZ School English**.
 
+## Sticker studio
+
+Sketch Forge is the creator tool behind Tutored's stickers: an iPad-first native iOS app (Swift, SwiftUI) for sticker QA and publish. Stickers are imported, reviewed, edited additively, approved, then shipped as a WebP pack that the web and mobile clients consume. The UI is Apple-native, not a web view, and it talks to a registry API over REST.
+
+- **Library** — grid, status and tag filters, search, multi-select approve or flag
+- **Review** — master vs checker / light / dark plates, defect tags, comments
+- **Compare** — candidate vs revision, enqueue edit jobs, set the official candidate
+- **Publish** — approved plates become a market pack for downstream apps
+
+```mermaid
+flowchart LR
+  iPad[iPad SwiftUI app] --> API[Registry API]
+  API --> Store[Sticker registry]
+  API --> Plates[Master and result plates]
+  API --> Jobs[Edit jobs]
+  Jobs --> Pack[WebP pack]
+```
+
 ## Product design
 
 - The tutor **proposes**; the learner **approves** — no silent tool side-effects.  
@@ -60,6 +78,7 @@ A pack is one enrollable SKU (`pack.json` + assets). Studio: React console, Fast
 - SaaS topology: Fastify API, thin SvelteKit BFF for web, mobile on the same API (not via BFF).  
 - Auth, plan, and quota as middleware — not per-handler special cases.  
 - Content factory: pack model, validate/publish, catalog sync.  
-- Speech and agent path designed so cost and data scope stay bounded.
+- Speech and agent path designed so cost and data scope stay bounded.  
+- Sketch Forge: the Swift / SwiftUI iPad client for sticker library, review, compare and publish, with explicit candidate and approved pointers so review never invents a revision.  
 
-**Key technologies:** TypeScript, Fastify, SvelteKit, Mobile, PostgreSQL, Better Auth, Stripe, Vercel, Supabase
+**Key technologies:** TypeScript, Fastify, SvelteKit, Mobile, Swift, SwiftUI, PostgreSQL, Better Auth, Stripe, Vercel, Supabase
