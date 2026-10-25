@@ -3,6 +3,7 @@
 **Period:** January 2024–Present  
 **Ownership:** Founder-led · public repos  
 **Role:** Founder / platform engineer  
+**Live:** [deploybot.dev](https://deploybot.dev) · operator console at [console.deploybot.dev](https://console.deploybot.dev)  
 **Repos:** [bot-agent](https://github.com/more-than-code/bot-agent) · [bot-api-server](https://github.com/more-than-code/bot-api-server) · [bot-console](https://github.com/more-than-code/bot-console) · [bot-mcp-server](https://github.com/more-than-code/bot-mcp-server)  
 
 Deploybot is a self-hosted deploy and operations platform with an AI-agent gateway, rewritten in October 2026 on Go and SvelteKit. A sandboxed host agent runs allowlisted container and service deploys with health checks and rollback, a Go API keeps projects, encrypted environment sets and an audit log, and an OAuth-secured MCP gateway lets AI agents inspect hosts and make changes only after confirmation.
