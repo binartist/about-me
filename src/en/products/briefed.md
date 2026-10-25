@@ -18,18 +18,21 @@ flowchart LR
   Chat --> Apps[Applications]
   Chat --> Docs[CVs and cover letters]
   Chat --> Prep[Interview notes and rehearsal]
+  Chat --> Lib[Library of notes and files]
   Postings --> DB[(PostgreSQL / Supabase)]
   Apps --> DB
   Docs --> DB
   Prep --> DB
+  Lib --> DB
 ```
 
 - **Chat canvas** — persistent conversations with a side pane of tabs: side chats, the CV draft being written, its diff, and any record opened from a card.  
 - **Job postings and applications** — searchable postings with full advert details, and applications with current status and an append-only status history.  
-- **CVs and cover letters** — tailored per posting as reviewable draft revisions with Show changes, Plain and Rendered views, and Print / save as PDF; reusable CV variants for base versions.  
-- **Career profile** — contact details, experience, projects, skills and certificates, owned by the account.  
+- **CVs and cover letters** — tailored per posting as reviewable draft revisions with Show changes, Plain and Rendered views, and Print / save as PDF; reusable CV variants for base versions, and account CV templates the agent follows.  
+- **Career profile** — contact details, experience, projects, skills, certificates, education and languages, owned by the account.  
+- **Library** — the account's own folders, Markdown notes and uploaded files, which can be attached to a chat turn by reference.  
 - **Interview preparation** — interview notes and Rehearsal: scene boards, board-edit chat and mock-interview drills.  
-- **Account Skills** — instructions the chat agent follows; CV authoring first.  
+- **Skills** — built-in instructions the chat agent loads, starting with CV authoring.  
 - **Grounding in code** — sources are classified as full, partial or sparse, and extractions that outrun the source are refused.  
 - **Propose and confirm** — every record the agent offers is a proposal the user confirms, with a word-level diff before anything is overwritten.  
 - **Security** — SSRF-guarded link fetcher, multi-account isolation with scrypt hashing and hashed session tokens.  
@@ -37,6 +40,6 @@ flowchart LR
 ## My contribution
 
 - Product, agent and platform design end to end.  
-- About 1,460 automated tests covering the grounding guards, SSRF rules and cross-account isolation.
+- Over 2,000 automated tests covering the grounding guards, SSRF rules and cross-account isolation.
 
 **Key technologies:** TypeScript, SvelteKit 5, Tailwind CSS, Fastify 5, Drizzle ORM, PostgreSQL (Supabase), Vercel AI SDK, OpenAI-compatible LLM APIs, Zod, Vitest, Vercel
