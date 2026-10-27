@@ -22,7 +22,7 @@ The English homepage (`src/en/index.html`) is a short narrative profile of Joe Z
 - **Gan Ai Bang (敢爱邦)** — Infiniti China owner app; whole native iOS app in Swift/UIKit, China App Store (independent contract, 2017–2018)  
 - **IBM Enterprise OA** — IBM internal pre-sales / office-automation iOS app (2015–2017)  
 
-**Also in the product tree (not a catalog card):** AIHub — GenAI marketing SaaS.
+- **AIHub** — AI gateway for a white-label AI platform (independent contract, 2025–2026; client and brands are not named)  
 ## Source of truth
 
 Primary facts for MapGenie, Olilo, Tutored, Mohiguide, Deploybot, Briefed: private **cv-playground** notes:

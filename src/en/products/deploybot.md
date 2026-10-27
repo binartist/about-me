@@ -25,8 +25,8 @@ flowchart LR
 - **Releases** — built in CI (GitHub Actions) and published to a container registry; Deploybot deploys the published image, with stored registry credentials for private registries and guarded registry lookups for tags and digests.  
 - **API** — Go on PostgreSQL/TimescaleDB with Google sign-in, projects, encrypted environment sets with plain keys markable as secret, and an audit log.  
 - **Monitoring** — host metrics ingested into TimescaleDB, live probes, service discovery and health history.  
-- **Projects and hosts** — project members and invites, join tokens and host credentials, and hosts shared between projects at metrics or deploy level.  
-- **Console** — SvelteKit operator console, with environment editing and container logs.  
+- **Projects and hosts** — project members and invites, and hosts shared between projects at metrics or deploy level. Linux hosts on any cloud are enrolled with a one-time join token, and the console's Add a host card gives an AI coding agent the prompt to prepare the host (through the cloud provider's remote tools, such as Alibaba Cloud Assistant or AWS SSM), with live enrol status.  
+- **Console** — SvelteKit operator console, with environment editing (including paste import) and container logs.  
 - **MCP gateway** — OAuth-secured, exposing 22 tools; changes happen only after confirmation.  
 
 ## My contribution
