@@ -49,13 +49,15 @@ EOF
     for f in "$target_dir"/*.html; do
         if [ -f "$f" ]; then
             filename=$(basename "$f")
-            if [ "$filename" != "index.html" ]; then
+            if [ "$filename" != "index.html" ] && [ "$filename" != "sketch_forge.html" ]; then
                 name=$(echo "${filename%.html}" | sed 's/[-_]/ /g')
                 echo "<li><a href=\"$filename\">$name</a></li>" >> "$outfile"
             fi
         fi
     done
-    echo "</ul></article></body></html>" >> "$outfile"
+    echo "</ul></article>" >> "$outfile"
+    cat includes/goatcounter.html >> "$outfile"
+    echo "</body></html>" >> "$outfile"
 }
 
 # Product detail pages from Markdown → polished HTML shell
