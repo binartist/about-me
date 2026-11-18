@@ -1,6 +1,6 @@
 # Mohiguide — Pet Services O2O Platform
 
-**Period:** February 2022–Present  
+**Period:** February 2022–October 2026  
 **Ownership:** Independent contract (commercial)  
 **Role:** Full-stack product engineer  
 **Live:** [mohiguide.com](https://mohiguide.com)  
