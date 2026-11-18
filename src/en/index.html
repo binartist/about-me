@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Joe Zhou — Projects by tech platform</title>
+  <title>Joe Zhou — Products and projects</title>
   <style>
     :root {
       --bg: #fbfafd;
@@ -86,253 +86,129 @@
     }
     main { margin-top: 2rem; }
     h2 {
-      margin: 0 0 .75rem;
-      font-size: 1.15rem;
+      margin: 0;
+      font-size: 1.3rem;
       font-weight: 700;
       letter-spacing: -0.01em;
     }
-    .legend {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem .9rem;
-      margin: 0 0 .75rem;
-      padding: 0;
-      list-style: none;
-    }
-    .scroll-hint {
-      display: none;
-      margin: 0 0 .5rem;
-      color: var(--muted);
+    .group { margin: 0 0 2.5rem; }
+    .group-note { margin: .2rem 0 1rem; color: var(--muted); font-size: .95rem; }
+    h3.sub {
+      margin: 1.25rem 0 .6rem;
       font-size: .82rem;
-    }
-    .matrix-scroll {
-      overflow-x: auto;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: var(--surface);
-      container-type: inline-size;
-    }
-    table {
-      border-collapse: separate;
-      border-spacing: 0;
-      width: 100%;
-      min-width: 64rem;
-    }
-    caption {
-      caption-side: top;
-      position: sticky;
-      left: 0;
-      padding: .7rem .85rem .4rem;
-      text-align: left;
-      font-size: .9rem;
-      color: var(--muted);
-      font-weight: 400;
-    }
-    caption span {
-      display: block;
-      width: calc(100cqi - 1.7rem);
-      max-width: 52rem;
-      white-space: normal;
-    }
-    th, td {
-      padding: .8rem .85rem;
-      border-bottom: 1px solid var(--border);
-      border-right: 1px solid var(--border);
-      vertical-align: middle;
-      background: var(--surface);
-    }
-    thead th {
-      vertical-align: bottom;
-      background: var(--surface);
-    }
-    thead th:first-child,
-    tbody th[scope="row"] {
-      position: sticky;
-      left: 0;
-      text-align: left;
-      min-width: 12.75rem;
-      max-width: 15rem;
-      width: 13.5rem;
-    }
-    thead th:first-child { z-index: 3; }
-    tbody th[scope="row"] { z-index: 1; }
-    thead th:not(:first-child) {
-      text-align: center;
-      min-width: 8.25rem;
-    }
-    tbody td { text-align: center; min-width: 8.25rem; }
-    tbody tr:nth-child(even) th,
-    tbody tr:nth-child(even) td { background: var(--row); }
-    tbody tr.section th {
-      background: #eef1f6;
-      text-align: left;
-      font-size: .78rem;
       font-weight: 700;
       letter-spacing: .05em;
       text-transform: uppercase;
       color: var(--muted);
-      padding-top: .55rem;
-      padding-bottom: .55rem;
     }
-    tbody tr.section th span {
-      position: sticky;
-      left: .85rem;
-      display: block;
-      width: max-content;
-      max-width: calc(100vw - 3.5rem);
-      white-space: normal;
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
+      gap: .9rem;
     }
-    tbody tr.section a {
-      color: var(--link);
-      text-decoration: none;
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      padding: 1rem 1.05rem .9rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface);
     }
-    tbody tr.section a:hover { text-decoration: underline; }
-    .corner {
-      font-size: .75rem;
+    .card:hover { border-color: #b7c3d6; box-shadow: 0 2px 10px rgba(23, 58, 103, .07); }
+    .card-head { display: flex; align-items: center; gap: .65rem; }
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      flex: 0 0 auto;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 9px;
+      background: #eef1f6;
+      color: #173a67;
+    }
+    .card-icon svg { width: 22px; height: 22px; }
+    .card-icon-logo { background: transparent; }
+    .card-icon-logo img { width: 40px; height: 40px; display: block; border-radius: 9px; }
+    .kicker {
+      margin: 0;
+      font-size: .72rem;
       font-weight: 700;
       letter-spacing: .04em;
       text-transform: uppercase;
       color: var(--muted);
     }
-    .product-id {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: .5rem;
-    }
-    .icon-link {
-      width: 36px;
-      height: 36px;
-      display: inline-grid;
-      place-items: center;
-      flex: 0 0 auto;
-      border-radius: 8px;
-      background: #eef1f6;
-      color: #173a67;
-      text-decoration: none;
-    }
-    .icon-link svg { width: 22px; height: 22px; }
-    .icon-link-logo {
-      background: transparent;
-      padding: 0;
-    }
-    .icon-link-logo img {
-      width: 36px;
-      height: 36px;
-      display: block;
-      border-radius: 8px;
-    }
-    .name-link {
-      color: var(--text);
+    .card h3 { margin: .05rem 0 0; font-size: 1.08rem; line-height: 1.25; }
+    .card h3 a { color: var(--text); text-decoration: none; }
+    .card h3 a:hover { text-decoration: underline; }
+    .headline { margin: 0; font-weight: 600; font-size: .95rem; }
+    .summary { margin: 0; font-size: .9rem; color: #2d2d33; }
+    .points { margin: 0; padding-left: 1.1rem; font-size: .86rem; color: #2d2d33; }
+    .points li + li { margin-top: .2rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: .3rem; margin: .15rem 0 0; padding: 0; list-style: none; }
+    .chip {
+      padding: .12rem .5rem;
+      border-radius: 999px;
+      font-size: .74rem;
       font-weight: 700;
-      font-size: 1rem;
-      text-decoration: none;
-      letter-spacing: -0.01em;
-      text-align: left;
-      line-height: 1.25;
-    }
-    .name-link:hover,
-    .intro a:hover,
-    footer a:hover { text-decoration: underline; }
-    .row-note {
-      display: block;
-      margin-top: .28rem;
-      font-weight: 400;
-      font-size: .75rem;
-      line-height: 1.35;
-      color: var(--muted);
-    }
-    .cap-name {
-      display: block;
-      font-size: .95rem;
-      font-weight: 700;
-    }
-    .cap-note {
-      display: block;
-      margin-top: .15rem;
-      font-size: .75rem;
-      font-weight: 400;
-      color: var(--muted);
-      line-height: 1.3;
-    }
-    .mark {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: .35rem;
-      font-size: .82rem;
-      font-weight: 700;
-      line-height: 1.2;
-      white-space: nowrap;
-    }
-    .mark svg { flex: 0 0 auto; }
-    .mark-available {
       color: var(--available);
       background: var(--available-bg);
-      border-radius: 999px;
-      padding: .2rem .5rem .2rem .35rem;
     }
-    .mark-planned {
-      color: var(--planned);
-      background: var(--planned-bg);
-      border-radius: 999px;
-      padding: .2rem .5rem .2rem .35rem;
+    .chip-planned { color: var(--planned); background: var(--planned-bg); }
+    .chip-planned span { font-weight: 500; }
+    .meta { margin: auto 0 0; padding-top: .35rem; font-size: .8rem; color: var(--muted); }
+    .links { margin: 0; font-size: .88rem; display: flex; flex-wrap: wrap; gap: .3rem 1rem; }
+    .links a { color: var(--link); font-weight: 600; text-decoration: none; }
+    .links a:hover { text-decoration: underline; }
+    .loop-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface);
+      padding: .5rem .75rem;
+      margin: 0 0 .9rem;
     }
-    .mark-na {
-      color: var(--text);
-      font-size: 1.15rem;
-      font-weight: 500;
+    .loop-svg { display: block; width: 100%; height: auto; max-width: 760px; margin: 0 auto; }
+    .loop-track { fill: none; stroke: #e6e9f0; stroke-width: 10; }
+    .loop-flow {
+      fill: none;
+      stroke: #173a67;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-dasharray: 7 7;
+      animation: loop-dash 1.2s linear infinite;
+    }
+    @keyframes loop-dash { to { stroke-dashoffset: -14; } }
+    .loop-dot {
+      fill: #f97316;
+      offset-path: path("M 380 65 A 230 100 0 0 1 380 265 A 230 100 0 0 1 380 65");
+      offset-rotate: 0deg;
+      animation: loop-travel 9s linear infinite;
+    }
+    @keyframes loop-travel { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+    .loop-node circle { fill: #fff; stroke: var(--border); stroke-width: 1.5; }
+    .loop-node:hover circle, .loop-node:focus-visible circle { stroke: var(--link); stroke-width: 2.5; }
+    .loop-name { font-size: 17px; font-weight: 700; fill: var(--text); }
+    .loop-stage { font-size: 14px; fill: var(--muted); }
+    .loop-label { font-size: 14.5px; font-style: italic; fill: #173a67; }
+    @media (prefers-reduced-motion: reduce) {
+      .loop-flow { animation: none; }
+      .loop-dot { display: none; }
     }
     footer {
       margin-top: 1.25rem;
       font-size: .9rem;
     }
     footer a { color: var(--link); font-weight: 600; }
-    @media (min-width: 1100px) {
-      .wrap { max-width: 1200px; }
-      table {
-        min-width: 0;
-        width: 100%;
-        table-layout: fixed;
-      }
-      th, td { padding: .5rem .35rem; }
-      .cap-name { font-size: .86rem; }
-      .cap-note { font-size: .68rem; line-height: 1.25; }
-      .mark { font-size: .74rem; gap: .22rem; }
-      .mark-available,
-      .mark-planned { padding: .12rem .38rem .12rem .26rem; }
-      .name-link { font-size: .92rem; }
-      thead th:first-child,
-      tbody th[scope="row"] {
-        width: 22%;
-        min-width: 0;
-        max-width: none;
-      }
-      thead th:not(:first-child),
-      tbody td {
-        width: 13%;
-        min-width: 0;
-      }
-      tbody th[scope="row"] .name-link { min-width: 0; }
-    }
+    .intro a:hover, footer a:hover { text-decoration: underline; }
+    @media (min-width: 1100px) { .wrap { max-width: 1200px; } }
     @media (max-width: 760px) {
-      .scroll-hint { display: block; }
       .wrap { padding: 1.25rem .75rem 2.5rem; }
       h1 { font-size: 1.4rem; }
-      thead th:first-child,
-      tbody th[scope="row"] {
-        min-width: 9.5rem;
-        max-width: 10.75rem;
-        width: 9.75rem;
-      }
-      thead th:not(:first-child),
-      tbody td { min-width: 7.5rem; }
-      th, td { padding: .65rem .55rem; }
     }
   </style>
 </head>
 <body>
-  <a class="skip" href="#matrix">Skip to platform matrix</a>
+  <a class="skip" href="#work">Skip to projects</a>
   <div class="wrap">
     <header>
       <div class="identity">
@@ -345,252 +221,243 @@
       </div>
     </header>
 
-    <main>
-      <h2>Projects by tech platform</h2>
-      <ul class="legend" aria-label="Status legend">
-        <li>
-          <span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span>
-        </li>
-        <li>
-          <span class="mark mark-planned"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M8 1.6 14.2 8 8 14.4 1.8 8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span>Planned</span></span>
-        </li>
-        <li>
-          <span class="mark mark-na"><span aria-label="Not applicable">—</span></span>
-          <span>Not applicable</span>
-        </li>
-      </ul>
-      <p class="scroll-hint">Scroll sideways to compare platforms. Project names stay in view.</p>
-      <div class="matrix-scroll">
-        <table id="matrix">
-          <caption><span>Where each product sits on mobile, web, backend, cloud, data, and AI. IBM client delivery, founder-led work, contract work, and IBM internal delivery are grouped apart. The <a href="lifecycle.html">software development lifecycle (SDLC) capability matrix</a> covers Skill Forge, Defect Drainer, and Deploybot. A dash means that platform does not apply.</span></caption>
-          <thead>
-            <tr>
-              <th class="corner" scope="col">Project</th>
-              <th scope="col"><span class="cap-name">Mobile</span><span class="cap-note">Phone and tablet apps</span></th>
-              <th scope="col"><span class="cap-name">Web</span><span class="cap-note">Browser interfaces</span></th>
-              <th scope="col"><span class="cap-name">Backend</span><span class="cap-note">APIs and services</span></th>
-              <th scope="col"><span class="cap-name">Cloud</span><span class="cap-note">Hosted platforms</span></th>
-              <th scope="col"><span class="cap-name">Data</span><span class="cap-note">Ingestion and analytics</span></th>
-              <th scope="col"><span class="cap-name">AI</span><span class="cap-note">Models and agents</span></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="section">
-              <th colspan="7" scope="rowgroup"><span>IBM client delivery · Logistics, industrial IoT and retail</span></th>
-            </tr>
-            <tr>
-              <th scope="row">
-                <span class="product-id">
-                  <a class="icon-link" href="products/edi.html" aria-label="MapGenie"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="6" cy="18" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6 8v8M8 6.8c4.2.4 4.2 4.4 8 4.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
-                  <a class="name-link" href="products/edi.html">MapGenie</a>
-                </span>
-                <span class="row-note">Maersk · logistics and EDI automation</span>
-              </th>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-            </tr>
-            <tr>
-              <th scope="row">
-                <span class="product-id">
-                  <a class="icon-link" href="products/kone.html" aria-label="Watson IoT to AWS IoT"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 20V6h8v14M12 20V10h8v10M4 20h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M7 9h2M7 13h2M15 13h2M15 16h2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
-                  <a class="name-link" href="products/kone.html">Watson IoT to AWS IoT</a>
-                </span>
-                <span class="row-note">KONE · elevator and escalator IoT</span>
-              </th>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-            </tr>
-            <tr>
-              <th scope="row">
-                <span class="product-id">
-                  <a class="icon-link" href="products/glob_ecom.html" aria-label="Global e-commerce"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 8h12l-1 12H7L6 8Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8a3 3 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
-                  <a class="name-link" href="products/glob_ecom.html">Global e-commerce</a>
-                </span>
-                <span class="row-note">Oriflame · cosmetics e-commerce</span>
-              </th>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-            </tr>
-          </tbody>
-          <tbody>
-            <tr class="section">
-              <th colspan="7" scope="rowgroup"><span>Founder-led · Career, language learning, AI agent tooling and DevOps</span></th>
-            </tr>
-            <tr>
-              <th scope="row">
-                <span class="product-id">
-                  <a class="icon-link icon-link-logo" href="products/deploybot.html" aria-label="Deploybot"><img src="icons/deploybot.svg" width="36" height="36" alt="" /></a>
-                  <a class="name-link" href="products/deploybot.html">Deploybot</a>
-                </span>
-                <span class="row-note">SDLC · AI agents deploy and operate your own servers</span>
-              </th>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-            </tr>
-            <tr>
-              <th scope="row">
-                <span class="product-id">
-                  <a class="icon-link icon-link-logo" href="products/skill_forge.html" aria-label="Skill Forge"><img src="icons/skill_forge.svg" width="36" height="36" alt="" /></a>
-                  <a class="name-link" href="products/skill_forge.html">Skill Forge</a>
-                </span>
-                <span class="row-note">SDLC · agent skills and instructions registry</span>
-              </th>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-            </tr>
-            <tr>
-              <th scope="row">
-                <span class="product-id">
-                  <a class="icon-link icon-link-logo" href="products/defect_drainer.html" aria-label="Defect Drainer"><img src="icons/defect_drainer.svg" width="36" height="36" alt="" /></a>
-                  <a class="name-link" href="products/defect_drainer.html">Defect Drainer</a>
-                </span>
-                <span class="row-note">SDLC · agent harness for fixing defects</span>
-              </th>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-            </tr>
-            <tr>
-              <th scope="row">
-                <span class="product-id">
-                  <a class="icon-link icon-link-logo" href="products/briefed.html" aria-label="Briefed"><img src="icons/briefed.svg" width="36" height="36" alt="" /></a>
-                  <a class="name-link" href="products/briefed.html">Briefed</a>
-                </span>
-                <span class="row-note">AI assistant for tech job seekers</span>
-              </th>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-            </tr>
-            <tr>
-              <th scope="row">
-                <span class="product-id">
-                  <a class="icon-link icon-link-logo" href="products/tutored.html" aria-label="Tutored"><img src="icons/tutored.svg" width="36" height="36" alt="" /></a>
-                  <a class="name-link" href="products/tutored.html">Tutored</a>
-                </span>
-                <span class="row-note">AI language coach</span>
-              </th>
-              <td><span class="mark mark-planned" title="In internal testing"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M8 1.6 14.2 8 8 14.4 1.8 8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span>Planned</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-            </tr>
-          </tbody>
-          <tbody>
-            <tr class="section">
-              <th colspan="7" scope="rowgroup"><span>Contract · Pet services, investment analytics, AI platforms and automotive</span></th>
-            </tr>
-            <tr>
-              <th scope="row">
-                <span class="product-id">
-                  <a class="icon-link icon-link-logo" href="products/pet_ecom.html" aria-label="Mohiguide"><img src="icons/mohiguide.png" width="36" height="36" alt="" /></a>
-                  <a class="name-link" href="products/pet_ecom.html">Mohiguide</a>
-                </span>
-                <span class="row-note">Pet services O2O platform</span>
-              </th>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-            </tr>
-            <tr>
-              <th scope="row">
-                <span class="product-id">
-                  <a class="icon-link icon-link-logo" href="products/olilo.html" aria-label="Olilo"><img src="icons/olilo.svg" width="36" height="36" alt="" /></a>
-                  <a class="name-link" href="products/olilo.html">Olilo</a>
-                </span>
-                <span class="row-note">Investment portfolio analytics (SEC 13F)</span>
-              </th>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-            </tr>
-            <tr>
-              <th scope="row">
-                <span class="product-id">
-                  <a class="icon-link" href="products/aihub.html" aria-label="AIHub"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
-                  <a class="name-link" href="products/aihub.html">AIHub</a>
-                </span>
-                <span class="row-note">AI gateway · marketing and education platform</span>
-              </th>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-            </tr>
-            <tr>
-              <th scope="row">
-                <span class="product-id">
-                  <a class="icon-link" href="products/infiniti_owner_app.html" aria-label="Gan Ai Bang"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="8" y="3" width="8" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 18h2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
-                  <a class="name-link" href="products/infiniti_owner_app.html">Gan Ai Bang</a>
-                </span>
-                <span class="row-note">Infiniti · automotive owner services</span>
-              </th>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-            </tr>
-          </tbody>
-          <tbody>
-            <tr class="section">
-              <th colspan="7" scope="rowgroup"><span>IBM internal · Enterprise pre-sales</span></th>
-            </tr>
-            <tr>
-              <th scope="row">
-                <span class="product-id">
-                  <a class="icon-link" href="products/ibm_oa.html" aria-label="IBM Enterprise OA"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="6" y="3" width="12" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 8h6M9 12h6M9 16h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
-                  <a class="name-link" href="products/ibm_oa.html">IBM Enterprise OA</a>
-                </span>
-                <span class="row-note">IBM · enterprise pre-sales workflow</span>
-              </th>
-              <td><span class="mark mark-available"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2 7 10.6 11.5 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Available</span></span></td>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-              <td><span class="mark mark-na"><span aria-label="Not applicable">—</span></span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <main id="work">
+      <section class="group" aria-labelledby="g-founder">
+        <h2 id="g-founder">Founder-led</h2>
+        <p class="group-note">Products I design, build and run, all in active development.</p>
+        <h3 class="sub" id="sdlc">Software development lifecycle (SDLC): develop, prove, ship</h3>
+        <div class="loop-card">
+          <svg class="loop-svg" viewBox="0 0 760 330" role="img" aria-labelledby="loop-title loop-desc">
+            <desc id="loop-desc">Skill Forge develops changes, Defect Drainer proves fixes and opens pull requests, Deploybot deploys and operates them, and production feedback shapes the next change.</desc>
+            <defs><marker id="loop-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#173a67"/></marker></defs>
+            <path class="loop-track" d="M 380 65 A 230 100 0 0 1 380 265 A 230 100 0 0 1 380 65"/>
+            <path class="loop-flow" d="M 473.5 73.6 A 230 100 0 0 1 608.7 175.5" marker-end="url(#loop-arrow)"/>
+            <text class="loop-label" x="593.2" y="86.0" text-anchor="start"><tspan x="593.2" dy="0">agent-written</tspan><tspan x="593.2" dy="15">changes</tspan></text>
+            <path class="loop-flow" d="M 515.2 245.9 A 230 100 0 0 1 244.8 245.9" marker-end="url(#loop-arrow)"/>
+            <text class="loop-label" x="380.0" y="289.0" text-anchor="middle"><tspan x="380.0" dy="0">proven fixes as pull requests</tspan></text>
+            <path class="loop-flow" d="M 151.3 175.5 A 230 100 0 0 1 286.5 73.6" marker-end="url(#loop-arrow)"/>
+            <text class="loop-label" x="166.8" y="86.0" text-anchor="end"><tspan x="166.8" dy="0">production feedback</tspan><tspan x="166.8" dy="15">shapes the next change</tspan></text>
+            <circle class="loop-dot" r="5"/>
+            <a href="products/skill_forge.html" class="loop-node"><circle cx="380.0" cy="65.0" r="30"/><image href="icons/skill_forge.svg?v=2" x="362.0" y="47.0" width="36" height="36"/><text class="loop-name" x="380.0" y="113.0" text-anchor="middle">Skill Forge</text><text class="loop-stage" x="380.0" y="129.0" text-anchor="middle">Develop</text></a>
+            <a href="products/defect_drainer.html" class="loop-node"><circle cx="579.2" cy="215.0" r="30"/><image href="icons/defect_drainer.svg?v=2" x="561.2" y="197.0" width="36" height="36"/><text class="loop-name" x="579.2" y="263.0" text-anchor="middle">Defect Drainer</text><text class="loop-stage" x="579.2" y="279.0" text-anchor="middle">Test and fix</text></a>
+            <a href="products/deploybot.html" class="loop-node"><circle cx="180.8" cy="215.0" r="30"/><image href="icons/deploybot.svg?v=2" x="162.8" y="197.0" width="36" height="36"/><text class="loop-name" x="180.8" y="263.0" text-anchor="middle">Deploybot</text><text class="loop-stage" x="180.8" y="279.0" text-anchor="middle">Deploy and operate</text></a>
+            </svg>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="card-head">
+              <span class="card-icon card-icon-logo" aria-hidden="true"><img src="icons/deploybot.svg?v=2" width="36" height="36" alt="" /></span>
+              <div>
+                <p class="kicker">SDLC · deploy and operate</p>
+                <h3><a href="products/deploybot.html">Deploybot</a></h3>
+              </div>
+            </div>
+            <p class="headline">AI agents deploy and operate your own servers</p>
+            <p class="summary">Any AI agent that speaks MCP can deploy to your own hosts without SSH keys or a cloud token. It can only deploy what your catalog allows, acts as the signed-in user, and every change waits for a confirm step.</p>
+            <ul class="points"><li>40 MCP tools, a host-side allowlist, readiness checks and automatic rollback</li><li>Hosts dial out and open no inbound ports; people, not AI, enter the secrets</li></ul>
+            <ul class="chips" aria-label="Platforms"><li class="chip">Web</li><li class="chip">Backend</li><li class="chip">Cloud</li><li class="chip">Data</li><li class="chip">AI</li></ul>
+            <p class="meta">January 2024–present · Open source (AGPL-3.0 server, Apache-2.0 agent)</p>
+            <p class="links"><a class="more" href="products/deploybot.html">Read the briefing<span aria-hidden="true"> →</span></a><a class="live" href="https://deploybot.dev">deploybot.dev</a></p>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <span class="card-icon card-icon-logo" aria-hidden="true"><img src="icons/skill_forge.svg?v=2" width="36" height="36" alt="" /></span>
+              <div>
+                <p class="kicker">SDLC · develop</p>
+                <h3><a href="products/skill_forge.html">Skill Forge</a></h3>
+              </div>
+            </div>
+            <p class="headline">Agent skills and instructions registry</p>
+            <p class="summary">An open-source CLI and registry for what steers AI coding agents: skills, managed instructions, subagents and hooks, versioned and synced as exact copies into each repository.</p>
+            <ul class="points"><li>41 skills and 16 subagent definitions for Claude Code, Codex, Copilot CLI and Grok</li><li>SHA-256 integrity lock, drift checks, and a usage-stats hook on OpenTelemetry</li></ul>
+            <ul class="chips" aria-label="Platforms"><li class="chip chip-planned" title="Planned: SFK Cloud">Web <span>planned</span></li><li class="chip chip-planned" title="Planned: SFK Cloud">Backend <span>planned</span></li><li class="chip chip-planned" title="Planned: SFK Cloud">Cloud <span>planned</span></li><li class="chip">Data</li><li class="chip">AI</li></ul>
+            <p class="meta">June 2026–present · Open source (MIT)</p>
+            <p class="links"><a class="more" href="products/skill_forge.html">Read the briefing<span aria-hidden="true"> →</span></a></p>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <span class="card-icon card-icon-logo" aria-hidden="true"><img src="icons/defect_drainer.svg?v=2" width="36" height="36" alt="" /></span>
+              <div>
+                <p class="kicker">SDLC · test and fix</p>
+                <h3><a href="products/defect_drainer.html">Defect Drainer</a></h3>
+              </div>
+            </div>
+            <p class="headline">Agent harness for fixing defects</p>
+            <p class="summary">Reported defects become proven fixes. A coding agent works in isolated git worktrees, and a defect does not close until evidence, verification and an independent review all pass.</p>
+            <ul class="points"><li>Report, inventory, batch fix, verify, review, pull request</li><li>Go control plane and SvelteKit console, multi-tenant with invite-only organizations</li></ul>
+            <ul class="chips" aria-label="Platforms"><li class="chip">Web</li><li class="chip">Backend</li><li class="chip">Cloud</li><li class="chip">Data</li><li class="chip">AI</li></ul>
+            <p class="meta">June 2026–present · Closed source · invite-only</p>
+            <p class="links"><a class="more" href="products/defect_drainer.html">Read the briefing<span aria-hidden="true"> →</span></a><a class="live" href="https://defectdrainer.com">defectdrainer.com</a></p>
+          </article>
+        </div>
+        <h3 class="sub">AI products · job search and language learning</h3>
+        <div class="cards">
+          <article class="card">
+            <div class="card-head">
+              <span class="card-icon card-icon-logo" aria-hidden="true"><img src="icons/briefed.svg?v=2" width="36" height="36" alt="" /></span>
+              <div>
+                <p class="kicker">Career</p>
+                <h3><a href="products/briefed.html">Briefed</a></h3>
+              </div>
+            </div>
+            <p class="headline">AI assistant for tech job seekers</p>
+            <p class="summary">Briefings from real applicants on the tech job ads you face, and CVs and cover letters built only from your own record. Every record the assistant offers waits for your confirmation.</p>
+            <ul class="points"><li>Posting checks, application tracking and CV templates in one chat</li><li>Grounding checks against your record, connected AI apps over MCP, over 5,000 automated tests</li></ul>
+            <ul class="chips" aria-label="Platforms"><li class="chip">Web</li><li class="chip">Backend</li><li class="chip">Cloud</li><li class="chip">Data</li><li class="chip">AI</li></ul>
+            <p class="meta">August 2026–present</p>
+            <p class="links"><a class="more" href="products/briefed.html">Read the briefing<span aria-hidden="true"> →</span></a><a class="live" href="https://briefed.cv">briefed.cv</a></p>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <span class="card-icon card-icon-logo" aria-hidden="true"><img src="icons/tutored.svg?v=2" width="36" height="36" alt="" /></span>
+              <div>
+                <p class="kicker">Language learning</p>
+                <h3><a href="products/tutored.html">Tutored</a></h3>
+              </div>
+            </div>
+            <p class="headline">AI language coach</p>
+            <p class="summary">Pip, a kiwi coach, explains words and grammar in the language you already know, and turns a photo of your own word list or textbook page into practice.</p>
+            <ul class="points"><li>Read-aloud, dictation and translation drills with spaced review</li><li>Five interface languages, and connected AI assistants over MCP with OAuth 2.1</li></ul>
+            <ul class="chips" aria-label="Platforms"><li class="chip chip-planned" title="Mobile app in internal testing">Mobile <span>planned</span></li><li class="chip">Web</li><li class="chip">Backend</li><li class="chip">Cloud</li><li class="chip">Data</li><li class="chip">AI</li></ul>
+            <p class="meta">July 2026–present</p>
+            <p class="links"><a class="more" href="products/tutored.html">Read the briefing<span aria-hidden="true"> →</span></a><a class="live" href="https://tutored.app">tutored.app</a></p>
+          </article>
+        </div>
+      </section>
+
+      <section class="group" aria-labelledby="g-ibm">
+        <h2 id="g-ibm">IBM client delivery</h2>
+        <p class="group-note">Logistics, industrial IoT and retail, delivered for IBM clients.</p>
+        <div class="cards">
+          <article class="card">
+            <div class="card-head">
+              <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="6" cy="18" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6 8v8M8 6.8c4.2.4 4.2 4.4 8 4.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+              <div>
+                <p class="kicker">Maersk · logistics and EDI</p>
+                <h3><a href="products/edi.html">MapGenie</a></h3>
+              </div>
+            </div>
+            <p class="headline">AI-driven logistics and EDI automation</p>
+            <p class="summary">Automation for logistics messages, EDI transactions and partner onboarding, combining a RAG knowledge base, agentic workflows and human-in-the-loop review.</p>
+            <ul class="points"><li>Mapping change effort cut from about 23 hours to 30 minutes after the February 2026 go-live</li><li>About 46× throughput, with zero AI-generated production incidents since launch</li></ul>
+            <ul class="chips" aria-label="Platforms"><li class="chip">Web</li><li class="chip">Backend</li><li class="chip">Cloud</li><li class="chip">Data</li><li class="chip">AI</li></ul>
+            <p class="meta">April 2025–June 2026 · Senior Application Architect / AI Engineer</p>
+            <p class="links"><a class="more" href="products/edi.html">Read the briefing<span aria-hidden="true"> →</span></a></p>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 20V6h8v14M12 20V10h8v10M4 20h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M7 9h2M7 13h2M15 13h2M15 16h2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+              <div>
+                <p class="kicker">KONE · elevator and escalator IoT</p>
+                <h3><a href="products/kone.html">Watson IoT to AWS IoT</a></h3>
+              </div>
+            </div>
+            <p class="headline">Cloud migration of a connected-services platform</p>
+            <p class="summary">Re-platformed KONE's 24/7 Connected Services, which watch elevator and escalator telemetry for predictive maintenance, from IBM Watson IoT to cloud-native AWS IoT.</p>
+            <ul class="chips" aria-label="Platforms"><li class="chip">Cloud</li><li class="chip">Data</li></ul>
+            <p class="meta">January 2020–December 2021 · Cloud Native Application Architect</p>
+            <p class="links"><a class="more" href="products/kone.html">Read the briefing<span aria-hidden="true"> →</span></a></p>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 8h12l-1 12H7L6 8Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8a3 3 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+              <div>
+                <p class="kicker">Oriflame · cosmetics e-commerce</p>
+                <h3><a href="products/glob_ecom.html">Global e-commerce</a></h3>
+              </div>
+            </div>
+            <p class="headline">Global services, local experience in China</p>
+            <p class="summary">Reused global identity, product and order services for a cosmetics direct seller in China, while keeping the experience fast, local and compliant in its data handling.</p>
+            <ul class="chips" aria-label="Platforms"><li class="chip">Mobile</li><li class="chip">Web</li><li class="chip">Backend</li><li class="chip">Cloud</li></ul>
+            <p class="meta">April 2017–December 2019 · Mobile Application Architect</p>
+            <p class="links"><a class="more" href="products/glob_ecom.html">Read the briefing<span aria-hidden="true"> →</span></a></p>
+          </article>
+        </div>
+      </section>
+
+      <section class="group" aria-labelledby="g-contract">
+        <h2 id="g-contract">Contract</h2>
+        <p class="group-note">Pet services, investment analytics, AI platforms and automotive.</p>
+        <div class="cards">
+          <article class="card">
+            <div class="card-head">
+              <span class="card-icon card-icon-logo" aria-hidden="true"><img src="icons/mohiguide.png" width="36" height="36" alt="" /></span>
+              <div>
+                <p class="kicker">Pet services</p>
+                <h3><a href="products/pet_ecom.html">Mohiguide</a></h3>
+              </div>
+            </div>
+            <p class="headline">Pet services online-to-offline platform</p>
+            <p class="summary">Content, shops, events, vouchers, commerce and community for pet owners and operators, across mobile, web and admin on a Go services backend.</p>
+            <ul class="chips" aria-label="Platforms"><li class="chip">Mobile</li><li class="chip">Web</li><li class="chip">Backend</li><li class="chip">Cloud</li></ul>
+            <p class="meta">February 2022–October 2026 · Full-stack product engineer</p>
+            <p class="links"><a class="more" href="products/pet_ecom.html">Read the briefing<span aria-hidden="true"> →</span></a><a class="live" href="https://mohiguide.com">mohiguide.com</a></p>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <span class="card-icon card-icon-logo" aria-hidden="true"><img src="icons/olilo.svg" width="36" height="36" alt="" /></span>
+              <div>
+                <p class="kicker">Investment analytics</p>
+                <h3><a href="products/olilo.html">Olilo</a></h3>
+              </div>
+            </div>
+            <p class="headline">SEC 13F portfolio analytics</p>
+            <p class="summary">Ingests, enriches and visualises SEC Form 13F filings so users can compare institutional portfolios by sector and holdings, with LLM-powered insight reports.</p>
+            <ul class="chips" aria-label="Platforms"><li class="chip">Web</li><li class="chip">Backend</li><li class="chip">Data</li><li class="chip">AI</li></ul>
+            <p class="meta">April 2026–present · Full-stack product engineer</p>
+            <p class="links"><a class="more" href="products/olilo.html">Read the briefing<span aria-hidden="true"> →</span></a></p>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+              <div>
+                <p class="kicker">AI platforms</p>
+                <h3><a href="products/aihub.html">AIHub</a></h3>
+              </div>
+            </div>
+            <p class="headline">AI gateway for a white-label AI platform</p>
+            <p class="summary">The Python AI gateway behind a platform for AI marketing and education guidance: knowledge-base answers and structured reports streamed to users. Also acting DevOps.</p>
+            <ul class="chips" aria-label="Platforms"><li class="chip">Web</li><li class="chip">Backend</li><li class="chip">Cloud</li><li class="chip">Data</li><li class="chip">AI</li></ul>
+            <p class="meta">June 2025–January 2026 · AI engineer and acting DevOps</p>
+            <p class="links"><a class="more" href="products/aihub.html">Read the briefing<span aria-hidden="true"> →</span></a></p>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="8" y="3" width="8" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 18h2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+              <div>
+                <p class="kicker">Infiniti · automotive</p>
+                <h3><a href="products/infiniti_owner_app.html">Gan Ai Bang</a></h3>
+              </div>
+            </div>
+            <p class="headline">Owner app for Infiniti in China</p>
+            <p class="summary">A native iOS app that brings premium owner services to Infiniti owners on their phone, shipped on the China App Store.</p>
+            <ul class="chips" aria-label="Platforms"><li class="chip">Mobile</li></ul>
+            <p class="meta">January 2017–December 2018 · Contract iOS developer</p>
+            <p class="links"><a class="more" href="products/infiniti_owner_app.html">Read the briefing<span aria-hidden="true"> →</span></a></p>
+          </article>
+        </div>
+      </section>
+
+      <section class="group" aria-labelledby="g-internal">
+        <h2 id="g-internal">IBM internal</h2>
+        <p class="group-note">Enterprise pre-sales.</p>
+        <div class="cards">
+          <article class="card">
+            <div class="card-head">
+              <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="6" y="3" width="12" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 8h6M9 12h6M9 16h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+              <div>
+                <p class="kicker">IBM · enterprise pre-sales</p>
+                <h3><a href="products/ibm_oa.html">IBM Enterprise OA</a></h3>
+              </div>
+            </div>
+            <p class="headline">Pre-sales workflow on iPhone</p>
+            <p class="summary">A native iOS app that moved IBM pre-sales approvals and updates off the desktop, with business rules kept on the server.</p>
+            <ul class="chips" aria-label="Platforms"><li class="chip">Mobile</li></ul>
+            <p class="meta">January 2015–March 2017 · Senior iOS Developer</p>
+            <p class="links"><a class="more" href="products/ibm_oa.html">Read the briefing<span aria-hidden="true"> →</span></a></p>
+          </article>
+        </div>
+      </section>
     </main>
 
     <footer>

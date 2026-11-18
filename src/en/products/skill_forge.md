@@ -1,4 +1,4 @@
-# Skill Forge — Agent skills registry
+# Skill Forge — Agent skills and instructions registry
 
 **Period:** June 2026–Present  
 **Ownership:** Founder-led · open-source (MIT)  
