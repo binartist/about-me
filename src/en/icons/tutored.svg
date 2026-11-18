@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-	<rect width="32" height="32" rx="8" fill="#1a2332"/>
-	<path d="M6 9.5c3-1.4 6-1.4 10 1v12.5c-4-2.4-7-2.4-10-1z" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="#e0af68"/>
-	<path d="M26 9.5c-3-1.4-6-1.4-10 1v12.5c4-2.4 7-2.4 10-1z" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="#e0af68"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Tutored">
+<title>Tutored</title>
+<rect width="512" height="512" rx="115.2" fill="#1a1410"/>
+<g transform="translate(-55.47 -57.6) scale(1.06667)"><path d="M205 405L200 448M200 448L178 454M200 448L215 458M270 405L274 448M274 448L253 456M274 448L294 456" stroke="#f4efe6" stroke-width="13" stroke-linecap="round" fill="none"/><path fill="#f4efe6" d="M100 300C100 210 170 160 250 165C300 168 320 160 335 145C360 122 420 128 428 180C432 215 412 238 395 250C400 340 340 412 245 414C160 416 100 370 100 300Z"/><path fill="#f4efe6" d="M402 172C440 198 466 256 482 334C484 344 472 348 468 338C452 280 430 238 398 220Z"/><circle cx="384" cy="178" r="12" fill="#1a1410"/><circle cx="372" cy="216" r="17" fill="#ca7e69"/></g>
 </svg>

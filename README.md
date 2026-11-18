@@ -11,7 +11,7 @@ The English homepage (`src/en/index.html`) is a short narrative profile of Joe Z
 2. **Tutored** — education product (live at tutored.app); includes the Sketch Forge iPad sticker studio  
 3. **Olilo** — finance/data product (independent commercial contract)  
 4. **Mohiguide** — commerce O2O product (independent commercial contract)  
-5. **Deploybot** — self-hosted deploy & operations platform with an AI-agent gateway (**open source**: AGPL-3.0 server, Apache-2.0 agent; live at deploybot.dev)  
+5. **Deploybot** — AI agents deploy and operate your own servers (**open source**: AGPL-3.0 server, Apache-2.0 agent; live at deploybot.dev)  
 6. **Defect Drainer** — agent harness for product defects (**closed source**, invite-only at defectdrainer.com)  
 7. **Skill Forge** — agent skills registry (**open source**, MIT)  
 8. **MapGenie** — enterprise AI delivery (IBM / Maersk)  

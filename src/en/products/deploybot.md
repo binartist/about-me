@@ -1,4 +1,4 @@
-# Deploybot — Self-hosted deploy & operations platform with an AI-agent gateway
+# Deploybot — AI agents deploy and operate your own servers
 
 **Period:** January 2024–Present  
 **Ownership:** Founder-led · open source (AGPL-3.0 server, Apache-2.0 agent)  
