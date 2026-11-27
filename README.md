@@ -11,9 +11,9 @@ The English homepage (`src/en/index.html`) is a short narrative profile of Joe Z
 2. **Tutored** — education product (live at tutored.app); includes the Sketch Forge iPad sticker studio  
 3. **Olilo** — finance/data product (independent commercial contract)  
 4. **Mohiguide** — commerce O2O product (independent commercial contract)  
-5. **Deploybot** — AI agents deploy and operate your own servers (**open source**: AGPL-3.0 server, Apache-2.0 agent; live at deploybot.dev)  
-6. **Defect Drainer** — agent harness for product defects (**closed source**, invite-only at defectdrainer.com)  
-7. **Skill Forge** — agent skills registry (**open source**, MIT)  
+5. **Deploybot** — Agentic SDLC Suite (ship): AI agents deploy and operate your own servers (**open source**: AGPL-3.0 server, Apache-2.0 agent; live at deploybot.dev)  
+6. **Defect Drainer** — Agentic SDLC Suite (prove): agent harness for product defects (**closed-source** control plane, **open-source** worker under Apache-2.0; live at defectdrainer.com)  
+7. **Skill Forge** — Agentic SDLC Suite (develop): agent skills registry (**open source**, MIT)  
 8. **MapGenie** — enterprise AI delivery (IBM / Maersk)  
 9. **Global e-commerce** — enterprise localization / integration (IBM / Oriflame)  
 
@@ -23,6 +23,8 @@ The English homepage (`src/en/index.html`) is a short narrative profile of Joe Z
 - **IBM Enterprise OA** — IBM internal pre-sales / office-automation iOS app (2015–2017)  
 
 - **AIHub** — AI gateway for a white-label AI platform (independent contract, 2025–2026; client and brands are not named)  
+Deploybot, Defect Drainer and Skill Forge are presented together as **the Agentic SDLC Suite** (develop, prove, ship) on the homepage.
+
 ## Source of truth
 
 Primary facts for MapGenie, Olilo, Tutored, Mohiguide, Deploybot, Briefed: private **cv-playground** notes:

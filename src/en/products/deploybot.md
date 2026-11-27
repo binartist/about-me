@@ -1,7 +1,7 @@
 # Deploybot — AI agents deploy and operate your own servers
 
 **Period:** January 2024–Present  
-**Ownership:** Founder-led · open source (AGPL-3.0 server, Apache-2.0 agent)  
+**Ownership:** Founder-led · part of the Agentic SDLC Suite (ship) · open source (AGPL-3.0 server, Apache-2.0 agent)  
 **Role:** Founder / platform engineer  
 **Live:** [deploybot.dev](https://deploybot.dev) · **Source:** [github.com/more-than-code/deploybot](https://github.com/more-than-code/deploybot)  
 
@@ -23,18 +23,21 @@ flowchart LR
   Edge[Optional edge: HTTPS routes] --> Deploy
 ```
 
-- **Control plane** — one Go server: the API, an OAuth-secured MCP gateway with 40 tools, and the SvelteKit console. Google sign-in, organizations, projects and roles, a catalog, encrypted secrets and an audit log.  
+- **Control plane** — one Go server: the API, an OAuth-secured MCP gateway with about 50 tools, and the SvelteKit console. Google sign-in, organizations, projects and roles, a catalog, encrypted secrets and an audit log.  
 - **Host agent** — one static Go binary under systemd, running unprivileged and dialing out. A root runner checks the host's own allowlist of images, projects and program commands before it runs Docker containers or systemd units.  
 - **Safe deploys** — a readiness check before each deploy, a per-service health policy with automatic rollback, and container log limits. Persistent programs run as systemd units with secrets.  
 - **Secrets people handle, not AI** — encrypted environment sets with generated values and paste import. An agent can ask for a password, token or file, and a person fills it in on a one-time console page, so the secret never passes through the AI. Registry credentials work the same way.  
 - **Public addresses** — verify a domain with a DNS record, and an optional Caddy edge on a host serves HTTPS routes with automatic certificates. Routes go through plan and confirm.  
 - **Organizations and hosts** — organizations own hosts, with owner, admin and member roles and per-project host access at metrics or deploy level. Projects on one host can share a network when the host's admin offers it.  
-- **Monitoring** — host metrics ingested into TimescaleDB, processes and services, health history and live logs.  
+- **Monitoring and alerts** — host metrics ingested into TimescaleDB, processes and services, health history and live logs. A problems bell (host offline, failed deploys, registry logins, agent upgrades) and host resource alerts for low memory or disk and sustained CPU or load, with per-host thresholds; a failed deploy keeps its reason and log tail, and the console shows what fills a host's disk.  
+- **Image versions and upgrades** — the console and MCP list registry tags newest first, move an entry to a new version and prune stale versions while keeping running and rollback targets. A host's agent upgrades from the server to the latest signed release.  
 - **Enrolment and upkeep** — a host joins with a one-time token, and the console gives an AI coding agent the prompt to prepare it through the cloud provider's remote tools. A What's new feed in the console and over MCP, update notices for hosts, and a device-code CLI sign-in.  
 
 ## My contribution
 
 - Designed and built the platform: host agent, control plane, MCP gateway and operator console.  
 - The safety model for AI access: acts as the signed-in user, plan and confirm on every change, host-side allowlist, and secrets entered by people.  
+- Versioned releases with a changelog and frozen contracts for the API and the agent protocol, and 3,600+ automated tests across the control plane, console and agent.  
+- Runs my own products' services, including Defect Drainer's releases with backup and migrate jobs.  
 
 **Key technologies:** Go, PostgreSQL, TimescaleDB, SvelteKit, TypeScript, Caddy, Docker, systemd, MCP, OAuth, Google sign-in
