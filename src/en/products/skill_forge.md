@@ -34,6 +34,6 @@ flowchart LR
 - Registry and integrity-lock model, and the profile sync CLI.  
 - Multi-tool instruction composition, subagent and hook installs, and cloud delivery with its doctor.  
 - The shared engineering process and the 42-skill library, written and revised from real multi-session agent work.  
-- An automated test suite of 254 tests.  
+- An automated test suite of 265 tests.  
 
 **Key technologies:** Node.js, CLI, registry and lock JSON, skill frontmatter, OpenTelemetry, Prometheus, Grafana
