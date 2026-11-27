@@ -13,7 +13,7 @@ The English homepage (`src/en/index.html`) is a short narrative profile of Joe Z
 4. **Mohiguide** — commerce O2O product (independent commercial contract)  
 5. **Deploybot** — Agentic SDLC Suite (ship): AI agents deploy and operate your own servers (**open source**: AGPL-3.0 server, Apache-2.0 agent; live at deploybot.dev)  
 6. **Defect Drainer** — Agentic SDLC Suite (prove): agent harness for product defects (**closed-source** control plane, **open-source** worker under Apache-2.0; live at defectdrainer.com)  
-7. **Skill Forge** — Agentic SDLC Suite (develop): agent skills registry (**open source**, MIT)  
+7. **Skill Forge** — Agentic SDLC Suite (develop): agent skills registry (**open source**, MIT; live at skillforgecloud.com)  
 8. **MapGenie** — enterprise AI delivery (IBM / Maersk)  
 9. **Global e-commerce** — enterprise localization / integration (IBM / Oriflame)  
 
